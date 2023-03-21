@@ -3,8 +3,8 @@ trabajo final en equipo de Poo
   
 El proyecto consiste en crear un programa en Java que pueda gestionar un sistema de pedidos de una pizzería. Este programa en consola permite a los usuarios tomar pedidos, aplicar descuentos, verificar el inventario, agregar compras y ventas de ingredientes o pizzas o productos, entre otras funcionalidades.
   
-git config --global user.email "ooalexis.samaoo@gmail.com" //cambiar email  
-git config --global user.name "Alexis Corzas"              &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;//cambiar nombre  
+git config --global user.email "email" //cambiar email  
+git config --global user.name "nombre"              &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;//cambiar nombre  
 git clone                                                &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;  //clonar un repositorio  
 git init                                              &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;     //crear nuevo repositorio
 
