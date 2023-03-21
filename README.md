@@ -36,5 +36,5 @@ para el mensaje en el commit detallado
 primera linea un mensaje corto que describa los cambios de forma resumida  
   
 tercera linea mensaje descriptivo de los cambios siempre dejar una linea vacia  
-entre la linea 2 y 3, este mensaje puede ser largo de varias lineas de  
+entre la linea 1 y 3, este mensaje puede ser largo de varias lineas de  
 ser necesario.  
