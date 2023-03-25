@@ -23,7 +23,7 @@ public class Pizzeria{
     public void mostrar(){
         matriz=cuadrito(50, 4 , nombre);
         imprimirCuadrito(matriz, nombre);
-        matriz=cuadrito(50, 6 , nombre);
+        matriz=cuadrito(50, 6 , "");
         imprimirCuadrito(matriz, domicilio,"Correo: "+correo , "horario: "+ horario);
     }
 
@@ -32,14 +32,13 @@ public class Pizzeria{
         for (int y = 0; y < matriz[0].length; y++) {
             for (int x = 0; x < matriz.length; x++) {
                 if (y == (int)matriz[0].length/2 && x >= matriz.length/2 - palabra.length()/2 && x < matriz.length/2 + palabra.length()/2 + palabra.length()%2) {
-                    matriz[x][y] = palabra.charAt((x - matriz.length/2 + palabra.length() / 2) % palabra.length());
+                    matriz[x][y] = palabra.charAt(x - matriz.length/2 + palabra.length() / 2);
                 }
                 System.out.print(matriz[x][y]); 
             }
             System.out.println();
         }
     }
-    
     public void imprimirCuadrito(char[][] matriz, String palabra,String palabra2, String palabra3){
         for (int y = 0; y < matriz[0].length; y++) {
             for (int x = 0; x < matriz.length; x++) {
