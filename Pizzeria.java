@@ -4,6 +4,7 @@ public class Pizzeria{
     private String domicilio;
     private String correo;
     private String horario;
+    private String telefono;
     private String rfc;
     char[][] matriz;
 
@@ -12,21 +13,84 @@ public class Pizzeria{
 
     }
 
-    public Pizzeria(String nombre, String domicilio, String correo, String horario, String rfc) {
+    public Pizzeria(String nombre, String domicilio, String correo, int horario, String telefono) {
         this.nombre = nombre;
         this.domicilio = domicilio;
         this.correo = correo;
-        this.horario = horario;
-        this.rfc = rfc;
+        this.horario = (horario/1000000)%100 + ":" + (horario/100000)%10 +  (horario/10000)%10 + "-" + (horario/100)%100 + ":" + (horario/10)%10 + horario%10 ;
+        this.telefono = telefono;
     }
 
     public void mostrar(){
-        matriz=cuadrito(50, 4 , nombre);
+        
+        //primero decir de que tamano sera la matriz x,y, 
+        //luego usar esa matriz y darle la palabra para imprimir el cuadrito
+        matriz=cuadrito(50, 4 );
         imprimirCuadrito(matriz, nombre);
-        matriz=cuadrito(50, 6 , "");
+
+        //igual asignar el tamano que sera la matriz, luego introducir la matriz
+        // y los String que imprimira, este soporta 3 Strings tambien hay uno de 2 Strings
+        matriz=cuadrito(50, 6 );
         imprimirCuadrito(matriz, domicilio,"Correo: "+correo , "horario: "+ horario);
+        
+
+
     }
 
+
+    public String toString() {
+        return nombre + " / " + correo;
+    }
+
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
+
+    public void setDomicilio(String domicilio) {
+        this.domicilio = domicilio;
+    }
+
+    public void setCorreo(String correo) {
+        this.correo = correo;
+    }
+
+    public void setHorario(String horario) {
+        this.horario = horario;
+    }
+
+    public void setTelefono(String telefono) {
+        this.telefono = telefono;
+    }
+
+    public void setrfc(String rfc) {
+        this.rfc = rfc;
+    }
+
+    public String getNombre() {
+        return nombre;
+    }
+
+    public String getDomicilio() {
+        return domicilio;
+    }
+
+    public String getCorreo() {
+        return correo;
+    }
+
+    public String getHorario() {
+        return horario;
+    }
+
+    public String getTelefono() {
+        return telefono;
+    }
+
+    public String getrfc() {
+        return rfc;
+    }
+
+    //funciones para cuadrito, considerar que es magia.
 
     public void imprimirCuadrito(char[][] matriz, String palabra){
         for (int y = 0; y < matriz[0].length; y++) {
@@ -39,6 +103,18 @@ public class Pizzeria{
             System.out.println();
         }
     }
+
+    public void imprimirCuadrito(char[][] matriz, String palabra,String palabra2){
+        for (int y = 0; y < matriz[0].length; y++) {
+            for (int x = 0; x < matriz.length; x++) {
+                matriz=centrarEnY(matriz, palabra, -1);
+                matriz=centrarEnY(matriz, palabra2, 0);
+                System.out.print(matriz[x][y]); 
+            }
+            System.out.println();
+        }
+    }
+
     public void imprimirCuadrito(char[][] matriz, String palabra,String palabra2, String palabra3){
         for (int y = 0; y < matriz[0].length; y++) {
             for (int x = 0; x < matriz.length; x++) {
@@ -74,7 +150,7 @@ public class Pizzeria{
     }
 
 
-    public char[][] cuadrito(int horizontal, int vertical , String palabra){
+    public char[][] cuadrito(int horizontal, int vertical){
         char[][] matriz = new char[horizontal+1][vertical+1];
         char borde;
         char borde2;
@@ -95,50 +171,5 @@ public class Pizzeria{
         }
         return matriz;
     }
-
-
-    public String toString() {
-        return nombre + " / " + correo;
-    }
-
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
-    }
-
-    public void setDomicilio(String domicilio) {
-        this.domicilio = domicilio;
-    }
-
-    public void setCorreo(String correo) {
-        this.correo = correo;
-    }
-
-    public void setHorario(String horario) {
-        this.horario = horario;
-    }
-
-    public void setrfc(String rfc) {
-        this.rfc = rfc;
-    }
-
-    public String getNombre() {
-        return nombre;
-    }
-
-    public String getDomicilio() {
-        return domicilio;
-    }
-
-    public String getCorreo() {
-        return correo;
-    }
-
-    public String getHorario() {
-        return horario;
-    }
-
-    public String getrfc() {
-        return rfc;
-    }
-
+    //fin de funciones de cuadrito
 }

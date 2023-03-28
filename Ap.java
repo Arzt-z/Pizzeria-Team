@@ -1,7 +1,7 @@
 import java.util.Scanner;
 public class Ap{
 	public static void main (String[] args){
-		Pizzeria pizzafactory = new Pizzeria("Pizza Factory", "Av. Lic. Enrique Ramírez Miguel, Las Américas", "PizzaFactory@Pizza.com", "07002200" , "445697234");
+		Pizzeria pizzafactory = new Pizzeria("Pizza Factory", "Av. Lic. Enrique Ramírez Miguel, Las Américas", "PizzaFactory@Pizza.com", 7002200 , "445697234");
 		pizzafactory.mostrar();
 		do {
             switch (menu()) {
