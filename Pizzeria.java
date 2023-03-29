@@ -25,17 +25,29 @@ public class Pizzeria{
         
         //primero decir de que tamano sera la matriz x,y, 
         //luego usar esa matriz y darle la palabra para imprimir el cuadrito
-        matriz=cuadrito(50, 4 );
-        imprimirCuadrito(matriz, nombre);
+
+        matriz=cuadrito(50, 6 );
+        centrarEnXY(matriz,nombre,0,0);
+        imprimirCuadrito();
 
         //igual asignar el tamano que sera la matriz, luego introducir la matriz
         // y los String que imprimira, este soporta 3 Strings tambien hay uno de 2 Strings
         matriz=cuadrito(50, 6 );
-        imprimirCuadrito(matriz, domicilio,"Correo: "+correo , "horario: "+ horario);
-        
+        centrarEnXY(matriz,domicilio,0,-1);
+        centrarEnXY(matriz,"Correo: "+correo,0,0);
+        centrarEnXY(matriz,"horario: "+ horario,0,1);
+        imprimirCuadrito();
 
-
+        //para imprimir 2 palabras en izquierda y derecha centrados con division al medio
+        matriz=cuadrito(50, 6 );
+        for (int y = 0; y+1 < matriz[0].length-1; y++) {
+            centrarEnXY(matriz,"|",0,y-((int)(matriz[0].length/2)-1));
+        }
+        centrarEnXY(matriz,"hola",-1,0);
+        centrarEnXY(matriz,"hola",1,0);
+        imprimirCuadrito();
     }
+
 
 
     public String toString() {
@@ -92,57 +104,22 @@ public class Pizzeria{
 
     //funciones para cuadrito, considerar que es magia.
 
-    public void imprimirCuadrito(char[][] matriz, String palabra){
+    public void imprimirCuadrito(){
         for (int y = 0; y < matriz[0].length; y++) {
             for (int x = 0; x < matriz.length; x++) {
-                if (y == (int)matriz[0].length/2 && x >= matriz.length/2 - palabra.length()/2 && x < matriz.length/2 + palabra.length()/2 + palabra.length()%2) {
-                    matriz[x][y] = palabra.charAt(x - matriz.length/2 + palabra.length() / 2);
-                }
                 System.out.print(matriz[x][y]); 
             }
             System.out.println();
         }
     }
 
-    public void imprimirCuadrito(char[][] matriz, String palabra,String palabra2){
-        for (int y = 0; y < matriz[0].length; y++) {
-            for (int x = 0; x < matriz.length; x++) {
-                matriz=centrarEnY(matriz, palabra, -1);
-                matriz=centrarEnY(matriz, palabra2, 0);
-                System.out.print(matriz[x][y]); 
-            }
-            System.out.println();
-        }
-    }
 
-    public void imprimirCuadrito(char[][] matriz, String palabra,String palabra2, String palabra3){
+    public char[][] centrarEnXY(char[][] matriz, String palabra,int posicion, int posicionY){
+        int center = matriz.length/2;
         for (int y = 0; y < matriz[0].length; y++) {
             for (int x = 0; x < matriz.length; x++) {
-                matriz=centrarEnY(matriz, palabra, -1);
-                matriz=centrarEnY(matriz, palabra2, 0);
-                matriz=centrarEnY(matriz, palabra3, 1);
-                System.out.print(matriz[x][y]); 
-            }
-            System.out.println();
-        }
-    }
-
-    public void imprimirCuadritoDividido(char[][] matriz, String palabra,String palabra2){
-        for (int y = 0; y < matriz[0].length; y++) {
-            for (int x = 0; x < matriz.length; x++) {
-                matriz=centrarEnY(matriz, palabra, -1);
-                matriz=centrarEnY(matriz, palabra2, 0);
-                System.out.print(matriz[x][y]); 
-            }
-            System.out.println();
-        }
-    }
-
-    public char[][] centrarEnY(char[][] matriz, String palabra,int posicion){
-        for (int y = 0; y < matriz[0].length; y++) {
-            for (int x = 0; x < matriz.length; x++) {
-                if (y == ((int)matriz[0].length/2)+posicion && x >= matriz.length/2 - palabra.length()/2 && x < matriz.length/2 + palabra.length()/2 + palabra.length()%2) {
-                    matriz[x][y] = palabra.charAt(x - matriz.length/2 + palabra.length() / 2);
+                if (y == ((int)matriz[0].length/2)+posicionY && x >= (matriz.length/2 - palabra.length()/2)+((int)(center/2)*posicion) && x < (matriz.length/2 + palabra.length()/2 + palabra.length()%2)+((int)(center/2)*posicion)) {
+                    matriz[x][y] = palabra.charAt((x - matriz.length/2 + palabra.length() / 2)-((center/2)*posicion));
                 }
             }
         }
