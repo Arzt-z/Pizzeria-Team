@@ -16,7 +16,7 @@ public class Ap{
 
     public static int menu() {
         Scanner datos = new Scanner(System.in);
-		System.out.println("1.- 0.-Salir");
+		System.out.println("0.-Salir");
         int seleccion = datos.nextInt();
         if (seleccion == 0) {
             return seleccion;

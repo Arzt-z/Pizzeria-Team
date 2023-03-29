@@ -24,28 +24,24 @@ public class Pizzeria{
     public void mostrar(){
         
         //primero decir de que tamano sera la matriz x,y, 
-        //luego usar esa matriz y darle la palabra para imprimir el cuadrito
+        //luego darle la palabra a imprimir en cuadrito
+        imprimirCuadrito(50, 4 ,nombre);
 
-        matriz=cuadrito(50, 6 );
-        centrarEnXY(matriz,nombre,0,0);
-        imprimirCuadrito();
-
-        //igual asignar el tamano que sera la matriz, luego introducir la matriz
-        // y los String que imprimira, este soporta 3 Strings tambien hay uno de 2 Strings
+        //para multiples palabras en un mismo cuadrito 
+        //asignar el tamano que sera la matriz, luego introducir la matriz
+        // luego usar el centrarEnXY para escojer donde iran las palabras.
         matriz=cuadrito(50, 6 );
         centrarEnXY(matriz,domicilio,0,-1);
         centrarEnXY(matriz,"Correo: "+correo,0,0);
         centrarEnXY(matriz,"horario: "+ horario,0,1);
         imprimirCuadrito();
 
-        //para imprimir 2 palabras en izquierda y derecha centrados con division al medio
-        matriz=cuadrito(50, 6 );
-        for (int y = 0; y+1 < matriz[0].length-1; y++) {
-            centrarEnXY(matriz,"|",0,y-((int)(matriz[0].length/2)-1));
-        }
-        centrarEnXY(matriz,"hola",-1,0);
-        centrarEnXY(matriz,"hola",1,0);
-        imprimirCuadrito();
+        //para imprimir 2 palabras en izquierda y derecha centrados con division al medio'
+        imprimirCuadritoDividido(50, 4,"1.-Orden","2.-Menu");
+        imprimirCuadritoDividido(50, 4,"3.-Inventario","4.-Compra");
+        imprimirCuadritoDividido(50, 4,"5.-Proveedores","6.-Clientes");
+        //
+
     }
 
 
@@ -104,6 +100,23 @@ public class Pizzeria{
 
     //funciones para cuadrito, considerar que es magia.
 
+    public void imprimirCuadrito(int x,int y, String palabra){
+        matriz=cuadrito(x,y );
+        centrarEnXY(matriz,palabra,0,0);
+        imprimirCuadrito();
+    }
+
+    public void imprimirCuadritoDividido(int x,int y, String palabra, String palabra2){
+        matriz=cuadrito(x, y);
+        for (int i = 0; i+1 < matriz[0].length-1; i++) {
+            centrarEnXY(matriz,"|",0,i-((int)(matriz[0].length/2)-1));
+        }
+        centrarEnXY(matriz,palabra,-1,0);
+        centrarEnXY(matriz,palabra2,1,0);
+        imprimirCuadrito();
+    }
+
+
     public void imprimirCuadrito(){
         for (int y = 0; y < matriz[0].length; y++) {
             for (int x = 0; x < matriz.length; x++) {
@@ -112,7 +125,6 @@ public class Pizzeria{
             System.out.println();
         }
     }
-
 
     public char[][] centrarEnXY(char[][] matriz, String palabra,int posicion, int posicionY){
         int center = matriz.length/2;
@@ -125,7 +137,6 @@ public class Pizzeria{
         }
         return matriz;
     }
-
 
     public char[][] cuadrito(int horizontal, int vertical){
         char[][] matriz = new char[horizontal+1][vertical+1];
