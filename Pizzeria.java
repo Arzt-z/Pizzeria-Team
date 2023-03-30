@@ -6,8 +6,8 @@ public class Pizzeria extends Cuadrado {
     private String horario;
     private String telefono;
     private String rfc;
-
-
+    private Ingrediente[] ingredientes = new Ingrediente[500];
+    private int cIngredientes; 
     public Pizzeria() {
 
     }
@@ -18,6 +18,7 @@ public class Pizzeria extends Cuadrado {
         this.correo = correo;
         this.horario = (horario/1000000)%100 + ":" + (horario/100000)%10 +  (horario/10000)%10 + "-" + (horario/100)%100 + ":" + (horario/10)%10 + horario%10 ;
         this.telefono = telefono;
+        inicializarIngredientes();
     }
 
     public void mostrar(){
@@ -36,15 +37,51 @@ public class Pizzeria extends Cuadrado {
         imprimirCuadrado();
 
         //para imprimir 2 palabras en izquierda y derecha centrados con division al medio'
-        imprimirCuadradoDividido(50, 4,"1.-Orden","2.-Menu");
+        imprimirCuadradoDividido(50, 4,"1.-Menu","2.-Orden");
         imprimirCuadradoDividido(50, 4,"3.-Inventario","4.-Compra");
         imprimirCuadradoDividido(50, 4,"5.-Proveedores","6.-Clientes");
         //
-
+        listarIngredientes() ;
+        
     }
 
+    protected void inicializarIngredientes() {
+        ingredientes[0]=new Ingrediente("Queso mozzarella","Queso", 0);
+        ingredientes[++cIngredientes]=new Ingrediente("Queso parmesano","queso", 0);
+        ingredientes[++cIngredientes]=new Ingrediente("Queso cheddar","queso", 0);
 
+        ingredientes[++cIngredientes]=new Ingrediente("Peperoni","carne", 0);
+        ingredientes[++cIngredientes]=new Ingrediente("Salchicha","carne", 0);
+        ingredientes[++cIngredientes]=new Ingrediente("Anchoas","carne", 0);
+        ingredientes[++cIngredientes]=new Ingrediente("Salami","carne", 0);
+        ingredientes[++cIngredientes]=new Ingrediente("Jamon","carne", 0);
+        ingredientes[++cIngredientes]=new Ingrediente("Tocino","carne", 0);
+        ingredientes[++cIngredientes]=new Ingrediente("Carne molida","carne", 0);
 
+        ingredientes[++cIngredientes]=new Ingrediente("Cebolla","no carne", 0);
+        ingredientes[++cIngredientes]=new Ingrediente("Pimiento verde","no carne", 0);
+        ingredientes[++cIngredientes]=new Ingrediente("Pimiento rojo","no carne", 0);
+        ingredientes[++cIngredientes]=new Ingrediente("Aceitunas","no carne", 0);
+        ingredientes[++cIngredientes]=new Ingrediente("Champiñones","no carne", 0);
+        ingredientes[++cIngredientes]=new Ingrediente("Ajo","no carne", 0);
+        ingredientes[++cIngredientes]=new Ingrediente("Jalapeños","no carne", 0);
+        ingredientes[++cIngredientes]=new Ingrediente("Piña","no carne", 0);
+    }
+
+    // funciones de ingredientes
+    public void listarIngredientes() {
+        imprimirCuadrado(50, 4 ,"----------Ingredientes----------");
+        String imprimir;
+        matriz=cuadrado(50, cIngredientes+4 );
+        for (int i = 0; i <= cIngredientes; i++) {
+                imprimir=(i + 1 + ".-" + ingredientes[i].toString() +" " + ingredientes[i].getPrecioPorGramo() ) ;
+                centrarEnXY(matriz,imprimir,0, -((int)(cIngredientes/2))+i-1);
+        }
+        imprimirCuadrado();
+    }
+    //fin funciones de ingredientes
+
+    //funciones basicas set get to string.
     public String toString() {
         return nombre + " / " + correo;
     }
@@ -96,5 +133,5 @@ public class Pizzeria extends Cuadrado {
     public String getrfc() {
         return rfc;
     }
-
+    //fin funciones basicas set get to string.
 }
