@@ -24,7 +24,7 @@ public class Pizzeria extends Cuadrado {
     public void mostrar(){
         
         //primero decir de que tamano sera la matriz x,y, 
-        //luego darle la palabra a imprimir en cuadrito
+        //luego darle la palabra a imprimir, las funciones estan la clase cuadrado
         imprimirCuadrado(50, 4 ,nombre);
 
         //para multiples palabras en un mismo cuadrito 
@@ -60,7 +60,7 @@ public class Pizzeria extends Cuadrado {
 
         ingredientes[++cIngredientes]=new Ingrediente("Cebolla","no carne", 0);
         ingredientes[++cIngredientes]=new Ingrediente("Pimiento verde","no carne", 0);
-        ingredientes[++cIngredientes]=new Ingrediente("Pimiento rojo","no carne", 0);
+        ingredientes[++cIngredientes]=new Ingrediente("Pimiento rojo","no carne", 200);
         ingredientes[++cIngredientes]=new Ingrediente("Aceitunas","no carne", 0);
         ingredientes[++cIngredientes]=new Ingrediente("Champiñones","no carne", 0);
         ingredientes[++cIngredientes]=new Ingrediente("Ajo","no carne", 0);
@@ -70,12 +70,16 @@ public class Pizzeria extends Cuadrado {
 
     // funciones de ingredientes
     public void listarIngredientes() {
-        imprimirCuadrado(50, 4 ,"----------Ingredientes----------");
-        String imprimir;
+        imprimirCuadrado(50, 2 ,"----------Ingredientes----------");
         matriz=cuadrado(50, cIngredientes+4 );
+        centrarEnXY(matriz,"Stock ",0.75, -((int)(cIngredientes/2))+-2);
+        centrarEnXY(matriz," | ",1, -((int)(cIngredientes/2))+-2);
+        centrarEnXY(matriz,"Precio ",1.35, -((int)(cIngredientes/2))+-2);
         for (int i = 0; i <= cIngredientes; i++) {
-                imprimir=(i + 1 + ".-" + ingredientes[i].toString() +" " + ingredientes[i].getPrecioPorGramo() ) ;
-                centrarEnXY(matriz,imprimir,0, -((int)(cIngredientes/2))+i-1);
+                centrarEnXYPresicion(matriz,i + 1 + ".-"+ingredientes[i].getNombre(),5, -((int)(cIngredientes/2))+i-1);
+                centrarEnXY(matriz,ingredientes[i].getStockEnGramos() +"g",0.75, -((int)(cIngredientes/2))+i-1);
+                centrarEnXY(matriz," | ",1, -((int)(cIngredientes/2))+i-1);
+                centrarEnXY(matriz, ingredientes[i].getPrecioPorGramo()+"" , 1.25 , -((int)(cIngredientes/2))+i-1);
         }
         imprimirCuadrado();
     }

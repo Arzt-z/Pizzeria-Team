@@ -28,12 +28,23 @@ public class Cuadrado {
         }
     }
 
-    public char[][] centrarEnXY(char[][] matriz, String palabra,int posicion, int posicionY){
+    public char[][] centrarEnXY(char[][] matriz, String palabra,double posicion, int posicionY){
         int center = matriz.length/2;
         for (int y = 0; y < matriz[0].length; y++) {
             for (int x = 0; x < matriz.length; x++) {
-                if (y == ((int)matriz[0].length/2)+posicionY && x >= (matriz.length/2 - palabra.length()/2)+((int)(center/2)*posicion) && x < (matriz.length/2 + palabra.length()/2 + palabra.length()%2)+((int)(center/2)*posicion)) {
-                    matriz[x][y] = palabra.charAt((x - matriz.length/2 + palabra.length() / 2)-((center/2)*posicion));
+                if (y == ((int)matriz[0].length/2)+posicionY && x >= (matriz.length/2 - palabra.length()/2)+((int)(center/2)*posicion) && x < (matriz.length/2 + palabra.length()/2 + palabra.length()%2)+(int)((center/2)*posicion)) {
+                    matriz[x][y] = palabra.charAt((int)((x - matriz.length/2 + palabra.length() / 2)-((center/2)*posicion)));
+                }
+            }
+        }
+        return matriz;
+    }
+
+    public char[][] centrarEnXYPresicion(char[][] matriz, String palabra,int posicion, int posicionY){
+        for (int y = 0; y < matriz[0].length; y++) {
+            for (int x = 0; x < matriz.length; x++) {
+                if (y == ((int)matriz[0].length/2)+posicionY && x >  posicion+1 && x <  palabra.length()+posicion+2) {
+                    matriz[x][y] = palabra.charAt((int)((x-posicion))-2);
                 }
             }
         }
