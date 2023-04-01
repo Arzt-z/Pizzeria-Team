@@ -7,7 +7,9 @@ public class Pizzeria extends Cuadrado {
     private String telefono;
     private String rfc;
     private Ingrediente[] ingredientes = new Ingrediente[500];
-    private int cIngredientes; 
+    private int cIngredientes;
+    private Pizza[] pizzas = new Pizza[500];
+    private int cPizzas;
     public Pizzeria() {
 
     }
@@ -24,7 +26,7 @@ public class Pizzeria extends Cuadrado {
     public void mostrar(){
         
         //primero decir de que tamano sera la matriz x,y, 
-        //luego darle la palabra a imprimir, las funciones estan la clase cuadrado
+        //luego darle la palabra a imprimir en cuadrito,las funciones estan la clase cuadrado
         imprimirCuadrado(50, 4 ,nombre);
 
         //para multiples palabras en un mismo cuadrito 
@@ -37,12 +39,12 @@ public class Pizzeria extends Cuadrado {
         imprimirCuadrado();
 
         //para imprimir 2 palabras en izquierda y derecha centrados con division al medio'
-        imprimirCuadradoDividido(50, 4,"1.-Menu","2.-Orden");
+        imprimirCuadradoDividido(50, 4,"1.-Pizzas","2.-Orden");
         imprimirCuadradoDividido(50, 4,"3.-Inventario","4.-Compra");
         imprimirCuadradoDividido(50, 4,"5.-Proveedores","6.-Clientes");
         //
-        listarIngredientes() ;
         
+        capturarPizza();
     }
 
     protected void inicializarIngredientes() {
@@ -85,7 +87,56 @@ public class Pizzeria extends Cuadrado {
     }
     //fin funciones de ingredientes
 
+    public void capturarPizza(){
+        Scanner datos = new Scanner(System.in);
+        pizzas[++cPizzas] = new Pizza();
+        imprimirCuadrado(50, 4 ,"------------PIZZA------------");
+        imprimirCuadrado(50, 3 ,"SELECCIONAR UN TAMAÑO");
+        imprimirCuadradoDividido(50, 4,"1.-Chica","2.-Mediana");
+        imprimirCuadradoDividido(50, 4,"3.-Grande","4.-Cuadrada");
+        int size = datos.nextInt();
+        int continuar;
+
+        imprimirCuadrado(50, 3 ,"PIZZA DIVIDIDA?");
+        imprimirCuadrado(50, 4 ,"1.-NO");
+        imprimirCuadradoDividido(50, 4,"2.-A la mitad","3.-En 4 partes");
+        int divisionDP = datos.nextInt();
+        if(divisionDP==3)divisionDP++;
+        pizzas[cPizzas].setcPartes(divisionDP);
+        for(int i=0;i<divisionDP;i++){
+            do {
+                imprimirCuadrado(50, 3 ,"SELECCIONAR UN INGREDIENTE ");
+                listarIngredientes() ;
+                if(divisionDP>=2)imprimirCuadrado(50, 2 ,"Parte "+ (i+1));
+                int opcion = datos.nextInt();
+                pizzas[cPizzas].capturarIngrediente(ingredientes[opcion-1] , i);
+                imprimirCuadrado(50, 3 ,"AGREGAR OTRO INGREDIENTE?");
+                imprimirCuadradoDividido(50, 4,"1.-SI","2.-NO");
+                continuar = datos.nextInt();
+            } while (continuar == 1);
+        }
+        pizzas[cPizzas].listarIngredientes();
+    
+    }
+
+    //mostrar pizza, posible mente sera removido 
+    /* 
+    public void mostrarPizza(int size){
+        matriz=cuadrado(50, 20 );
+        int radio = size + 2;
+        int radioX = radio*2;
+                for (int y = -radio; y <= radio; y++) {
+                    for (int x = -radioX; x <= radioX; x++) {
+                        if (x * x <= radioX * radio-1 &&  y * y <= radioX * radio-1 ) {
+                            matriz[x+matriz.length/2][y+matriz[0].length/2]='*';
+                        }
+                    }
+                    System.out.println();     
+        }
+        imprimirCuadrado();
+    }*/
     //funciones basicas set get to string.
+
     public String toString() {
         return nombre + " / " + correo;
     }

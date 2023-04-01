@@ -28,6 +28,9 @@ public class Cuadrado {
         }
     }
 
+    //centra la palabra en XY, -1 en posicion significa que la palabra estara centrada a 1/4 del cuadrado en x,
+    //0 en posicion significa que se centrara en 1/2 del cuadrado en x, 1 en posicion significa que se centrara en 3/4 de x.
+    //0 en posicionY significa 1/2 del cuadrado en Y, 1 en posicion Y significa 1 linea abajo del 1/2 de y
     public char[][] centrarEnXY(char[][] matriz, String palabra,double posicion, int posicionY){
         int center = matriz.length/2;
         for (int y = 0; y < matriz[0].length; y++) {
@@ -39,7 +42,7 @@ public class Cuadrado {
         }
         return matriz;
     }
-
+    //escribe la palabra en la posicion que se le de exactamente, la posicion y aun empiesa desde el centro
     public char[][] centrarEnXYPresicion(char[][] matriz, String palabra,int posicion, int posicionY){
         for (int y = 0; y < matriz[0].length; y++) {
             for (int x = 0; x < matriz.length; x++) {
