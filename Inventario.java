@@ -1,18 +1,62 @@
+
 public class Inventario{
-    private int cIngredientes; 
-    private Ingrediente[] ingredientes = new Ingrediente[500];
+    private String nombre;
+    private int stock;
+    private float precio;
+    private String clasificacion;
 
-
-    public void listarIngredientes() {
-        System.out.println("----------Ingredientes----------");
-        for (int i = 0; i < cIngredientes; i++) {
-                System.out.println(i + 1 + ".-" + ingredientes[i].toString() +" " + ingredientes[i].getPrecioPorGramo() ) ;
-        }
+    public Inventario(){   
     }
 
-    public void agregarIngrediente(String nombre, String clasificacion, float precioPorGramo) {
-        ingredientes[cIngredientes++]=new Ingrediente(nombre, clasificacion, precioPorGramo);
-        
+    public Inventario(String nombre, String clasificacion, float precio){
+    this.nombre = nombre;
+    this.clasificacion = clasificacion;
+    this.precio = precio;
+    }
+
+    protected void capturar() {
+
+    }
+
+    public String toString() {
+        if(clasificacion.equals("producto")){
+            return nombre+" - stock: "+ stock ;
+        }else{
+            return nombre+" - stock: "+ stock +"g";
+        }
+
+    }
+
+    public String getNombre() {
+        return nombre;
+    }
+
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
+
+    public int getStock() {
+        return stock;
+    }
+
+    public void setStock(int stock) {
+        this.stock = stock;
+    }
+
+    public String getClasificacion() {
+        return clasificacion;
+    }
+
+    public void setClasificacion(String clasificacion) {
+        this.clasificacion = clasificacion;
+    }
+
+    public float getPrecio() {
+        return precio;
+    }
+
+    public void setPrecio(float precio) {
+        this.precio = precio;
     }
 
 

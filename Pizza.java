@@ -6,9 +6,9 @@ public class Pizza extends Cuadrado{
     private int precio ;
     private int id;
     private int popularidad;
-    private Ingrediente[][] ingredientes = new Ingrediente[50][4];
+    private Inventario[][] inventarios = new Inventario[50][4];
     private int cPartes;
-    private int [] cIngredientes = new int[4];
+    private int [] cInventarios = new int[4];
     public Pizza() {
     }
 
@@ -16,28 +16,28 @@ public class Pizza extends Cuadrado{
         this.nombre = nombre;
         this.size = size;
         this.id = id;
-        cIngredientes[0]=0;
+        cInventarios[0]=0;
     }
 
     public void listarIngredientes(){
         for (int f = 0; f < cPartes; f++){   
             imprimirCuadrado(50, 2 ,"----------Ingredientes seccion " + (f+1) +"----------");
-            matriz=cuadrado(50, cIngredientes[f]+4 );
-            centrarEnXY(matriz,"Stock ",0.75, -((int)(cIngredientes[f]/2))+-2);
-            centrarEnXY(matriz," | ",1, -((int)(cIngredientes[f]/2))+-2);
-            centrarEnXY(matriz,"Precio ",1.35, -((int)(cIngredientes[f]/2))+-2);
-            for (int i = 0; i < cIngredientes[f]; i++) {
-                    centrarEnXYPresicion(matriz,i + 1 + ".-"+ingredientes[i][f].getNombre(),5, -((int)(cIngredientes[f]/2))+i-1);
-                    centrarEnXY(matriz,ingredientes[i][f].getStockEnGramos() +"g",0.75, -((int)(cIngredientes[f]/2))+i-1);
-                    centrarEnXY(matriz," | ",1, -((int)(cIngredientes[f]/2))+i-1);
-                    centrarEnXY(matriz, ingredientes[i][f].getPrecioPorGramo()+"" , 1.25 , -((int)(cIngredientes[f]/2))+i-1);
+            matriz=cuadrado(50, cInventarios[f]+4 );
+            centrarEnXY(matriz,"Stock ",0.75, -((int)(cInventarios[f]/2))+-2);
+            centrarEnXY(matriz," | ",1, -((int)(cInventarios[f]/2))+-2);
+            centrarEnXY(matriz,"Precio ",1.35, -((int)(cInventarios[f]/2))+-2);
+            for (int i = 0; i < cInventarios[f]; i++) {
+                    centrarEnXYPresicion(matriz,i + 1 + ".-"+inventarios[i][f].getNombre(),5, -((int)(cInventarios[f]/2))+i-1);
+                    centrarEnXY(matriz,inventarios[i][f].getStock() +"g",0.75, -((int)(cInventarios[f]/2))+i-1);
+                    centrarEnXY(matriz," | ",1, -((int)(cInventarios[f]/2))+i-1);
+                    centrarEnXY(matriz, inventarios[i][f].getPrecio()+"" , 1.25 , -((int)(cInventarios[f]/2))+i-1);
             }
             imprimirCuadrado();
         } 
     }
 
-    public void capturarIngrediente(Ingrediente ingredientesP,int seccion) {
-        this.ingredientes[cIngredientes[seccion]++][seccion] = ingredientesP;
+    public void capturarIngrediente(Inventario ingredientesP,int seccion) {
+        this.inventarios[cInventarios[seccion]++][seccion] = ingredientesP;
         
     }
 

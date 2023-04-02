@@ -6,8 +6,8 @@ public class Pizzeria extends Cuadrado {
     private String horario;
     private String telefono;
     private String rfc;
-    private Ingrediente[] ingredientes = new Ingrediente[500];
-    private int cIngredientes;
+    private Inventario[] inventarios = new Inventario[500];
+    private int cInventarios;
     private Pizza[] pizzas = new Pizza[500];
     private int cPizzas;
     public Pizzeria() {
@@ -20,7 +20,7 @@ public class Pizzeria extends Cuadrado {
         this.correo = correo;
         this.horario = (horario/1000000)%100 + ":" + (horario/100000)%10 +  (horario/10000)%10 + "-" + (horario/100)%100 + ":" + (horario/10)%10 + horario%10 ;
         this.telefono = telefono;
-        inicializarIngredientes();
+        inicializarinventarios();
     }
 
     public void mostrar(){
@@ -47,45 +47,45 @@ public class Pizzeria extends Cuadrado {
         capturarPizza();
     }
 
-    protected void inicializarIngredientes() {
-        ingredientes[0]=new Ingrediente("Queso mozzarella","Queso", 0);
-        ingredientes[++cIngredientes]=new Ingrediente("Queso parmesano","queso", 0);
-        ingredientes[++cIngredientes]=new Ingrediente("Queso cheddar","queso", 0);
+    protected void inicializarinventarios() {
+        inventarios[0]=new Inventario("Queso mozzarella","Queso", 0);
+        inventarios[++cInventarios]=new Inventario("Queso parmesano","queso", 0);
+        inventarios[++cInventarios]=new Inventario("Queso cheddar","queso", 0);
 
-        ingredientes[++cIngredientes]=new Ingrediente("Peperoni","carne", 0);
-        ingredientes[++cIngredientes]=new Ingrediente("Salchicha","carne", 0);
-        ingredientes[++cIngredientes]=new Ingrediente("Anchoas","carne", 0);
-        ingredientes[++cIngredientes]=new Ingrediente("Salami","carne", 0);
-        ingredientes[++cIngredientes]=new Ingrediente("Jamon","carne", 0);
-        ingredientes[++cIngredientes]=new Ingrediente("Tocino","carne", 0);
-        ingredientes[++cIngredientes]=new Ingrediente("Carne molida","carne", 0);
+        inventarios[++cInventarios]=new Inventario("Peperoni","carne", 0);
+        inventarios[++cInventarios]=new Inventario("Salchicha","carne", 0);
+        inventarios[++cInventarios]=new Inventario("Anchoas","carne", 0);
+        inventarios[++cInventarios]=new Inventario("Salami","carne", 0);
+        inventarios[++cInventarios]=new Inventario("Jamon","carne", 0);
+        inventarios[++cInventarios]=new Inventario("Tocino","carne", 0);
+        inventarios[++cInventarios]=new Inventario("Carne molida","carne", 0);
 
-        ingredientes[++cIngredientes]=new Ingrediente("Cebolla","no carne", 0);
-        ingredientes[++cIngredientes]=new Ingrediente("Pimiento verde","no carne", 0);
-        ingredientes[++cIngredientes]=new Ingrediente("Pimiento rojo","no carne", 200);
-        ingredientes[++cIngredientes]=new Ingrediente("Aceitunas","no carne", 0);
-        ingredientes[++cIngredientes]=new Ingrediente("Champiñones","no carne", 0);
-        ingredientes[++cIngredientes]=new Ingrediente("Ajo","no carne", 0);
-        ingredientes[++cIngredientes]=new Ingrediente("Jalapeños","no carne", 0);
-        ingredientes[++cIngredientes]=new Ingrediente("Piña","no carne", 0);
+        inventarios[++cInventarios]=new Inventario("Cebolla","no carne", 0);
+        inventarios[++cInventarios]=new Inventario("Pimiento verde","no carne", 0);
+        inventarios[++cInventarios]=new Inventario("Pimiento rojo","no carne", 200);
+        inventarios[++cInventarios]=new Inventario("Aceitunas","no carne", 0);
+        inventarios[++cInventarios]=new Inventario("Champiñones","no carne", 0);
+        inventarios[++cInventarios]=new Inventario("Ajo","no carne", 0);
+        inventarios[++cInventarios]=new Inventario("Jalapeños","no carne", 0);
+        inventarios[++cInventarios]=new Inventario("Piña","no carne", 0);
     }
 
-    // funciones de ingredientes
-    public void listarIngredientes() {
-        imprimirCuadrado(50, 2 ,"----------Ingredientes----------");
-        matriz=cuadrado(50, cIngredientes+4 );
-        centrarEnXY(matriz,"Stock ",0.75, -((int)(cIngredientes/2))+-2);
-        centrarEnXY(matriz," | ",1, -((int)(cIngredientes/2))+-2);
-        centrarEnXY(matriz,"Precio ",1.35, -((int)(cIngredientes/2))+-2);
-        for (int i = 0; i <= cIngredientes; i++) {
-                centrarEnXYPresicion(matriz,i + 1 + ".-"+ingredientes[i].getNombre(),5, -((int)(cIngredientes/2))+i-1);
-                centrarEnXY(matriz,ingredientes[i].getStockEnGramos() +"g",0.75, -((int)(cIngredientes/2))+i-1);
-                centrarEnXY(matriz," | ",1, -((int)(cIngredientes/2))+i-1);
-                centrarEnXY(matriz, ingredientes[i].getPrecioPorGramo()+"" , 1.25 , -((int)(cIngredientes/2))+i-1);
+    // funciones de inventarios
+    public void listarinventarios() {
+        imprimirCuadrado(50, 2 ,"----------inventarios----------");
+        matriz=cuadrado(50, cInventarios+4 );
+        centrarEnXY(matriz,"Stock ",0.75, -((int)(cInventarios/2))+-2);
+        centrarEnXY(matriz," | ",1, -((int)(cInventarios/2))+-2);
+        centrarEnXY(matriz,"Precio ",1.35, -((int)(cInventarios/2))+-2);
+        for (int i = 0; i <= cInventarios; i++) {
+                centrarEnXYPresicion(matriz,i + 1 + ".-"+inventarios[i].getNombre(),5, -((int)(cInventarios/2))+i-1);
+                centrarEnXY(matriz,inventarios[i].getStock() +"g",0.75, -((int)(cInventarios/2))+i-1);
+                centrarEnXY(matriz," | ",1, -((int)(cInventarios/2))+i-1);
+                centrarEnXY(matriz, inventarios[i].getPrecio()+"" , 1.25 , -((int)(cInventarios/2))+i-1);
         }
         imprimirCuadrado();
     }
-    //fin funciones de ingredientes
+    //fin funciones de inventarios
 
     public void capturarPizza(){
         Scanner datos = new Scanner(System.in);
@@ -106,10 +106,10 @@ public class Pizzeria extends Cuadrado {
         for(int i=0;i<divisionDP;i++){
             do {
                 imprimirCuadrado(50, 3 ,"SELECCIONAR UN INGREDIENTE ");
-                listarIngredientes() ;
+                listarinventarios() ;
                 if(divisionDP>=2)imprimirCuadrado(50, 2 ,"Parte "+ (i+1));
                 int opcion = datos.nextInt();
-                pizzas[cPizzas].capturarIngrediente(ingredientes[opcion-1] , i);
+                pizzas[cPizzas].capturarIngrediente(inventarios[opcion-1] , i);
                 imprimirCuadrado(50, 3 ,"AGREGAR OTRO INGREDIENTE?");
                 imprimirCuadradoDividido(50, 4,"1.-SI","2.-NO");
                 continuar = datos.nextInt();
