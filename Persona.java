@@ -1,6 +1,6 @@
 import java.util.Scanner;
-public class Persona{
-	Scanner leer = new Scanner(System.in);
+public abstract class Persona{
+	protected Scanner leer = new Scanner(System.in);
 	protected String telefono;
 	protected String direccion;
 	protected String rfc;
@@ -19,6 +19,8 @@ public class Persona{
 	public String toString{
 		return "telefono "+telefono+" "+"direccion "+direccion;
 	}
+	
+	abstract String quienSoy();
 	
 	protected void mostrar(){
 		matriz=cuadrado(50, 6 );
