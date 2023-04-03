@@ -1,14 +1,14 @@
 import java.util.Scanner;
 public class Proveedores extends Persona{
     private String razonSocial;
-	private Scanner leer= new Scanner (System.in)
+	private Scanner leer= new Scanner (System.in);
 	
 	public Proveedores(){
 		
 	}
 	
 	public Proveedores(String razonSocial, String telefono, String direccion, String rfc){
-		super(telefono, direccion, rfc)
+		super(telefono, direccion, rfc);
 		this.razonSocial=razonSocial;
 	}
 	
@@ -17,7 +17,7 @@ public class Proveedores extends Persona{
 	}
 	
 	public void mostrar(){
-		Cuadrado.imprimirCuadradoDividido(50, 4,razonSocial);
+		Cuadrado.imprimirCuadradoDividido(50, 4,razonSocial,"");
 		super.mostrar();
 	}
 	
@@ -66,6 +66,6 @@ public class Proveedores extends Persona{
 	}
 	
 	public String getRazonSocial(){
-		retunr razonSocial;
+		return razonSocial;
 	}
 }

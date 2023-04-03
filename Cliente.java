@@ -1,3 +1,4 @@
+import java.util.*;
 public class Cliente extends Persona{
     
 	private String nombre;
@@ -7,7 +8,7 @@ public class Cliente extends Persona{
 	}
 	
 	public Cliente(String nombre, String telefono, String direccion, String rfc){
-		super(telefono, direccion, rfc)
+		super(telefono, direccion, rfc);
 		this.nombre= nombre;
 	}
 	

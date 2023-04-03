@@ -16,35 +16,35 @@ public abstract class Persona{
 		this.rfc=rfc;
     }
 	
-	public String toString{
+	public String toString(){
 		return "telefono "+telefono+" "+"direccion "+direccion;
 	}
 	
 	abstract String quienSoy();
 	
 	protected void mostrar(){
-		matriz=cuadrado(50, 6 );
-        centrarEnXY(matriz,direccion,0,-1);
-        centrarEnXY(matriz,"rfc: "+rfc,0,0);
-        centrarEnXY(matriz,"telefono: "+ telefono,0,1);
-        imprimirCuadrado();
+        Cuadrado.matriz=Cuadrado.cuadrado(50, 6 );
+        Cuadrado.centrarEnXY(direccion,0,-1);
+        Cuadrado.centrarEnXY("rfc: "+rfc,0,0);
+        Cuadrado.centrarEnXY("telefono: "+ telefono,0,1);
+        Cuadrado.imprimirCuadrado();
 	}
 	
 	protected void capturar(char diferenciador){
 		if(diferenciador=='c'){
-	    Sistem.out.print("ingrese telefono    :")telefono=leer.nextLine();
-		Sistem.out.print("ingrese direccion    :")direccion=leer.nextLine();
+	    System.out.print("ingrese telefono    :");telefono=leer.nextLine();
+		System.out.print("ingrese direccion    :");direccion=leer.nextLine();
 		System.out.println("desea facturar 1-si 2-no");
 		int factura = leer.nextInt();
 		if(factura==1){
-		Sistem.out.print("ingrese rfc del cliente   :")rfc=leer.nextLine();}
-		else rfc= "(el rfc de consumidor general)"
+		System.out.print("ingrese rfc del cliente   :");rfc=leer.nextLine();}
+		else rfc= "(el rfc de consumidor general)";
 		
 		}
 		else{
-		Sistem.out.print("ingrese telefono    :")telefono=leer.nextLine();
-		Sistem.out.print("ingrese direccion    :")direccion=leer.nextLine();
-		Sistem.out.print("ingrese rfc    :")rfc=leer.nextLine();
+		System.out.print("ingrese telefono    :");telefono=leer.nextLine();
+		System.out.print("ingrese direccion    :");direccion=leer.nextLine();
+		System.out.print("ingrese rfc    :");rfc=leer.nextLine();
 		}
 	}
 	
