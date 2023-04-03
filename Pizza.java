@@ -1,5 +1,5 @@
 import java.util.Scanner;
-public class Pizza extends Cuadrado{
+public class Pizza{
 
     private String nombre;
     private int size;
@@ -21,9 +21,9 @@ public class Pizza extends Cuadrado{
 
     public void listarIngredientes(){
         for (int f = 0; f < cPartes; f++){   
-            imprimirCuadrado(50, 2 ,"----------Ingredientes seccion " + (f+1) +"----------");
-            matriz=cuadrado(50, cInventarios[f]+4 );
-            Cuadrado.centrarEnXY("Stock ",0.75, -((int)(cInventarios[f]/2))+-2);
+            Cuadrado.imprimirCuadrado(50, 2 ,"----------Ingredientes seccion " + (f+1) +"----------");
+            Cuadrado.matriz=Cuadrado.cuadrado(50, cInventarios[f]+4 );
+            Cuadrado.imprimirCuadrado(50, 4 ,nombre);Cuadrado.centrarEnXY("Stock ",0.75, -((int)(cInventarios[f]/2))+-2);
             Cuadrado.centrarEnXY(" | ",1, -((int)(cInventarios[f]/2))+-2);
             Cuadrado.centrarEnXY("Precio ",1.35, -((int)(cInventarios[f]/2))+-2);
             for (int i = 0; i < cInventarios[f]; i++) {
@@ -32,7 +32,7 @@ public class Pizza extends Cuadrado{
                 Cuadrado.centrarEnXY(" | ",1, -((int)(cInventarios[f]/2))+i-1);
                 Cuadrado.centrarEnXY( inventarios[i][f].getPrecio()+"" , 1.25 , -((int)(cInventarios[f]/2))+i-1);
             }
-            imprimirCuadrado();
+            Cuadrado.imprimirCuadrado();
         } 
     }
 
