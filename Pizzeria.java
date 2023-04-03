@@ -9,7 +9,7 @@ public class Pizzeria{
     private Inventario[] inventarios = new Inventario[500];
     private int cInventarios;
     private Pizza[] pizzas = new Pizza[500];
-    private int cPizzas;
+    private int cPizzas=0;
     public Pizzeria() {
 
     }
@@ -21,6 +21,7 @@ public class Pizzeria{
         this.horario = (horario/1000000)%100 + ":" + (horario/100000)%10 +  (horario/10000)%10 + "-" + (horario/100)%100 + ":" + (horario/10)%10 + horario%10 ;
         this.telefono = telefono;
         inicializarinventarios();
+        inicializarPizzas();
     }
 
     public void mostrar(){
@@ -37,12 +38,7 @@ public class Pizzeria{
         Cuadrado.centrarEnXY("Correo: "+correo,0,0);
         Cuadrado.centrarEnXY("horario: "+ horario,0,1);
         Cuadrado.imprimirCuadrado();
-
-        //para imprimir 2 palabras en izquierda y derecha centrados con division al medio'
         
-        //
-        
-        capturarPizza();
     }
 
     protected void inicializarinventarios() {
@@ -68,22 +64,42 @@ public class Pizzeria{
         inventarios[++cInventarios]=new Inventario("Piña","no carne", 0);
     }
 
+    protected void inicializarPizzas() {
+        pizzas[0]=new Pizza("Hawaiana",3, 199);
+        pizzas[++cPizzas]=new Pizza("peperoni",3, 199);
+        pizzas[++cPizzas]=new Pizza("jamon",3, 199);
+        pizzas[++cPizzas]=new Pizza("mexicana",3, 199);
+        pizzas[++cPizzas]=new Pizza("loca",3, 199);
+    }
     // funciones de inventarios
     public void listarinventarios() {
         Cuadrado.imprimirCuadrado(50, 2 ,"----------inventarios----------");
         Cuadrado.matriz=Cuadrado.cuadrado(50, cInventarios+4 );
-        Cuadrado.centrarEnXY("Stock ",0.75, -((int)(cInventarios/2))+-2);
-        Cuadrado.centrarEnXY(" | ",1, -((int)(cInventarios/2))+-2);
-        Cuadrado.centrarEnXY("Precio ",1.35, -((int)(cInventarios/2))+-2);
+        Cuadrado.centrarEnXYPresicion("Stock ",30, 0);
+        Cuadrado.centrarEnXYPresicion("|",36, 0);
+        Cuadrado.centrarEnXYPresicion("Precio",37, 0);
         for (int i = 0; i <= cInventarios; i++) {
-                Cuadrado.centrarEnXYPresicion(i + 1 + ".-"+inventarios[i].getNombre(),5, -((int)(cInventarios/2))+i-1);
-                Cuadrado.centrarEnXY(inventarios[i].getStock() +"g",0.75, -((int)(cInventarios/2))+i-1);
-                Cuadrado.centrarEnXY(" | ",1, -((int)(cInventarios/2))+i-1);
-                Cuadrado.centrarEnXY( inventarios[i].getPrecio()+"" , 1.25 , -((int)(cInventarios/2))+i-1);
+                Cuadrado.centrarEnXYPresicion(i + 1 + ".-"+inventarios[i].getNombre(),4,i+1);
+                Cuadrado.centrarEnXYPresicion(inventarios[i].getStock()+"g",30, i+1);
+                Cuadrado.centrarEnXYPresicion("| ",36, i+1);
+                Cuadrado.centrarEnXYPresicion( inventarios[i].getPrecio()+"" , 37 , i+1);
         }
         Cuadrado.imprimirCuadrado();
     }
     //fin funciones de inventarios
+
+
+    //funciones pizza
+    public void listarPizza(){
+        Cuadrado.imprimirCuadrado(50, 2 ,"----------Pizzas----------");
+        Cuadrado.matriz=Cuadrado.cuadrado(50, cPizzas+4 );
+        Cuadrado.centrarEnXYPresicion("Precio ",37,0);
+        for(int i=0;i<cPizzas;i++){
+            Cuadrado.centrarEnXYPresicion(i + 1 + ".-" + pizzas[i].toString(),3, i+1);
+            Cuadrado.centrarEnXYPresicion(pizzas[i].getPrecio() +"$ ",38, 1+i);
+        }   
+        Cuadrado.imprimirCuadrado();
+    }
 
     public void capturarPizza(){
         Scanner datos = new Scanner(System.in);
@@ -91,7 +107,7 @@ public class Pizzeria{
         Cuadrado.imprimirCuadrado(50, 4 ,"------------PIZZA------------");
         Cuadrado.imprimirCuadrado(50, 3 ,"SELECCIONAR UN TAMAÑO");
         Cuadrado.imprimirCuadradoDividido(50, 4,"1.-Chica","2.-Mediana");
-        Cuadrado.imprimirCuadradoDividido(50, 4,"3.-Grande","4.-Cuadrada");
+        Cuadrado.imprimirCuadradoDividido(50, 4,"3.-Grande","4.-Familiar");
         int size = datos.nextInt();
         int continuar;
 
@@ -109,13 +125,17 @@ public class Pizzeria{
                 int opcion = datos.nextInt();
                 pizzas[cPizzas].capturarIngrediente(inventarios[opcion-1] , i);
                 Cuadrado.imprimirCuadrado(50, 3 ,"AGREGAR OTRO INGREDIENTE?");
-                Cuadrado.imprimirCuadradoDividido(50, 4,"1.-SI","2.-NO");
+                Cuadrado.imprimirCuadradoDividido(50, 2,"1.-SI","2.-NO");
                 continuar = datos.nextInt();
             } while (continuar == 1);
         }
         pizzas[cPizzas].listarIngredientes();
+        cPizzas++;
     
     }
+
+
+    //fin funciones pizza
 
     public String toString() {
         return nombre + " / " + correo;

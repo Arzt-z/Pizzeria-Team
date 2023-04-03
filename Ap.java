@@ -6,7 +6,10 @@ public class Ap{
 		do {
             switch (menu()) {
                 case 11:
-                      
+                    pizzafactory.listarPizza();
+                    break;
+                case 12:
+                    pizzafactory.capturarPizza();
                     break;
                 case 0:
                     return;
@@ -24,7 +27,10 @@ public class Ap{
         if (seleccion == 0) {
             return seleccion;
         }
-
+        Cuadrado.imprimirCuadradoDividido(50, 4,"1.-Listar","2.-Capturar");
+        Cuadrado.imprimirCuadradoDividido(50, 4,"3.-Eliminar","4.-Modificar");
+        Cuadrado.imprimirCuadradoDividido(50, 4,"5.-Buscar","0.-cancelar");
+        seleccion = seleccion * 10 + datos.nextInt();
 		return seleccion;
     }
 	 

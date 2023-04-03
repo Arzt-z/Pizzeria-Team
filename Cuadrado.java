@@ -29,11 +29,14 @@ public class Cuadrado {
         }
     }
 
+    public static void agregarAlListado(String palabra, int i, int tamano){
+        centrarEnXYPresicion(palabra,3, -((int)(tamano/2))+i-1);
+    }
     //centra la palabra en XY, -1 en posicion significa que la palabra estara centrada a 1/4 del cuadrado en x,
     //0 en posicion significa que se centrara en 1/2 del cuadrado en x, 1 en posicion significa que se centrara en 3/4 de x.
     //0 en posicionY significa 1/2 del cuadrado en Y, 1 en posicion Y significa 1 linea abajo del 1/2 de y
     public static char[][] centrarEnXY( String palabra,double posicion, int posicionY){
-        int center = matriz.length/2;
+        int center = matriz.length/2-1;
         for (int y = 0; y < matriz[0].length; y++) {
             for (int x = 0; x < matriz.length; x++) {
                 if (y == ((int)matriz[0].length/2)+posicionY && x >= (matriz.length/2 - palabra.length()/2)+((int)(center/2)*posicion) && x < (matriz.length/2 + palabra.length()/2 + palabra.length()%2)+(int)((center/2)*posicion)) {
@@ -47,7 +50,7 @@ public class Cuadrado {
     public static char[][] centrarEnXYPresicion( String palabra,int posicion, int posicionY){
         for (int y = 0; y < matriz[0].length; y++) {
             for (int x = 0; x < matriz.length; x++) {
-                if (y == ((int)matriz[0].length/2)+posicionY && x >  posicion+1 && x <  palabra.length()+posicion+2) {
+                if (y == posicionY+1 && x >  posicion+1 && x <  palabra.length()+posicion+2) {
                     matriz[x][y] = palabra.charAt((int)((x-posicion))-2);
                 }
             }
