@@ -1,0 +1,125 @@
+import java.util.Scanner;
+public class Persona{
+	Scanner leer = new Scanner(System.in);
+	protected String telefono;
+	protected String direccion;
+	protected String rfc;
+	protected boolean vigente;
+	
+	public Persona(){
+		vigente=true;
+	}
+	
+	public Persona(String telefono, String direccion, String rfc){
+		this.telefono=telefono;
+		this.direccion=direccion;
+		this.rfc=rfc;
+    }
+	
+	public String toString{
+		return "telefono "+telefono+" "+"direccion "+direccion;
+	}
+	
+	protected void mostrar(){
+		matriz=cuadrado(50, 6 );
+        centrarEnXY(matriz,direccion,0,-1);
+        centrarEnXY(matriz,"rfc: "+rfc,0,0);
+        centrarEnXY(matriz,"telefono: "+ telefono,0,1);
+        imprimirCuadrado();
+	}
+	
+	protected void capturar(char diferenciador){
+		if(diferenciador=='c'){
+	    Sistem.out.print("ingrese telefono    :")telefono=leer.nextLine();
+		Sistem.out.print("ingrese direccion    :")direccion=leer.nextLine();
+		System.out.println("desea facturar 1-si 2-no");
+		int factura = leer.nextInt();
+		if(factura==1){
+		Sistem.out.print("ingrese rfc del cliente   :")rfc=leer.nextLine();}
+		else rfc= "(el rfc de consumidor general)"
+		
+		}
+		else{
+		Sistem.out.print("ingrese telefono    :")telefono=leer.nextLine();
+		Sistem.out.print("ingrese direccion    :")direccion=leer.nextLine();
+		Sistem.out.print("ingrese rfc    :")rfc=leer.nextLine();
+		}
+	}
+	
+	protected void modificar(){
+		 System.out.println("Que deseas modificar?");
+        int ciclo = 1;
+        do {
+            System.out.println("1.-Telefono 2.-direccion 3-RFC 0.-Cancelar");
+            int atributo = leer.nextInt();
+            switch (atributo) {
+
+                case 1:
+                    System.out.println("Ingrese nuevo telefono");
+                    String telefono = leer.next();
+                    setTelefono(telefono);
+                    break;
+                case 2:
+                    System.out.println("Ingrese nuevo direccion");
+                    String direccion = leer.next();
+                    setDireccion(direccion);
+                    break;
+                case 3:
+                    System.out.println("Ingrese nuevo rfc");
+                    String rfc = leer.next();
+                    setRfc(rfc);
+                    break;
+                case 0:
+                    return;
+            }
+            System.out.println("Deseas seguir?   1.-Si   2.-No");
+            String option = leer.next();
+            if (option.equalsIgnoreCase("si") || option.equals("1")) {
+                ciclo = 1;
+            } else {
+                ciclo = 0;
+            }
+        } while (ciclo == 1);
+
+	}
+	
+	protected void eliminar(){
+		vigente = false;
+	}
+	
+	protected void restaurar(){
+		vigente = true;
+	}
+	
+	protected void setVigente(boolean vigente) {
+        this.vigente = vigente;
+    }
+
+    protected boolean isVigente() {
+        return vigente;
+    }
+
+    protected String getTelefono() {
+        return telefono;
+    }
+
+    protected String getDireccion() {
+        return direccion;
+    }
+
+    protected String getRfc() {
+        return rfc;
+    }
+
+    protected void setTelefono(String telefono) {
+        this.telefono = telefono;
+    }
+  
+    protected void setDireccion(String direccion) {
+        this.direccion = direccion;
+    }
+
+    protected void setRfc(String rfc) {
+        this.rfc = rfc;
+    }
+}
