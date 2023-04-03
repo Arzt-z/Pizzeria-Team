@@ -23,14 +23,14 @@ public class Pizza extends Cuadrado{
         for (int f = 0; f < cPartes; f++){   
             imprimirCuadrado(50, 2 ,"----------Ingredientes seccion " + (f+1) +"----------");
             matriz=cuadrado(50, cInventarios[f]+4 );
-            centrarEnXY(matriz,"Stock ",0.75, -((int)(cInventarios[f]/2))+-2);
-            centrarEnXY(matriz," | ",1, -((int)(cInventarios[f]/2))+-2);
-            centrarEnXY(matriz,"Precio ",1.35, -((int)(cInventarios[f]/2))+-2);
+            Cuadrado.centrarEnXY("Stock ",0.75, -((int)(cInventarios[f]/2))+-2);
+            Cuadrado.centrarEnXY(" | ",1, -((int)(cInventarios[f]/2))+-2);
+            Cuadrado.centrarEnXY("Precio ",1.35, -((int)(cInventarios[f]/2))+-2);
             for (int i = 0; i < cInventarios[f]; i++) {
-                    centrarEnXYPresicion(matriz,i + 1 + ".-"+inventarios[i][f].getNombre(),5, -((int)(cInventarios[f]/2))+i-1);
-                    centrarEnXY(matriz,inventarios[i][f].getStock() +"g",0.75, -((int)(cInventarios[f]/2))+i-1);
-                    centrarEnXY(matriz," | ",1, -((int)(cInventarios[f]/2))+i-1);
-                    centrarEnXY(matriz, inventarios[i][f].getPrecio()+"" , 1.25 , -((int)(cInventarios[f]/2))+i-1);
+                Cuadrado.centrarEnXYPresicion(i + 1 + ".-"+inventarios[i][f].getNombre(),5, -((int)(cInventarios[f]/2))+i-1);
+                Cuadrado.centrarEnXY(inventarios[i][f].getStock() +"g",0.75, -((int)(cInventarios[f]/2))+i-1);
+                Cuadrado.centrarEnXY(" | ",1, -((int)(cInventarios[f]/2))+i-1);
+                Cuadrado.centrarEnXY( inventarios[i][f].getPrecio()+"" , 1.25 , -((int)(cInventarios[f]/2))+i-1);
             }
             imprimirCuadrado();
         } 

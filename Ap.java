@@ -16,6 +16,9 @@ public class Ap{
 
     public static int menu() {
         Scanner datos = new Scanner(System.in);
+        Cuadrado.imprimirCuadradoDividido(50, 4,"1.-Pizzas","2.-Orden");
+        Cuadrado.imprimirCuadradoDividido(50, 4,"3.-Inventario","4.-Compra");
+        Cuadrado.imprimirCuadradoDividido(50, 4,"5.-Proveedores","6.-Clientes");
 		System.out.println("0.-Salir");
         int seleccion = datos.nextInt();
         if (seleccion == 0) {
