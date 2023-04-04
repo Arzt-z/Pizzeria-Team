@@ -42,35 +42,44 @@ public class Pizzeria{
     }
 
     protected void inicializarinventarios() {
+        //
         inventarios[0]=new Inventario("Queso mozzarella","Queso", 0.3);
         inventarios[++cInventarios]=new Inventario("Queso parmesano","queso", 0.26);
-        inventarios[++cInventarios]=new Inventario("Queso cheddar","queso", 0);
-
-        inventarios[++cInventarios]=new Inventario("Peperoni","carne", 0.5);
-        inventarios[++cInventarios]=new Inventario("Salchicha","carne", 0.0);
+        inventarios[++cInventarios]=new Inventario("Peperoni","carne", 0.6);
+        inventarios[++cInventarios]=new Inventario("Salchicha","carne", 0.08);
         inventarios[++cInventarios]=new Inventario("Anchoas","carne", 1.0);
-        inventarios[++cInventarios]=new Inventario("Salami","carne", 0.0);
-        inventarios[++cInventarios]=new Inventario("Jamon","carne", 0.10);
-        inventarios[++cInventarios]=new Inventario("Tocino","carne", 0.0);
-        inventarios[++cInventarios]=new Inventario("Carne molida","carne", 0.0);
+        inventarios[++cInventarios]=new Inventario("Salami","carne", 0.67);
+        inventarios[++cInventarios]=new Inventario("Jamon","carne", 0.14);
+        inventarios[++cInventarios]=new Inventario("Tocino","carne", 0.32);
+        inventarios[++cInventarios]=new Inventario("Carne molida","carne", 0.16);
+        inventarios[++cInventarios]=new Inventario("Chorizo","carne", 0.12);
 
         inventarios[++cInventarios]=new Inventario("Cebolla","no carne", 0.016);
-        inventarios[++cInventarios]=new Inventario("tomate","no carne", 0);
-        inventarios[++cInventarios]=new Inventario("Pimiento verde","no carne", 0);
-        inventarios[++cInventarios]=new Inventario("Pimiento rojo","no carne", 0.0);
-        inventarios[++cInventarios]=new Inventario("Aceitunas","no carne", 0);
-        inventarios[++cInventarios]=new Inventario("Champiñones","no carne", 0);
+        inventarios[++cInventarios]=new Inventario("tomate","no carne", 0.016);
+        inventarios[++cInventarios]=new Inventario("Pimiento verde","no carne", 0.06);
+        inventarios[++cInventarios]=new Inventario("Pimiento rojo","no carne", 0.06);
+        inventarios[++cInventarios]=new Inventario("Aceitunas","no carne", 0.06);
+        inventarios[++cInventarios]=new Inventario("Champiñones","no carne", 0.07);
         inventarios[++cInventarios]=new Inventario("Ajo","no carne", 0.05);
-        inventarios[++cInventarios]=new Inventario("Jalapeños","no carne", 0.014);
+        inventarios[++cInventarios]=new Inventario("Jalapeños","no carne", 0.05);
         inventarios[++cInventarios]=new Inventario("Piña","no carne", 0.013);
     }
 
     protected void inicializarPizzas() {
         pizzas[0]=new Pizza("Hawaiana",3, 199);
+        pizzas[cPizzas].capturarIngrediente(inventarios[6] , 0);
+        pizzas[cPizzas].capturarIngrediente(inventarios[18] , 0);
         pizzas[++cPizzas]=new Pizza("peperoni",3, 199);
+        pizzas[cPizzas].capturarIngrediente(inventarios[2] , 0);
         pizzas[++cPizzas]=new Pizza("jamon",3, 199);
+        pizzas[cPizzas].capturarIngrediente(inventarios[6] , 0);
         pizzas[++cPizzas]=new Pizza("mexicana",3, 199);
+        pizzas[cPizzas].capturarIngrediente(inventarios[10] , 0);
+        pizzas[cPizzas].capturarIngrediente(inventarios[9] , 0);
+        pizzas[cPizzas].capturarIngrediente(inventarios[8] , 0);
+        pizzas[cPizzas].capturarIngrediente(inventarios[17] , 0);
         pizzas[++cPizzas]=new Pizza("loca",3, 199);
+        pizzas[cPizzas].capturarIngrediente(inventarios[9] , 0);
     }
     // funciones de inventarios
     public void listarinventarios() {
@@ -92,14 +101,26 @@ public class Pizzeria{
 
     //funciones pizza
     public void listarPizza(){
-        Cuadrado.imprimirCuadrado(50, 2 ,"----------Pizzas----------");
-        Cuadrado.matriz=Cuadrado.cuadrado(50, cPizzas+4 );
-        Cuadrado.centrarEnXYPresicion("Precio ",37,0);
-        for(int i=0;i<cPizzas;i++){
-            Cuadrado.centrarEnXYPresicion(i + 1 + ".-" + pizzas[i].toString(),3, i+1);
-            Cuadrado.centrarEnXYPresicion(pizzas[i].getPrecio() +"$ ",38, 1+i);
-        }   
-        Cuadrado.imprimirCuadrado();
+        Scanner datos = new Scanner(System.in);
+        int continuar =1;
+        int seleccion=0;
+        do {
+            Cuadrado.imprimirCuadrado(50, 2 ,"----------Pizzas----------");
+            Cuadrado.matriz=Cuadrado.cuadrado(50, cPizzas+4 );
+            Cuadrado.centrarEnXYPresicion("Precio ",37,0);
+            for(int i=0;i<=cPizzas;i++){
+                Cuadrado.centrarEnXYPresicion(i + 1 + ".-" + pizzas[i].toString(),3, i+1);
+                Cuadrado.centrarEnXYPresicion(pizzas[i].getPrecio() +"$ ",38, 1+i);
+                }
+            Cuadrado.imprimirCuadrado();
+            if(continuar!=1)return;
+            Cuadrado.imprimirCuadrado(50, 3 ,"selecciona una pizza");
+            seleccion= datos.nextInt();
+            pizzas[seleccion-1].listarIngredientes();
+            Cuadrado.imprimirCuadrado(50, 3 ,"deseas ver otra pizza?");
+            Cuadrado.imprimirCuadradoDividido(50, 2,"1.-si","2.-no");
+            continuar = datos.nextInt();
+        } while (continuar==1);
     }
 
     public void capturarPizza(){

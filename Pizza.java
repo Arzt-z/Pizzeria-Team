@@ -21,6 +21,7 @@ public class Pizza{
         this.size = size;
         this.diametro = 20+size*5;
         cInventarios[0]=0;
+        cPartes=1;
     }
 
     public String toString(){
