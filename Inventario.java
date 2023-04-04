@@ -2,13 +2,13 @@
 public class Inventario{
     private String nombre;
     private int stock;
-    private float precio;
+    private double precio;
     private String clasificacion;
 
     public Inventario(){   
     }
 
-    public Inventario(String nombre, String clasificacion, float precio){
+    public Inventario(String nombre, String clasificacion, double precio){
     this.nombre = nombre;
     this.clasificacion = clasificacion;
     this.precio = precio;
@@ -51,7 +51,7 @@ public class Inventario{
         this.clasificacion = clasificacion;
     }
 
-    public float getPrecio() {
+    public double getPrecio() {
         return precio;
     }
 

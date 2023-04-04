@@ -3,7 +3,9 @@ public class Pizza{
 
     private String nombre;
     private int size;
-    private int precio ;
+    private int precio;
+    private int precioProd=130;
+    private int diametro;
     private int id;
     private int popularidad;
     private Inventario[][] inventarios = new Inventario[50][4];
@@ -17,6 +19,7 @@ public class Pizza{
         this.nombre = nombre;
         this.precio = precio;
         this.size = size;
+        this.diametro = 20+size*5;
         cInventarios[0]=0;
     }
 
@@ -31,6 +34,14 @@ public class Pizza{
         }
         return "pizza " + nombre+" "+ tamano ;
     }
+
+    public void calcularPrecio(){
+        float multiplicador = (float)(this.diametro*this.diametro)/(40*40);
+        Cuadrado.imprimirCuadradoDividido(50, 4,"area: "+(this.diametro*this.diametro),"multi "+ multiplicador);
+        Cuadrado.imprimirCuadradoDividido(50, 4,"precio de prod: "+(int)(130*multiplicador),"precio venta"+(int)((130*multiplicador)*(2.0-(size/16.8))));
+
+    }
+
 
     public void listarIngredientes(){
         for (int f = 0; f < cPartes; f++){
@@ -69,6 +80,7 @@ public class Pizza{
 
     public void setSize(int size) {
         this.size = size;
+        this.diametro = 20+size*5;
     }
 
     public int getPrecio() {
