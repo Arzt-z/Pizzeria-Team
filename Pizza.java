@@ -4,8 +4,11 @@ public class Pizza{
     private String nombre;
     private int size;
     private int precio;
+    private boolean precioFijo=false;
+
+
     private int precioProd=130;
-    private int diametro;
+    private int diametro=0;
     private int id;
     private int popularidad;
     private Inventario[][] inventarios = new Inventario[50][4];
@@ -15,9 +18,8 @@ public class Pizza{
     private Inventario[] ingredientes = new Inventario[500];
     private int cIngredientes = 0;
     private int extras=0;
-
-
     private int[] gramosIngrediente = new int[500];
+    private boolean existencia=true;
 
     public Pizza() {
         this.nombre = "nueva pizza";
@@ -44,6 +46,16 @@ public class Pizza{
         return "pizza " + nombre+" "+ tamano ;
     }
 
+    public void mostrar(){
+        listarTodosLosIngredientes();
+        calcularPrecio();
+        Cuadrado.matriz=Cuadrado.cuadrado(50, 4 );
+        Cuadrado.centrarEnXYPresicion("area: ",4, 0); Cuadrado.centrarEnXYPresicion((diametro*diametro) +" cm^2",30, 0);
+        Cuadrado.centrarEnXYPresicion("Precio produccion: ",4, 1);Cuadrado.centrarEnXYPresicion((precioProd+extras)+"$",30, 1);
+        Cuadrado.centrarEnXYPresicion("Precio Venta: ",4, 2);Cuadrado.centrarEnXYPresicion(precio+"$",30, 2); 
+        Cuadrado.imprimirCuadrado();
+    }
+
     public void MostrarCalcularPrecio(){
         multiplicador = (float)(this.diametro*this.diametro)/(40*40);
         Cuadrado.imprimirCuadradoDividido(50, 4,"area: "+(this.diametro*this.diametro),"multi "+ multiplicador);
@@ -51,8 +63,10 @@ public class Pizza{
     }
 
     public void calcularPrecio(){
-        multiplicador = (float)(this.diametro*this.diametro)/(40*40);
-        precio=(int)(((precioProd+extras)*multiplicador)*(2.0-(size/16.8)));
+        if(precioFijo==false){
+            multiplicador = (float)(this.diametro*this.diametro)/(40*40);
+            precio=(int)(((precioProd+extras)*multiplicador)*(2.0-(size/16.8)));
+        }
     }
 
     public void listarIngredientes(){
@@ -74,24 +88,22 @@ public class Pizza{
     }
 
     public void calcularTodosLosIngredientes(){
+        cIngredientes=0;
         for (int f = 0; f < cPartes; f++){
             for (int i = 0; i < cInventarios[f]; i++) {
                 ingredientes[cIngredientes]=inventarios[i][f];
-                gramosIngrediente[cIngredientes]=(int)(30/ingredientes[cIngredientes].getPrecio());
+                if(ingredientes[cIngredientes].getClasificacion().equalsIgnoreCase("carne")){
+                    gramosIngrediente[cIngredientes]=(int)(15/ingredientes[cIngredientes].getPrecio()+100);
+                }else{
+                    gramosIngrediente[cIngredientes]=(int)(15/(25*ingredientes[cIngredientes].getPrecio())+110);
+                }
                 cIngredientes++;
             }
         } 
     }
 
-    public Inventario[] getTodosLosIngredientes(){
-        return ingredientes;
-    }
-
-    public int getcIngredientes() {
-        return cIngredientes;
-    }
-
     public void listarTodosLosIngredientes(){
+        calcularTodosLosIngredientes();
         Cuadrado.imprimirCuadrado(50, 3 ,nombre);
         Cuadrado.imprimirCuadrado(50, 2 ,"----------todos los ingredientes ----------");
         Cuadrado.matriz=Cuadrado.cuadrado(50, cIngredientes+2 );
@@ -116,7 +128,32 @@ public class Pizza{
 
     public void capturarIngrediente(Inventario ingredientesP,int seccion) {
         this.inventarios[cInventarios[seccion]++][seccion] = ingredientesP;
-        
+    }
+
+    public boolean buscar(String cadenaAbuscar) {
+        String misDatos = nombre + cPartes + precio + diametro;
+        calcularTodosLosIngredientes();
+        for (int i = 0; i < cIngredientes; i++){
+            misDatos=misDatos+ingredientes[i].getNombre();
+        }
+        misDatos=misDatos.toLowerCase();
+        if (misDatos.contains(cadenaAbuscar.toLowerCase()) == true) {
+            return true;
+        }
+        return false;
+    }
+
+    //regresa una matriz con una lista de todos los ingredientes.
+    public Inventario[] getTodosLosIngredientes(){
+        return ingredientes;
+    }
+    //regresa la lista con los gramos usados de cada ingrediente usar junto con la de arriba.
+    public int[] getGramosIngrediente() {
+        return gramosIngrediente;
+    }
+
+    public int getcIngredientes() {
+        return cIngredientes;
     }
 
     public String getNombre() {
@@ -190,6 +227,18 @@ public class Pizza{
 
     public void setExtras(int extras) {
         this.extras = extras;
+    }
+
+    public boolean getExistencia() {
+        return existencia;
+    }
+
+    public void eliminar() {
+        this.existencia = false;
+    }
+
+    public void setPrecioFijo(boolean precioFijo) {
+        this.precioFijo = precioFijo;
     }
 
 }

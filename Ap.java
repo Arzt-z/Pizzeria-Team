@@ -11,6 +11,15 @@ public class Ap{
                 case 12:
                     pizzafactory.capturarPizza();
                     break;
+                case 13:
+                    pizzafactory.eliminarPizza();
+                    break;
+                case 14:
+                    pizzafactory.modificarPizza();
+                    break;
+                case 15:
+                    pizzafactory.buscarPizza();
+                    break;
                 case 0:
                     return;
             }
