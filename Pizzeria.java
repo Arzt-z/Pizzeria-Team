@@ -69,17 +69,26 @@ public class Pizzeria{
         pizzas[0]=new Pizza("Hawaiana",3, 199);
         pizzas[cPizzas].capturarIngrediente(inventarios[6] , 0);
         pizzas[cPizzas].capturarIngrediente(inventarios[18] , 0);
+        pizzas[cPizzas].calcularTodosLosIngredientes();
+
         pizzas[++cPizzas]=new Pizza("peperoni",3, 199);
         pizzas[cPizzas].capturarIngrediente(inventarios[2] , 0);
+        pizzas[cPizzas].calcularTodosLosIngredientes();
+
         pizzas[++cPizzas]=new Pizza("jamon",3, 199);
         pizzas[cPizzas].capturarIngrediente(inventarios[6] , 0);
+        pizzas[cPizzas].calcularTodosLosIngredientes();
+
         pizzas[++cPizzas]=new Pizza("mexicana",3, 199);
         pizzas[cPizzas].capturarIngrediente(inventarios[10] , 0);
         pizzas[cPizzas].capturarIngrediente(inventarios[9] , 0);
         pizzas[cPizzas].capturarIngrediente(inventarios[8] , 0);
         pizzas[cPizzas].capturarIngrediente(inventarios[17] , 0);
+        pizzas[cPizzas].calcularTodosLosIngredientes();
+
         pizzas[++cPizzas]=new Pizza("loca",3, 199);
         pizzas[cPizzas].capturarIngrediente(inventarios[9] , 0);
+        pizzas[cPizzas].calcularTodosLosIngredientes();
     }
     // funciones de inventarios
     public void listarinventarios() {
@@ -116,7 +125,13 @@ public class Pizzeria{
             if(continuar!=1)return;
             Cuadrado.imprimirCuadrado(50, 3 ,"selecciona una pizza");
             seleccion= datos.nextInt();
-            pizzas[seleccion-1].listarIngredientes();
+            pizzas[seleccion-1].listarTodosLosIngredientes();
+            pizzas[seleccion-1].calcularPrecio();
+                Cuadrado.matriz=Cuadrado.cuadrado(50, 4 );
+                    Cuadrado.centrarEnXYPresicion("area: ",4, 0); Cuadrado.centrarEnXYPresicion(pizzas[seleccion-1].getDiametro()*pizzas[seleccion-1].getDiametro()+" cm^2",30, 0);
+                    Cuadrado.centrarEnXYPresicion("Precio produccion: ",4, 1);Cuadrado.centrarEnXYPresicion(pizzas[seleccion-1].getPrecioProd()+pizzas[seleccion-1].getExtras()+"$",30, 1);
+                    Cuadrado.centrarEnXYPresicion("Precio Venta: ",4, 2);Cuadrado.centrarEnXYPresicion(pizzas[seleccion-1].getPrecio()+"$",30, 2);
+                    Cuadrado.imprimirCuadrado();
             Cuadrado.imprimirCuadrado(50, 3 ,"deseas ver otra pizza?");
             Cuadrado.imprimirCuadradoDividido(50, 2,"1.-si","2.-no");
             continuar = datos.nextInt();
@@ -154,9 +169,7 @@ public class Pizzeria{
         }
         pizzas[cPizzas].listarIngredientes();
         pizzas[cPizzas].calcularPrecio();
-        cPizzas++;
-       
-    
+        pizzas[cPizzas].calcularTodosLosIngredientes();
     }
 
 
