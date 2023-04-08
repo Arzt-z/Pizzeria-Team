@@ -4,7 +4,7 @@ public class Pizza{
     private String nombre;
     private int size;
     private int precio;
-    private boolean precioFijo=false;
+    private boolean precioFijo;
 
 
     private int precioProd=130;
@@ -23,6 +23,7 @@ public class Pizza{
 
     public Pizza() {
         this.nombre = "nueva pizza";
+		this.precioFijo=false;
     }
 
     public Pizza(String nombre, int size , int precio) {

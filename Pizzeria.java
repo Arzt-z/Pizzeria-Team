@@ -10,7 +10,11 @@ public class Pizzeria{
     private int cInventarios;
     private Pizza[] pizzas = new Pizza[500];
     private int cPizzas=0;
-    public Pizzeria() {
+	private ExtrasOProductos[] extras=new ExtrasOProductos[500];
+	private int cExtras=0;
+    
+	
+	public Pizzeria() {
 
     }
 
@@ -40,7 +44,19 @@ public class Pizzeria{
         Cuadrado.imprimirCuadrado();
         
     }
-
+	
+	protected void inicializaExtras(){
+	 extras[0]=new ExtrasOProductos("orden de papas", "producto", 20);
+	 extras[++cExtras]=new ExtrasOProductos("orden de bonneless", "producto", 50);
+	 extras[++cExtras]=new ExtrasOProductos("refresco de cola", "bebida", 15);
+	 extras[++cExtras]=new ExtrasOProductos("refresco de manzana", "bebida", 15);
+	 extras[++cExtras]=new ExtrasOProductos("refresco de naranaj", "bebida", 15);
+	 extras[++cExtras]=new ExtrasOProductos("palitos de queso", "producto", 20);
+	 extras[++cExtras]=new ExtrasOProductos("salsa secreta de la casa", "extra", 10);
+	 extras[++cExtras]=new ExtrasOProductos("dip de BBQ", "extra", 15);
+		
+	}
+	
     protected void inicializarinventarios() {
         //
         inventarios[0]=new Inventario("Queso mozzarella","Queso", 0.3);
