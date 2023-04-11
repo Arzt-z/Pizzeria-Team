@@ -64,8 +64,8 @@ public class Empleado extends Persona{
         } while (ciclo == 1);
 	}
 	
-	public double sueldoSemana{
-		sueldoSemana=diasTrabajados*horasDeTrabajo*sueldo;
+	public double sueldoSemana(){
+		double sueldoSemana=diasTrabajados*horasDeTrabajo*sueldo;
 		return sueldoSemana;
 	}
 	

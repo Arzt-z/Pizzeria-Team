@@ -46,17 +46,6 @@ public class Pizzeria{
     }
 	
 	protected void inicializaExtras(){
-<<<<<<< HEAD
-	 extras[0]=new ExtrasOProductos("orden de papas", "producto", 20);
-	 extras[++cExtras]=new ExtrasOProductos("orden de bonneless", "producto", 50);
-	 extras[++cExtras]=new ExtrasOProductos("refresco de cola", "bebida", 15);
-	 extras[++cExtras]=new ExtrasOProductos("refresco de manzana", "bebida", 15);
-	 extras[++cExtras]=new ExtrasOProductos("refresco de naranaj", "bebida", 15);
-	 extras[++cExtras]=new ExtrasOProductos("palitos de queso", "producto", 20);
-	 extras[++cExtras]=new ExtrasOProductos("salsa secreta de la casa", "extra", 10);
-	 extras[++cExtras]=new ExtrasOProductos("dip de BBQ", "extra", 15);
-	 extras[++cExtras]=new ExtrasOProductos("dip de Buffalo", "extra", 15);
-=======
         extras[0]=new ExtrasOProductos("orden de papas", "producto", 20);
         extras[++cExtras]=new ExtrasOProductos("orden de bonneless", "producto", 50);
         extras[++cExtras]=new ExtrasOProductos("refresco de cola", "bebida", 15);
@@ -65,7 +54,6 @@ public class Pizzeria{
         extras[++cExtras]=new ExtrasOProductos("palitos de queso", "producto", 20);
         extras[++cExtras]=new ExtrasOProductos("salsa secreta de la casa", "extra", 10);
         extras[++cExtras]=new ExtrasOProductos("dip de BBQ", "extra", 15);
->>>>>>> 67dfa1fd81b858ce3f8fbe16b4615a2522194668
 		
 	}
 	
