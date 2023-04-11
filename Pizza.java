@@ -93,7 +93,7 @@ public class Pizza{
         for (int f = 0; f < cPartes; f++){
             for (int i = 0; i < cInventarios[f]; i++) {
                 ingredientes[cIngredientes]=inventarios[i][f];
-                if(ingredientes[cIngredientes].getClasificacion().equalsIgnoreCase("carne")){
+                if(ingredientes[cIngredientes].getTipo().equalsIgnoreCase("carne")){
                     gramosIngrediente[cIngredientes]=(int)(15/ingredientes[cIngredientes].getPrecio()+100);
                 }else{
                     gramosIngrediente[cIngredientes]=(int)(15/(25*ingredientes[cIngredientes].getPrecio())+110);
