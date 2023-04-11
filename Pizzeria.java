@@ -46,6 +46,7 @@ public class Pizzeria{
     }
 	
 	protected void inicializaExtras(){
+<<<<<<< HEAD
 	 extras[0]=new ExtrasOProductos("orden de papas", "producto", 20);
 	 extras[++cExtras]=new ExtrasOProductos("orden de bonneless", "producto", 50);
 	 extras[++cExtras]=new ExtrasOProductos("refresco de cola", "bebida", 15);
@@ -55,6 +56,16 @@ public class Pizzeria{
 	 extras[++cExtras]=new ExtrasOProductos("salsa secreta de la casa", "extra", 10);
 	 extras[++cExtras]=new ExtrasOProductos("dip de BBQ", "extra", 15);
 	 extras[++cExtras]=new ExtrasOProductos("dip de Buffalo", "extra", 15);
+=======
+        extras[0]=new ExtrasOProductos("orden de papas", "producto", 20);
+        extras[++cExtras]=new ExtrasOProductos("orden de bonneless", "producto", 50);
+        extras[++cExtras]=new ExtrasOProductos("refresco de cola", "bebida", 15);
+        extras[++cExtras]=new ExtrasOProductos("refresco de manzana", "bebida", 15);
+        extras[++cExtras]=new ExtrasOProductos("refresco de naranaj", "bebida", 15);
+        extras[++cExtras]=new ExtrasOProductos("palitos de queso", "producto", 20);
+        extras[++cExtras]=new ExtrasOProductos("salsa secreta de la casa", "extra", 10);
+        extras[++cExtras]=new ExtrasOProductos("dip de BBQ", "extra", 15);
+>>>>>>> 67dfa1fd81b858ce3f8fbe16b4615a2522194668
 		
 	}
 	
@@ -80,6 +91,15 @@ public class Pizzeria{
         inventarios[++cInventarios]=new Inventario("Ajo","no carne", 0.05);
         inventarios[++cInventarios]=new Inventario("Jalapeños","no carne", 0.05);
         inventarios[++cInventarios]=new Inventario("Piña","no carne", 0.013);
+    
+        inventarios[++cInventarios]=new Inventario("orden de papas", "producto", 20);
+        inventarios[++cInventarios]=new Inventario("orden de bonneless", "producto", 50);
+        inventarios[++cInventarios]=new Inventario("refresco de cola", "bebida", 15);
+        inventarios[++cInventarios]=new Inventario("refresco de manzana", "bebida", 15);
+        inventarios[++cInventarios]=new Inventario("refresco de naranaj", "bebida", 15);
+        inventarios[++cInventarios]=new Inventario("palitos de queso", "producto", 20);
+        inventarios[++cInventarios]=new Inventario("salsa secreta", "extra", 10);
+        inventarios[++cInventarios]=new Inventario("dip de BBQ", "extra", 15);
     }
 
     protected void inicializarPizzas() {
@@ -104,19 +124,185 @@ public class Pizzeria{
     }
     // funciones de inventarios
     public void listarinventarios() {
+        int contador=0;
+        for (int i = 0; i <= cInventarios; i++) {
+            if(inventarios[i].getExistencia()==true){
+                    contador++;
+            }
+            
+        }
         Cuadrado.imprimirCuadrado(50, 2 ,"----------inventarios----------");
-        Cuadrado.matriz=Cuadrado.cuadrado(50, cInventarios+4 );
+        Cuadrado.matriz=Cuadrado.cuadrado(50, contador+4 );
         Cuadrado.centrarEnXYPresicion("Stock ",30, 0);
         Cuadrado.centrarEnXYPresicion("|",36, 0);
         Cuadrado.centrarEnXYPresicion("Precio",37, 0);
-        for (int i = 0; i <= cInventarios; i++) {
-                Cuadrado.centrarEnXYPresicion(i + 1 + ".-"+inventarios[i].getNombre(),4,i+1);
-                Cuadrado.centrarEnXYPresicion(inventarios[i].getStock()+"g",30, i+1);
-                Cuadrado.centrarEnXYPresicion("| ",36, i+1);
-                Cuadrado.centrarEnXYPresicion( (float)(inventarios[i].getPrecio()*100)+"" , 37 , i+1);
+        for (int i = 0 , c=0; i <= cInventarios; i++) {
+            if(inventarios[i].getExistencia()==true){
+                c++;
+                Cuadrado.centrarEnXYPresicion(i + 1 + ".-"+inventarios[i].getNombre(),4,c+1);
+                Cuadrado.centrarEnXYPresicion(inventarios[i].getStock()+"",30, c+1);
+                if(inventarios[i].getTipo().toLowerCase().equals("carne")||inventarios[i].getTipo().toLowerCase().equals("no carne")||inventarios[i].getTipo().toLowerCase().equals("queso")||inventarios[i].getTipo().toLowerCase().equals("ingrediente"))
+                    Cuadrado.centrarEnXYPresicion("g",35, c+1);
+                Cuadrado.centrarEnXYPresicion("| ",36, c+1);
+                Cuadrado.centrarEnXYPresicion( (float)(inventarios[i].getPrecio())+"" , 37 , c+1);
+            
+            }
         }
         Cuadrado.imprimirCuadrado();
     }
+
+    public void listarinventarios(String tipo) {
+        Cuadrado.imprimirCuadrado(50, 2 ,"----------inventarios----------");
+        int contador=0;
+        for (int i = 0; i <= cInventarios; i++) {
+            if(inventarios[i].getExistencia()==true){
+                if(inventarios[i].getTipo().equals(tipo)||
+                ((inventarios[i].getTipo().toLowerCase().equals("carne")||inventarios[i].getTipo().toLowerCase().equals("no carne")||inventarios[i].getTipo().toLowerCase().equals("queso")||inventarios[i].getTipo().toLowerCase().equals("ingrediente"))
+                &&(tipo.toLowerCase().equals("ingrediente")))){
+                    contador++;
+                }
+            }
+            
+        }
+        Cuadrado.matriz=Cuadrado.cuadrado(50, contador+3 );
+        Cuadrado.centrarEnXYPresicion("Stock ",30, 0);
+        Cuadrado.centrarEnXYPresicion("|",36, 0);
+        Cuadrado.centrarEnXYPresicion("Precio",37, 0);
+        for (int i = 0, c=0; i <= cInventarios; i++) {
+            if(inventarios[i].getExistencia()==true){
+                if(inventarios[i].getTipo().equals(tipo)||
+                ((inventarios[i].getTipo().toLowerCase().equals("carne")||inventarios[i].getTipo().toLowerCase().equals("no carne")||inventarios[i].getTipo().toLowerCase().equals("queso")||inventarios[i].getTipo().toLowerCase().equals("ingrediente"))
+                &&(tipo.toLowerCase().equals("ingrediente")))){
+                    Cuadrado.centrarEnXYPresicion(i + 1 + ".-"+inventarios[i].getNombre(),4,c+1);
+                    Cuadrado.centrarEnXYPresicion(inventarios[i].getStock()+"",30, c+1);
+                    if(inventarios[i].getTipo().toLowerCase().equals("carne")||inventarios[i].getTipo().toLowerCase().equals("no carne")||inventarios[i].getTipo().toLowerCase().equals("queso")||inventarios[i].getTipo().toLowerCase().equals("ingrediente"))
+                        Cuadrado.centrarEnXYPresicion("g",35, c+1);
+                    Cuadrado.centrarEnXYPresicion("| ",36, c+1);
+                        Cuadrado.centrarEnXYPresicion( (float)(inventarios[i].getPrecio())+"" , 37 , c+1);
+                }
+            }
+            
+
+        }
+        Cuadrado.imprimirCuadrado();
+    }
+
+    public void inspeccionarInventario(){
+        Scanner datos = new Scanner(System.in);
+        int continuar =1;
+        int seleccion=0;
+        do {
+            if(continuar!=1)return;
+            seleccion=seleccionInventarios();
+            if(seleccion==0){
+                return;
+            }
+            if(inventarios[seleccion-1].getExistencia()){
+                inventarios[seleccion-1].mostrar();
+                Cuadrado.imprimirCuadrado(50, 3 ,"deseas ver otro?");
+                Cuadrado.imprimirCuadradoDividido(50, 2,"1.-si","2.-no");
+            }else{
+                Cuadrado.imprimirCuadrado(50, 3 ,"ELEMENTO INVALIDO INTENTAR OTRA VEZ?");
+                Cuadrado.imprimirCuadradoDividido(50, 2,"1.-si","2.-no");
+            }
+            continuar = datos.nextInt();
+        } while (continuar==1);
+    }
+
+    public void capturarInventarios() {
+        Scanner datos = new Scanner(System.in);
+        int continuar =1;
+        do {
+            listarinventarios();
+            inventarios[++cInventarios]=new Inventario();
+            inventarios[cInventarios].capturar();
+            Cuadrado.imprimirCuadrado(50, 3 ,"desea capturar otro?");
+            Cuadrado.imprimirCuadradoDividido(50, 2,"1.-si","2.-no");
+            continuar = datos.nextInt();
+        } while (continuar==1);
+    }
+
+    public void modificarInventarios(){
+        Scanner datos = new Scanner(System.in);
+        int seleccion=0;
+        int continuar =1;
+        seleccion=seleccionInventarios();
+        do {
+            inventarios[seleccion].modificar();
+            Cuadrado.imprimirCuadrado(50, 3 ,"desea modificar otro?");
+            Cuadrado.imprimirCuadradoDividido(50, 2,"1.-si","2.-no");
+            continuar = datos.nextInt();
+        } while (continuar==1);
+        
+    }
+
+    public void buscarInventarios(){
+        Scanner datos = new Scanner(System.in);
+        int continuar =1;
+        String cadenaAbuscar;
+        do {
+            System.out.println("TEXTO A BUSCAR");
+            cadenaAbuscar = datos.nextLine();
+            for (int i = 0; i < cInventarios; i++) {
+                if (inventarios[i].buscar(cadenaAbuscar) == true && inventarios[i].getExistencia() == true) {
+                    inventarios[i].mostrar();
+                }
+            }
+            Cuadrado.imprimirCuadrado(50, 3 ,"BUSCAR OTRA VEZ?");
+            Cuadrado.imprimirCuadradoDividido(50, 2,"1.-SI","2.-NO");
+            continuar = datos.nextInt(); datos.nextLine();
+        } while (continuar == 1);
+    }
+
+    public void eliminarInventarios(){
+        Scanner datos = new Scanner(System.in);
+        int seleccion=0;
+        int continuar =1;
+        do{
+            Cuadrado.imprimirCuadrado(50, 2 ,"----------inventarios----------");
+            Cuadrado.matriz=Cuadrado.cuadrado(50, cInventarios+4 );
+            Cuadrado.centrarEnXYPresicion("Stock ",30, 0);
+            Cuadrado.centrarEnXYPresicion("|",36, 0);
+            Cuadrado.centrarEnXYPresicion("Precio",37, 0);
+            for (int i = 0; i <= cInventarios; i++) {
+                if(inventarios[i].getExistencia()==true){
+                    Cuadrado.centrarEnXYPresicion(i + 1 + ".-"+inventarios[i].getNombre(),4,i+1);
+                    Cuadrado.centrarEnXYPresicion(inventarios[i].getStock()+"g",30, i+1);
+                    Cuadrado.centrarEnXYPresicion("| ",36, i+1);
+                    Cuadrado.centrarEnXYPresicion( (float)(inventarios[i].getPrecio()*100)+"" , 37 , i+1);
+                }else{
+                    Cuadrado.centrarEnXYPresicion(i + 1 + ".-"+"//////ELIMINADO//////",4,i+1);
+                }
+            }
+            Cuadrado.imprimirCuadrado();
+            Cuadrado.imprimirCuadrado(50, 2 ,"---INGRESAR NUMERO---");
+            System.out.println("0.-Salir");
+            seleccion= datos.nextInt();
+            if(seleccion==0){
+                return;
+            }
+            inventarios[seleccion-1].eliminar();
+
+        }while(continuar == 1);
+    }
+
+    
+    public int seleccionInventarios(){
+        Scanner datos = new Scanner(System.in);
+        int seleccion=0;
+        int continuar =1;
+            listarinventarios();
+            Cuadrado.imprimirCuadrado(50, 2 ,"---INGRESAR NUMERO---");
+            System.out.println("0.-Salir");
+            seleccion= datos.nextInt();
+            if(seleccion==0){
+                return 0;
+            }
+            return seleccion;
+    }
+
+
+
     //fin funciones de inventarios
 
 
@@ -265,7 +451,7 @@ public class Pizzeria{
         for(int i=0;i<divisionDP;i++){
             do {
                 Cuadrado.imprimirCuadrado(50, 3 ,"SELECCIONAR UN INGREDIENTE ");
-                listarinventarios() ;
+                listarinventarios("ingrediente") ;
                 if(divisionDP>=2)Cuadrado.imprimirCuadrado(50, 2 ,"Parte "+ (i+1));
                 int opcion = datos.nextInt();
                 pizzas[seleccion].capturarIngrediente(inventarios[opcion-1] , i);
@@ -279,13 +465,19 @@ public class Pizzeria{
 
     public void buscarPizza() {
         Scanner datos = new Scanner(System.in);
-        System.out.println("TEXTO A BUSCAR");
-        String cadenaAbuscar = datos.nextLine();
-        for (int i = 0; i < cPizzas; i++) {
-            if (pizzas[i].buscar(cadenaAbuscar) == true && pizzas[i].getExistencia() == true) {
-                pizzas[i].mostrar();
+        int continuar =1;
+        do {
+            System.out.println("TEXTO A BUSCAR");
+            String cadenaAbuscar = datos.nextLine();
+            for (int i = 0; i < cPizzas; i++) {
+                if (pizzas[i].buscar(cadenaAbuscar) == true && pizzas[i].getExistencia() == true) {
+                    pizzas[i].mostrar();
+                }
             }
-        }
+            Cuadrado.imprimirCuadrado(50, 3 ,"BUSCAR OTRA?");
+            Cuadrado.imprimirCuadradoDividido(50, 2,"1.-SI","2.-NO");
+            continuar = datos.nextInt();datos.nextLine();
+        } while (continuar == 1);
     }
 
     //fin funciones pizza
