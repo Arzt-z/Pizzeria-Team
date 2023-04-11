@@ -32,8 +32,16 @@ public abstract class Persona{
 	
 	protected void capturar(char diferenciador){
 		if(diferenciador=='c'){
-	    System.out.print("ingrese telefono    :");telefono=leer.nextLine();
+	    System.out.println("el pedido es a domicilio? 1-si 2-no");
+		int pedido = leer.nextInt();
+		if(pedido==1){
+		System.out.print("ingrese telefono    :");telefono=leer.nextLine();
 		System.out.print("ingrese direccion    :");direccion=leer.nextLine();
+		}else{
+			telefono=" ";
+			direccion=" ";
+		}
+		
 		System.out.println("desea facturar 1-si 2-no");
 		int factura = leer.nextInt();
 		if(factura==1){

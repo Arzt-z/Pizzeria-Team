@@ -40,6 +40,7 @@ public class ExtrasOProductos {
 	}
 	
 	public void modificar(){
+		int seguir;
 		do{
 		System.out.println("que deseas modificar 1-nombre 2-precio 0-cancelar");
 		int opcion = leer.nextInt();
@@ -54,7 +55,7 @@ public class ExtrasOProductos {
 			return;	
 		}
 		System.out.println("deseas continuar? 1-si 2-no");
-		int seguir =leer.nextInt();
+		seguir =leer.nextInt();
 		}while(seguir == 1);
 	}
 	

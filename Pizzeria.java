@@ -54,6 +54,7 @@ public class Pizzeria{
 	 extras[++cExtras]=new ExtrasOProductos("palitos de queso", "producto", 20);
 	 extras[++cExtras]=new ExtrasOProductos("salsa secreta de la casa", "extra", 10);
 	 extras[++cExtras]=new ExtrasOProductos("dip de BBQ", "extra", 15);
+	 extras[++cExtras]=new ExtrasOProductos("dip de Buffalo", "extra", 15);
 		
 	}
 	
