@@ -25,7 +25,7 @@ public class Empleado extends Persona{
 		return "Empleado";
 	}
 	
-	//alguien haga el mostrar me duele el cerebro
+	//alguien haga el mostrar o nose
 	
 	public void capturar(){
 		char diferenciador='e';

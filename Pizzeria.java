@@ -11,6 +11,8 @@ public class Pizzeria{
     private int cInventarios;
     private Pizza[] pizzas = new Pizza[500];
     private int cPizzas=0;
+    private Orden[] ordenes = new Orden[500];
+    private int cOrdenes=0;
 	private ExtrasOProductos[] extras=new ExtrasOProductos[500];
 	private int cExtras=0;
     
@@ -85,7 +87,7 @@ public class Pizzeria{
         inventarios[++cInventarios]=new Inventario("orden de bonneless", "producto", 50);
         inventarios[++cInventarios]=new Inventario("refresco de cola", "bebida", 15);
         inventarios[++cInventarios]=new Inventario("refresco de manzana", "bebida", 15);
-        inventarios[++cInventarios]=new Inventario("refresco de naranaj", "bebida", 15);
+        inventarios[++cInventarios]=new Inventario("refresco de naranaja", "bebida", 15);
         inventarios[++cInventarios]=new Inventario("palitos de queso", "producto", 20);
         inventarios[++cInventarios]=new Inventario("salsa secreta", "extra", 10);
         inventarios[++cInventarios]=new Inventario("dip de BBQ", "extra", 15);
@@ -141,7 +143,6 @@ public class Pizzeria{
     }
 
     public void listarinventarios(String tipo) {
-        Cuadrado.imprimirCuadrado(50, 2 ,"----------inventarios----------");
         int contador=0;
         for (int i = 0; i <= cInventarios; i++) {
             if(inventarios[i].getExistencia()==true){
@@ -162,12 +163,13 @@ public class Pizzeria{
                 if(inventarios[i].getTipo().equals(tipo)||
                 ((inventarios[i].getTipo().toLowerCase().equals("carne")||inventarios[i].getTipo().toLowerCase().equals("no carne")||inventarios[i].getTipo().toLowerCase().equals("queso")||inventarios[i].getTipo().toLowerCase().equals("ingrediente"))
                 &&(tipo.toLowerCase().equals("ingrediente")))){
-                    Cuadrado.centrarEnXYPresicion(i + 1 + ".-"+inventarios[i].getNombre(),4,c+1);
+                    Cuadrado.centrarEnXYPresicion(i + 1 + ".-"+inventarios[i].getNombre(),1,c+1);
                     Cuadrado.centrarEnXYPresicion(inventarios[i].getStock()+"",30, c+1);
                     if(inventarios[i].getTipo().toLowerCase().equals("carne")||inventarios[i].getTipo().toLowerCase().equals("no carne")||inventarios[i].getTipo().toLowerCase().equals("queso")||inventarios[i].getTipo().toLowerCase().equals("ingrediente"))
                         Cuadrado.centrarEnXYPresicion("g",35, c+1);
                     Cuadrado.centrarEnXYPresicion("| ",36, c+1);
                         Cuadrado.centrarEnXYPresicion( (float)(inventarios[i].getPrecio())+"" , 37 , c+1);
+                    c++;
                 }
             }
             
@@ -470,6 +472,52 @@ public class Pizzeria{
     }
 
     //fin funciones pizza
+
+    //funciones orden
+    public void capturarOrden() {
+        Scanner datos = new Scanner(System.in);
+        int continuar =1;
+        Cuadrado.imprimirCuadrado(50, 4 ,"------------ORDEN------------");
+        Cuadrado.imprimirCuadrado(50, 4 ,"INGRESAR NOMBRE DEL CLIENTE");
+        String nombre = datos.nextLine();
+        ordenes[cOrdenes] = new Orden(nombre);
+        do {
+        ordenes[cOrdenes].mostrar();
+        Cuadrado.imprimirCuadrado(50, 3 ,"Selecciona Pizza o producto");
+        //Cuadrado.imprimirCuadrado(50, 4,"COMBOS");
+        Cuadrado.imprimirCuadradoDividido(50, 4,"1.-PRODUCTOS","2.-PIZZA");
+        int opcion = datos.nextInt();
+        if(opcion == 1){
+            Cuadrado.imprimirCuadrado(50, 2 ,"---------Productos---------");
+            listarinventarios("producto");
+            Cuadrado.imprimirCuadrado(50, 2 ,"----------Bebidas----------");
+            listarinventarios("bebida");
+            Cuadrado.imprimirCuadrado(50, 2 ,"-----------Extra-----------");
+            listarinventarios("extra");
+            int opcion2 = datos.nextInt();
+            ordenes[cOrdenes].capturarInventario(inventarios[opcion2-1]);
+        }else if(opcion == 2){
+            Cuadrado.imprimirCuadrado(50, 2 ,"---------Pizzas---------");
+            mostarPizzas();
+            int opcion3 = datos.nextInt();
+            ordenes[cOrdenes].capturarPizza(pizzas[opcion3-1]);
+        }
+        Cuadrado.imprimirCuadrado(50, 3 ,"AGREGAR ALGO MAS?");
+        Cuadrado.imprimirCuadradoDividido(50, 2,"1.-SI","2.-NO");
+        continuar = datos.nextInt();
+        } while (continuar == 1);
+        cOrdenes++;
+    }
+
+    public void listarOrden() {
+
+        
+    }
+    //fin funciones orden
+
+
+
+
 
     public String toString() {
         return nombre + " / " + correo;
