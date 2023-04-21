@@ -1,24 +1,22 @@
 import java.util.*;
 public class Detalle {
     private int cantidad;
-    private Pizza [] pizzas;
+    private Pizza pizzas;
+	private Inventario inventario;
     private double precioProd;
 	private  boolean vigente;
-	private int contadorP;
 
     public Detalle() {
 		vigente=true;
     }
 
-    public Detalle(int cantidad, Pizza[] pizzas, double precioProd) {
+    public Detalle(int cantidad, Pizza pizzas, double precioProd) {
         this.cantidad = cantidad;
         this.pizzas = pizzas;
         this.precioProd = precioProd;
-		this.contadorP= 0;
     }
 
     public void mostrar() {
-        System.out.println("\t---------------Detalles de Compra--------------");
 		System.out.println("\t\tPizza: " + pizzas);
         System.out.println("\t\tCantidad: " + cantidad);
         System.out.println("\t\tprecioProd: " + precioProd);
@@ -39,8 +37,7 @@ public class Detalle {
                     }
                     System.out.println("Seleccione la pizza");
                     int laPizza = leer.nextInt() - 1;
-                    this.pizzas[contadorP] = pizzas[laPizza];
-					contadorP++;
+                    this.pizzas = pizzas[laPizza];
                     break;
                 case 2:
                     System.out.println("cantidad:");
@@ -70,7 +67,7 @@ public class Detalle {
 						}
 						System.out.println("Selecione la pizza");
 						int laPizza= leer.nextInt() - 1;
-						this.pizzas[contadorP] = pizzas[laPizza];
+						this.pizzas = pizzas[laPizza];
 						precioProd=pizzas[laPizza].getPrecioProd();
 						break;
 					case 2:
@@ -103,7 +100,7 @@ public class Detalle {
         }
         System.out.println("Seleccione la pizza");
         int laPizza = dato.nextInt() - 1;
-        this.pizzas [laPizza] = pizzas[laPizza];
+        this.pizzas = pizzas[laPizza];
 		System.out.println("Cantidad: ");
         cantidad = dato.nextInt();
         System.out.println("precioProd: ");
@@ -133,12 +130,12 @@ public class Detalle {
 				cantidad = dato.nextInt();
 				if(laPizza>=cPizzas){
 					this.cantidad=0;
-					this.pizzas[laPizza]=pizzas[laPizza];
+					this.pizzas=pizzas[laPizza];
 					System.out.println("No tenemos esa cantidad en stock");
 					System.out.println("Desea comprar otra pizza   1.-Si   2.-No");
 					error=dato.nextInt();
 				}else{
-					this.pizzas[laPizza] = pizzas[laPizza];
+					this.pizzas = pizzas[laPizza];
 					precioProd = pizzas[laPizza].getPrecioProd();
 					error=2;
 				}
@@ -150,6 +147,13 @@ public class Detalle {
         return "Detalle{" + "cantidad:" + cantidad + ", pizza:" + pizzas + ", precioProd:" + precioProd + '}';
     }
 	
+	public void setInventario(Inventario inventario) {
+        this.inventario = inventario;
+    }
+
+    public double getInventario() {
+        return inventario;
+    }
 	public void eliminar(){
 		vigente=false;
 	}
@@ -169,14 +173,6 @@ public class Detalle {
     public void setCantidad(int cantidad) {
         this.cantidad = cantidad;
     }
-
-    /*public Pizza[] getPizzas() {
-        return pizzas;
-    }
-
-    public void setpizza(Pizza pizza) {
-        this.pizzas = pizzas;
-    }*/
 
     public double getPrecioProd() {
         return precioProd;
