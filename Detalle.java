@@ -170,7 +170,13 @@ public class Detalle {
         this.cantidad = cantidad;
     }
 
+    /*public Pizza[] getPizzas() {
+        return pizzas;
+    }
 
+    public void setpizza(Pizza pizza) {
+        this.pizzas = pizzas;
+    }*/
 
     public double getPrecioProd() {
         return precioProd;
