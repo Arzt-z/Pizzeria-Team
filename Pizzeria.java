@@ -66,7 +66,7 @@ public class Pizzeria{
     protected void inicializaEmpleados(){
         empleados[0]=new Empleado("Daniel Adrian Roque Cortes", "443 832 7292","algun lado","rfc","1234","admin");
         empleados[++cEmpleados]=new Empleado("Alexis Corzas Santiago", "443 363 1574","algun lado","rfc","1234","admin");
-        empleados[++cEmpleados]=new Empleado("Daniel Adrian Roque Cortes", "443 619 2989","algun lado","rfc","1234","cocinero");
+        empleados[++cEmpleados]=new Empleado("maki", "443 619 2989","algun lado","rfc","1234","cocinero");
     }
 
     protected void inicializarinventarios() {

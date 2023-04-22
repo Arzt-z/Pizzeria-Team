@@ -47,6 +47,7 @@ public class Empleado extends Persona{
                 usuario=usuario+nombre.charAt(++espacio);
             }
         }
+        if(check)usuario=nombre;
 		return usuario.toLowerCase();
 	}
 
