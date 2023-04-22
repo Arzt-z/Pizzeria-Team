@@ -154,8 +154,9 @@ public class Ap{
         String usuario = datos.next();
         if(usuario.equals("0"))return -1;
         Cuadrado.imprimirCuadrado(50, 4 ,"INTRODUCIR PASSWORD");
+        System.out.println("0.-salir");
         String password = datos.next();
-        
+        if(password == "0")return -1;
         for(int i=0;i<=pizerria.getCempleados();i++){
             if((empleados[i].getUsuario().equalsIgnoreCase(usuario.toLowerCase())) && (empleados[i].getPassword().equalsIgnoreCase(password.toLowerCase()))){
                 return i;
