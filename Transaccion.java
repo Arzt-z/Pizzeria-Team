@@ -1,5 +1,6 @@
 import java.util.Scanner;
 public abstract class Transaccion{
+    
     protected String fecha;
     protected String folio;
     protected boolean vigente;
@@ -33,11 +34,11 @@ public abstract class Transaccion{
         vigente = false;
         if (diferencia == 'c') {
             for (int i = 0; i < cDetalles; i++) {
-                detalles[i].getLibro().setStock(detalles[i].getLibro().getStock() - detalles[i].getCantidad());
+                detalles[i].getInventario().setStock(detalles[i].getInventario().getStock() - detalles[i].getCantidad());
             }
         } else {
             for (int i = 0; i < cDetalles; i++) {
-                detalles[i].getLibro().setStock(detalles[i].getLibro().getStock() + detalles[i].getCantidad());
+                detalles[i].getInventario().setStock(detalles[i].getInventario().getStock() + detalles[i].getCantidad());
             }
         }
     }
@@ -56,7 +57,7 @@ public abstract class Transaccion{
 			}
 			else if(detalles[nDetalle].isVigente()==true || nDetalle<cDetalles || nDetalle>=0){
 			detalles[nDetalle].eliminar();
-			detalles[nDetalle].getLibro().setStock(detalles[nDetalle].getLibro().getStock() - detalles[nDetalle].getCantidad());}
+			detalles[nDetalle].getInventario().setStock(detalles[nDetalle].getInventario().getStock() - detalles[nDetalle].getCantidad());}
 		 }
 		 else{
 			for (int i = 0; i < cDetalles; i++) {
@@ -70,11 +71,11 @@ public abstract class Transaccion{
 			}
 			else if(detalles[nDetalle].isVigente()==true ||nDetalle<cDetalles || nDetalle>=0){
 			detalles[nDetalle].eliminar();
-			detalles[nDetalle].getLibro().setStock(detalles[nDetalle].getLibro().getStock() - detalles[nDetalle].getCantidad());}
+			detalles[nDetalle].getInventario().setStock(detalles[nDetalle].getInventario().getStock() - detalles[nDetalle].getCantidad());}
 		 }
 	}
 	
-    public void capturar(Libro[] libros, int cLibros, char diferencia) {
+    public void capturar(Inventario[] inventarios, int cInventarios, char diferencia) {
         Scanner datos = new Scanner(System.in);
         int ciclo;
         if (diferencia == 'c') {
@@ -83,7 +84,7 @@ public abstract class Transaccion{
             System.out.println("Fecha: ");
             this.fecha = datos.nextLine();
             do {
-                capturarDetalle(libros, cLibros, diferencia);
+                capturarDetalle(inventarios, cInventarios, diferencia);
                 System.out.println("Desea Continuar?   1.-Si   2.-No");
                 String option = datos.next();
                 if (option.toLowerCase() == "si" || option == "1") {
@@ -100,7 +101,7 @@ public abstract class Transaccion{
             this.fecha = datos.nextLine();
 
             do {
-                capturarDetalle(libros, cLibros, diferencia);
+                capturarDetalle(inventarios, cInventarios, diferencia);
                 if (detalles[cDetalles - 1].getCantidad() == 0) {
                     ciclo = 0;
 
@@ -117,7 +118,7 @@ public abstract class Transaccion{
         }
     }
 
-    public void modificar(int cLibros, Libro[] libros, char diferencia) {
+    public void modificar(int cInventarios, Inventario[] inventarios, char diferencia) {
         Scanner leer = new Scanner(System.in);
         int opcion;
 
@@ -143,7 +144,7 @@ public abstract class Transaccion{
                             System.out.println(i + 1 + ".-" + detalles[i]);
                         }
                         int nDetalle = leer.nextInt();
-                        detalles[nDetalle - 1].modificar(cLibros, libros, diferencia);
+                        detalles[nDetalle - 1].modificar(cInventarios, inventarios, diferencia);
                         break;
                     case 0:
                         return;
@@ -172,7 +173,7 @@ public abstract class Transaccion{
                             System.out.println(i + 1 + ".-" + detalles[i]);
                         }
                         int nDetalle = leer.nextInt();
-                        detalles[nDetalle - 1].modificar(cLibros, libros, diferencia);
+                        detalles[nDetalle - 1].modificar(cInventarios, inventarios, diferencia);
                         break;
                     case 0:
                         return;
@@ -195,29 +196,29 @@ public abstract class Transaccion{
         return false;
     }
 
-    public void agregarDetalles(int cantidad, Libro libro, double costo, char diferencia) {
+    public void agregarDetalles(int cantidad, Inventario inventarios, double costo, char diferencia) {
         if (diferencia == 'c') {
-            detalles[cDetalles++] = new Detalle(cantidad, libro, costo);
-            int stockAnterio = libro.getStock();
+            detalles[cDetalles++] = new Detalle(cantidad, inventarios, costo);
+            int stockAnterio = inventarios.getStock();
             int stocknuevo = stockAnterio + cantidad;
-            libro.setStock(stocknuevo);
+            inventarios.setStock(stocknuevo);
         } else {
-            detalles[cDetalles++] = new Detalle(cantidad, libro, costo);
-            int stockAnterio = libro.getStock();
+            detalles[cDetalles++] = new Detalle(cantidad, inventarios, costo);
+            int stockAnterio = inventarios.getStock();
             int stocknuevo = stockAnterio - cantidad;
-            libro.setStock(stocknuevo);
+            inventarios.setStock(stocknuevo);
         }
     }
 
-    public void capturarDetalle(Libro[] libros, int cLibros, char diferencia) {
+    public void capturarDetalle(Inventario[] inventarios, int cInventarios, char diferencia) {
         if (diferencia == 'c') {
             detalles[cDetalles] = new Detalle();
-            detalles[cDetalles].capturar(cLibros, libros, diferencia);
+            detalles[cDetalles].capturar(cInventarios, inventarios, diferencia);
 
             cDetalles++;
         } else {
             detalles[cDetalles] = new Detalle();
-            detalles[cDetalles].capturar(cLibros, libros, diferencia);
+            detalles[cDetalles].capturar(cInventarios, inventarios, diferencia);
 
             cDetalles++;
         }
@@ -230,17 +231,17 @@ public abstract class Transaccion{
         for (int i = 0; i < cDetalles; i++) {
             if (detalles[i].getCantidad() == 0) {
 
-                totalf += detalles[i].getCosto() * detalles[i].getCantidad();
-                total += detalles[i].getCosto() * detalles[i].getCantidad();
+                totalf += detalles[i].getPrecioProd() * detalles[i].getCantidad();
+                total += detalles[i].getPrecioProd() * detalles[i].getCantidad();
 
                 total = 0;
 
             } else {
                 if(detalles[i].isVigente()==true){
 				detalles[i].mostrar();
-                totalf += detalles[i].getCosto() * detalles[i].getCantidad();
-                total += detalles[i].getCosto() * detalles[i].getCantidad();
-                System.out.println("\t\ttotal de libros= " + total);
+                totalf += detalles[i].getPrecioProd() * detalles[i].getCantidad();
+                total += detalles[i].getPrecioProd() * detalles[i].getCantidad();
+                System.out.println("\t\ttotal de inventarios= " + total);
                 total = 0;
 				}
 

@@ -10,6 +10,12 @@ public class Detalle {
 		vigente=true;
     }
 
+    public Detalle(int cantidad, Inventario inventario, double precioProd) {
+        this.cantidad = cantidad;
+        this.inventario = inventario;
+        this.precioProd = precioProd;
+    }
+
     public Detalle(int cantidad, Pizza pizzas, double precioProd) {
         this.cantidad = cantidad;
         this.pizzas = pizzas;
@@ -90,6 +96,62 @@ public class Detalle {
         return false;
     }	
 
+    //capturar de inventarios testear pendiente!!
+    public void capturar(int cInventarios, Inventario[] inventarios, char diferenciador) {
+		Scanner dato = new Scanner(System.in);
+        int error;
+	    if(diferenciador=='c'){
+		System.out.println("Detalles de Compra");
+        for (int i = 0; i < cInventarios; i++) {
+			System.out.println(i + 1 + ".-" + inventarios[i]);
+        }
+        System.out.println("Seleccione la pizza");
+        int elInventario = dato.nextInt() - 1;
+        this.inventario = inventarios[elInventario];
+		System.out.println("Cantidad: ");
+        cantidad = dato.nextInt();
+        System.out.println("precioProd: ");
+        precioProd = dato.nextFloat();
+		} else{  
+			do{
+				error=0;
+				System.out.println("Detalles de venta");
+				for (int i = 0; i < cInventarios; i++) {
+				   if(inventarios[i].getExistencia()==true){
+				   System.out.println(i + 1 + ".-" + inventarios[i]);}
+				}
+				int elInventario=0;
+				int fail=0;
+				do{
+					System.out.println("Selecione la pizza");
+					elInventario = dato.nextInt() - 1;
+					fail=0;
+					if(elInventario>=0 && inventarios[elInventario].getExistencia()==true){
+						fail++;
+					}else{
+						System.out.println("Esa pizza no esta disponible");
+						fail=0;
+					}
+				}while(fail==0);
+				System.out.println("Cantidad: ");
+				cantidad = dato.nextInt();
+				if(elInventario>=cInventarios){
+					this.cantidad=0;
+					this.inventario=inventarios[elInventario];
+					System.out.println("No tenemos esa cantidad en stock");
+					System.out.println("Desea comprar otra pizza   1.-Si   2.-No");
+					error=dato.nextInt();
+				}else{
+					this.inventario = inventarios[elInventario];
+					precioProd = inventarios[elInventario].getPrecio();
+					error=2;
+				}
+			}while(error == 1);
+	   }
+    }
+    //fin capturar inventarios
+
+    //capturar de pizzas
     public void capturar(int cPizzas, Pizza [] pizzas, char diferenciador) {
 		Scanner dato = new Scanner(System.in);
         int error;
@@ -142,6 +204,11 @@ public class Detalle {
 			}while(error == 1);
 	   }
     }
+    //fin capturar pizzas
+
+    public void modificar(int cInventarios, Inventario[] inventarios, char diferencia){
+		//pendiente
+	}
 
     public String toString() {
         return "Detalle{" + "cantidad:" + cantidad + ", pizza:" + pizzas + ", precioProd:" + precioProd + '}';
@@ -151,7 +218,7 @@ public class Detalle {
         this.inventario = inventario;
     }
 
-    public double getInventario() {
+    public Inventario getInventario() {
         return inventario;
     }
 	public void eliminar(){

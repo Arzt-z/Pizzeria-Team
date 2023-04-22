@@ -5,16 +5,25 @@ public class Empleado extends Persona{
 	private double sueldo;
 	private int horasDeTrabajo;
 	private int diasTrabajados;
-	
+    private String usuario;
+	private String password;
+    private String tipo;
+
 	public Empleado(){
 		horasDeTrabajo=8;
 		diasTrabajados=7;
 		sueldo=250.33/horasDeTrabajo;
 	}
 	
-	public Empleado(String nombre, String telefono, String direccion, String rfc){
+	public Empleado(String nombre, String telefono, String direccion, String rfc ,String password, String tipo){
 		super(telefono, direccion, rfc);
 		this.nombre= nombre;
+        this.usuario=generarUsuario(nombre);
+		this.password= password;
+		this.tipo= tipo;
+        horasDeTrabajo=8;
+		diasTrabajados=7;
+		sueldo=250.33/horasDeTrabajo;
 	}
 	
 	public String toString(){
@@ -26,7 +35,22 @@ public class Empleado extends Persona{
 	}
 	
 	//alguien haga el mostrar o nose
-	
+    public String generarUsuario(String nombre){
+        String usuario="";
+        int espacio = 0;
+        boolean check=true;
+        while ((espacio = nombre.indexOf(' ',espacio)) != -1) {
+            if(check){
+                usuario=usuario + nombre.substring(0, espacio)+nombre.charAt(++espacio);
+                check=false;
+            }else{
+                usuario=usuario+nombre.charAt(++espacio);
+            }
+        }
+		return usuario.toLowerCase();
+	}
+
+
 	public void capturar(){
 		char diferenciador='e';
 		System.out.print("nombre  :"); nombre=leer.nextLine();
@@ -101,6 +125,30 @@ public class Empleado extends Persona{
 
     public void setDiasTrabajados(int diasTrabajados) {
         this.diasTrabajados = diasTrabajados;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public String getTipo() {
+        return tipo;
+    }
+
+    public void setTipo(String tipo) {
+        this.tipo = tipo;
+    }
+
+    public String getUsuario() {
+        return usuario;
+    }
+
+    public void setUsuario(String usuario) {
+        this.usuario = usuario;
     }
 
 }

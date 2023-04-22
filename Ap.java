@@ -1,9 +1,17 @@
 import java.util.Scanner;
 public class Ap{
 	public static void main (String[] args){
+        
 		Pizzeria pizzafactory = new Pizzeria("Pizza Factory", "Av. Lic. Enrique Ramírez Miguel, Las Américas", "PizzaFactory@Pizza.com", 7002200 , "445697234");
 		pizzafactory.mostrar();
+        Empleado[] empleados = pizzafactory.getEmpleados();
+        int user = login(empleados,pizzafactory);
+        if(user==-1){return;}
 		do {
+            Cuadrado.matriz=Cuadrado.cuadrado(50, 6 );
+            Cuadrado.centrarEnXY("Bienvenido "+ (empleados[user]).getNombre(),0,0);
+            Cuadrado.centrarEnXY((empleados[user]).getTipo(),0,1);
+            Cuadrado.imprimirCuadrado();
             switch (menu()) {
                 case 11:
                     pizzafactory.listarPizza();
@@ -73,5 +81,32 @@ public class Ap{
         seleccion = seleccion * 10 + datos.nextInt();
 		return seleccion;
     }
+
+    public static int login(Empleado[] empleados,Pizzeria pizerria) {
+        Scanner datos = new Scanner(System.in);
+        int opcion = 1;
+        do{
+        Cuadrado.imprimirCuadrado(50, 4 ,"------------LOGIN------------");
+        Cuadrado.imprimirCuadrado(50, 4 ,"INTRODUCIR USUARIO");
+        System.out.println("para salir introducir: 0");
+        String usuario = datos.next();
+        if(usuario.equals("0"))return -1;
+        Cuadrado.imprimirCuadrado(50, 4 ,"INTRODUCIR PASSWORD");
+        String password = datos.next();
+        
+        for(int i=0;i<pizerria.getCempleados();i++){
+            if((empleados[i].getUsuario().equalsIgnoreCase(usuario.toLowerCase())) && (empleados[i].getPassword().equalsIgnoreCase(password.toLowerCase()))){
+                return i;
+            }
+        }
+        Cuadrado.imprimirCuadrado(50, 4 ,"!!!!!!!!!!!!!!!!");
+        Cuadrado.imprimirCuadrado(50, 4 ,"usuario o contrasena incorrectos!!");
+        //Cuadrado.imprimirCuadrado(50, 3 ,"intentarlo otra vez?");
+        //Cuadrado.imprimirCuadradoDividido(50, 2,"1.-SI","2.-NO");
+        //opcion = datos.nextInt();
+        }while(opcion==1);
+        return -1;
+    }
+
 	 
 }

@@ -7,6 +7,8 @@ public class Pizzeria{
     private String horario;
     private String telefono;
     private String rfc;
+    private Empleado[] empleados = new Empleado[500];
+    private int cEmpleados;
     private Inventario[] inventarios = new Inventario[500];
     private int cInventarios;
     private Pizza[] pizzas = new Pizza[500];
@@ -29,6 +31,7 @@ public class Pizzeria{
         this.telefono = telefono;
         inicializarinventarios();
         inicializarPizzas();
+        inicializaEmpleados();
     }
 
     public void mostrar(){
@@ -60,6 +63,12 @@ public class Pizzeria{
 		
 	}
 	
+    protected void inicializaEmpleados(){
+        empleados[0]=new Empleado("Daniel Adrian Roque Cortes", "443 832 7292","algun lado","rfc","1234","admin");
+        empleados[++cEmpleados]=new Empleado("Alexis Corzas Santiago", "443 363 1574","algun lado","rfc","1234","admin");
+        empleados[++cEmpleados]=new Empleado("Daniel Adrian Roque Cortes", "443 619 2989","algun lado","rfc","1234","cocinero");
+    }
+
     protected void inicializarinventarios() {
         //
         inventarios[0]=new Inventario("Queso mozzarella","Queso", 0.3);
@@ -444,7 +453,7 @@ public class Pizzeria{
                 Cuadrado.imprimirCuadrado(50, 3 ,"SELECCIONAR UN INGREDIENTE ");
                 listarinventarios("ingrediente") ;
                 if(divisionDP>=2)Cuadrado.imprimirCuadrado(50, 2 ,"Parte "+ (i+1));
-                int opcion = datos.nextInt();
+                    int opcion = datos.nextInt();
                 pizzas[seleccion].capturarIngrediente(inventarios[opcion-1] , i);
                 Cuadrado.imprimirCuadrado(50, 3 ,"AGREGAR OTRO INGREDIENTE?");
                 Cuadrado.imprimirCuadradoDividido(50, 2,"1.-SI","2.-NO");
@@ -569,6 +578,14 @@ public class Pizzeria{
 
     public String getrfc() {
         return rfc;
+    }
+
+    public Empleado[] getEmpleados() {
+        return empleados;
+    }
+
+    public int getCempleados() {
+        return cEmpleados;
     }
     //fin funciones basicas set get to string.
 }
