@@ -94,18 +94,21 @@ public class Ap{
         Cuadrado.imprimirCuadrado(50, 4 ,"INTRODUCIR PASSWORD");
         String password = datos.next();
         
-        for(int i=0;i<pizerria.getCempleados();i++){
+        for(int i=0;i<=pizerria.getCempleados();i++){
             if((empleados[i].getUsuario().equalsIgnoreCase(usuario.toLowerCase())) && (empleados[i].getPassword().equalsIgnoreCase(password.toLowerCase()))){
                 return i;
             }
         }
         Cuadrado.imprimirCuadrado(50, 4 ,"!!!!!!!!!!!!!!!!");
         Cuadrado.imprimirCuadrado(50, 4 ,"usuario o contrasena incorrectos!!");
+        Cuadrado.imprimirCuadrado(50, 4 ,"desea crear un nuevo usuario?");
+        Cuadrado.imprimirCuadradoDividido(50, 2,"1.-Nuevo Empleado","2.-Re intentar");
+        opcion = datos.nextInt();
+        if(opcion==1)pizerria.capturarEmpleado();
         //Cuadrado.imprimirCuadrado(50, 3 ,"intentarlo otra vez?");
         //Cuadrado.imprimirCuadradoDividido(50, 2,"1.-SI","2.-NO");
         //opcion = datos.nextInt();
-        }while(opcion==1);
-        return -1;
+        }while(true);
     }
 
 	 

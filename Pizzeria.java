@@ -524,7 +524,18 @@ public class Pizzeria{
     }
     //fin funciones orden
 
-
+    public void capturarEmpleado() {
+        Scanner datos = new Scanner(System.in);
+        Cuadrado.imprimirCuadrado(50, 4 ,"------------REGISTRO------------");
+        Cuadrado.imprimirCuadrado(50, 4 ,"INTRODUCIR NOMBRE COMPLETO");
+        String nombre = datos.nextLine();
+        Cuadrado.imprimirCuadrado(50, 4 ,"INTRODUCIR PASSWORD");
+        String password = datos.next();
+        Cuadrado.imprimirCuadrado(50, 4 ,"INTRODUCIR PUESTO");
+        String puesto = datos.next();
+        empleados[++cEmpleados]=new Empleado(nombre, "443 619 2989","algun lado","rfc",password,puesto);
+        Cuadrado.imprimirCuadrado(50, 4 ,"TU USUARIO ES: "+empleados[cEmpleados].getUsuario());
+    }
 
 
 
