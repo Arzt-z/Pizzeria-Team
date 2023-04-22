@@ -32,7 +32,7 @@ public class Pizzeria{
         inicializarinventarios();
         inicializarPizzas();
 
-		inicializaExtras();
+		
 
         inicializaEmpleados();
 
@@ -55,17 +55,6 @@ public class Pizzeria{
         
     }
 	
-	protected void inicializaExtras(){
-        extras[0]=new ExtrasOProductos("orden de papas", "producto", 20);
-        extras[++cExtras]=new ExtrasOProductos("orden de bonneless", "producto", 50);
-        extras[++cExtras]=new ExtrasOProductos("refresco de cola", "bebida", 15);
-        extras[++cExtras]=new ExtrasOProductos("refresco de manzana", "bebida", 15);
-        extras[++cExtras]=new ExtrasOProductos("refresco de naranaj", "bebida", 15);
-        extras[++cExtras]=new ExtrasOProductos("palitos de queso", "producto", 20);
-        extras[++cExtras]=new ExtrasOProductos("salsa secreta de la casa", "extra", 10);
-        extras[++cExtras]=new ExtrasOProductos("dip de BBQ", "extra", 15);
-		
-	}
 	
     protected void inicializaEmpleados(){
         empleados[0]=new Empleado("Daniel Adrian Roque Cortes", "443 832 7292","algun lado","rfc","1234","cajero");
