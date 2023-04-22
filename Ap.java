@@ -5,7 +5,11 @@ public class Ap{
 		Pizzeria pizzafactory = new Pizzeria("Pizza Factory", "Av. Lic. Enrique Ramírez Miguel, Las Américas", "PizzaFactory@Pizza.com", 7002200 , "445697234");
 		pizzafactory.mostrar();
         Empleado[] empleados = pizzafactory.getEmpleados();
-        int user = login(empleados,pizzafactory);
+        
+		
+		do{
+		int user = login(empleados,pizzafactory);
+		int salir=0;
         if(user==-1){return;}
 		
 		if(empleados[user].getTipo().equalsIgnoreCase("admin")){
@@ -63,12 +67,13 @@ public class Ap{
                     break;
 
                 case 0:
-                    return;
+				    salir=1;
+                    break;
             }
-        } while (true);
+        } while (salir==0);
 		
 		}else if(empleados[user].getTipo().equalsIgnoreCase("cajero")){
-			do{
+		do{
 			Cuadrado.matriz=Cuadrado.cuadrado(50, 6 );
             Cuadrado.centrarEnXY("Bienvenido "+ (empleados[user]).getNombre(),0,0);
             Cuadrado.centrarEnXY((empleados[user]).getTipo(),0,1);
@@ -105,11 +110,13 @@ public class Ap{
                     pizzafactory.buscarInventarios();
                     break;
                 case 0:
-                    return;
+				  salir=1;
+                    break;
             }
-        } while (true);
+        } while (salir==0);
 		}
-	}
+		}while(true);
+	}              
 
     public static int menu() {
         Scanner datos = new Scanner(System.in);
