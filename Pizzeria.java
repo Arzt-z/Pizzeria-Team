@@ -29,6 +29,7 @@ public class Pizzeria{
         this.telefono = telefono;
         inicializarinventarios();
         inicializarPizzas();
+		inicializaExtras();
     }
 
     public void mostrar(){

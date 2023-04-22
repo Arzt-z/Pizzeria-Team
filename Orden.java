@@ -1,7 +1,8 @@
 public class Orden {
-    private Inventario[] inventarios = new Inventario[50];
+    
+    private Pizza[] pizzas= new Pizza[50];
+	private Inventario[] inventarios = new Inventario[50];
     private int cInventarios = 0;
-    private Pizza[] pizzas = new Pizza[50];
     private int cPizzas = 0;
     String nombre;
 
