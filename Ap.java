@@ -68,6 +68,7 @@ public class Ap{
         } while (true);
 		
 		}else if(empleados[user].getTipo().equalsIgnoreCase("cajero")){
+			do{
 			Cuadrado.matriz=Cuadrado.cuadrado(50, 6 );
             Cuadrado.centrarEnXY("Bienvenido "+ (empleados[user]).getNombre(),0,0);
             Cuadrado.centrarEnXY((empleados[user]).getTipo(),0,1);
@@ -108,7 +109,7 @@ public class Ap{
             }
         } while (true);
 		}
-   
+	}
 
     public static int menu() {
         Scanner datos = new Scanner(System.in);
