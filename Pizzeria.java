@@ -672,7 +672,7 @@ public class Pizzeria {
             opcion = sc.nextInt();
         } while (opcion == 1);
     }
-    
+
     // Fin funciones proveedor
     
     public String toString() {
