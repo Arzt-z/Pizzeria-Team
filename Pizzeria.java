@@ -7,20 +7,22 @@ public class Pizzeria{
     private String horario;
     private String telefono;
     private String rfc;
-    private Empleado[] empleados = new Empleado[500];
-    private int cEmpleados;
+    private Persona[] personas=new Persona[500];
+    private int cPersonas;
     private Inventario[] inventarios = new Inventario[500];
     private int cInventarios;
     private Pizza[] pizzas = new Pizza[500];
-    private int cPizzas=0;
+    private int cPizzas;
     private Orden[] ordenes = new Orden[500];
-    private int cOrdenes=0;
-	private ExtrasOProductos[] extras=new ExtrasOProductos[500];
-	private int cExtras=0;
+    private int cOrdenes;
+	private int cExtras;
+	
     
 	
 	public Pizzeria() {
-
+     cOrdenes=0;
+	 cExtras=0;
+	 cPizzas=0;
     }
 
     public Pizzeria(String nombre, String domicilio, String correo, int horario, String telefono) {
@@ -34,7 +36,7 @@ public class Pizzeria{
 
 		
 
-        inicializaEmpleados();
+        inicializaPersonas();
 
     }
 
@@ -56,10 +58,13 @@ public class Pizzeria{
     }
 	
 	
-    protected void inicializaEmpleados(){
-        empleados[0]=new Empleado("Daniel Adrian Roque Cortes", "443 832 7292","algun lado","rfc","1234","cajero");
-        empleados[++cEmpleados]=new Empleado("Alexis Corzas Santiago", "443 363 1574","algun lado","rfc","1234","admin");
-        empleados[++cEmpleados]=new Empleado("maki", "443 619 2989","algun lado","rfc","1234","admin");
+    protected void inicializaPersonas(){
+        personas[0]=new Empleado("Daniel Adrian Roque Cortes", "443 832 7292","algun lado","rfc","1234","cajero");
+        personas[++cPersonas]=new Empleado("Alexis Corzas Santiago", "443 363 1574","algun lado","rfc","1234","admin");
+        personas[++cPersonas]=new Empleado("maki", "443 619 2989","algun lado","rfc","1234","admin");
+		
+		personas[++cPersonas]=new Proveedores("Verduras Taguada SA de CV", "554 234 2345", "algun lado", "rfc");
+		personas[++cPersonas]=new Proveedores("Grupo Alsea SA de CV", "443 312 0093", "Guillermo Prieto 30, Centro histórico de Morelia, 58000 Morelia, Mich.", "ALS211312FPE");
     }
 
     protected void inicializarinventarios() {
@@ -526,9 +531,19 @@ public class Pizzeria{
         String password = datos.next();
         Cuadrado.imprimirCuadrado(50, 4 ,"INTRODUCIR PUESTO");
         String puesto = datos.next();
-        empleados[++cEmpleados]=new Empleado(nombre, "443 619 2989","algun lado","rfc",password,puesto);
-        Cuadrado.imprimirCuadrado(50, 4 ,"TU USUARIO ES: "+empleados[cEmpleados].getUsuario());
+		Cuadrado.imprimirCuadrado(50, 4 ,"INTRODUCIR NUMERO");
+        String numero= datos.nextLine();
+		Cuadrado.imprimirCuadrado(50, 4 ,"INTRODUCIR DIRECCION");
+        String direccion = datos.nextLine();
+		Cuadrado.imprimirCuadrado(50, 4 ,"INTRODUCIR RFC");
+        String rfc = datos.next();
+        personas[++cPersonas]=new Empleado(nombre, numero,direccion,rfc,password,puesto);
+        Cuadrado.imprimirCuadrado(50, 4 ,"TU USUARIO ES: "+((Empleado)personas[cPersonas]).getUsuario());
     }
+	
+	//inicio funciones proveedor
+	
+	
 
 
 
@@ -585,11 +600,27 @@ public class Pizzeria{
     }
 
     public Empleado[] getEmpleados() {
-        return empleados;
+       Empleado[] empleado = new Empleado[50]; 
+	   int contador=0;
+		for(int i=0;i<cPersonas;i++){
+			if(personas[i].isVigente()==true && personas[i].quienSoy().equals("Empleado")){
+			   empleado[contador]=((Empleado)personas[i]);
+			   contador++;
+			}
+		}
+		
+		return empleado;
     }
 
     public int getCempleados() {
-        return cEmpleados;
+        int contador=0;
+		for(int i=0;i<cPersonas;i++){
+			if(personas[i].isVigente()==true && personas[i].quienSoy().equals("Empleado")){
+			 contador++;
+			}
+		}
+		return contador;
+		
     }
     //fin funciones basicas set get to string.
 }
