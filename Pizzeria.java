@@ -10,7 +10,7 @@ public class Pizzeria{
     private Empleado[] empleados = new Empleado[500];
     private int cEmpleados;
     private Inventario[] inventarios = new Inventario[500];
-    private int cInventarios;
+    private int cInsventarios;
     private Pizza[] pizzas = new Pizza[500];
     private int cPizzas=0;
     private Orden[] ordenes = new Orden[500];
