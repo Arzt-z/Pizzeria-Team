@@ -95,7 +95,7 @@ public class Ap{
                     pizzafactory.buscarPizza();
                     break;
                 case 21:
-                    pizzafactory.inspeccionarInventario();
+                    //pizzafactory.inspeccionarInventario();
                     break;
                 case 22:
                     pizzafactory.capturarOrden();

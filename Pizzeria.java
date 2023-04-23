@@ -86,7 +86,7 @@ public class Pizzeria{
         inventarios[++cInventarios]=new Inventario("refresco de manzana", "bebida", 15);
         inventarios[++cInventarios]=new Inventario("refresco de naranaja", "bebida", 15);
         inventarios[++cInventarios]=new Inventario("palitos de queso", "producto", 20);
-        inventarios[++cInventarios]=new Inventario("salsa secreta", "extra", 10);
+        inventarios[++cInventarios]=new Inventario("salsa ssecreta", "extra", 10);
         inventarios[++cInventarios]=new Inventario("dip de BBQ", "extra", 15);
     }
 
