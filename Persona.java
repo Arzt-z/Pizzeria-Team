@@ -4,7 +4,7 @@ public abstract class Persona{
 	protected String telefono;
 	protected String direccion;
 	protected String rfc;
-	protected boolean vigente;
+	protected boolean vigente=true;
 	
 	public Persona(){
 		vigente=true;
