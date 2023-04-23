@@ -641,7 +641,7 @@ public class Pizzeria {
             opcion=0;
             System.out.println("Que proveedor va eliminar?");
             int num= sc.nextInt()-1;
-            if(num>=cPersonas || personas[num].isVigente()==false || !personas[num],quienSoy().equals("Proveedor")){
+            if(num>=cPersonas || personas[num].isVigente()==false || !personas[num].quienSoy().equals("Proveedor")){
                 System.out.println("Ese proveedor no existe");
             }else{
                 personas[num].eliminar();
