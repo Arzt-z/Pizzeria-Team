@@ -25,7 +25,7 @@ public class Compra extends Transaccion {
         return "compra";
     }
 
-    public void modificar(int cProveedores, Proveedo0res[] misProveedores, int cInventarios, Inventario[] inventarios){
+    public void modificar(int cProveedores, Proveedores[] misProveedores, int cInventarios, Inventario[] inventarios){
         Scanner leer= new Scanner(System.in);
         int opcion;
         char diferencia='c';
@@ -55,7 +55,7 @@ public class Compra extends Transaccion {
         Scanner leer= new Scanner(System.in);
         char diferencia= 'c';
         System.out.println("Deseas eliminar un detalle o una venta entera?   1.-Detalle   2.-Venta");
-        int eleccion= leer.nexxtInt();
+        int eleccion= leer.nextInt();
         if(eleccion==1){
             super.eliminarDetalle(diferencia);
         }
@@ -64,20 +64,31 @@ public class Compra extends Transaccion {
         }
     }
 
-    public void capturar(Proveedores[] misProveedores, int cProveedores, Inventario[] inventarios){
+    public void capturar(Proveedores[] misProveedores, int cProveedores, Inventario[] inventarios, int cInventarios){
         Scanner datos = new Scanner(System.in);
         int opcion;
         char diferencia= 'c';
-        int ciclo=1;
         System.out.println("Ingresa los datos de la nueva compra");
+        super.capturar(inventarios, cInventarios, diferencia);
+        for(int i=0; i<cProveedores; i++){
+            System.out.println(i+1+".-"+misProveedores[i]);
+        }
+        System.out.println("Selecciona un proveedor");
+        opcion= datos.nextInt();
+        proveedor= misProveedores[opcion-1];
     }
 
-
-
-
-
-
-
+    public boolean buscar(String cadenaAbuscar){
+        if(super.buscar(cadenaAbuscar)==true){
+            return true;
+        }
+        String datos=" "+ proveedor;
+        if(datos.contains(cadenaAbuscar)==true){
+            return true;
+        }else{
+            return false;
+        }
+    }
 
     public void agregarDetalles(int cantidad, Inventario inventarios , double precioProd){
         char diferencia='c';
@@ -87,5 +98,17 @@ public class Compra extends Transaccion {
     public void capturarDetalle(Inventario[] inventarios, int cInventarios){
         char diferencia='c';
         super.capturarDetalle(inventarios, cInventarios, diferencia);
+    }
+    
+    public void getDetalles(){
+        super.getDetalles();
+    }
+
+    public Proveedores getProveedor(){
+        return proveedor;
+    }
+
+    public void setProveedor(Proveedores proveedor){
+        this.proveedor= proveedor;
     }
 }
