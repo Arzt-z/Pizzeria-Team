@@ -157,7 +157,7 @@ public class Ap{
         do{
         Cuadrado.imprimirCuadrado(50, 4 ,"------------LOGIN------------");
         Cuadrado.imprimirCuadrado(50, 4 ,"INTRODUCIR USUARIO");
-        System.out.println("para salir introducir: 0");
+        System.out.println("0.-Cerrar programa");
         String usuario = datos.next();
         if(usuario.equals("0"))return -1;
         Cuadrado.imprimirCuadrado(50, 4 ,"INTRODUCIR PASSWORD");
