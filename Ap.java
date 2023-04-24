@@ -65,7 +65,21 @@ public class Ap{
                 case 35:
                     pizzafactory.buscarInventarios();
                     break;
-
+                case 51:
+                    pizzafactory.listarProveedores();
+                    break;
+                case 52:
+                    pizzafactory.capturarProveedores();
+                    break;
+                case 53:
+                    pizzafactory.eliminarProveedores();
+                    break;
+                case 54:
+                    pizzafactory.modificarProveedores();
+                    break;
+                case 55:
+                    pizzafactory.buscarProveedores();
+                    break;
                 case 0:
 				    salir=1;
                     break;
