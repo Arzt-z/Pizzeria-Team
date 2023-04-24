@@ -18,11 +18,9 @@ public class Pizzeria {
     private Transaccion[] transaccion = new Transaccion[500];
     private int cTransaccion;
     private int cOrdenes;
-    private int cExtras;
 
     public Pizzeria() {
         cOrdenes = 0;
-        cExtras = 0;
         cPizzas = 0;
     }
 
