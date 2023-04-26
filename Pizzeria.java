@@ -47,7 +47,7 @@ public class Pizzeria {
 
         // para multiples palabras en un mismo cuadrito
         // asignar el tamano que sera la matriz, luego usar centrarEnXY
-        // pasarle esa matriz , la palabra y la posicion X,Y, 0,0 es el centro
+        // pasarle la palabra y la posicion X,Y, (0,0 es el centro)
         Cuadrado.matriz = Cuadrado.cuadrado(50, 6);
         Cuadrado.centrarEnXY(domicilio, 0, -1);
         Cuadrado.centrarEnXY("Correo: " + correo, 0, 0);
@@ -153,6 +153,8 @@ public class Pizzeria {
             }
         }
         Cuadrado.imprimirCuadrado();
+        //generarARCHIVO
+        generarArchivoInventario();
     }
 
     public void listarinventarios(String tipo) {
@@ -197,6 +199,7 @@ public class Pizzeria {
 
         }
         Cuadrado.imprimirCuadrado();
+        
     }
 
     public void inspeccionarInventario() {
@@ -604,7 +607,7 @@ public class Pizzeria {
         int opcion = 0;
         char diferenciador = 'p';
         do {
-            personas[cPersonas] = new Proveedor();
+            personas[cPersonas] = new Proveedores();
             personas[cPersonas].capturar(diferenciador);
             cPersonas++;
             System.out.println("Quiere agregar otro proveedor?   1.-Si   2.-No");
@@ -673,7 +676,18 @@ public class Pizzeria {
     }
 
     // Fin funciones proveedor
-    
+
+    //generar archivo inventario 
+    public void generarArchivoInventario(){
+        String[] matrix = new String[cInventarios];
+        for (int i = 0; i < cInventarios; i++) {
+            matrix[i]=inventarios[i].getNombre() + " "+inventarios[i].getTipo()+" "+inventarios[i].getPrecio()+" "+inventarios[i].getStock();
+        }
+        Cuadrado.generarArchivo(matrix , 0, "Inventario.txt");
+    }
+    ///
+
+
     public String toString() {
         return nombre + " / " + correo;
     }

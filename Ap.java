@@ -163,13 +163,8 @@ public class Ap{
         Cuadrado.imprimirCuadrado(50, 4 ,"INTRODUCIR PASSWORD");
         System.out.println("0.-salir");
         String password = datos.next();
-<<<<<<< HEAD
         if(password == "0")return -1;
-        for(int i=0;i<=pizerria.getCempleados();i++){
-=======
-        
         for(int i=0;i<pizerria.getCempleados();i++){
->>>>>>> 7b1487fc144caf5460e03f806c42a0c4de3e362f
             if((empleados[i].getUsuario().equalsIgnoreCase(usuario.toLowerCase())) && (empleados[i].getPassword().equalsIgnoreCase(password.toLowerCase()))){
                 return i;
             }
