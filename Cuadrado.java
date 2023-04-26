@@ -91,7 +91,6 @@ public class Cuadrado {
             String l;
             while (i < matrix.length && matrix[i] != null) {
                 l=matrix[i];
-                System.out.println(l);
                 outputStream.println(l);
                 i++;
             }
