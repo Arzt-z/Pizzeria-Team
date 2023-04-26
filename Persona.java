@@ -65,43 +65,33 @@ public abstract class Persona {
 
     protected void modificar() {
         System.out.println("Que deseas modificar?");
-        int ciclo = 1;
-        do {
-            System.out.println("1.-Telefono 2.-direccion 3-RFC 0.-Cancelar");
-            int atributo = leer.nextInt();
-            switch (atributo) {
+        System.out.println("1.-Telefono 2.-direccion 3-RFC 0.-Cancelar");
+        int atributo = leer.nextInt();
+        switch (atributo) {
 
-                case 1:
-                    System.out.println("Ingrese nuevo telefono");
-                    String telefono = leer.next();
-                    setTelefono(telefono);
-                    break;
-                case 2:
-                    System.out.println("Ingrese nuevo direccion");
-                    String direccion = leer.next();
-                    setDireccion(direccion);
-                    break;
-                case 3:
-                    System.out.println("Ingrese nuevo rfc");
-                    String rfc = leer.next();
-                    setRfc(rfc);
-                    break;
-                case 0:
-                    return;
-            }
-            System.out.println("Deseas seguir?   1.-Si   2.-No");
-            String option = leer.next();
-            if (option.equalsIgnoreCase("si") || option.equals("1")) {
-                ciclo = 1;
-            } else {
-                ciclo = 0;
-            }
-        } while (ciclo == 1);
+            case 1:
+                System.out.println("Ingrese nuevo telefono");
+                String telefono = leer.next();
+                setTelefono(telefono);
+                break;
+            case 2:
+                System.out.println("Ingrese nuevo direccion");
+                String direccion = leer.next();
+                setDireccion(direccion);
+                break;
+            case 3:
+                System.out.println("Ingrese nuevo rfc");
+                String rfc = leer.next();
+                setRfc(rfc);
+                break;
+            case 0:
+                return;
+        }
 
     }
 
-    public boolean buscar(String cadenaAbuscar){
-        String misDatos=telefono+direccion+rfc ;
+    public boolean buscar(String cadenaAbuscar) {
+        String misDatos = telefono + direccion + rfc;
         return misDatos.contains(cadenaAbuscar);
     }
 

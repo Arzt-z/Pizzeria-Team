@@ -14,7 +14,7 @@ public class Proveedores extends Persona {
 	}
 
 	public String toString() {
-		return "razonSocial " + razonSocial;
+		return razonSocial;
 	}
 
 	public void mostrar() {

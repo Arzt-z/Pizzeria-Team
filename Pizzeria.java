@@ -1,4 +1,5 @@
 
+import java.rmi.StubNotFoundException;
 import java.util.*;
 
 public class Pizzeria {
@@ -19,14 +20,14 @@ public class Pizzeria {
     private Transaccion[] transaccion = new Transaccion[500];
     private int cTransaccion;
 
-
-
     public Pizzeria() {
         cOrdenes = 0;
         cPizzas = 0;
     }
 
     public Pizzeria(String nombre, String domicilio, String correo, int horario, String telefono) {
+        cOrdenes = 0;
+        cPizzas = 0;
         this.nombre = nombre;
         this.domicilio = domicilio;
         this.correo = correo;
@@ -595,7 +596,7 @@ public class Pizzeria {
 
     public void mostrarProveedores() {
         System.out.println("          P R O V E E D O R E S          ");
-        for (int i = 0; i < cPersonas; i++) {
+        for (int i = 0; i <= cPersonas; i++) {
             if (personas[i].isVigente() == true && personas[i].quienSoy().equals("Proveedor")) {
                 System.out.println(i + 1 + ".-" + personas[i]);
             }
@@ -623,15 +624,13 @@ public class Pizzeria {
             mostrarProveedores();
             System.out.println("Que proveedor va modificar?");
             int mod = leer.nextInt() - 1;
-            if (!personas[mod].quienSoy().equals("Proveedor") || mod >= cPersonas
+            if (!personas[mod].quienSoy().equals("Proveedor") || mod > cPersonas
                     || personas[mod].isVigente() == false) {
                 System.out.println("Ese proveedor no existe");
                 System.out.println("vuelva a intentarlo");
                 error = 1;
-            }
-            if (mod <= cPersonas && personas[mod - 1].isVigente() == true
-                    && personas[mod - 1].quienSoy().equals("Proveedor")) {
-                personas[mod - 1].modificar();
+            }else{
+                personas[mod].modificar();
             }
         } while (error == 1);
     }
@@ -641,12 +640,17 @@ public class Pizzeria {
         int opcion=0;
         do{
             opcion=0;
+            mostrarProveedores();
             System.out.println("Que proveedor va eliminar?");
             int num= sc.nextInt()-1;
-            if(num>=cPersonas || personas[num].isVigente()==false || !personas[num].quienSoy().equals("Proveedor")){
-                System.out.println("Ese proveedor no existe");
+            if(num<0){
+                System.out.println("Ese proveedore no existe");
             }else{
-                personas[num].eliminar();
+                if(num>cPersonas || personas[num].isVigente()==false || !personas[num].quienSoy().equals("Proveedor")){
+                    System.out.println("Ese proveedor no existe");
+                }else{
+                    personas[num].eliminar();
+                }
             }
             System.out.println("Quiere seguir eliminando?   1.-Si   2.-No");
             opcion=sc.nextInt();
@@ -657,18 +661,20 @@ public class Pizzeria {
         Scanner sc = new Scanner(System.in);
         int opcion = 0;
         do {
+            sc.nextLine();
             opcion = 0;
-            System.out.println("Inserte un algo caracteristico del proveedor");
-            String cadenaAbuscar = sc.next();
+            System.out.println("Inserte algo caracteristico del proveedor");
+            String cadenaAbuscar = sc.nextLine();
             int error = 0;
             for (int i = 0; i < cPersonas; i++) {
-                if (personas[i].buscar(cadenaAbuscar) == true && personas[i].equals("Proveedor")) {
+                if (personas[i].buscar(cadenaAbuscar) == true && personas[i].quienSoy().equals("Proveedor")) {
+                    System.out.println("------------------------------");
                     personas[i].mostrar();
                     error++;
                 }
             }
             if (error == 0) {
-                System.out.println("No e han encontrado resultados");
+                System.out.println("No se han encontrado resultados");
             }
             System.out.println("Quiere seguir buscando?   1.-Si   2.-No");
             opcion = sc.nextInt();

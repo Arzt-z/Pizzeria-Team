@@ -65,7 +65,21 @@ public class Ap{
                 case 35:
                     pizzafactory.buscarInventarios();
                     break;
-
+                case 51:
+                    pizzafactory.listarProveedores();
+                    break;
+                case 52:
+                    pizzafactory.capturarProveedores();
+                    break;
+                case 53:
+                    pizzafactory.eliminarProveedores();
+                    break;
+                case 54:
+                    pizzafactory.modificarProveedores();
+                    break;
+                case 55:
+                    pizzafactory.buscarProveedores();
+                    break;
                 case 0:
 				    salir=1;
                     break;
@@ -157,7 +171,7 @@ public class Ap{
         do{
         Cuadrado.imprimirCuadrado(50, 4 ,"------------LOGIN------------");
         Cuadrado.imprimirCuadrado(50, 4 ,"INTRODUCIR USUARIO");
-        System.out.println("para salir introducir: 0");
+        System.out.println("0.-Cerrar programa");
         String usuario = datos.next();
         if(usuario.equals("0"))return -1;
         Cuadrado.imprimirCuadrado(50, 4 ,"INTRODUCIR PASSWORD");
