@@ -665,7 +665,7 @@ public class Pizzeria implements java.io.Serializable{
         Scanner sc = new Scanner(System.in);
         int opcion = 0;
         do {
-            sc.nextLine();
+            //sc.nextLine();
             opcion = 0;
             System.out.println("Inserte algo caracteristico del proveedor");
             String cadenaAbuscar = sc.nextLine();
@@ -682,6 +682,7 @@ public class Pizzeria implements java.io.Serializable{
             }
             System.out.println("Quiere seguir buscando?   1.-Si   2.-No");
             opcion = sc.nextInt();
+            sc.nextLine();
         } while (opcion == 1);
     }
 

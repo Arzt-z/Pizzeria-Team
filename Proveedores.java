@@ -68,8 +68,8 @@ public class Proveedores extends Persona {
 		if (super.buscar(cadenaAbuscar) == true) {
 			return true;
 		}
-		misDatos = razonSocial;
-		return misDatos.contains(cadenaAbuscar);
+		misDatos = razonSocial.toLowerCase();
+		return misDatos.contains(cadenaAbuscar.toLowerCase());
 	}
 
 	public void eliminar() {
