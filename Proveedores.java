@@ -28,11 +28,11 @@ public class Proveedores extends Persona {
 
 	public void capturar() {
 		char diferenciador = 'p';
+		System.out.println("Informacion del proveedor");
 		System.out.print("razon social  :");
 		razonSocial = leer.nextLine();
 		super.capturar(diferenciador);
 	}
-
 	public void modificar() {
 		Scanner leer = new Scanner(System.in);
 		System.out.println("Que deseas modificar?");
