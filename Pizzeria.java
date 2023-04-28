@@ -1,8 +1,7 @@
-
-import java.rmi.StubNotFoundException;
+import java.io.*;
 import java.util.*;
 
-public class Pizzeria {
+public class Pizzeria implements java.io.Serializable{
     private String nombre;
     private String domicilio;
     private String correo;
@@ -70,7 +69,8 @@ public class Pizzeria {
     }
 
     protected void inicializarinventarios() {
-        //
+        cargarArchivoInventario();
+        /* 
         inventarios[0] = new Inventario("Queso mozzarella", "Queso", 0.3);
         inventarios[++cInventarios] = new Inventario("Queso parmesano", "queso", 0.26);
         inventarios[++cInventarios] = new Inventario("Peperoni", "carne", 0.6);
@@ -100,7 +100,7 @@ public class Pizzeria {
         inventarios[++cInventarios] = new Inventario("palitos de queso", "producto", 20);
         inventarios[++cInventarios] = new Inventario("salsa secreta", "extra", 10);
         inventarios[++cInventarios] = new Inventario("dip de BBQ", "extra", 15);
-
+        */
     }
 
     protected void inicializarPizzas() {
@@ -127,7 +127,7 @@ public class Pizzeria {
     // funciones de inventarios
     public void listarinventarios() {
         int contador = 0;
-        for (int i = 0; i <= cInventarios; i++) {
+        for (int i = 0; i < cInventarios; i++) {
             if (inventarios[i].getExistencia() == true) {
                 contador++;
             }
@@ -138,7 +138,7 @@ public class Pizzeria {
         Cuadrado.centrarEnXYPresicion("Stock ", 30, 0);
         Cuadrado.centrarEnXYPresicion("|", 36, 0);
         Cuadrado.centrarEnXYPresicion("Precio", 37, 0);
-        for (int i = 0, c = 0; i <= cInventarios; i++) {
+        for (int i = 0, c = 0; i < cInventarios; i++) {
             if (inventarios[i].getExistencia() == true) {
                 c++;
                 Cuadrado.centrarEnXYPresicion(i + 1 + ".-" + inventarios[i].getNombre(), 4, c + 1);
@@ -154,13 +154,11 @@ public class Pizzeria {
             }
         }
         Cuadrado.imprimirCuadrado();
-        //generarARCHIVO
-        generarArchivoInventario();
     }
 
     public void listarinventarios(String tipo) {
         int contador = 0;
-        for (int i = 0; i <= cInventarios; i++) {
+        for (int i = 0; i < cInventarios; i++) {
             if (inventarios[i].getExistencia() == true) {
                 if (inventarios[i].getTipo().equals(tipo) ||
                         ((inventarios[i].getTipo().toLowerCase().equals("carne")
@@ -177,7 +175,7 @@ public class Pizzeria {
         Cuadrado.centrarEnXYPresicion("Stock ", 30, 0);
         Cuadrado.centrarEnXYPresicion("|", 36, 0);
         Cuadrado.centrarEnXYPresicion("Precio", 37, 0);
-        for (int i = 0, c = 0; i <= cInventarios; i++) {
+        for (int i = 0, c = 0; i < cInventarios; i++) {
             if (inventarios[i].getExistencia() == true) {
                 if (inventarios[i].getTipo().equals(tipo) ||
                         ((inventarios[i].getTipo().toLowerCase().equals("carne")
@@ -282,7 +280,7 @@ public class Pizzeria {
             Cuadrado.centrarEnXYPresicion("Stock ", 30, 0);
             Cuadrado.centrarEnXYPresicion("|", 36, 0);
             Cuadrado.centrarEnXYPresicion("Precio", 37, 0);
-            for (int i = 0; i <= cInventarios; i++) {
+            for (int i = 0; i < cInventarios; i++) {
                 if (inventarios[i].getExistencia() == true) {
                     Cuadrado.centrarEnXYPresicion(i + 1 + ".-" + inventarios[i].getNombre(), 4, i + 1);
                     Cuadrado.centrarEnXYPresicion(inventarios[i].getStock() + "g", 30, i + 1);
@@ -690,12 +688,36 @@ public class Pizzeria {
     // Fin funciones proveedor
 
     //generar archivo inventario 
-    public void generarArchivoInventario(){
-        String[] matrix = new String[cInventarios];
-        for (int i = 0; i < cInventarios; i++) {
-            matrix[i]=inventarios[i].getNombre() + " "+inventarios[i].getTipo()+" "+inventarios[i].getPrecio()+" "+inventarios[i].getStock();
+    private void cargarArchivoInventario(){
+        System.out.println("Cargando los datos de las Inventario . . . ");
+        try{
+          FileInputStream archivoEntrada=new FileInputStream("Inventario.dat");
+          ObjectInputStream flujoEntrada=new ObjectInputStream(archivoEntrada);
+          cInventarios=(int)flujoEntrada.readObject();
+          for(int i=0;i<cInventarios;i++)
+          inventarios[i]=(Inventario)flujoEntrada.readObject();
+          flujoEntrada.close();
         }
-        Cuadrado.generarArchivo(matrix , 0, "Inventario.txt");
+        catch(Exception e){
+          System.err.println("Error, no se cargaron los datos "+e);
+        }
+      }
+
+
+    public void generarArchivoInventario(){
+        FileOutputStream archivoSalida=null;
+        try{
+            archivoSalida=new FileOutputStream("Inventario.dat");
+            ObjectOutputStream flujoSalida=new ObjectOutputStream(archivoSalida);
+            System.out.println("generando Inventario.dat...");
+            flujoSalida.writeObject(cInventarios);
+            for(int i=0;i<cInventarios;i++){
+                flujoSalida.writeObject(inventarios[i]);
+            }
+            archivoSalida.close();
+        }catch(Exception e){
+            System.out.println(e);
+        }
     }
     ///
 

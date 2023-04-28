@@ -1,12 +1,10 @@
 import java.util.Scanner;
-public class Inventario{
+public class Inventario implements java.io.Serializable{
     private String nombre;
     private int stock;
     private double precio;
     private boolean existencia=true;
-    private Scanner datos =new Scanner(System.in);
     private String tipo;
-
     public Inventario(){   
     }
 
@@ -36,6 +34,7 @@ public class Inventario{
     }
 
     public void capturar(){
+        Scanner datos =new Scanner(System.in);
         Cuadrado.imprimirCuadrado(50, 3 ,"INGRESAR NOMBRE");
         nombre = datos.nextLine();
         Cuadrado.imprimirCuadrado(50, 3 ,"INGRESAR TIPO");
@@ -62,6 +61,7 @@ public class Inventario{
 	}
 	
 	public void modificar(){
+        Scanner datos =new Scanner(System.in);
 		int seguir;
 		do{
             Cuadrado.imprimirCuadradoDividido(50, 2,"1.-nombre","2.-precio");

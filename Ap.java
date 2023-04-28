@@ -8,127 +8,127 @@ public class Ap{
         
 		
 		do{
-		int user = login(empleados,pizzafactory);
-		int salir=0;
-        if(user==-1){return;}
-		
-		if(empleados[user].getTipo().equalsIgnoreCase("admin")){
-		
-		do {
-            Cuadrado.matriz=Cuadrado.cuadrado(50, 6 );
-            Cuadrado.centrarEnXY("Bienvenido "+ (empleados[user]).getNombre(),0,0);
-            Cuadrado.centrarEnXY((empleados[user]).getTipo(),0,1);
-            Cuadrado.imprimirCuadrado();
-            switch (menu()) {
-                case 11:
-                    pizzafactory.listarPizza();
-                    break;
-                case 12:
-                    pizzafactory.capturarPizza();
-                    break;
-                case 13:
-                    pizzafactory.eliminarPizza();
-                    break;
-                case 14:
-                    pizzafactory.modificarPizza();
-                    break;
-                case 15:
-                    pizzafactory.buscarPizza();
-                    break;
-                case 21:
-                    pizzafactory.inspeccionarInventario();
-                    break;
-                case 22:
-                    pizzafactory.capturarInventarios();
-                    break;
-                case 23:
-                    pizzafactory.eliminarInventarios();
-                    break;
-                case 24:
-                    pizzafactory.modificarInventarios();
-                    break;
-                case 25:
-                    pizzafactory.buscarInventarios();
-                    break;
-                case 31:
-                    pizzafactory.buscarInventarios();
-                    break;
-                case 32:
-                    pizzafactory.capturarOrden();
-                    break;
-                case 33:
-                    pizzafactory.buscarInventarios();
-                    break;
-                case 34:
-                    pizzafactory.buscarInventarios();
-                    break;
-                case 35:
-                    pizzafactory.buscarInventarios();
-                    break;
-                case 51:
-                    pizzafactory.listarProveedores();
-                    break;
-                case 52:
-                    pizzafactory.capturarProveedores();
-                    break;
-                case 53:
-                    pizzafactory.eliminarProveedores();
-                    break;
-                case 54:
-                    pizzafactory.modificarProveedores();
-                    break;
-                case 55:
-                    pizzafactory.buscarProveedores();
-                    break;
-                case 0:
-				    salir=1;
-                    break;
-            }
-        } while (salir==0);
-		
-		}else if(empleados[user].getTipo().equalsIgnoreCase("cajero")){
-		do{
-			Cuadrado.matriz=Cuadrado.cuadrado(50, 6 );
-            Cuadrado.centrarEnXY("Bienvenido "+ (empleados[user]).getNombre(),0,0);
-            Cuadrado.centrarEnXY((empleados[user]).getTipo(),0,1);
-            Cuadrado.imprimirCuadrado();
-            switch (menuCajeros()) {
-                case 11:
-                    pizzafactory.listarPizza();
-                    break;
-                case 12:
-                    pizzafactory.capturarPizza();
-                    break;
-                case 13:
-                    pizzafactory.eliminarPizza();
-                    break;
-                case 14:
-                    pizzafactory.modificarPizza();
-                    break;
-                case 15:
-                    pizzafactory.buscarPizza();
-                    break;
-                case 21:
-                    //pizzafactory.inspeccionarInventario();
-                    break;
-                case 22:
-                    pizzafactory.capturarOrden();
-                    break;
-                case 23:
-                    pizzafactory.buscarInventarios();
-                    break;
-                case 24:
-                    pizzafactory.buscarInventarios();
-                    break;
-                case 25:
-                    pizzafactory.buscarInventarios();
-                    break;
-                case 0:
-				  salir=1;
-                    break;
-            }
-        } while (salir==0);
-		}
+            int user = login(empleados,pizzafactory);
+            boolean salir=false;
+            if(user==-1){return;}
+            
+            if(empleados[user].getTipo().equalsIgnoreCase("admin")){
+                do {
+                    Cuadrado.matriz=Cuadrado.cuadrado(50, 6 );
+                    Cuadrado.centrarEnXY("Bienvenido "+ (empleados[user]).getNombre(),0,0);
+                    Cuadrado.centrarEnXY((empleados[user]).getTipo(),0,1);
+                    Cuadrado.imprimirCuadrado();
+                    switch (menu()) {
+                        case 11:
+                            pizzafactory.listarPizza();
+                            break;
+                        case 12:
+                            pizzafactory.capturarPizza();
+                            break;
+                        case 13:
+                            pizzafactory.eliminarPizza();
+                            break;
+                        case 14:
+                            pizzafactory.modificarPizza();
+                            break;
+                        case 15:
+                            pizzafactory.buscarPizza();
+                            break;
+                        case 21:
+                            pizzafactory.inspeccionarInventario();
+                            break;
+                        case 22:
+                            pizzafactory.capturarInventarios();
+                            break;
+                        case 23:
+                            pizzafactory.eliminarInventarios();
+                            break;
+                        case 24:
+                            pizzafactory.modificarInventarios();
+                            break;
+                        case 25:
+                            pizzafactory.buscarInventarios();
+                            break;
+                        case 31:
+                            pizzafactory.buscarInventarios();
+                            break;
+                        case 32:
+                            pizzafactory.capturarOrden();
+                            break;
+                        case 33:
+                            pizzafactory.buscarInventarios();
+                            break;
+                        case 34:
+                            pizzafactory.buscarInventarios();
+                            break;
+                        case 35:
+                            pizzafactory.buscarInventarios();
+                            break;
+                        case 51:
+                            pizzafactory.listarProveedores();
+                            break;
+                        case 52:
+                            pizzafactory.capturarProveedores();
+                            break;
+                        case 53:
+                            pizzafactory.eliminarProveedores();
+                            break;
+                        case 54:
+                            pizzafactory.modificarProveedores();
+                            break;
+                        case 55:
+                            pizzafactory.buscarProveedores();
+                            break;
+                        case 0:
+                            salir=true;
+                            pizzafactory.generarArchivoInventario();
+                            break;
+                    }
+                } while (salir==false);
+            
+            }else if(empleados[user].getTipo().equalsIgnoreCase("cajero")){
+                do{
+                    Cuadrado.matriz=Cuadrado.cuadrado(50, 6 );
+                    Cuadrado.centrarEnXY("Bienvenido "+ (empleados[user]).getNombre(),0,0);
+                    Cuadrado.centrarEnXY((empleados[user]).getTipo(),0,1);
+                    Cuadrado.imprimirCuadrado();
+                    switch (menuCajeros()) {
+                        case 11:
+                            pizzafactory.listarPizza();
+                            break;
+                        case 12:
+                            pizzafactory.capturarPizza();
+                            break;
+                        case 13:
+                            pizzafactory.eliminarPizza();
+                            break;
+                        case 14:
+                            pizzafactory.modificarPizza();
+                            break;
+                        case 15:
+                            pizzafactory.buscarPizza();
+                            break;
+                        case 21:
+                            //pizzafactory.inspeccionarInventario();
+                            break;
+                        case 22:
+                            pizzafactory.capturarOrden();
+                            break;
+                        case 23:
+                            pizzafactory.buscarInventarios();
+                            break;
+                        case 24:
+                            pizzafactory.buscarInventarios();
+                            break;
+                        case 25:
+                            pizzafactory.buscarInventarios();
+                            break;
+                        case 0:
+                        salir=true;
+                            break;
+                    }
+                } while (salir==false);
+		    }
 		}while(true);
 	}              
 
