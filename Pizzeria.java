@@ -559,39 +559,46 @@ public class Pizzeria {
     // inicio funciones proveedor
 
     public void listarProveedores() {
-        Scanner sc = new Scanner(System.in);
+        Scanner leer = new Scanner(System.in);
         int opcion = 0;
         int error = 0;
+        int nprov=0;
         mostrarProveedores();
-        System.out.println("Quiere ver la informacion de algun proveedor?   1.-Si   2.-No");
-        opcion = sc.nextInt();
-        if (opcion == 1) {
-            do {
-                error = 0;
-                System.out.println("Insete el numero del proveedor");
-                int nProv = sc.nextInt() - 1;
-                System.out.println(nProv);
-                if (!personas[nProv].quienSoy().equals("Proveedor") || nProv >cPersonas
-                        || personas[nProv].isVigente() == false) {
-                    System.out.println("Ese proveedor no existe ");
-                    System.out.println("vuelva a intentarlo");
-                    error = 1;
-                } else {
-                    personas[nProv].mostrar();
-                    String cadenaAbuscar = ((Proveedores) personas[nProv]).getRazonSocial();
-                    for (int i = 0; i < cTransaccion; i++) {
-                        if (transaccion[i].queSoy().equals("Compra")) {
-                            if (((Compra) transaccion[i]).buscar(cadenaAbuscar) == true
-                                    && transaccion[i].isVigente() == true) {
-                                ((Compra) transaccion[i]).mostrar();
-                                ((Compra) transaccion[i]).getDetalles();
+        System.out.println("Inserte el numero del proveedor que desee ver    0.-SALIR");
+        opcion = leer.nextInt();
+        if(opcion>0){
+            nprov=opcion-1;
+            opcion=1;
+        }
+        switch (opcion) {
+            case 0:
+                return;
+
+            case 1:
+                do{
+                    error=0;
+                    if (!personas[nprov].quienSoy().equals("Proveedor") || personas[nprov].isVigente() == false) {
+                        System.out.println("Este proveedor no existe");
+                        System.out.println("Vuelva a intentarlo");
+                        System.out.println("Inserte el numero del proveedor que desea ver");
+                        nprov=leer.nextInt()-1;
+                        error=1;
+                    } else if (personas[nprov].isVigente() == true && personas[nprov].quienSoy().equals("Proveedor")) {
+                        personas[nprov].mostrar();
+                        String cadenaAbuscar = ((Proveedores) personas[nprov]).getRazonSocial();
+                        for (int i = 0; i < cTransaccion; i++) {
+                            if (transaccion[i].queSoy().equals("Compra")) {
+                                if (((Compra) transaccion[i]).buscar(cadenaAbuscar) == true && transaccion[i].isVigente() == true) {
+                                    ((Compra) transaccion[i]).mostrar();
+                                    ((Compra) transaccion[i]).getDetalles();
+                                }
                             }
                         }
                     }
-                }
-                
-            } while (error == 1);
+                }while(error==1);
+                break;
         }
+
     }
 
     public void mostrarProveedores() {
