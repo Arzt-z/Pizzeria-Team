@@ -665,13 +665,13 @@ public class Pizzeria implements java.io.Serializable{
         Scanner sc = new Scanner(System.in);
         int opcion = 0;
         do {
-            sc.nextLine();
+            
             opcion = 0;
             System.out.println("Inserte algo caracteristico del proveedor");
             String cadenaAbuscar = sc.nextLine();
             int error = 0;
             for (int i = 0; i < cPersonas; i++) {
-                if (personas[i].buscar(cadenaAbuscar) == true && personas[i].quienSoy().equals("Proveedor")) {
+                if (((Proveedores)personas[i]).buscar(cadenaAbuscar) == true && personas[i].quienSoy().equals("Proveedor")) {
                     System.out.println("------------------------------");
                     personas[i].mostrar();
                     error++;
