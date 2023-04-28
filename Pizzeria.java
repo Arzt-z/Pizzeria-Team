@@ -570,8 +570,8 @@ public class Pizzeria {
                 error = 0;
                 System.out.println("Insete el numero del proveedor");
                 int nProv = sc.nextInt() - 1;
-
-                if (!personas[nProv].quienSoy().equals("Proveedor") || nProv >= cPersonas
+                System.out.println(nProv);
+                if (!personas[nProv].quienSoy().equals("Proveedor") || nProv >cPersonas
                         || personas[nProv].isVigente() == false) {
                     System.out.println("Ese proveedor no existe ");
                     System.out.println("vuelva a intentarlo");
@@ -606,14 +606,13 @@ public class Pizzeria {
     public void capturarProveedores() {
         Scanner sc = new Scanner(System.in);
         int opcion = 0;
-        char diferenciador = 'p';
         do {
-            personas[cPersonas] = new Proveedores();
-            personas[cPersonas].capturar(diferenciador);
             cPersonas++;
+            personas[cPersonas] = new Proveedores();
+            ((Proveedores)personas[cPersonas]).capturar();
             System.out.println("Quiere agregar otro proveedor?   1.-Si   2.-No");
             opcion = sc.nextInt();
-        } while (opcion == 1);
+        } while (opcion == 1); 
     }
 
     public void modificarProveedores() {
