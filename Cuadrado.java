@@ -81,26 +81,6 @@ public class Cuadrado {
         return matriz;
     }
     //fin de funciones de cuadrito
-    public static void generarArchivo(String[] matrix,int posicion,String nombrearchivo){
-        File archivo = new File(nombrearchivo);
-        archivo.delete();
-        PrintWriter outputStream = null;
-        int i = posicion;
-        try{
-            outputStream = new PrintWriter(new FileWriter(nombrearchivo));
-            String l;
-            while (i < matrix.length && matrix[i] != null) {
-                l=matrix[i];
-                outputStream.println(l);
-                i++;
-            }
-            } catch (IOException e) {
-            System.out.println("Error.");
-            }finally{
-                    if (outputStream != null)
-                        outputStream.close();
-        }
-    }
 
 
 }
