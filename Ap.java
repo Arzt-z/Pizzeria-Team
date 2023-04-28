@@ -11,7 +11,7 @@ public class Ap{
             int user = login(empleados,pizzafactory);
             boolean salir=false;
             if(user==-1){return;}
-            System.out.println("xd");
+            
             if(empleados[user].getTipo().equalsIgnoreCase("admin")){
                 do {
                     Cuadrado.matriz=Cuadrado.cuadrado(50, 6 );
