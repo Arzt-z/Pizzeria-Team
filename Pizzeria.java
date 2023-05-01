@@ -62,6 +62,7 @@ public class Pizzeria implements java.io.Serializable{
         personas[++cPersonas] = new Empleado("Alexis Corzas Santiago", "443 363 1574", "algun lado", "rfc", "1234","admin");
         personas[++cPersonas] = new Empleado("maki", "443 619 2989", "algun lado", "rfc", "1234", "cajero");
         personas[++cPersonas] = new Empleado("cajero", "000 000 0000", "algun lado", "rfc", "1234", "cajero");
+        personas[++cPersonas] = new Empleado("admin", "000 000 0000", "algun lado", "rfc", "1234", "admin");
 
         personas[++cPersonas] = new Proveedores("Verduras Taguada SA de CV", "554 234 2345", "algun lado", "rfc");
         personas[++cPersonas] = new Proveedores("Grupo Alsea SA de CV", "443 312 0093","Guillermo Prieto 30, Centro histórico de Morelia, 58000 Morelia, Mich.", "ALS211312FPE");
