@@ -12,7 +12,6 @@ public class Proveedores extends Persona {
 		super(telefono, direccion, rfc);
 		this.razonSocial = razonSocial;
 	}
-
 	public String toString() {
 		return razonSocial;
 	}
@@ -64,12 +63,14 @@ public class Proveedores extends Persona {
 	}
 
 	public boolean buscar(String cadenaAbuscar) {
-		String misDatos;
-		if (super.buscar(cadenaAbuscar) == true) {
-			return true;
-		}
-		misDatos = razonSocial.toLowerCase();
-		return misDatos.contains(cadenaAbuscar.toLowerCase());
+        String misDatos;
+        if (super.buscar(cadenaAbuscar) == true) {
+            return true;
+        }
+
+        misDatos = razonSocial;
+
+        return misDatos.contains(cadenaAbuscar);
 	}
 
 	public void eliminar() {

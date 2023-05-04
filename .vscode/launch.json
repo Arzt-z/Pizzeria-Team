@@ -6,6 +6,13 @@
     "configurations": [
         {
             "type": "java",
+            "name": "Ap",
+            "request": "launch",
+            "mainClass": "Ap",
+            "projectName": "Pizzeria-Team_4b2e688"
+        },
+        {
+            "type": "java",
             "name": "Current File",
             "request": "launch",
             "mainClass": "${file}"

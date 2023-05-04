@@ -65,7 +65,7 @@ public class Pizzeria implements java.io.Serializable{
         personas[++cPersonas] = new Empleado("admin", "000 000 0000", "algun lado", "rfc", "1234", "admin");
 
         personas[++cPersonas] = new Proveedores("Verduras Taguada SA de CV", "554 234 2345", "algun lado", "rfc");
-        personas[++cPersonas] = new Proveedores("Grupo Alsea SA de CV", "443 312 0093","Guillermo Prieto 30, Centro histórico de Morelia, 58000 Morelia, Mich.", "ALS211312FPE");
+        personas[++cPersonas] = new Proveedores("Grupo Alsea SA de CV", "443 312 0093","GP 30, Centro histórico de Morelia, 58000 Morelia, Mich.", "ALS211312FPE");
 
     }
 
@@ -613,8 +613,8 @@ public class Pizzeria implements java.io.Serializable{
         Scanner sc = new Scanner(System.in);
         int opcion = 0;
         do {
-            cPersonas++;
-            personas[cPersonas] = new Proveedores();
+            
+            personas[++cPersonas] = new Proveedores();
             ((Proveedores)personas[cPersonas]).capturar();
             System.out.println("Quiere agregar otro proveedor?   1.-Si   2.-No");
             opcion = sc.nextInt();
@@ -663,15 +663,15 @@ public class Pizzeria implements java.io.Serializable{
     }
 
     public void buscarProveedores() {
-        Scanner sc = new Scanner(System.in);
+        Scanner leer = new Scanner(System.in);
         int opcion = 0;
         do {
             opcion = 0;
-            System.out.println("Inserte algo caracteristico del proveedor");
-            String cadenaAbuscar = sc.nextLine();
+            System.out.println("Inserte el texto que desea buscar");
+            String cadenaAbuscar = leer.next();
             int error = 0;
-            for (int i = 0; i < cPersonas; i++) {
-                if (((Proveedores)personas[i]).buscar(cadenaAbuscar) == true && personas[i].quienSoy().equals("Proveedor")) {
+            for (int i = 0; i <= cPersonas; i++) {
+                if (personas[i].buscar(cadenaAbuscar) == true && personas[i].quienSoy().equals("Proveedor")) {
                     System.out.println("------------------------------");
                     personas[i].mostrar();
                     error++;
@@ -680,10 +680,9 @@ public class Pizzeria implements java.io.Serializable{
             if (error == 0) {
                 System.out.println("No se han encontrado resultados");
             }
-            System.out.println("Quiere seguir buscando?   1.-Si   2.-No");
-            opcion = sc.nextInt();
-            sc.nextLine();
-        } while (opcion == 1);
+            System.out.println("Desea seguir buscando?   1.-Si   2.-No");
+            opcion = leer.nextInt();
+        } while (opcion==1);
     }
 
     // Fin funciones proveedor
