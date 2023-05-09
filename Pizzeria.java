@@ -687,6 +687,115 @@ public class Pizzeria implements java.io.Serializable{
 
     // Fin funciones proveedor
 
+    //Funciones de compra
+
+    public void listarCompras(){
+        for (int i = 0; i < cTransaccion; i++) {
+            if (transaccion[i].isVigente() == true && transaccion[i].queSoy().equals("compra")) {
+                ((Compra) transaccion[i]).mostrar();
+                ((Compra) transaccion[i]).getDetalles();
+            }
+            System.out.println("-------------------------------------------");
+        }
+    }      
+    
+    public void capturarCompra(){
+        transaccion[cTransaccion] = new Compra();
+        Proveedores[] proveedor = new Proveedores[50];
+        int cProveedores = 0;
+			for (int i = 0; i <= cPersonas; i++) {
+				if (personas[i].quienSoy().equals("Proveedor")) {
+					proveedor[cProveedores] = (Proveedores) personas[i];
+					cProveedores++;
+				}
+			}
+			((Compra) transaccion[cTransaccion]).capturar(proveedor, cProveedores,inventarios, cInventarios);
+			cTransaccion++;
+    }
+
+    public void modificarCompra(){
+            Scanner datos = new Scanner(System.in);
+            System.out.println("Que compra deseas modificar");
+            int selecciona;
+            int error=0;
+            for (int i = 0; i < cTransaccion; i++) {
+                if (transaccion[i].isVigente() == true && transaccion[i].queSoy().equals("compra")) {
+                    System.out.println(i + 1 + ".-" + transaccion[i]);
+                }
+            }
+            do{
+                error=0;
+                System.out.println("Selecione la compra:");
+                selecciona = datos.nextInt();
+                if (transaccion[selecciona - 1].isVigente() == true && transaccion[selecciona - 1].queSoy().equals("Compra")) {
+                    Proveedores[] proveedor = new Proveedores[50];
+                    int contador = 0;
+                    for (int i = 0; i < cPersonas; i++) {
+                        if (personas[i].quienSoy().equals("Proveedor")) {
+                            proveedor[contador] = (Proveedores) personas[i];
+                            contador++;
+                        }
+                    }
+    
+                    ((Compra) transaccion[selecciona - 1]).modificar(contador, proveedor, cInventarios, inventarios);
+                } else {
+                    System.out.println("Esa compra no existe ");
+                    error=1;
+                }
+            }while (error==1);
+        }
+
+        public void eliminarCompra(){
+            Scanner datos = new Scanner(System.in);
+            int selecciona;
+            int opcion=0;
+            do{
+                opcion=0;
+                for (int i = 0; i < cTransaccion; i++) {
+                    if (transaccion[i].isVigente() == true && transaccion[i].queSoy().equals("compra")) {
+                        System.out.println(i + 1 + ".-" + transaccion[i]);
+                    }
+                }
+                System.out.println("Selecione la compra:");
+                selecciona = datos.nextInt();
+                if (transaccion[selecciona - 1].isVigente() == true && transaccion[selecciona - 1].queSoy().equals("compra")) {
+                    ((Compra) transaccion[selecciona - 1]).eliminar();
+                } else {
+                    System.out.println("Esa compra no existe");
+                }
+                System.out.println("Quiere seguir eliminando?   1.-Si   2.-No");
+                opcion=datos.nextInt();
+            }while(opcion==1);
+        }
+
+        public void buscarCompra(){
+            Scanner leer = new Scanner(System.in);
+            int error=0;
+            int opcion=0;
+            do{
+                error=0;
+                opcion=0;
+                System.out.println("Ponga el texto que desea buscar");
+                String cadenaAbuscar = leer.next();
+                for (int i = 0; i < cTransaccion; i++) {
+                    if (transaccion[i].queSoy().equals("compra")) {
+                        if (((Compra) transaccion[i]).buscar(cadenaAbuscar) == true && transaccion[i].isVigente() == true) {
+                            ((Compra) transaccion[i]).mostrar();
+                            ((Compra) transaccion[i]).getDetalles();
+                            error++;
+                        }
+                    }
+    
+                }
+                if(error==0){
+                        System.out.println("No se encontraron resultados");
+                    }
+                    System.out.println("Desea continuar?   1.-Si   2.-No");
+                    opcion=leer.nextInt();
+            }while(opcion==1);
+        }
+    //fin funciones de compra
+
     //generar archivo inventario 
     private void cargarArchivoInventario(){
         System.out.println("Cargando los datos de las Inventario . . . ");

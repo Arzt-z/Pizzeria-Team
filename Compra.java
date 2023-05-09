@@ -15,8 +15,8 @@ public class Compra extends Transaccion {
     }
 
     public void mostrar(){
-        super.mostrar();
         System.out.println("Proveedor: "+proveedor);
+        super.mostrar();
     }
 
     public String toString(){
