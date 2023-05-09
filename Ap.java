@@ -86,7 +86,7 @@ public class Ap{
                     }
                 } while (salir==false);
             
-            }else if(empleados[user].getTipo().equalsIgnoreCase("cajero")){
+            }else if(empleados[user].getTipo().equalsIgnoreCase("empleado")){
                 do{
                     Cuadrado.matriz=Cuadrado.cuadrado(50, 6 );
                     Cuadrado.centrarEnXY("Bienvenido "+ (empleados[user]).getNombre(),0,0);
