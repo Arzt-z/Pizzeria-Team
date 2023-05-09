@@ -60,9 +60,9 @@ public class Pizzeria implements java.io.Serializable{
     protected void inicializaPersonas() {
         personas[0] = new Empleado("Daniel Adrian Roque Cortes", "443 832 7292", "algun lado", "rfc", "1234", "admin");
         personas[++cPersonas] = new Empleado("Alexis Corzas Santiago", "443 363 1574", "algun lado", "rfc", "1234","admin");
-        personas[++cPersonas] = new Empleado("maki", "443 619 2989", "algun lado", "rfc", "1234", "cajero");
-        personas[++cPersonas] = new Empleado("cajero", "000 000 0000", "algun lado", "rfc", "1234", "cajero");
-        personas[++cPersonas] = new Empleado("admin", "000 000 0000", "algun lado", "rfc", "1234", "admin");
+        personas[++cPersonas] = new Empleado("maki", "443 619 2989", "algun lado", "rfc", "1234", "empleado");
+        personas[++cPersonas] = new Empleado("cajero", "000 000 0000", "algun lado", "rfc", "1234", "empleado");
+        personas[++cPersonas] = new Empleado("admin", "000 000 0000", "algun lado", "rfc", "1234", "empleado");
 
         personas[++cPersonas] = new Proveedores("Verduras Taguada SA de CV", "554 234 2345", "algun lado", "rfc");
         personas[++cPersonas] = new Proveedores("Grupo Alsea SA de CV", "443 312 0093","GP 30, Centro histórico de Morelia, 58000 Morelia, Mich.", "ALS211312FPE");
@@ -829,7 +829,29 @@ public class Pizzeria implements java.io.Serializable{
         }
     }
     ///
+    public Empleado[] getEmpleados() {
+        Empleado[] empleado = new Empleado[50];
+        int contador = 0;
+        for (int i = 0; i < cPersonas; i++) {
+            if (personas[i].isVigente() == true && personas[i].quienSoy().equals("Empleado")) {
+                empleado[contador] = ((Empleado) personas[i]);
+                contador++;
+            }
+        }
 
+        return empleado;
+    }
+
+    public int getCempleados() {
+        int contador = 0;
+        for (int i = 0; i < cPersonas; i++) {
+            if (personas[i].isVigente() == true && personas[i].quienSoy().equals("Empleado")) {
+                contador++;
+            }
+        }
+        return contador;
+
+    }
 
     public String toString() {
         return nombre + " / " + correo;
@@ -883,28 +905,6 @@ public class Pizzeria implements java.io.Serializable{
         return rfc;
     }
 
-    public Empleado[] getEmpleados() {
-        Empleado[] empleado = new Empleado[50];
-        int contador = 0;
-        for (int i = 0; i < cPersonas; i++) {
-            if (personas[i].isVigente() == true && personas[i].quienSoy().equals("Empleado")) {
-                empleado[contador] = ((Empleado) personas[i]);
-                contador++;
-            }
-        }
-
-        return empleado;
-    }
-
-    public int getCempleados() {
-        int contador = 0;
-        for (int i = 0; i < cPersonas; i++) {
-            if (personas[i].isVigente() == true && personas[i].quienSoy().equals("Empleado")) {
-                contador++;
-            }
-        }
-        return contador;
-
-    }
+   
     // fin funciones basicas set get to string.
 }
