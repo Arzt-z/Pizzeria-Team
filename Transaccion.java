@@ -86,13 +86,8 @@ public abstract class Transaccion{
             do {
                 capturarDetalle(inventarios, cInventarios, diferencia);
                 System.out.println("Desea Continuar?   1.-Si   2.-No");
-                String option = datos.next();
-                if (option.toLowerCase() == "si" || option == "1") {
-                    ciclo = 1;
-                } else {
-                    ciclo = 0;
-                }
-            } while (ciclo == 1 && cDetalles < 500);
+                ciclo=datos.nextInt();
+            } while (ciclo == 1 && cDetalles <= 500);
         } else {
 
             System.out.println("Folio: ");

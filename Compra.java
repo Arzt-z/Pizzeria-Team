@@ -70,14 +70,14 @@ public class Compra extends Transaccion {
         Scanner datos = new Scanner(System.in);
         int opcion;
         char diferencia= 'c';
-        System.out.println("Ingresa los datos de la nueva compra");
-        super.capturar(inventarios, cInventarios, diferencia);
         for(int i=0; i<cProveedores; i++){
             System.out.println(i+1+".-"+misProveedores[i]);
         }
         System.out.println("Selecciona un proveedor");
         opcion= datos.nextInt();
         proveedor= misProveedores[opcion-1];
+        System.out.println("Ingresa los datos compra");
+        super.capturar(inventarios, cInventarios, diferencia);
     }
 
     public boolean buscar(String cadenaAbuscar){

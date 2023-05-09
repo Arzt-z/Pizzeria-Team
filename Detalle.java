@@ -105,7 +105,7 @@ public class Detalle {
         for (int i = 0; i < cInventarios; i++) {
 			System.out.println(i + 1 + ".-" + inventarios[i]);
         }
-        System.out.println("Seleccione la pizza");
+        System.out.println("Seleccione los ingredientes");
         int elInventario = dato.nextInt() - 1;
         this.inventario = inventarios[elInventario];
 		System.out.println("Cantidad: ");
