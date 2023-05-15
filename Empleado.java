@@ -58,34 +58,40 @@ public class Empleado extends Persona {
  
     public void capturar() {
         char diferenciador = 'e';
+        super.capturar(diferenciador);
         String verificar, contraeña;
         System.out.print("nombre  :");
         nombre = leer.nextLine();
+        boolean aprobado= false;
         do {
             System.out.print("ingresa contraseña:  ");
             contraeña = leer.nextLine();
             System.out.println("vuelva a ingresar la contraseña:");
             verificar = leer.nextLine();
-            if (contraeña == verificar) {
-                password = contraeña;
+            if (contraeña.equals(verificar)) {
+                this.password = contraeña;
+                aprobado=true;
             }
-        } while (contraeña != verificar);
+        } while (aprobado==false);
         int tip;
+        boolean aprobar=false;
         do {
-            System.out.print("tipo de trabajador  1.-empleado 2.-admin");
+            System.out.println("tipo de trabajador  1.-empleado 2.-admin");
             tip = leer.nextInt();
             if (tip == 1) {
                 tipo = "empleado";
+                aprobar=true;
             }
             if (tip == 2) {
                 tipo = "admin";
+                aprobar=true;
             }
-            if (tip != 1 || tip != 2) {
+            if (tip != 1 && tip != 2) {
                 System.out.println("esa no es una opcion");
             }
-        } while (tip != 1 || tip != 2);
+        } while (aprobar==false);
 
-        super.capturar(diferenciador);
+        
         this.usuario = generarUsuario(nombre);
 
     }
@@ -105,33 +111,40 @@ public class Empleado extends Persona {
                     leer.nextLine();
                     String nombre = leer.nextLine();
                     setNombre(nombre);
+                    this.usuario = generarUsuario(nombre);
+                    System.out.println("/////////NUEVO USUARIO///////////:"+usuario);
                     break;
                 case 2:
-                    do {
-                        System.out.print("ingresa contraseña:  ");
-                        contraeña = leer.nextLine();
-                        System.out.println("vuelva a ingresar la contraseña:");
-                        verificar = leer.nextLine();
-                        if (contraeña == verificar) {
-                            setPassword(contraeña);
-                        }
-                    } while (contraeña != verificar);
+                boolean aprobado= false;
+                do {
+                    System.out.print("ingresa contraseña:  ");
+                    contraeña = leer.nextLine();
+                    System.out.println("vuelva a ingresar la contraseña:");
+                    verificar = leer.nextLine();
+                    if (contraeña.equals(verificar)) {
+                        this.password = contraeña;
+                        aprobado=true;
+                    }
+                } while (aprobado==false);
                     break;
                 case 3:
                     int tip;
+                    boolean aprobar=false;
                     do {
-                        System.out.print("tipo de trabajador  1.-empleado 2.-admin");
+                        System.out.println("tipo de trabajador  1.-empleado 2.-admin");
                         tip = leer.nextInt();
                         if (tip == 1) {
                             tipo = "empleado";
+                            aprobar=true;
                         }
                         if (tip == 2) {
                             tipo = "admin";
+                            aprobar=true;
                         }
-                        if (tip != 1 || tip != 2) {
+                        if (tip != 1 && tip != 2) {
                             System.out.println("esa no es una opcion");
                         }
-                    } while (tip != 1 || tip != 2);
+                    } while (aprobar==false);
                     break;
                 case 4:
                     super.modificar();
@@ -147,6 +160,16 @@ public class Empleado extends Persona {
                 ciclo = 0;
             }
         } while (ciclo == 1);
+    }
+
+    public boolean buscar(String cadenaAbuscar){
+        String datos=nombre+usuario+password+tipo;
+        if(datos.contains(cadenaAbuscar)==false){
+            return super.buscar(cadenaAbuscar);
+
+        }
+        return datos.contains(cadenaAbuscar);
+        
     }
 
     public void eliminar(){
