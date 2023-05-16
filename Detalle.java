@@ -22,10 +22,16 @@ public class Detalle {
         this.precioProd = precioProd;
     }
 
-    public void mostrar() {
+    public void mostrar(char diferenciador) {
+		if(diferenciador=='c'){
+			System.out.println("\t\tIngredientes: " + pizzas);
+			System.out.println("\t\tCantidad: " + cantidad);
+			System.out.println("\t\tprecioProd: " + precioProd);
+		}else{
 		System.out.println("\t\tPizza: " + pizzas);
         System.out.println("\t\tCantidad: " + cantidad);
-        System.out.println("\t\tprecioProd: " + precioProd);
+        System.out.println("\t\tprecio: " + precioProd);
+		}
     }
 
     public void modificar(int cPizzas, Pizza [] pizzas, char diferenciador) {

@@ -534,6 +534,7 @@ public class Pizzeria implements java.io.Serializable{
     public void listarOrden() {
 
     }
+    
     // fin funciones orden
 
     public void capturarEmpleado() {
@@ -553,6 +554,29 @@ public class Pizzeria implements java.io.Serializable{
         String rfc = datos.next();
         personas[++cPersonas] = new Empleado(nombre, numero, direccion, rfc, password, puesto);
         Cuadrado.imprimirCuadrado(50, 4, "TU USUARIO ES: " + ((Empleado) personas[cPersonas]).getUsuario());
+    }
+    
+    public void buscarEmpleado(){
+        Scanner leer = new Scanner(System.in);
+        int opcion = 0;
+        do {
+            opcion = 0;
+            System.out.println("Inserte el texto que desea buscar");
+            String cadenaAbuscar = leer.next();
+            int error = 0;
+            for (int i = 0; i <= cPersonas; i++) {
+                if (personas[i].buscar(cadenaAbuscar) == true && personas[i].quienSoy().equals("Empleado")) {
+                    System.out.println("------------------------------");
+                    personas[i].mostrar();
+                    error++;
+                }
+            }
+            if (error == 0) {
+                System.out.println("No se han encontrado resultados");
+            }
+            System.out.println("Desea seguir buscando?   1.-Si   2.-No");
+            opcion = leer.nextInt();
+        } while (opcion==1);
     }
 
     // inicio funciones proveedor

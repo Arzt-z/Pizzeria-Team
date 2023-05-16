@@ -103,7 +103,8 @@ public class Compra extends Transaccion {
     }
     
     public void getDetalles(){
-        super.getDetalles();
+        char diferencia='c';
+        super.getDetalles(diferencia);
     }
 
     public Proveedores getProveedor(){

@@ -219,7 +219,7 @@ public abstract class Transaccion{
         }
     }
 
-    public void getDetalles() {
+    public void getDetalles(char diferenciador) {
         double totalf = 0;
         double total = 0;
 
@@ -233,10 +233,10 @@ public abstract class Transaccion{
 
             } else {
                 if(detalles[i].isVigente()==true){
-				detalles[i].mostrar();
+				detalles[i].mostrar(diferenciador);
                 totalf += detalles[i].getPrecioProd() * detalles[i].getCantidad();
                 total += detalles[i].getPrecioProd() * detalles[i].getCantidad();
-                System.out.println("\t\ttotal de inventarios= " + total);
+                System.out.println("\t\ttotal= " + total);
                 total = 0;
 				}
 
