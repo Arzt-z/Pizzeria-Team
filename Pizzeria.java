@@ -545,27 +545,6 @@ public class Pizzeria implements java.io.Serializable {
     public void listarOrden() {
 
     }
-    
-    // fin funciones orden
-
-    public void capturarEmpleado() {
-        Scanner datos = new Scanner(System.in);
-        Cuadrado.imprimirCuadrado(50, 4, "------------REGISTRO------------");
-        Cuadrado.imprimirCuadrado(50, 4, "INTRODUCIR NOMBRE COMPLETO");
-        String nombre = datos.nextLine();
-        Cuadrado.imprimirCuadrado(50, 4, "INTRODUCIR PASSWORD");
-        String password = datos.next();
-        Cuadrado.imprimirCuadrado(50, 4, "INTRODUCIR PUESTO");
-        String puesto = datos.next();
-        Cuadrado.imprimirCuadrado(50, 4, "INTRODUCIR NUMERO");
-        String numero = datos.nextLine();
-        Cuadrado.imprimirCuadrado(50, 4, "INTRODUCIR DIRECCION");
-        String direccion = datos.nextLine();
-        Cuadrado.imprimirCuadrado(50, 4, "INTRODUCIR RFC");
-        String rfc = datos.next();
-        personas[++cPersonas] = new Empleado(nombre, numero, direccion, rfc, password, puesto);
-        Cuadrado.imprimirCuadrado(50, 4, "TU USUARIO ES: " + ((Empleado) personas[cPersonas]).getUsuario());
-    }
 
     // inicio funciones proveedor
 
@@ -949,17 +928,26 @@ public class Pizzeria implements java.io.Serializable {
     }
 
     public void buscarEmpleado(){
-        Scanner leer =new Scanner(System.in);
-        String cadenaAbuscar;
-        System.out.println("INGRESE EMPLEADO O ALGO DE EL A BUSCAR:");
-        cadenaAbuscar=leer.nextLine();
-        for (int i = 0; i <= cPersonas; i++){
-            if(personas[i].quienSoy().equals("Empleado") && personas[i].isVigente()==true){
-                if(((Empleado)personas[i]).buscar(cadenaAbuscar)==true);
-                ((Empleado)personas[i]).mostrar();
+        Scanner leer = new Scanner(System.in);
+        int opcion = 0;
+        do {
+            opcion = 0;
+            System.out.println("Inserte el texto que desea buscar");
+            String cadenaAbuscar = leer.next();
+            int error = 0;
+            for (int i = 0; i <= cPersonas; i++) {
+                if (personas[i].buscar(cadenaAbuscar) == true && personas[i].quienSoy().equals("Empleado")) {
+                    System.out.println("------------------------------");
+                    personas[i].mostrar();
+                    error++;
+                }
             }
-        }
-
+            if (error == 0) {
+                System.out.println("No se han encontrado resultados");
+            }
+            System.out.println("Desea seguir buscando?   1.-Si   2.-No");
+            opcion = leer.nextInt();
+        } while (opcion==1);
     }
 
     public Empleado[] getEmpleados() {
