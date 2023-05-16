@@ -1,10 +1,11 @@
-public class Orden {
-    
+import java.util.Scanner;
+public class Orden extends Transaccion {
+    private String cliente;
     private Pizza[] pizzas= new Pizza[50];
 	private Inventario[] inventarios = new Inventario[50];
     private int cInventarios = 0;
     private int cPizzas = 0;
-    String nombre;
+    private String nombre;
 
     public Orden() {
         this.nombre = nombre;
@@ -12,6 +13,10 @@ public class Orden {
 
     public Orden(String nombre) {
         this.nombre = nombre;
+    }
+
+    public String queSoy (){
+        return "orden";
     }
 
     public void mostrar() {
@@ -34,6 +39,68 @@ public class Orden {
     }
 
 
+    public void modificar(int cInventarios, Inventario[] inventarios){
+        Scanner leer= new Scanner(System.in);
+        int opcion;
+        char diferencia='c';
+        do{
+            System.out.println("Que deseas modificar?   1.-cliente   2.-Otros   0.-Cancelar");
+            opcion=leer.nextInt();
+            switch(opcion){
+                case 1:
+                    System.out.println("nombre cliente:");
+                    String entrada= leer.nextLine();
+                    cliente=entrada;
+                    break;
+                case 2: 
+                    super.modificar(cInventarios, inventarios, diferencia);
+                    break;
+                case 0:
+                    return;
+            }
+        } while(true);
+    }
+
+    public void eliminar(){
+        Scanner leer= new Scanner(System.in);
+        char diferencia= 'c';
+        System.out.println("Deseas eliminar un detalle o una orden entera?   1.-Detalle   2.-Orden");
+        int eleccion= leer.nextInt();
+        if(eleccion==1){
+            super.eliminarDetalle(diferencia);
+        }
+        if(eleccion==2){
+            super.eliminar(diferencia);
+        }
+    }
+
+    public void capturar(Pizza[] pizzas, int cPizzas){
+        Scanner datos = new Scanner(System.in);
+        Cuadrado.imprimirCuadrado(50, 4, "------------ORDEN------------");
+        Cuadrado.imprimirCuadrado(50, 4, "INGRESAR NOMBRE DEL CLIENTE");
+        cliente = datos.nextLine();
+        mostrar();
+        
+
+        int opcion;
+        char diferencia= 'o';
+        System.out.println("Ingresa los datos de la nueva compra");
+        super.capturar(pizzas, cPizzas);
+    }
+
+    public boolean buscar(String cadenaAbuscar){
+        if(super.buscar(cadenaAbuscar)==true){
+            return true;
+        }
+        String datos=" "+ cliente;
+        if(datos.contains(cadenaAbuscar)==true){
+            return true;
+        }else{
+            return false;
+        }
+    }
+
+
     public void capturarInventario(Inventario inventarios) {
         System.out.println("add");
         this.inventarios[cInventarios++] = inventarios;
@@ -43,5 +110,14 @@ public class Orden {
         System.out.println("add");
         this.pizzas[cPizzas++] = pizzas;
     }
+
+    public String getCliente(){
+        return cliente;
+    }
+
+    public void setCliente(String cliente){
+        this.cliente= cliente;
+    }
+
 
 }

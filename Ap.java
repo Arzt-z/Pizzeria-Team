@@ -1,4 +1,6 @@
 import java.util.Scanner;
+import java.time.LocalDate;
+import java.time.LocalTime;
 public class Ap{
 	public static void main (String[] args){
         
@@ -50,7 +52,7 @@ public class Ap{
                             pizzafactory.buscarInventarios();
                             break;
                         case 31:
-                            pizzafactory.buscarInventarios();
+                            pizzafactory.listarOrden();
                             break;
                         case 32:
                             pizzafactory.capturarOrden();

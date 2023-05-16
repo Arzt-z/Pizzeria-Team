@@ -152,57 +152,24 @@ public class Detalle {
     //fin capturar inventarios
 
     //capturar de pizzas
-    public void capturar(int cPizzas, Pizza [] pizzas, char diferenciador) {
+    public void capturar(int cPizzas, Pizza [] pizzas) {
 		Scanner dato = new Scanner(System.in);
-        int error;
-	    if(diferenciador=='c'){
-		System.out.println("Detalles de Compra");
-        for (int i = 0; i < cPizzas; i++) {
-			System.out.println(i + 1 + ".-" + pizzas[i]);
-        }
-        System.out.println("Seleccione la pizza");
-        int laPizza = dato.nextInt() - 1;
-        this.pizzas = pizzas[laPizza];
-		System.out.println("Cantidad: ");
-        cantidad = dato.nextInt();
-        System.out.println("precioProd: ");
-        precioProd = dato.nextFloat();
-		} else{  
-			do{
-				error=0;
-				System.out.println("Detalles de venta");
-				for (int i = 0; i < cPizzas; i++) {
-				   if(pizzas[i].getExistencia()==true){
-				   System.out.println(i + 1 + ".-" + pizzas[i]);}
+			Cuadrado.imprimirCuadrado(50, 2, "---------Pizzas---------");
+			Cuadrado.matriz = Cuadrado.cuadrado(50, cPizzas + 4);
+			Cuadrado.centrarEnXYPresicion("Precio ", 37, 0);
+			for (int i = 0; i <= cPizzas; i++) {
+				if (pizzas[i].getExistencia()) {
+					Cuadrado.centrarEnXYPresicion(i + 1 + ".-" + pizzas[i].toString(), 3, i + 1);
+					Cuadrado.centrarEnXYPresicion(pizzas[i].getPrecio() + "$ ", 38, 1 + i);
 				}
-				int laPizza=0;
-				int fail=0;
-				do{
-					System.out.println("Selecione la pizza");
-					laPizza = dato.nextInt() - 1;
-					fail=0;
-					if(laPizza>=0 && pizzas[laPizza].getExistencia()==true){
-						fail++;
-					}else{
-						System.out.println("Esa pizza no esta disponible");
-						fail=0;
-					}
-				}while(fail==0);
-				System.out.println("Cantidad: ");
-				cantidad = dato.nextInt();
-				if(laPizza>=cPizzas){
-					this.cantidad=0;
-					this.pizzas=pizzas[laPizza];
-					System.out.println("No tenemos esa cantidad en stock");
-					System.out.println("Desea comprar otra pizza   1.-Si   2.-No");
-					error=dato.nextInt();
-				}else{
-					this.pizzas = pizzas[laPizza];
-					precioProd = pizzas[laPizza].getPrecioProd();
-					error=2;
-				}
-			}while(error == 1);
-	   }
+			}
+			Cuadrado.imprimirCuadrado();
+
+			int laPizza = dato.nextInt() - 1;
+			this.pizzas = pizzas[laPizza];
+			Cuadrado.imprimirCuadrado(50,4,"Cantidad: ");
+			cantidad = dato.nextInt();
+			precioProd = pizzas[laPizza].getPrecioProd();
     }
     //fin capturar pizzas
 

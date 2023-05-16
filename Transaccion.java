@@ -118,6 +118,27 @@ public abstract class Transaccion{
         }
     }
 
+
+    public void capturar(Pizza[] pizzas, int cPizzas) {
+        Scanner datos = new Scanner(System.in);
+        int ciclo;
+            System.out.println("Folio: ");
+            this.folio = datos.nextLine();
+            System.out.println("Fecha: ");
+            this.fecha = datos.nextLine();
+            do {
+                capturarDetalle(pizzas, cPizzas);
+                System.out.println("Desea Continuar?   1.-Si   2.-No");
+                String option = datos.next();
+                if (option.toLowerCase() == "si" || option == "1") {
+                    ciclo = 1;
+                } else {
+                    ciclo = 0;
+                }
+            } while (ciclo == 1 && cDetalles < 500);
+    }
+
+
     public void modificar(int cInventarios, Inventario[] inventarios, char diferencia) {
         Scanner leer = new Scanner(System.in);
         int opcion;
@@ -222,6 +243,11 @@ public abstract class Transaccion{
 
             cDetalles++;
         }
+    }
+
+    public void capturarDetalle(Pizza[] pizzas, int cPizzas) {
+            detalles[cDetalles] = new Detalle();
+            detalles[cDetalles].capturar(cPizzas, pizzas);
     }
 
     public void getDetalles() {

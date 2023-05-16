@@ -4,7 +4,7 @@ import javax.sound.sampled.SourceDataLine;
 
 public class Compra extends Transaccion {
     private Proveedores proveedor;
-
+    
     public Compra(){
 
     }
