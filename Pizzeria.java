@@ -1,7 +1,7 @@
 import java.io.*;
 import java.util.*;
 
-public class Pizzeria implements java.io.Serializable{
+public class Pizzeria implements java.io.Serializable {
     private String nombre;
     private String domicilio;
     private String correo;
@@ -15,7 +15,7 @@ public class Pizzeria implements java.io.Serializable{
     private Pizza[] pizzas = new Pizza[500];
     private int cPizzas;
     private Orden[] ordenes = new Orden[500];
-    private int cOrdenes=0;
+    private int cOrdenes = 0;
     private Transaccion[] transaccion = new Transaccion[500];
     private int cTransaccion;
 
@@ -56,52 +56,63 @@ public class Pizzeria implements java.io.Serializable{
 
     }
 
-
     protected void inicializaPersonas() {
         personas[0] = new Empleado("Daniel Adrian Roque Cortes", "443 832 7292", "algun lado", "rfc", "1234", "admin");
-        personas[++cPersonas] = new Empleado("Alexis Corzas Santiago", "443 363 1574", "algun lado", "rfc", "1234","admin");
+        personas[++cPersonas] = new Empleado("Alexis Corzas Santiago", "443 363 1574", "algun lado", "rfc", "1234",
+                "admin");
         personas[++cPersonas] = new Empleado("maki", "443 619 2989", "algun lado", "rfc", "1234", "empleado");
         personas[++cPersonas] = new Empleado("cajero", "000 000 0000", "algun lado", "rfc", "1234", "empleado");
         personas[++cPersonas] = new Empleado("admin", "000 000 0000", "algun lado", "rfc", "1234", "empleado");
 
         personas[++cPersonas] = new Proveedores("Verduras Taguada SA de CV", "554 234 2345", "algun lado", "rfc");
-        personas[++cPersonas] = new Proveedores("Grupo Alsea SA de CV", "443 312 0093","GP 30, Centro histórico de Morelia, 58000 Morelia, Mich.", "ALS211312FPE");
+        personas[++cPersonas] = new Proveedores("Grupo Alsea SA de CV", "443 312 0093",
+                "GP 30, Centro histórico de Morelia, 58000 Morelia, Mich.", "ALS211312FPE");
 
     }
 
     protected void inicializarinventarios() {
         cargarArchivoInventario();
-        /* 
-        inventarios[0] = new Inventario("Queso mozzarella", "Queso", 0.3);
-        inventarios[++cInventarios] = new Inventario("Queso parmesano", "queso", 0.26);
-        inventarios[++cInventarios] = new Inventario("Peperoni", "carne", 0.6);
-        inventarios[++cInventarios] = new Inventario("Salchicha", "carne", 0.08);
-        inventarios[++cInventarios] = new Inventario("Anchoas", "carne", 1.0);
-        inventarios[++cInventarios] = new Inventario("Salami", "carne", 0.67);
-        inventarios[++cInventarios] = new Inventario("Jamon", "carne", 0.14);
-        inventarios[++cInventarios] = new Inventario("Tocino", "carne", 0.32);
-        inventarios[++cInventarios] = new Inventario("Carne molida", "carne", 0.16);
-        inventarios[++cInventarios] = new Inventario("Chorizo", "carne", 0.12);
-
-        inventarios[++cInventarios] = new Inventario("Cebolla", "no carne", 0.016);
-        inventarios[++cInventarios] = new Inventario("tomate", "no carne", 0.016);
-        inventarios[++cInventarios] = new Inventario("Pimiento verde", "no carne", 0.06);
-        inventarios[++cInventarios] = new Inventario("Pimiento rojo", "no carne", 0.06);
-        inventarios[++cInventarios] = new Inventario("Aceitunas", "no carne", 0.06);
-        inventarios[++cInventarios] = new Inventario("Champiñones", "no carne", 0.07);
-        inventarios[++cInventarios] = new Inventario("Ajo", "no carne", 0.05);
-        inventarios[++cInventarios] = new Inventario("Jalapeños", "no carne", 0.05);
-        inventarios[++cInventarios] = new Inventario("Piña", "no carne", 0.013);
-
-        inventarios[++cInventarios] = new Inventario("orden de papas", "producto", 20);
-        inventarios[++cInventarios] = new Inventario("orden de bonneless", "producto", 50);
-        inventarios[++cInventarios] = new Inventario("refresco de cola", "bebida", 15);
-        inventarios[++cInventarios] = new Inventario("refresco de manzana", "bebida", 15);
-        inventarios[++cInventarios] = new Inventario("refresco de naranaja", "bebida", 15);
-        inventarios[++cInventarios] = new Inventario("palitos de queso", "producto", 20);
-        inventarios[++cInventarios] = new Inventario("salsa secreta", "extra", 10);
-        inventarios[++cInventarios] = new Inventario("dip de BBQ", "extra", 15);
-        */
+        /*
+         * inventarios[0] = new Inventario("Queso mozzarella", "Queso", 0.3);
+         * inventarios[++cInventarios] = new Inventario("Queso parmesano", "queso",
+         * 0.26);
+         * inventarios[++cInventarios] = new Inventario("Peperoni", "carne", 0.6);
+         * inventarios[++cInventarios] = new Inventario("Salchicha", "carne", 0.08);
+         * inventarios[++cInventarios] = new Inventario("Anchoas", "carne", 1.0);
+         * inventarios[++cInventarios] = new Inventario("Salami", "carne", 0.67);
+         * inventarios[++cInventarios] = new Inventario("Jamon", "carne", 0.14);
+         * inventarios[++cInventarios] = new Inventario("Tocino", "carne", 0.32);
+         * inventarios[++cInventarios] = new Inventario("Carne molida", "carne", 0.16);
+         * inventarios[++cInventarios] = new Inventario("Chorizo", "carne", 0.12);
+         * 
+         * inventarios[++cInventarios] = new Inventario("Cebolla", "no carne", 0.016);
+         * inventarios[++cInventarios] = new Inventario("tomate", "no carne", 0.016);
+         * inventarios[++cInventarios] = new Inventario("Pimiento verde", "no carne",
+         * 0.06);
+         * inventarios[++cInventarios] = new Inventario("Pimiento rojo", "no carne",
+         * 0.06);
+         * inventarios[++cInventarios] = new Inventario("Aceitunas", "no carne", 0.06);
+         * inventarios[++cInventarios] = new Inventario("Champiñones", "no carne",
+         * 0.07);
+         * inventarios[++cInventarios] = new Inventario("Ajo", "no carne", 0.05);
+         * inventarios[++cInventarios] = new Inventario("Jalapeños", "no carne", 0.05);
+         * inventarios[++cInventarios] = new Inventario("Piña", "no carne", 0.013);
+         * 
+         * inventarios[++cInventarios] = new Inventario("orden de papas", "producto",
+         * 20);
+         * inventarios[++cInventarios] = new Inventario("orden de bonneless",
+         * "producto", 50);
+         * inventarios[++cInventarios] = new Inventario("refresco de cola", "bebida",
+         * 15);
+         * inventarios[++cInventarios] = new Inventario("refresco de manzana", "bebida",
+         * 15);
+         * inventarios[++cInventarios] = new Inventario("refresco de naranaja",
+         * "bebida", 15);
+         * inventarios[++cInventarios] = new Inventario("palitos de queso", "producto",
+         * 20);
+         * inventarios[++cInventarios] = new Inventario("salsa secreta", "extra", 10);
+         * inventarios[++cInventarios] = new Inventario("dip de BBQ", "extra", 15);
+         */
     }
 
     protected void inicializarPizzas() {
@@ -199,7 +210,7 @@ public class Pizzeria implements java.io.Serializable{
 
         }
         Cuadrado.imprimirCuadrado();
-        
+
     }
 
     public void inspeccionarInventario() {
@@ -555,29 +566,6 @@ public class Pizzeria implements java.io.Serializable{
         personas[++cPersonas] = new Empleado(nombre, numero, direccion, rfc, password, puesto);
         Cuadrado.imprimirCuadrado(50, 4, "TU USUARIO ES: " + ((Empleado) personas[cPersonas]).getUsuario());
     }
-    
-    public void buscarEmpleado(){
-        Scanner leer = new Scanner(System.in);
-        int opcion = 0;
-        do {
-            opcion = 0;
-            System.out.println("Inserte el texto que desea buscar");
-            String cadenaAbuscar = leer.next();
-            int error = 0;
-            for (int i = 0; i <= cPersonas; i++) {
-                if (personas[i].buscar(cadenaAbuscar) == true && personas[i].quienSoy().equals("Empleado")) {
-                    System.out.println("------------------------------");
-                    personas[i].mostrar();
-                    error++;
-                }
-            }
-            if (error == 0) {
-                System.out.println("No se han encontrado resultados");
-            }
-            System.out.println("Desea seguir buscando?   1.-Si   2.-No");
-            opcion = leer.nextInt();
-        } while (opcion==1);
-    }
 
     // inicio funciones proveedor
 
@@ -585,40 +573,41 @@ public class Pizzeria implements java.io.Serializable{
         Scanner leer = new Scanner(System.in);
         int opcion = 0;
         int error = 0;
-        int nprov=0;
+        int nprov = 0;
         mostrarProveedores();
         System.out.println("Inserte el numero del proveedor que desee ver    0.-SALIR");
         opcion = leer.nextInt();
-        if(opcion>0){
-            nprov=opcion-1;
-            opcion=1;
+        if (opcion > 0) {
+            nprov = opcion - 1;
+            opcion = 1;
         }
         switch (opcion) {
             case 0:
                 return;
 
             case 1:
-                do{
-                    error=0;
+                do {
+                    error = 0;
                     if (!personas[nprov].quienSoy().equals("Proveedor") || personas[nprov].isVigente() == false) {
                         System.out.println("Este proveedor no existe");
                         System.out.println("Vuelva a intentarlo");
                         System.out.println("Inserte el numero del proveedor que desea ver");
-                        nprov=leer.nextInt()-1;
-                        error=1;
+                        nprov = leer.nextInt() - 1;
+                        error = 1;
                     } else if (personas[nprov].isVigente() == true && personas[nprov].quienSoy().equals("Proveedor")) {
                         personas[nprov].mostrar();
                         String cadenaAbuscar = ((Proveedores) personas[nprov]).getRazonSocial();
                         for (int i = 0; i < cTransaccion; i++) {
                             if (transaccion[i].queSoy().equals("Compra")) {
-                                if (((Compra) transaccion[i]).buscar(cadenaAbuscar) == true && transaccion[i].isVigente() == true) {
+                                if (((Compra) transaccion[i]).buscar(cadenaAbuscar) == true
+                                        && transaccion[i].isVigente() == true) {
                                     ((Compra) transaccion[i]).mostrar();
                                     ((Compra) transaccion[i]).getDetalles();
                                 }
                             }
                         }
                     }
-                }while(error==1);
+                } while (error == 1);
                 break;
         }
 
@@ -637,12 +626,12 @@ public class Pizzeria implements java.io.Serializable{
         Scanner sc = new Scanner(System.in);
         int opcion = 0;
         do {
-            
+
             personas[++cPersonas] = new Proveedores();
-            ((Proveedores)personas[cPersonas]).capturar();
+            ((Proveedores) personas[cPersonas]).capturar();
             System.out.println("Quiere agregar otro proveedor?   1.-Si   2.-No");
             opcion = sc.nextInt();
-        } while (opcion == 1); 
+        } while (opcion == 1);
     }
 
     public void modificarProveedores() {
@@ -658,32 +647,33 @@ public class Pizzeria implements java.io.Serializable{
                 System.out.println("Ese proveedor no existe");
                 System.out.println("vuelva a intentarlo");
                 error = 1;
-            }else{
+            } else {
                 personas[mod].modificar();
             }
         } while (error == 1);
     }
 
-    public void eliminarProveedores(){
-        Scanner sc= new Scanner(System.in);
-        int opcion=0;
-        do{
-            opcion=0;
+    public void eliminarProveedores() {
+        Scanner sc = new Scanner(System.in);
+        int opcion = 0;
+        do {
+            opcion = 0;
             mostrarProveedores();
             System.out.println("Que proveedor va eliminar?");
-            int num= sc.nextInt()-1;
-            if(num<0){
+            int num = sc.nextInt() - 1;
+            if (num < 0) {
                 System.out.println("Ese proveedore no existe");
-            }else{
-                if(num>cPersonas || personas[num].isVigente()==false || !personas[num].quienSoy().equals("Proveedor")){
+            } else {
+                if (num > cPersonas || personas[num].isVigente() == false
+                        || !personas[num].quienSoy().equals("Proveedor")) {
                     System.out.println("Ese proveedor no existe");
-                }else{
+                } else {
                     personas[num].eliminar();
                 }
             }
             System.out.println("Quiere seguir eliminando?   1.-Si   2.-No");
-            opcion=sc.nextInt();
-        }while(opcion==1);
+            opcion = sc.nextInt();
+        } while (opcion == 1);
     }
 
     public void buscarProveedores() {
@@ -706,14 +696,14 @@ public class Pizzeria implements java.io.Serializable{
             }
             System.out.println("Desea seguir buscando?   1.-Si   2.-No");
             opcion = leer.nextInt();
-        } while (opcion==1);
+        } while (opcion == 1);
     }
 
     // Fin funciones proveedor
 
-    //Funciones de compra
+    // Funciones de compra
 
-    public void listarCompras(){
+    public void listarCompras() {
         for (int i = 0; i < cTransaccion; i++) {
             if (transaccion[i].isVigente() == true && transaccion[i].queSoy().equals("compra")) {
                 ((Compra) transaccion[i]).mostrar();
@@ -721,142 +711,261 @@ public class Pizzeria implements java.io.Serializable{
             }
             System.out.println("-------------------------------------------");
         }
-    }      
-    
-    public void capturarCompra(){
+    }
+
+    public void capturarCompra() {
         transaccion[cTransaccion] = new Compra();
         Proveedores[] proveedor = new Proveedores[50];
         int cProveedores = 0;
-			for (int i = 0; i <= cPersonas; i++) {
-				if (personas[i].quienSoy().equals("Proveedor")) {
-					proveedor[cProveedores] = (Proveedores) personas[i];
-					cProveedores++;
-				}
-			}
-			((Compra) transaccion[cTransaccion]).capturar(proveedor, cProveedores,inventarios, cInventarios);
-			cTransaccion++;
+        for (int i = 0; i <= cPersonas; i++) {
+            if (personas[i].quienSoy().equals("Proveedor")) {
+                proveedor[cProveedores] = (Proveedores) personas[i];
+                cProveedores++;
+            }
+        }
+        ((Compra) transaccion[cTransaccion]).capturar(proveedor, cProveedores, inventarios, cInventarios);
+        cTransaccion++;
     }
 
-    public void modificarCompra(){
-            Scanner datos = new Scanner(System.in);
-            System.out.println("Que compra deseas modificar");
-            int selecciona;
-            int error=0;
+    public void modificarCompra() {
+        Scanner datos = new Scanner(System.in);
+        System.out.println("Que compra deseas modificar");
+        int selecciona;
+        int error = 0;
+        for (int i = 0; i < cTransaccion; i++) {
+            if (transaccion[i].isVigente() == true && transaccion[i].queSoy().equals("compra")) {
+                System.out.println(i + 1 + ".-" + transaccion[i]);
+            }
+        }
+        do {
+            error = 0;
+            System.out.println("Selecione la compra:");
+            selecciona = datos.nextInt();
+            if (transaccion[selecciona - 1].isVigente() == true
+                    && transaccion[selecciona - 1].queSoy().equals("Compra")) {
+                Proveedores[] proveedor = new Proveedores[50];
+                int contador = 0;
+                for (int i = 0; i < cPersonas; i++) {
+                    if (personas[i].quienSoy().equals("Proveedor")) {
+                        proveedor[contador] = (Proveedores) personas[i];
+                        contador++;
+                    }
+                }
+
+                ((Compra) transaccion[selecciona - 1]).modificar(contador, proveedor, cInventarios, inventarios);
+            } else {
+                System.out.println("Esa compra no existe ");
+                error = 1;
+            }
+        } while (error == 1);
+    }
+
+    public void eliminarCompra() {
+        Scanner datos = new Scanner(System.in);
+        int selecciona;
+        int opcion = 0;
+        do {
+            opcion = 0;
             for (int i = 0; i < cTransaccion; i++) {
                 if (transaccion[i].isVigente() == true && transaccion[i].queSoy().equals("compra")) {
                     System.out.println(i + 1 + ".-" + transaccion[i]);
                 }
             }
-            do{
-                error=0;
-                System.out.println("Selecione la compra:");
-                selecciona = datos.nextInt();
-                if (transaccion[selecciona - 1].isVigente() == true && transaccion[selecciona - 1].queSoy().equals("Compra")) {
-                    Proveedores[] proveedor = new Proveedores[50];
-                    int contador = 0;
-                    for (int i = 0; i < cPersonas; i++) {
-                        if (personas[i].quienSoy().equals("Proveedor")) {
-                            proveedor[contador] = (Proveedores) personas[i];
-                            contador++;
-                        }
-                    }
-    
-                    ((Compra) transaccion[selecciona - 1]).modificar(contador, proveedor, cInventarios, inventarios);
-                } else {
-                    System.out.println("Esa compra no existe ");
-                    error=1;
-                }
-            }while (error==1);
-        }
+            System.out.println("Selecione la compra:");
+            selecciona = datos.nextInt();
+            if (transaccion[selecciona - 1].isVigente() == true
+                    && transaccion[selecciona - 1].queSoy().equals("compra")) {
+                ((Compra) transaccion[selecciona - 1]).eliminar();
+            } else {
+                System.out.println("Esa compra no existe");
+            }
+            System.out.println("Quiere seguir eliminando?   1.-Si   2.-No");
+            opcion = datos.nextInt();
+        } while (opcion == 1);
+    }
 
-        public void eliminarCompra(){
-            Scanner datos = new Scanner(System.in);
-            int selecciona;
-            int opcion=0;
-            do{
-                opcion=0;
-                for (int i = 0; i < cTransaccion; i++) {
-                    if (transaccion[i].isVigente() == true && transaccion[i].queSoy().equals("compra")) {
-                        System.out.println(i + 1 + ".-" + transaccion[i]);
+    public void buscarCompra() {
+        Scanner leer = new Scanner(System.in);
+        int error = 0;
+        int opcion = 0;
+        do {
+            error = 0;
+            opcion = 0;
+            System.out.println("Ponga el texto que desea buscar");
+            String cadenaAbuscar = leer.next();
+            for (int i = 0; i < cTransaccion; i++) {
+                if (transaccion[i].queSoy().equals("compra")) {
+                    if (((Compra) transaccion[i]).buscar(cadenaAbuscar) == true && transaccion[i].isVigente() == true) {
+                        ((Compra) transaccion[i]).mostrar();
+                        ((Compra) transaccion[i]).getDetalles();
+                        error++;
                     }
                 }
-                System.out.println("Selecione la compra:");
-                selecciona = datos.nextInt();
-                if (transaccion[selecciona - 1].isVigente() == true && transaccion[selecciona - 1].queSoy().equals("compra")) {
-                    ((Compra) transaccion[selecciona - 1]).eliminar();
-                } else {
-                    System.out.println("Esa compra no existe");
-                }
-                System.out.println("Quiere seguir eliminando?   1.-Si   2.-No");
-                opcion=datos.nextInt();
-            }while(opcion==1);
-        }
 
-        public void buscarCompra(){
-            Scanner leer = new Scanner(System.in);
-            int error=0;
-            int opcion=0;
-            do{
-                error=0;
-                opcion=0;
-                System.out.println("Ponga el texto que desea buscar");
-                String cadenaAbuscar = leer.next();
-                for (int i = 0; i < cTransaccion; i++) {
-                    if (transaccion[i].queSoy().equals("compra")) {
-                        if (((Compra) transaccion[i]).buscar(cadenaAbuscar) == true && transaccion[i].isVigente() == true) {
-                            ((Compra) transaccion[i]).mostrar();
-                            ((Compra) transaccion[i]).getDetalles();
-                            error++;
-                        }
-                    }
-    
-                }
-                if(error==0){
-                        System.out.println("No se encontraron resultados");
-                    }
-                    System.out.println("Desea continuar?   1.-Si   2.-No");
-                    opcion=leer.nextInt();
-            }while(opcion==1);
-        }
-    //fin funciones de compra
+            }
+            if (error == 0) {
+                System.out.println("No se encontraron resultados");
+            }
+            System.out.println("Desea continuar?   1.-Si   2.-No");
+            opcion = leer.nextInt();
+        } while (opcion == 1);
+    }
+    // fin funciones de compra
 
-    //generar archivo inventario 
-    private void cargarArchivoInventario(){
+    // generar archivo inventario
+    private void cargarArchivoInventario() {
         System.out.println("Cargando los datos de las Inventario . . . ");
-        try{
-          FileInputStream archivoEntrada=new FileInputStream("Inventario.dat");
-          ObjectInputStream flujoEntrada=new ObjectInputStream(archivoEntrada);
-          cInventarios=(int)flujoEntrada.readObject();
-          for(int i=0;i<cInventarios;i++)
-          inventarios[i]=(Inventario)flujoEntrada.readObject();
-          flujoEntrada.close();
+        try {
+            FileInputStream archivoEntrada = new FileInputStream("Inventario.dat");
+            ObjectInputStream flujoEntrada = new ObjectInputStream(archivoEntrada);
+            cInventarios = (int) flujoEntrada.readObject();
+            for (int i = 0; i < cInventarios; i++)
+                inventarios[i] = (Inventario) flujoEntrada.readObject();
+            flujoEntrada.close();
+        } catch (Exception e) {
+            System.err.println("Error, no se cargaron los datos " + e);
         }
-        catch(Exception e){
-          System.err.println("Error, no se cargaron los datos "+e);
-        }
-      }
+    }
 
-
-    public void generarArchivoInventario(){
-        FileOutputStream archivoSalida=null;
-        try{
-            archivoSalida=new FileOutputStream("Inventario.dat");
-            ObjectOutputStream flujoSalida=new ObjectOutputStream(archivoSalida);
+    public void generarArchivoInventario() {
+        FileOutputStream archivoSalida = null;
+        try {
+            archivoSalida = new FileOutputStream("Inventario.dat");
+            ObjectOutputStream flujoSalida = new ObjectOutputStream(archivoSalida);
             System.out.println("generando Inventario.dat...");
             flujoSalida.writeObject(cInventarios);
-            for(int i=0;i<cInventarios;i++){
+            for (int i = 0; i < cInventarios; i++) {
                 flujoSalida.writeObject(inventarios[i]);
             }
             archivoSalida.close();
-        }catch(Exception e){
+        } catch (Exception e) {
             System.out.println(e);
         }
     }
-    ///
+
+    // funciones empleado
+    public void listarEmpleados() {
+        Scanner leer = new Scanner(System.in);
+        for (int i = 0; i <= cPersonas; i++) {
+            if (personas[i].quienSoy().equals("Empleado") && personas[i].isVigente() == true) {
+                System.out.println(i + 1 + ".-" + ((Empleado) personas[i]));
+
+            }
+        }
+        int empleado;
+        int opcion;
+        do {
+            System.out.println("Mostrar informacion del empleado(ingrese numero del empleado):  ");
+            empleado = leer.nextInt() - 1;
+            if (empleado > cPersonas || empleado < 0) {
+                System.err.println("es una seleccion incorrecta");
+            } else if (personas[empleado].quienSoy().equals("Empleado") && personas[empleado].isVigente() == true) {
+                ((Empleado) personas[empleado]).mostrar();
+            } else {
+                System.out.println("esto no es un empleado");
+            }
+            do {
+                System.out.println("deseas ver la informacion de otro empleado? 1.-si 2.-no");
+                opcion = leer.nextInt();
+                if (opcion != 2 && opcion != 1) {
+                    System.out.println("esa no es una opcion");
+                    opcion = 3;
+                }
+            } while (opcion == 3);
+        } while (opcion == 1);
+    }
+
+    public void listarEmpleo(){
+        for (int i = 0; i <= cPersonas; i++) {
+            if (personas[i].quienSoy().equals("Empleado") && personas[i].isVigente() == true) {
+                System.out.println(i + 1 + ".-" + ((Empleado) personas[i]));
+
+            }
+        }
+    }
+
+    public void capturarEmpleado() {
+        System.out.println("//////////////////////REGISTRO////////////////////////////77");
+        Scanner datos = new Scanner(System.in);
+        personas[++cPersonas] = new Empleado();
+        ((Empleado) personas[cPersonas]).capturar();
+        System.out.println("///////////////////USUARIO/////////////////////");
+        Cuadrado.imprimirCuadrado(50, 4, "TU USUARIO ES: " + ((Empleado) personas[cPersonas]).getUsuario());
+    }
+
+    public void modificarEmpleado(){
+        Scanner leer =new Scanner(System.in);
+        int empleado;
+        int opcion;
+       do{
+        listarEmpleo();
+        System.out.println("que empleado deseas modificar? (ingrese numero de empleado):  ");
+        empleado=leer.nextInt()-1;
+        if(empleado>cPersonas || empleado<0){
+        System.err.println("es una seleccion incorrecta");
+        }
+        else if(personas[empleado].quienSoy().equals("Empleado") && personas[empleado].isVigente()==true){
+         ((Empleado)personas[empleado]).modificar();
+        }else{
+            System.out.println("esto no es un empleado");
+        }
+        do {
+            System.out.println("deseas modificar otro empleado? 1.-si 2.-no");
+            opcion = leer.nextInt();
+            if (opcion != 2 && opcion != 1) {
+                System.out.println("esa no es una opcion");
+                opcion = 3;
+            }
+        } while (opcion == 3);
+    } while (opcion == 1);
+    }
+
+    public void eliminarEmpleado(){
+        Scanner leer =new Scanner(System.in);
+        int empleado;
+        int opcion;
+        do{
+            listarEmpleo();
+            System.out.println("que empleado deseas eliminar? (ingrese numero de empleado):  ");
+            empleado=leer.nextInt()-1;
+            if(empleado>cPersonas || empleado<0){
+            System.err.println("es una seleccion incorrecta");
+            }
+            else if(personas[empleado].quienSoy().equals("Empleado") && personas[empleado].isVigente()==true){
+             personas[empleado].eliminar();
+             System.out.println("SE ELIMINO A: "+((Empleado)personas[empleado]));
+            }else{
+                System.out.println("esto no es un empleado");
+            }
+            do {
+                System.out.println("deseas eliminar otro empleado? 1.-si 2.-no");
+                opcion = leer.nextInt();
+                if (opcion != 2 && opcion != 1) {
+                    System.out.println("esa no es una opcion");
+                    opcion = 3;
+                }
+            } while (opcion == 3);
+        } while (opcion == 1);
+    }
+
+    public void buscarEmpleado(){
+        Scanner leer =new Scanner(System.in);
+        String cadenaAbuscar;
+        System.out.println("INGRESE EMPLEADO O ALGO DE EL A BUSCAR:");
+        cadenaAbuscar=leer.nextLine();
+        for (int i = 0; i <= cPersonas; i++){
+            if(personas[i].quienSoy().equals("Empleado") && personas[i].isVigente()==true){
+                if(((Empleado)personas[i]).buscar(cadenaAbuscar)==true);
+                ((Empleado)personas[i]).mostrar();
+            }
+        }
+
+    }
+
     public Empleado[] getEmpleados() {
         Empleado[] empleado = new Empleado[50];
         int contador = 0;
-        for (int i = 0; i < cPersonas; i++) {
+        for (int i = 0; i <= cPersonas; i++) {
             if (personas[i].isVigente() == true && personas[i].quienSoy().equals("Empleado")) {
                 empleado[contador] = ((Empleado) personas[i]);
                 contador++;
@@ -868,7 +977,7 @@ public class Pizzeria implements java.io.Serializable{
 
     public int getCempleados() {
         int contador = 0;
-        for (int i = 0; i < cPersonas; i++) {
+        for (int i = 0; i <= cPersonas; i++) {
             if (personas[i].isVigente() == true && personas[i].quienSoy().equals("Empleado")) {
                 contador++;
             }
@@ -929,6 +1038,6 @@ public class Pizzeria implements java.io.Serializable{
         return rfc;
     }
 
-   
+
     // fin funciones basicas set get to string.
 }

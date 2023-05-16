@@ -15,6 +15,7 @@ public abstract class Persona {
         this.telefono = telefono;
         this.direccion = direccion;
         this.rfc = rfc;
+        vigente=true;
     }
 
     public String toString() {
@@ -54,10 +55,8 @@ public abstract class Persona {
                 rfc = "(el rfc de consumidor general)";
 
         } else {
-            System.out.print("ingrese telefono    :");
-            telefono = leer.nextLine();
-            System.out.print("ingrese direccion    :");
-            direccion = leer.nextLine();
+            System.out.print("ingrese telefono    :");telefono = leer.nextLine();
+            System.out.print("ingrese direccion    :");direccion = leer.nextLine();
             System.out.print("ingrese rfc    :");
             rfc = leer.nextLine();
         }

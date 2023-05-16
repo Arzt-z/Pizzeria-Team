@@ -4,10 +4,10 @@ public class Ap{
         
 		Pizzeria pizzafactory = new Pizzeria("Pizza Factory", "Av. Lic. Enrique Ramírez Miguel, Las Américas", "PizzaFactory@Pizza.com", 7002200 , "445697234");
 		pizzafactory.mostrar();
-        Empleado[] empleados = pizzafactory.getEmpleados();
-        
+      
 		
 		do{
+            Empleado[] empleados = pizzafactory.getEmpleados();
             int user = login(empleados,pizzafactory);
             boolean salir=false;
             if(user==-1){return;}
@@ -50,19 +50,19 @@ public class Ap{
                             pizzafactory.buscarInventarios();
                             break;
                         case 31:
-                            pizzafactory.buscarInventarios();
+                           // pizzafactory.buscarInventarios();
                             break;
                         case 32:
                             pizzafactory.capturarOrden();
                             break;
                         case 33:
-                            pizzafactory.buscarInventarios();
+                            //pizzafactory.buscarInventarios();
                             break;
                         case 34:
-                            pizzafactory.buscarInventarios();
+                            //pizzafactory.buscarInventarios();
                             break;
                         case 35:
-                            pizzafactory.buscarInventarios();
+                            //pizzafactory.buscarInventarios();
                             break;
                         case 41:
                             pizzafactory.listarCompras();
@@ -93,6 +93,21 @@ public class Ap{
                             break;
                         case 55:
                             pizzafactory.buscarProveedores();
+                            break;
+                        case 61:
+                            pizzafactory.listarEmpleados();
+                            break;
+                        case 62:
+                            pizzafactory.capturarEmpleado();
+                            break;
+                        case 63:
+                            pizzafactory.eliminarEmpleado();
+                            break;
+                        case 64:
+                            pizzafactory.modificarEmpleado();
+                            break;
+                        case 65:
+                            pizzafactory.buscarEmpleado();
                             break;
                         case 0:
                             salir=true;
@@ -172,12 +187,14 @@ public class Ap{
         if (seleccio == 0) {
             return seleccio;
         }
+        if(seleccio==1 || seleccio==2){
         Cuadrado.imprimirCuadradoDividido(50, 4,"1.-Listar","2.-Capturar");
         Cuadrado.imprimirCuadradoDividido(50, 4,"3.-Eliminar","4.-Modificar");
         Cuadrado.imprimirCuadradoDividido(50, 4,"5.-Buscar","0.-cancelar");
         seleccio = seleccio * 10 + datos.nextInt();
 		return seleccio;
-		
+        }
+        return seleccio;
 	}
 
     public static int login(Empleado[] empleados,Pizzeria pizerria) {
