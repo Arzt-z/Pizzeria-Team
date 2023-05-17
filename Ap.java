@@ -1,22 +1,31 @@
+import java.util.InputMismatchException;
 import java.util.Scanner;
-public class Ap{
-	public static void main (String[] args){
-        
-		Pizzeria pizzafactory = new Pizzeria("Pizza Factory", "Av. Lic. Enrique Ramírez Miguel, Las Américas", "PizzaFactory@Pizza.com", 7002200 , "445697234");
-		pizzafactory.mostrar();
-      
-		
-		do{
+
+public class Ap {
+   
+
+    public static void main(String[] args) {
+
+        Pizzeria pizzafactory = new Pizzeria("Pizza Factory", "Av. Lic. Enrique Ramírez Miguel, Las Américas",
+                "PizzaFactory@Pizza.com", 7002200, "445697234");
+        pizzafactory.mostrar();
+
+        do {
+
             Empleado[] empleados = pizzafactory.getEmpleados();
-            int user = login(empleados,pizzafactory);
-            boolean salir=false;
-            if(user==-1){return;}
-            
-            if(empleados[user].getTipo().equalsIgnoreCase("admin")){
+            int user = login(empleados, pizzafactory);
+            try{
+            boolean salir = false;
+            if (user == -1) {
+                return;
+            }
+
+            if (empleados[user].getTipo().equalsIgnoreCase("admin")) {
+                
                 do {
-                    Cuadrado.matriz=Cuadrado.cuadrado(50, 6 );
-                    Cuadrado.centrarEnXY("Bienvenido "+ (empleados[user]).getNombre(),0,0);
-                    Cuadrado.centrarEnXY((empleados[user]).getTipo(),0,1);
+                    Cuadrado.matriz = Cuadrado.cuadrado(50, 6);
+                    Cuadrado.centrarEnXY("Bienvenido " + (empleados[user]).getNombre(), 0, 0);
+                    Cuadrado.centrarEnXY((empleados[user]).getTipo(), 0, 1);
                     Cuadrado.imprimirCuadrado();
                     switch (menu()) {
                         case 11:
@@ -50,19 +59,19 @@ public class Ap{
                             pizzafactory.buscarInventarios();
                             break;
                         case 31:
-                           // pizzafactory.buscarInventarios();
+                            // pizzafactory.buscarInventarios();
                             break;
                         case 32:
                             pizzafactory.capturarOrden();
                             break;
                         case 33:
-                            //pizzafactory.buscarInventarios();
+                            // pizzafactory.buscarInventarios();
                             break;
                         case 34:
-                            //pizzafactory.buscarInventarios();
+                            // pizzafactory.buscarInventarios();
                             break;
                         case 35:
-                            //pizzafactory.buscarInventarios();
+                            // pizzafactory.buscarInventarios();
                             break;
                         case 41:
                             pizzafactory.listarCompras();
@@ -110,17 +119,19 @@ public class Ap{
                             pizzafactory.buscarEmpleado();
                             break;
                         case 0:
-                            salir=true;
+                            salir = true;
                             pizzafactory.generarArchivoInventario();
                             break;
                     }
-                } while (salir==false);
+                } while (salir == false);
             
-            }else if(empleados[user].getTipo().equalsIgnoreCase("empleado")){
-                do{
-                    Cuadrado.matriz=Cuadrado.cuadrado(50, 6 );
-                    Cuadrado.centrarEnXY("Bienvenido "+ (empleados[user]).getNombre(),0,0);
-                    Cuadrado.centrarEnXY((empleados[user]).getTipo(),0,1);
+
+            } else if (empleados[user].getTipo().equalsIgnoreCase("empleado")) {
+               
+                do {
+                    Cuadrado.matriz = Cuadrado.cuadrado(50, 6);
+                    Cuadrado.centrarEnXY("Bienvenido " + (empleados[user]).getNombre(), 0, 0);
+                    Cuadrado.centrarEnXY((empleados[user]).getTipo(), 0, 1);
                     Cuadrado.imprimirCuadrado();
                     switch (menuCajeros()) {
                         case 11:
@@ -139,7 +150,7 @@ public class Ap{
                             pizzafactory.buscarPizza();
                             break;
                         case 21:
-                            //pizzafactory.inspeccionarInventario();
+                            // pizzafactory.inspeccionarInventario();
                             break;
                         case 22:
                             pizzafactory.capturarOrden();
@@ -154,13 +165,21 @@ public class Ap{
                             pizzafactory.buscarInventarios();
                             break;
                         case 0:
-                        salir=true;
+                            salir = true;
                             break;
                     }
-                } while (salir==false);
-		    }
-		}while(true);
-	}              
+                } while (salir == false);
+                 
+            }
+
+        
+     }catch(InputMismatchException e){
+        System.err.println("CARACTER INVALIDO INSERTE UN NUMERO VAlIDO");
+       }catch(Exception e){
+        System.err.println("OCURRIO EL ERROR "+e);
+       }
+    } while (true);
+    }
 
     public static int menu() {
         Scanner datos = new Scanner(System.in);
@@ -178,8 +197,8 @@ public class Ap{
         seleccion = seleccion * 10 + datos.nextInt();
 		return seleccion;
     }
-	
-	public static int menuCajeros(){
+
+    public static int menuCajeros(){
 		Scanner datos = new Scanner(System.in);
         Cuadrado.imprimirCuadradoDividido(50, 4,"1.-pizzas","2.-orden");
 		System.out.println("0.-Salir");
@@ -227,5 +246,4 @@ public class Ap{
         }while(true);
     }
 
-	 
-  }
+}

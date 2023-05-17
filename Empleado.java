@@ -3,18 +3,13 @@ import java.util.Scanner;
 public class Empleado extends Persona {
 
     private String nombre;
-    private double sueldo;
-    private int horasDeTrabajo;
-    private int diasTrabajados;
+   
     private String usuario;
     private String password;
     private String tipo;
     private boolean vigente;
 
     public Empleado() {
-        horasDeTrabajo = 8;
-        diasTrabajados = 7;
-        sueldo = 250.33 / horasDeTrabajo;
         vigente=true;
     }
 
@@ -24,9 +19,6 @@ public class Empleado extends Persona {
         this.usuario = generarUsuario(nombre);
         this.password = password;
         this.tipo = tipo;
-        horasDeTrabajo = 8;
-        diasTrabajados = 7;
-        sueldo = 250.33 / horasDeTrabajo;
         vigente=true;
     }
 
@@ -180,41 +172,12 @@ public class Empleado extends Persona {
         return vigente;
     }
 
-    public double sueldoSemana() {
-        double sueldoSemana = diasTrabajados * horasDeTrabajo * sueldo;
-        return sueldoSemana;
-    }
-
     public String getNombre() {
         return nombre;
     }
 
     public void setNombre(String nombre) {
         this.nombre = nombre;
-    }
-
-    public double getSueldo() {
-        return sueldo;
-    }
-
-    public void setSueldo(double sueldo) {
-        this.sueldo = sueldo;
-    }
-
-    public int getHorasDeTrabajo() {
-        return horasDeTrabajo;
-    }
-
-    public void setHorasDeTrabajo(int horasDeTrabajo) {
-        this.horasDeTrabajo = horasDeTrabajo;
-    }
-
-    public int getDiasTrabajados() {
-        return diasTrabajados;
-    }
-
-    public void setDiasTrabajados(int diasTrabajados) {
-        this.diasTrabajados = diasTrabajados;
     }
 
     public String getPassword() {

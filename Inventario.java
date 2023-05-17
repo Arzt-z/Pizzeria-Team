@@ -5,6 +5,7 @@ public class Inventario implements java.io.Serializable{
     private double precio;
     private boolean existencia=true;
     private String tipo;
+   
     public Inventario(){   
     }
 
