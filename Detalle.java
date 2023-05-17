@@ -26,6 +26,7 @@ public class Detalle {
 		this.dif='p';
     }
 
+
     public void mostrar() {
 		Cuadrado.matriz=Cuadrado.cuadrado(50, 3);
 		if(this.dif=='p'){
@@ -40,6 +41,18 @@ public class Detalle {
 		Cuadrado.centrarEnXYPresicion("precioProd",37, 0);
 		Cuadrado.centrarEnXYPresicion(precioProd+"",37, 1);
 		Cuadrado.imprimirCuadrado();
+	}
+
+    public void mostrar(char diferenciador) {
+		if(diferenciador=='c'){
+			System.out.println("\t\tIngredientes: " + pizzas);
+			System.out.println("\t\tCantidad: " + cantidad);
+			System.out.println("\t\tprecioProd: " + precioProd);
+		}else{
+		System.out.println("\t\tPizza: " + pizzas);
+        System.out.println("\t\tCantidad: " + cantidad);
+        System.out.println("\t\tprecio: " + precioProd);
+		}
     }
 
     public void modificar(int cPizzas, Pizza [] pizzas, char diferenciador) {
@@ -119,7 +132,7 @@ public class Detalle {
         for (int i = 0; i < cInventarios; i++) {
 			System.out.println(i + 1 + ".-" + inventarios[i]);
         }
-        System.out.println("Seleccione la pizza");
+        System.out.println("Seleccione los ingredientes");
         int elInventario = dato.nextInt() - 1;
         this.inventario = inventarios[elInventario];
 		System.out.println("Cantidad: ");

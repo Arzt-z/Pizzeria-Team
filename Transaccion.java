@@ -86,13 +86,8 @@ public abstract class Transaccion{
             do {
                 capturarDetalle(inventarios, cInventarios, diferencia);
                 System.out.println("Desea Continuar?   1.-Si   2.-No");
-                String option = datos.next();
-                if (option.toLowerCase() == "si" || option == "1") {
-                    ciclo = 1;
-                } else {
-                    ciclo = 0;
-                }
-            } while (ciclo == 1 && cDetalles < 500);
+                ciclo=datos.nextInt();
+            } while (ciclo == 1 && cDetalles <= 500);
         } else {
 
             System.out.println("Folio: ");
@@ -250,7 +245,7 @@ public abstract class Transaccion{
             detalles[cDetalles++].capturar(cPizzas, pizzas);
     }
 
-    public void getDetalles() {
+    public void getDetalles(char diferenciador) {
         double totalf = 0;
         double total = 0;
 
@@ -264,10 +259,10 @@ public abstract class Transaccion{
 
             } else {
                 if(detalles[i].isVigente()==true){
-				detalles[i].mostrar();
+				detalles[i].mostrar(diferenciador);
                 totalf += detalles[i].getPrecioProd() * detalles[i].getCantidad();
                 total += detalles[i].getPrecioProd() * detalles[i].getCantidad();
-                System.out.println("\t\ttotal de inventarios= " + total);
+                System.out.println("\t\ttotal= " + total);
                 total = 0;
 				}
 
@@ -277,6 +272,7 @@ public abstract class Transaccion{
         System.out.println("\t\t----------------------------");
         System.out.println("\t\ttotal final= " + totalf);
     }
+
 
     public String getFecha() {
         return fecha;
