@@ -247,7 +247,7 @@ public abstract class Transaccion{
 
     public void capturarDetalle(Pizza[] pizzas, int cPizzas) {
             detalles[cDetalles] = new Detalle();
-            detalles[cDetalles].capturar(cPizzas, pizzas);
+            detalles[cDetalles++].capturar(cPizzas, pizzas);
     }
 
     public void getDetalles() {

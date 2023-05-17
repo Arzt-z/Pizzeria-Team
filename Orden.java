@@ -19,8 +19,7 @@ public class Orden extends Transaccion {
         return "orden";
     }
 
-    public void mostrar() {
-        
+    public void mostrarPizzas() {
         if(cPizzas+cInventarios>0){
             System.out.println(cPizzas+cInventarios+"");
             Cuadrado.imprimirCuadrado(50, 2 ,nombre);
@@ -33,6 +32,36 @@ public class Orden extends Transaccion {
             for(int i = cPizzas; i < cPizzas+cInventarios; i++){
                 Cuadrado.centrarEnXYPresicion(i + 1 + ".-"+inventarios[i].getNombre(),4,i+1);
                 Cuadrado.centrarEnXYPresicion(""+inventarios[i].getPrecio(),37,i+1);
+            }
+            Cuadrado.imprimirCuadrado();
+        }
+    }
+
+    public void mostrarOrden() {
+        if(super.cDetalles>=0){
+            Cuadrado.imprimirCuadrado(50, 2 ,"Orden");
+            Cuadrado.matriz=Cuadrado.cuadrado(50, 4);
+            Cuadrado.centrarEnXYPresicion("Cliente:",2, 0);
+            Cuadrado.centrarEnXYPresicion(cliente,10, 0);
+            Cuadrado.centrarEnXYPresicion("Fecha:",2, 1);
+            Cuadrado.centrarEnXYPresicion(super.fecha,8, 1);
+            Cuadrado.centrarEnXYPresicion("Folio:",2, 2);
+            Cuadrado.centrarEnXYPresicion(super.folio,8, 2);
+            Cuadrado.imprimirCuadrado();
+            Cuadrado.matriz=Cuadrado.cuadrado(50, cDetalles+2);
+            Cuadrado.centrarEnXYPresicion("Cantidad|",28, 0);
+            Cuadrado.centrarEnXYPresicion("precioProd",37, 0);
+            for(int i = 0; i < super.cDetalles; i++){
+                    if(detalles[i].getDif()=='p'){
+                        Cuadrado.centrarEnXYPresicion("pizza:",2, 1);
+                        Cuadrado.centrarEnXYPresicion(detalles[i].getNombre(),8, 1);
+                    }else{
+                        Cuadrado.centrarEnXYPresicion("inv:",2, 1);
+                        Cuadrado.centrarEnXYPresicion(detalles[i].getNombre(),5, 1);
+                    }
+                    Cuadrado.centrarEnXYPresicion(detalles[i].getCantidad()+"",33, 1);
+                    Cuadrado.centrarEnXYPresicion(detalles[i].getPrecioProd()+"",37, 1);
+                    
             }
             Cuadrado.imprimirCuadrado();
         }
@@ -79,7 +108,7 @@ public class Orden extends Transaccion {
         Cuadrado.imprimirCuadrado(50, 4, "------------ORDEN------------");
         Cuadrado.imprimirCuadrado(50, 4, "INGRESAR NOMBRE DEL CLIENTE");
         cliente = datos.nextLine();
-        mostrar();
+        mostrarPizzas();
         
 
         int opcion;

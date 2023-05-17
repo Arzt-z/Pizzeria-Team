@@ -4,7 +4,9 @@ public class Detalle {
     private Pizza pizzas;
 	private Inventario inventario;
     private double precioProd;
-	private  boolean vigente;
+	private boolean vigente;
+	private char dif;
+	private String nombre;
 
     public Detalle() {
 		vigente=true;
@@ -14,18 +16,30 @@ public class Detalle {
         this.cantidad = cantidad;
         this.inventario = inventario;
         this.precioProd = precioProd;
+		this.dif= 'i';
     }
 
     public Detalle(int cantidad, Pizza pizzas, double precioProd) {
         this.cantidad = cantidad;
         this.pizzas = pizzas;
         this.precioProd = precioProd;
+		this.dif='p';
     }
 
     public void mostrar() {
-		System.out.println("\t\tPizza: " + pizzas);
-        System.out.println("\t\tCantidad: " + cantidad);
-        System.out.println("\t\tprecioProd: " + precioProd);
+		Cuadrado.matriz=Cuadrado.cuadrado(50, 3);
+		if(this.dif=='p'){
+			Cuadrado.centrarEnXYPresicion("pizza:",2, 1);
+            Cuadrado.centrarEnXYPresicion(pizzas.getNombre(),8, 1);
+		}else{
+			Cuadrado.centrarEnXYPresicion("inventario:",2, 1);
+			Cuadrado.centrarEnXYPresicion(inventario.getNombre(),8, 1);
+		}
+		Cuadrado.centrarEnXYPresicion("Cantidad|",28, 0);
+		Cuadrado.centrarEnXYPresicion(cantidad+"",33, 1);
+		Cuadrado.centrarEnXYPresicion("precioProd",37, 0);
+		Cuadrado.centrarEnXYPresicion(precioProd+"",37, 1);
+		Cuadrado.imprimirCuadrado();
     }
 
     public void modificar(int cPizzas, Pizza [] pizzas, char diferenciador) {
@@ -148,6 +162,7 @@ public class Detalle {
 				}
 			}while(error == 1);
 	   }
+	   this.nombre = this.inventario.getNombre();
     }
     //fin capturar inventarios
 
@@ -170,6 +185,8 @@ public class Detalle {
 			Cuadrado.imprimirCuadrado(50,4,"Cantidad: ");
 			cantidad = dato.nextInt();
 			precioProd = pizzas[laPizza].getPrecioProd();
+			this.dif='p';
+			this.nombre = this.pizzas.getNombre();
     }
     //fin capturar pizzas
 
@@ -214,6 +231,22 @@ public class Detalle {
 
     public void setPrecioProd(double precioProd) {
         this.precioProd = precioProd;
+    }
+
+	public int getDif() {
+        return dif;
+    }
+
+    public void setDif(char dif) {
+        this.dif = dif;
+    }
+
+	public String getNombre() {
+        return nombre;
+    }
+
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
     }
 
 }
