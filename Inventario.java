@@ -1,10 +1,11 @@
+import java.io.Serializable;
 import java.util.Scanner;
-public class Inventario{
+public class Inventario implements Serializable{
     private String nombre;
     private int stock;
     private double precio;
     private boolean existencia=true;
-    private Scanner datos =new Scanner(System.in);
+    private transient Scanner datos =new Scanner(System.in);
     private String tipo;
 
     public Inventario(){   
