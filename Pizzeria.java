@@ -17,16 +17,18 @@ public class Pizzeria implements java.io.Serializable {
     private Orden[] ordenes = new Orden[500];
     private int cOrdenes = 0;
     private Transaccion[] transaccion = new Transaccion[500];
-    private int cTransaccion;
+    private int cTransaccion=0;
 
     public Pizzeria() {
         cOrdenes = 0;
         cPizzas = 0;
+        cTransaccion = 0;
     }
 
     public Pizzeria(String nombre, String domicilio, String correo, int horario, String telefono) {
         cOrdenes = 0;
         cPizzas = 0;
+        cTransaccion=0;
         this.nombre = nombre;
         this.domicilio = domicilio;
         this.correo = correo;
@@ -335,7 +337,7 @@ public class Pizzeria implements java.io.Serializable {
         int continuar = 1;
         int seleccion = 0;
         do {
-            mostarPizzas();
+            mostrarPizzas();
             if (continuar != 1)
                 return;
             Cuadrado.imprimirCuadrado(50, 3, "selecciona una pizza");
@@ -352,7 +354,7 @@ public class Pizzeria implements java.io.Serializable {
         } while (continuar == 1);
     }
 
-    public void mostarPizzas() {
+    public void mostrarPizzas() {
         Cuadrado.imprimirCuadrado(50, 2, "----------Pizzas----------");
         Cuadrado.matriz = Cuadrado.cuadrado(50, cPizzas + 4);
         Cuadrado.centrarEnXYPresicion("Precio ", 37, 0);
@@ -367,14 +369,15 @@ public class Pizzeria implements java.io.Serializable {
 
     public void capturarPizza() {
         Scanner datos = new Scanner(System.in);
-        pizzas[++cPizzas] = new Pizza();
+     
+            pizzas[++cPizzas] = new Pizza();
         Cuadrado.imprimirCuadrado(50, 4, "------------PIZZA------------");
         tamanoPizza(cPizzas);
         dividirPizza(cPizzas);
         seleccionarIngredientePizza(cPizzas);
-        pizzas[cPizzas].listarIngredientes();
-        pizzas[cPizzas].calcularPrecio();
-        pizzas[cPizzas].calcularTodosLosIngredientes();
+        pizzas[cPizzas].capturar();
+        
+     
     }
 
     public void eliminarPizza() {
@@ -382,7 +385,7 @@ public class Pizzeria implements java.io.Serializable {
         int seleccion = 0;
         int continuar = 1;
         do {
-            mostarPizzas();
+            mostrarPizzas();
             Cuadrado.imprimirCuadrado(50, 3, "---SELECCIONA LA PIZZA A ELIMINAR---");
             seleccion = datos.nextInt();
             pizzas[seleccion - 1].eliminar();
@@ -397,7 +400,7 @@ public class Pizzeria implements java.io.Serializable {
         int seleccion = 0;
         int continuar = 1;
         int opcionMod = 0;
-        mostarPizzas();
+        mostrarPizzas();
         Cuadrado.imprimirCuadrado(50, 3, "---SELECCIONA LA PIZZA A MODIFICAR---");
         seleccion = datos.nextInt() - 1;
         do {
@@ -510,42 +513,119 @@ public class Pizzeria implements java.io.Serializable {
     public void capturarOrden() {
         Scanner datos = new Scanner(System.in);
         int continuar = 1;
-        Cuadrado.imprimirCuadrado(50, 4, "------------ORDEN------------");
-        Cuadrado.imprimirCuadrado(50, 4, "INGRESAR NOMBRE DEL CLIENTE");
-        String nombre = datos.nextLine();
-        ordenes[cOrdenes] = new Orden(nombre);
+        transaccion[cTransaccion] = new Orden();
         do {
-            ordenes[cOrdenes].mostrar();
+            transaccion[cTransaccion].mostrar();
             Cuadrado.imprimirCuadrado(50, 3, "Selecciona Pizza o producto");
             // Cuadrado.imprimirCuadrado(50, 4,"COMBOS");
             Cuadrado.imprimirCuadradoDividido(50, 4, "1.-PRODUCTOS", "2.-PIZZA");
             int opcion = datos.nextInt();
             if (opcion == 1) {
-                Cuadrado.imprimirCuadrado(50, 2, "---------Productos---------");
+                /*Cuadrado.imprimirCuadrado(50, 2, "---------Productos---------");
                 listarinventarios("producto");
                 Cuadrado.imprimirCuadrado(50, 2, "----------Bebidas----------");
                 listarinventarios("bebida");
                 Cuadrado.imprimirCuadrado(50, 2, "-----------Extra-----------");
                 listarinventarios("extra");
-                int opcion2 = datos.nextInt();
-                ordenes[cOrdenes].capturarInventario(inventarios[opcion2 - 1]);
+                int opcion2 = datos.nextInt();*/
+                transaccion[cTransaccion].capturar(inventarios, cInventarios, 'v');
             } else if (opcion == 2) {
-                Cuadrado.imprimirCuadrado(50, 2, "---------Pizzas---------");
-                mostarPizzas();
+                transaccion[cTransaccion].capturar(pizzas,cPizzas);
+                /* 
+                mostrarPizzas();
                 int opcion3 = datos.nextInt();
                 ordenes[cOrdenes].capturarPizza(pizzas[opcion3 - 1]);
+            */
             }
             Cuadrado.imprimirCuadrado(50, 3, "AGREGAR ALGO MAS?");
             Cuadrado.imprimirCuadradoDividido(50, 2, "1.-SI", "2.-NO");
             continuar = datos.nextInt();
         } while (continuar == 1);
-        cOrdenes++;
+        cTransaccion++;
     }
 
     public void listarOrden() {
+            Scanner datos = new Scanner(System.in);
+            int continuar = 1;
+            int seleccion = 0;
+            do {
+                mostrarOrdenes();
+                if (continuar != 1)
+                    return;
+                Cuadrado.imprimirCuadrado(50, 3, "selecciona una orden");
+                seleccion = datos.nextInt();
+                if (transaccion[seleccion - 1].isVigente()) {
+                    ((Orden)transaccion[seleccion-1]).mostrarOrden();
+                    Cuadrado.imprimirCuadrado(50, 3, "deseas ver otro detalle?");
+                    Cuadrado.imprimirCuadradoDividido(50, 2, "1.-si", "2.-no");
+                } else {
+                    Cuadrado.imprimirCuadrado(50, 3, "DETALLE INVALIDO INTENTAR OTRA VEZ?");
+                    Cuadrado.imprimirCuadradoDividido(50, 2, "1.-si", "2.-no");
+                }
+                continuar = datos.nextInt();
+            } while (continuar == 1);
+    }
+
+    public void eliminarOrden() {
+        Scanner datos = new Scanner(System.in);
+        int continuar = 1;
+        int seleccion = 0;
+        do {
+            mostrarOrdenes();
+            if (continuar != 1)
+                return;
+            Cuadrado.imprimirCuadrado(50, 3, "selecciona una orden");
+            seleccion = datos.nextInt();
+            if (transaccion[seleccion - 1].isVigente()) {
+                ((Orden)transaccion[seleccion - 1]).eliminar();
+                Cuadrado.imprimirCuadrado(50, 3, "deseas eliminar otro detalle?");
+                Cuadrado.imprimirCuadradoDividido(50, 2, "1.-si", "2.-no");
+            } else {
+                Cuadrado.imprimirCuadrado(50, 3, "DETALLE INVALIDO INTENTAR OTRA VEZ?");
+                Cuadrado.imprimirCuadradoDividido(50, 2, "1.-si", "2.-no");
+            }
+            continuar = datos.nextInt();
+        } while (continuar == 1);
+
 
     }
-    // fin funciones orden
+
+    public void buscarOrden() {
+        Scanner datos = new Scanner(System.in);
+        int continuar = 1;
+        String cadenaAbuscar;
+        do {
+            System.out.println("TEXTO A BUSCAR");
+            cadenaAbuscar = datos.nextLine();
+            for (int i = 0; i < cTransaccion; i++) {
+                if ((transaccion[i].buscar(cadenaAbuscar) == true || ((Orden)transaccion[i]).getCliente().contains(cadenaAbuscar))&& transaccion[i].isVigente() == true && transaccion[i].queSoy().equalsIgnoreCase("orden")) {
+                    ((Orden)transaccion[i]).mostrarOrden();
+                }
+            }
+            Cuadrado.imprimirCuadrado(50, 3, "BUSCAR OTRA VEZ?");
+            Cuadrado.imprimirCuadradoDividido(50, 2, "1.-SI", "2.-NO");
+            continuar = datos.nextInt();
+            datos.nextLine();
+        } while (continuar == 1);
+    }
+
+
+    public void mostrarOrdenes(){
+                Cuadrado.imprimirCuadrado(50, 2, "----------Ordenes----------");
+                Cuadrado.matriz = Cuadrado.cuadrado(50, cOrdenes + 4);
+                Cuadrado.centrarEnXYPresicion("folio ", 3, 0);
+                Cuadrado.centrarEnXYPresicion("fecha ", 15, 0);
+                Cuadrado.centrarEnXYPresicion("nombre ", 35, 0);
+                for (int i = 0; i < cTransaccion; i++) {
+                    if (transaccion[i].isVigente()) {
+                        System.out.println(cTransaccion);
+                        Cuadrado.centrarEnXYPresicion(i + 1 + ".-" + transaccion[i].getFolio(), 3, i + 1);
+                        Cuadrado.centrarEnXYPresicion(transaccion[i].getFecha() + "", 15, 1 + i);
+                        Cuadrado.centrarEnXYPresicion(transaccion[i].queSoy() + "", 35, 1 + i);
+                    }
+                }
+                Cuadrado.imprimirCuadrado();
+    }
 
     // inicio funciones proveedor
 
@@ -929,17 +1009,26 @@ public class Pizzeria implements java.io.Serializable {
     }
 
     public void buscarEmpleado(){
-        Scanner leer =new Scanner(System.in);
-        String cadenaAbuscar;
-        System.out.println("INGRESE EMPLEADO O ALGO DE EL A BUSCAR:");
-        cadenaAbuscar=leer.nextLine();
-        for (int i = 0; i <= cPersonas; i++){
-            if(personas[i].quienSoy().equals("Empleado") && personas[i].isVigente()==true){
-                if(((Empleado)personas[i]).buscar(cadenaAbuscar)==true);
-                ((Empleado)personas[i]).mostrar();
+        Scanner leer = new Scanner(System.in);
+        int opcion = 0;
+        do {
+            opcion = 0;
+            System.out.println("Inserte el texto que desea buscar");
+            String cadenaAbuscar = leer.next();
+            int error = 0;
+            for (int i = 0; i <= cPersonas; i++) {
+                if (personas[i].buscar(cadenaAbuscar) == true && personas[i].quienSoy().equals("Empleado")) {
+                    System.out.println("------------------------------");
+                    personas[i].mostrar();
+                    error++;
+                }
             }
-        }
-
+            if (error == 0) {
+                System.out.println("No se han encontrado resultados");
+            }
+            System.out.println("Desea seguir buscando?   1.-Si   2.-No");
+            opcion = leer.nextInt();
+        } while (opcion==1);
     }
 
     public Empleado[] getEmpleados() {
@@ -1017,6 +1106,7 @@ public class Pizzeria implements java.io.Serializable {
     public String getrfc() {
         return rfc;
     }
+
 
     // fin funciones basicas set get to string.
 }

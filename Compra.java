@@ -4,7 +4,7 @@ import javax.sound.sampled.SourceDataLine;
 
 public class Compra extends Transaccion {
     private Proveedores proveedor;
-
+    
     public Compra(){
 
     }
@@ -103,7 +103,8 @@ public class Compra extends Transaccion {
     }
     
     public void getDetalles(){
-        super.getDetalles();
+        char diferencia='c';
+        super.getDetalles(diferencia);
     }
 
     public Proveedores getProveedor(){

@@ -20,6 +20,7 @@ public class Pizza{
     private int extras=0;
     private int[] gramosIngrediente = new int[500];
     private boolean existencia=true;
+    
 
     public Pizza() {
         this.nombre = "nueva pizza";
@@ -55,6 +56,12 @@ public class Pizza{
         Cuadrado.centrarEnXYPresicion("Precio produccion: ",4, 1);Cuadrado.centrarEnXYPresicion((precioProd+extras)+"$",30, 1);
         Cuadrado.centrarEnXYPresicion("Precio Venta: ",4, 2);Cuadrado.centrarEnXYPresicion(precio+"$",30, 2); 
         Cuadrado.imprimirCuadrado();
+    }
+
+    public void capturar(){
+        listarIngredientes();
+        calcularPrecio();
+        calcularTodosLosIngredientes();
     }
 
     public void MostrarCalcularPrecio(){

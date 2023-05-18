@@ -154,16 +154,17 @@ public class Empleado extends Persona {
         } while (ciclo == 1);
     }
 
-    public boolean buscar(String cadenaAbuscar){
-        String datos=nombre+usuario+password+tipo;
-        if(datos.contains(cadenaAbuscar)==false){
-            return super.buscar(cadenaAbuscar);
-
+    public boolean buscar(String cadenaAbuscar) {
+        String misDatos;
+        if (super.buscar(cadenaAbuscar) == true) {
+            return true;
         }
-        return datos.contains(cadenaAbuscar);
-        
-    }
 
+        misDatos = nombre + telefono + direccion+ rfc+ password+ tipo;
+
+        return misDatos.contains(cadenaAbuscar);
+	}
+    
     public void eliminar(){
         vigente=false;
     }

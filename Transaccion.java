@@ -113,6 +113,27 @@ public abstract class Transaccion{
         }
     }
 
+
+    public void capturar(Pizza[] pizzas, int cPizzas) {
+        Scanner datos = new Scanner(System.in);
+        int ciclo;
+            System.out.println("Folio: ");
+            this.folio = datos.nextLine();
+            System.out.println("Fecha: ");
+            this.fecha = datos.nextLine();
+            do {
+                capturarDetalle(pizzas, cPizzas);
+                System.out.println("Desea Continuar?   1.-Si   2.-No");
+                String option = datos.next();
+                if (option.toLowerCase() == "si" || option == "1") {
+                    ciclo = 1;
+                } else {
+                    ciclo = 0;
+                }
+            } while (ciclo == 1 && cDetalles < 500);
+    }
+
+
     public void modificar(int cInventarios, Inventario[] inventarios, char diferencia) {
         Scanner leer = new Scanner(System.in);
         int opcion;
@@ -219,7 +240,12 @@ public abstract class Transaccion{
         }
     }
 
-    public void getDetalles() {
+    public void capturarDetalle(Pizza[] pizzas, int cPizzas) {
+            detalles[cDetalles] = new Detalle();
+            detalles[cDetalles++].capturar(cPizzas, pizzas);
+    }
+
+    public void getDetalles(char diferenciador) {
         double totalf = 0;
         double total = 0;
 
@@ -233,10 +259,10 @@ public abstract class Transaccion{
 
             } else {
                 if(detalles[i].isVigente()==true){
-				detalles[i].mostrar();
+				detalles[i].mostrar(diferenciador);
                 totalf += detalles[i].getPrecioProd() * detalles[i].getCantidad();
                 total += detalles[i].getPrecioProd() * detalles[i].getCantidad();
-                System.out.println("\t\ttotal de inventarios= " + total);
+                System.out.println("\t\ttotal= " + total);
                 total = 0;
 				}
 
@@ -246,6 +272,7 @@ public abstract class Transaccion{
         System.out.println("\t\t----------------------------");
         System.out.println("\t\ttotal final= " + totalf);
     }
+
 
     public String getFecha() {
         return fecha;
