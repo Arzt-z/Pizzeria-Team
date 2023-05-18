@@ -38,7 +38,7 @@ public abstract class Transaccion{
             }
         } else {
             for (int i = 0; i < cDetalles; i++) {
-                detalles[i].getInventario().setStock(detalles[i].getInventario().getStock() + detalles[i].getCantidad());
+                //detalles[i].getInventario().setStock(detalles[i].getInventario().getStock() + detalles[i].getCantidad());
             }
         }
     }
@@ -89,7 +89,6 @@ public abstract class Transaccion{
                 ciclo=datos.nextInt();
             } while (ciclo == 1 && cDetalles <= 500);
         } else {
-
             System.out.println("Folio: ");
             this.folio = datos.nextLine();
             System.out.println("Fecha: ");
@@ -296,6 +295,10 @@ public abstract class Transaccion{
 
     public void setVigente(boolean vigente) {
         this.vigente = vigente;
+    }
+
+    public void eliminarDetalles() {
+        cDetalles=0;
     }
 	
 }

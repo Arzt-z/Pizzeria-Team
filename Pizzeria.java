@@ -15,18 +15,15 @@ public class Pizzeria implements java.io.Serializable {
     private Pizza[] pizzas = new Pizza[500];
     private int cPizzas;
     private Orden[] ordenes = new Orden[500];
-    private int cOrdenes = 0;
     private Transaccion[] transaccion = new Transaccion[500];
     private int cTransaccion=0;
 
     public Pizzeria() {
-        cOrdenes = 0;
         cPizzas = 0;
         cTransaccion = 0;
     }
 
     public Pizzeria(String nombre, String domicilio, String correo, int horario, String telefono) {
-        cOrdenes = 0;
         cPizzas = 0;
         cTransaccion=0;
         this.nombre = nombre;
@@ -74,47 +71,47 @@ public class Pizzeria implements java.io.Serializable {
 
     protected void inicializarinventarios() {
         cargarArchivoInventario();
-        /*
-         * inventarios[0] = new Inventario("Queso mozzarella", "Queso", 0.3);
-         * inventarios[++cInventarios] = new Inventario("Queso parmesano", "queso",
-         * 0.26);
-         * inventarios[++cInventarios] = new Inventario("Peperoni", "carne", 0.6);
-         * inventarios[++cInventarios] = new Inventario("Salchicha", "carne", 0.08);
-         * inventarios[++cInventarios] = new Inventario("Anchoas", "carne", 1.0);
-         * inventarios[++cInventarios] = new Inventario("Salami", "carne", 0.67);
-         * inventarios[++cInventarios] = new Inventario("Jamon", "carne", 0.14);
-         * inventarios[++cInventarios] = new Inventario("Tocino", "carne", 0.32);
-         * inventarios[++cInventarios] = new Inventario("Carne molida", "carne", 0.16);
-         * inventarios[++cInventarios] = new Inventario("Chorizo", "carne", 0.12);
-         * 
-         * inventarios[++cInventarios] = new Inventario("Cebolla", "no carne", 0.016);
-         * inventarios[++cInventarios] = new Inventario("tomate", "no carne", 0.016);
-         * inventarios[++cInventarios] = new Inventario("Pimiento verde", "no carne",
-         * 0.06);
-         * inventarios[++cInventarios] = new Inventario("Pimiento rojo", "no carne",
-         * 0.06);
-         * inventarios[++cInventarios] = new Inventario("Aceitunas", "no carne", 0.06);
-         * inventarios[++cInventarios] = new Inventario("Champiñones", "no carne",
-         * 0.07);
-         * inventarios[++cInventarios] = new Inventario("Ajo", "no carne", 0.05);
-         * inventarios[++cInventarios] = new Inventario("Jalapeños", "no carne", 0.05);
-         * inventarios[++cInventarios] = new Inventario("Piña", "no carne", 0.013);
-         * 
-         * inventarios[++cInventarios] = new Inventario("orden de papas", "producto",
-         * 20);
-         * inventarios[++cInventarios] = new Inventario("orden de bonneless",
-         * "producto", 50);
-         * inventarios[++cInventarios] = new Inventario("refresco de cola", "bebida",
-         * 15);
-         * inventarios[++cInventarios] = new Inventario("refresco de manzana", "bebida",
-         * 15);
-         * inventarios[++cInventarios] = new Inventario("refresco de naranaja",
-         * "bebida", 15);
-         * inventarios[++cInventarios] = new Inventario("palitos de queso", "producto",
-         * 20);
-         * inventarios[++cInventarios] = new Inventario("salsa secreta", "extra", 10);
-         * inventarios[++cInventarios] = new Inventario("dip de BBQ", "extra", 15);
-         */
+        /* 
+         inventarios[0] = new Inventario("Queso mozzarella", "Queso", 0.3);
+          inventarios[++cInventarios] = new Inventario("Queso parmesano", "queso",
+         0.26);
+          inventarios[++cInventarios] = new Inventario("Peperoni", "carne", 0.6);
+          inventarios[++cInventarios] = new Inventario("Salchicha", "carne", 0.08);
+          inventarios[++cInventarios] = new Inventario("Anchoas", "carne", 1.0);
+          inventarios[++cInventarios] = new Inventario("Salami", "carne", 0.67);
+          inventarios[++cInventarios] = new Inventario("Jamon", "carne", 0.14);
+          inventarios[++cInventarios] = new Inventario("Tocino", "carne", 0.32);
+          inventarios[++cInventarios] = new Inventario("Carne molida", "carne", 0.16);
+          inventarios[++cInventarios] = new Inventario("Chorizo", "carne", 0.12);
+          
+          inventarios[++cInventarios] = new Inventario("Cebolla", "no carne", 0.016);
+          inventarios[++cInventarios] = new Inventario("tomate", "no carne", 0.016);
+          inventarios[++cInventarios] = new Inventario("Pimiento verde", "no carne",
+          0.06);
+          inventarios[++cInventarios] = new Inventario("Pimiento rojo", "no carne",
+          0.06);
+          inventarios[++cInventarios] = new Inventario("Aceitunas", "no carne", 0.06);
+          inventarios[++cInventarios] = new Inventario("Champiñones", "no carne",
+          0.07);
+          inventarios[++cInventarios] = new Inventario("Ajo", "no carne", 0.05);
+          inventarios[++cInventarios] = new Inventario("Jalapeños", "no carne", 0.05);
+          inventarios[++cInventarios] = new Inventario("Piña", "no carne", 0.013);
+          
+          inventarios[++cInventarios] = new Inventario("orden de papas", "producto",
+          20);
+          inventarios[++cInventarios] = new Inventario("orden de bonneless",
+          "producto", 50);
+          inventarios[++cInventarios] = new Inventario("refresco de cola", "bebida",
+          15);
+          inventarios[++cInventarios] = new Inventario("refresco de manzana", "bebida",
+          15);
+          inventarios[++cInventarios] = new Inventario("refresco de naranaja",
+          "bebida", 15);
+          inventarios[++cInventarios] = new Inventario("palitos de queso", "producto",
+          20);
+          inventarios[++cInventarios] = new Inventario("salsa secreta", "extra", 10);
+          inventarios[++cInventarios] = new Inventario("dip de BBQ", "extra", 15);
+        */
     }
 
     protected void inicializarPizzas() {
@@ -513,35 +510,59 @@ public class Pizzeria implements java.io.Serializable {
     public void capturarOrden() {
         Scanner datos = new Scanner(System.in);
         int continuar = 1;
-        transaccion[cTransaccion] = new Orden();
         do {
+            transaccion[cTransaccion] = new Orden();
             transaccion[cTransaccion].mostrar();
             Cuadrado.imprimirCuadrado(50, 3, "Selecciona Pizza o producto");
             // Cuadrado.imprimirCuadrado(50, 4,"COMBOS");
             Cuadrado.imprimirCuadradoDividido(50, 4, "1.-PRODUCTOS", "2.-PIZZA");
             int opcion = datos.nextInt();
             if (opcion == 1) {
-                /*Cuadrado.imprimirCuadrado(50, 2, "---------Productos---------");
-                listarinventarios("producto");
-                Cuadrado.imprimirCuadrado(50, 2, "----------Bebidas----------");
-                listarinventarios("bebida");
-                Cuadrado.imprimirCuadrado(50, 2, "-----------Extra-----------");
-                listarinventarios("extra");
-                int opcion2 = datos.nextInt();*/
+                ((Orden)transaccion[cTransaccion]).capturarCliente();
                 transaccion[cTransaccion].capturar(inventarios, cInventarios, 'v');
             } else if (opcion == 2) {
                 transaccion[cTransaccion].capturar(pizzas,cPizzas);
-                /* 
-                mostrarPizzas();
-                int opcion3 = datos.nextInt();
-                ordenes[cOrdenes].capturarPizza(pizzas[opcion3 - 1]);
-            */
             }
-            Cuadrado.imprimirCuadrado(50, 3, "AGREGAR ALGO MAS?");
+            Cuadrado.imprimirCuadrado(50, 3, "Agregar otra orden?");
             Cuadrado.imprimirCuadradoDividido(50, 2, "1.-SI", "2.-NO");
             continuar = datos.nextInt();
+            cTransaccion++;
         } while (continuar == 1);
-        cTransaccion++;
+    }
+
+    public void modificarOrden(){
+        Scanner datos = new Scanner(System.in);
+        int continuar = 1;
+        int seleccion = 0;
+        do {
+            mostrarOrdenes();
+            if (continuar != 1)
+                return;
+            Cuadrado.imprimirCuadrado(50, 3, "selecciona una orden");
+            seleccion = datos.nextInt();
+            if (transaccion[seleccion - 1].isVigente()) {
+                Cuadrado.imprimirCuadrado(50, 3, "Que deseas modificar?");
+                Cuadrado.imprimirCuadradoDividido(50, 2, "1.-Cliente", "2.-Pedido");
+                int eleccion = datos.nextInt();
+                switch(eleccion){
+                    case 1:
+                        ((Orden)transaccion[seleccion-1]).capturarCliente();
+                        break;
+                    case 2: 
+                        transaccion[seleccion-1].eliminarDetalles();
+                        ((Orden)transaccion[seleccion-1]).capturarPizza(pizzas, cPizzas);
+                        break;
+                    case 0:
+                        return;
+                }
+
+            } else {
+                Cuadrado.imprimirCuadrado(50, 3, "ORDEN INVALIDA INTENTAR OTRA VEZ?");
+                Cuadrado.imprimirCuadradoDividido(50, 2, "1.-si", "2.-no");
+            }
+            continuar = datos.nextInt();
+        } while (continuar == 1);
+
     }
 
     public void listarOrden() {
@@ -611,22 +632,29 @@ public class Pizzeria implements java.io.Serializable {
 
 
     public void mostrarOrdenes(){
-                Cuadrado.imprimirCuadrado(50, 2, "----------Ordenes----------");
-                Cuadrado.matriz = Cuadrado.cuadrado(50, cOrdenes + 4);
-                Cuadrado.centrarEnXYPresicion("folio ", 3, 0);
-                Cuadrado.centrarEnXYPresicion("fecha ", 15, 0);
-                Cuadrado.centrarEnXYPresicion("nombre ", 35, 0);
-                for (int i = 0; i < cTransaccion; i++) {
-                    if (transaccion[i].isVigente()) {
-                        System.out.println(cTransaccion);
-                        Cuadrado.centrarEnXYPresicion(i + 1 + ".-" + transaccion[i].getFolio(), 3, i + 1);
-                        Cuadrado.centrarEnXYPresicion(transaccion[i].getFecha() + "", 15, 1 + i);
-                        Cuadrado.centrarEnXYPresicion(transaccion[i].queSoy() + "", 35, 1 + i);
-                    }
-                }
-                Cuadrado.imprimirCuadrado();
+        int contador=0;
+        Cuadrado.imprimirCuadrado(50, 2, "----------Ordenes----------");
+        for (int i = 0; i < cTransaccion; i++) {
+            if (transaccion[i].isVigente() && transaccion[i].queSoy().equalsIgnoreCase("orden")) {
+                contador++;
+            }
+        }
+        Cuadrado.matriz = Cuadrado.cuadrado(50, contador + 3);
+        Cuadrado.centrarEnXYPresicion("folio ", 4, 0);
+        Cuadrado.centrarEnXYPresicion("fecha ", 15, 0);
+        Cuadrado.centrarEnXYPresicion("nombre ", 27, 0);
+        contador=0;
+        for (int i = 0; i < cTransaccion; i++) {
+            if (transaccion[i].isVigente() && transaccion[i].queSoy().equalsIgnoreCase("orden")) {
+                Cuadrado.centrarEnXYPresicion(i + 1 + ".-" + transaccion[i].getFolio(), 2, contador + 1);
+                Cuadrado.centrarEnXYPresicion(transaccion[i].getFecha() + "", 15, 1 + contador);
+                Cuadrado.centrarEnXYPresicion(((Orden)transaccion[i]).getCliente(), 27, 1 + contador);
+                contador++;
+            }
+        }
+        Cuadrado.imprimirCuadrado();
     }
-
+    //fin funciones orden
     // inicio funciones proveedor
 
     public void listarProveedores() {

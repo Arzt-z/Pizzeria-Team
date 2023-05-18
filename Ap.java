@@ -126,6 +126,7 @@ public class Ap {
                         System.err.println("CARACTER INVALIDO INSERTE UN NUMERO VAlIDO");
                     } catch (Exception e) {
                         System.err.println("OCURRIO EL ERROR " + e);
+                        e.printStackTrace();
                     }
                     } while (salir == false);
                 
