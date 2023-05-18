@@ -58,19 +58,19 @@ public class Ap {
                                 pizzafactory.buscarInventarios();
                                 break;
                             case 31:
-                                // pizzafactory.buscarInventarios();
+                                pizzafactory.listarOrden();
                                 break;
                             case 32:
                                 pizzafactory.capturarOrden();
                                 break;
                             case 33:
-                                // pizzafactory.buscarInventarios();
+                                pizzafactory.eliminarOrden();
                                 break;
                             case 34:
-                                // pizzafactory.buscarInventarios();
+                                pizzafactory.buscarOrden();
                                 break;
                             case 35:
-                                // pizzafactory.buscarInventarios();
+                                pizzafactory.buscarOrden();
                                 break;
                             case 41:
                                 pizzafactory.listarCompras();
