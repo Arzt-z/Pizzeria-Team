@@ -367,7 +367,7 @@ public class Pizzeria implements java.io.Serializable {
     public void capturarPizza() {
         Scanner datos = new Scanner(System.in);
      
-            pizzas[++cPizzas] = new Pizza();
+        pizzas[++cPizzas] = new Pizza();
         Cuadrado.imprimirCuadrado(50, 4, "------------PIZZA------------");
         tamanoPizza(cPizzas);
         dividirPizza(cPizzas);
@@ -512,7 +512,6 @@ public class Pizzeria implements java.io.Serializable {
         int continuar = 1;
         do {
             transaccion[cTransaccion] = new Orden();
-            transaccion[cTransaccion].mostrar();
             Cuadrado.imprimirCuadrado(50, 3, "Selecciona Pizza o producto");
             // Cuadrado.imprimirCuadrado(50, 4,"COMBOS");
             Cuadrado.imprimirCuadradoDividido(50, 4, "1.-PRODUCTOS", "2.-PIZZA");

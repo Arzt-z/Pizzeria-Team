@@ -155,7 +155,7 @@ public class Detalle {
 				}while(fail==0);
 				Cuadrado.imprimirCuadrado(50, 3 ,"Cantidad");
 				cantidad = dato.nextInt();
-				if(elInventario>=cInventarios){
+				if(cantidad>inventario.getStock()){
 					this.cantidad=0;
 					this.inventario=inventarios[elInventario];
 					System.out.println("No tenemos esa cantidad en stock");
@@ -163,6 +163,7 @@ public class Detalle {
 					error=dato.nextInt();
 				}else{
 					this.inventario = inventarios[elInventario];
+					inventario.setStock(inventario.getStock()-cantidad);
 					precioProd = inventarios[elInventario].getPrecio();
 					error=2;
 				}
@@ -226,6 +227,7 @@ public class Detalle {
 			Cuadrado.imprimirCuadrado(50,4,"Cantidad: ");
 			cantidad = dato.nextInt();
 			precioProd = pizzas[laPizza].getPrecioProd();
+			pizzas[laPizza].sustraerIngredientesAInventarios(cantidad);
 			this.dif='p';
 			this.nombre = this.pizzas.getNombre();
     }
