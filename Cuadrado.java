@@ -47,7 +47,7 @@ public class Cuadrado {
         }
         return matriz;
     }
-    //escribe la palabra en la posicion que se le de exactamente, la posicion y aun empiesa desde el centro
+    //escribe la palabra en la posicion que se le de exactamente, la posicion Y aun empiesa desde el centro
     public static char[][] centrarEnXYPresicion( String palabra,int posicion, int posicionY){
         for (int y = 0; y < matriz[0].length; y++) {
             for (int x = 0; x < matriz.length; x++) {

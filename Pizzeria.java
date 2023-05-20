@@ -255,7 +255,7 @@ public class Pizzeria implements java.io.Serializable {
         Scanner datos = new Scanner(System.in);
         int seleccion = 0;
         int continuar = 1;
-        seleccion = seleccionInventarios();
+        seleccion = seleccionInventarios()-1;
         do {
             inventarios[seleccion].modificar();
             Cuadrado.imprimirCuadrado(50, 3, "desea modificar otro?");
