@@ -67,7 +67,7 @@ public class Ap {
                                 pizzafactory.eliminarOrden();
                                 break;
                             case 34:
-                                pizzafactory.buscarOrden();
+                                pizzafactory.modificarOrden();
                                 break;
                             case 35:
                                 pizzafactory.buscarOrden();
@@ -162,19 +162,19 @@ public class Ap {
                                 pizzafactory.buscarPizza();
                                 break;
                             case 21:
-                                // pizzafactory.inspeccionarInventario();
+                                pizzafactory.listarOrden();
                                 break;
                             case 22:
                                 pizzafactory.capturarOrden();
                                 break;
                             case 23:
-                                pizzafactory.buscarInventarios();
+                                pizzafactory.eliminarOrden();
                                 break;
                             case 24:
-                                pizzafactory.buscarInventarios();
+                                pizzafactory.modificarOrden();
                                 break;
                             case 25:
-                                pizzafactory.buscarInventarios();
+                                pizzafactory.buscarOrden();
                                 break;
                             case 0:
                                 salir = true;
