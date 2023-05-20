@@ -34,6 +34,7 @@ public class Pizza{
         this.diametro = 20+size*5;
         cInventarios[0]=0;
         cPartes=1;
+        precioFijo=true;
     }
 
     public String toString(){
@@ -62,22 +63,26 @@ public class Pizza{
         listarIngredientes();
         calcularPrecio();
         calcularTodosLosIngredientes();
+        MostrarCalcularPrecio();
     }
 
     public void MostrarCalcularPrecio(){
         multiplicador = (float)(this.diametro*this.diametro)/(40*40);
-        Cuadrado.imprimirCuadradoDividido(50, 4,"area: "+(this.diametro*this.diametro),"multi "+ multiplicador);
-        Cuadrado.imprimirCuadradoDividido(50, 4,"precio de prod: "+(int)((precioProd+extras)*multiplicador),"precio venta"+(int)(((precioProd+extras)* multiplicador)*(2.0-(size/16.8))));
+        Cuadrado.imprimirCuadradoDividido(50, 2,"area: "+(this.diametro*this.diametro),"multi "+ multiplicador);
+        Cuadrado.imprimirCuadradoDividido(50, 2,"precio de prod: "+(int)((precioProd+extras)*multiplicador),"precio venta: "+(int)(((precioProd+extras)* multiplicador)*(2.0-(size/16.8))));
     }
 
     public void calcularPrecio(){
-        if(precioFijo==false){
+        if(precioFijo==false || precio==0){
             multiplicador = (float)(this.diametro*this.diametro)/(40*40);
             precio=(int)(((precioProd+extras)*multiplicador)*(2.0-(size/16.8)));
         }
     }
 
     public void listarIngredientes(){
+        calcularTodosLosIngredientes();
+        int xi=0;
+        int yi=0;
         for (int f = 0; f < cPartes; f++){
             Cuadrado.imprimirCuadrado(50, 3 ,nombre);
             Cuadrado.imprimirCuadrado(50, 2 ,"----------Ingredientes seccion " + (f+1) +"----------");
@@ -87,12 +92,20 @@ public class Pizza{
             Cuadrado.centrarEnXYPresicion("Precio",37, 0);
             for (int i = 0; i < cInventarios[f]; i++) {
                 Cuadrado.centrarEnXYPresicion(i + 1 + ".-"+inventarios[i][f].getNombre(),4, i+1);
-                Cuadrado.centrarEnXYPresicion( 30/inventarios[i][f].getPrecio() +"g",29, i+1);
+                
+                if(ingredientes[i].getTipo().equalsIgnoreCase("carne")){
+                    xi=((int)(((15/inventarios[i][f].getPrecio()+140)/cInventarios[f])/cPartes));
+                }else{
+                    xi=((int)(((15/(25*inventarios[i][f].getPrecio())+140)/cInventarios[f])/cPartes));
+                }
+
+                Cuadrado.centrarEnXYPresicion( xi +"g",29, i+1);
                 Cuadrado.centrarEnXYPresicion("|",36,i+1);
-                Cuadrado.centrarEnXYPresicion( inventarios[i][f].getPrecio()+"" , 37 , i+1);
+                Cuadrado.centrarEnXYPresicion(  (int)(inventarios[i][f].getPrecio()*(xi)) +"" , 37 , i+1);
             }
             Cuadrado.imprimirCuadrado();
         } 
+
     }
 
     public void calcularTodosLosIngredientes(){
@@ -101,13 +114,16 @@ public class Pizza{
             for (int i = 0; i < cInventarios[f]; i++) {
                 ingredientes[cIngredientes]=inventarios[i][f];
                 if(ingredientes[cIngredientes].getTipo().equalsIgnoreCase("carne")){
-                    gramosIngrediente[cIngredientes]=(int)(15/ingredientes[cIngredientes].getPrecio()+100);
+                    gramosIngrediente[cIngredientes]=((int)(15/ingredientes[cIngredientes].getPrecio()+140));
                 }else{
-                    gramosIngrediente[cIngredientes]=(int)(15/(25*ingredientes[cIngredientes].getPrecio())+110);
+                    gramosIngrediente[cIngredientes]=(int)(15/(25*ingredientes[cIngredientes].getPrecio())+140);
                 }
                 cIngredientes++;
             }
         } 
+        for (int i = 0; i < cIngredientes; i++) {
+            gramosIngrediente[cIngredientes]=gramosIngrediente[cIngredientes]/cIngredientes;
+        }
     }
 
     public void listarTodosLosIngredientes(){
@@ -120,9 +136,9 @@ public class Pizza{
         Cuadrado.centrarEnXYPresicion("Precio",37, 0);
         for (int i = 0; i < cIngredientes; i++) {
             Cuadrado.centrarEnXYPresicion(i + 1 + ".-"+ingredientes[i].getNombre(),4, i+1);
-            Cuadrado.centrarEnXYPresicion(gramosIngrediente[i] +"g",30, i+1);
+            Cuadrado.centrarEnXYPresicion(gramosIngrediente[i]/cIngredientes +"g",30, i+1);
             Cuadrado.centrarEnXYPresicion("|",36,i+1);
-            Cuadrado.centrarEnXYPresicion(ingredientes[i].getPrecio()+"" , 37 , i+1);
+            Cuadrado.centrarEnXYPresicion((int)(ingredientes[i].getPrecio()*(gramosIngrediente[i]/cIngredientes))+"" , 37 , i+1);
         }
         Cuadrado.imprimirCuadrado();
     }
@@ -150,6 +166,21 @@ public class Pizza{
         }
         return false;
     }
+
+    public void sustraerIngredientesAInventarios(int multiplicador){
+        calcularTodosLosIngredientes();
+            for (int i = 0; i < cIngredientes; i++) {
+                ingredientes[i].setStock(inventarios[i][0].getStock()-((int)(gramosIngrediente[i]*multiplicador)));
+            }
+    }
+
+    public void agregarIngredientesAInventarios(int multiplicador){
+        calcularTodosLosIngredientes();
+            for (int i = 0; i < cIngredientes; i++) {
+                ingredientes[i].setStock(inventarios[i][0].getStock()+((int)(gramosIngrediente[i]*multiplicador)));
+            }
+    }
+
 
     //regresa una matriz con una lista de todos los ingredientes.
     public Inventario[] getTodosLosIngredientes(){
