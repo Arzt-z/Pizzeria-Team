@@ -314,6 +314,7 @@ public class Pizzeria implements java.io.Serializable {
             inventarios[seleccion - 1].eliminar();
 
         } while (continuar == 1);
+        
     }
 
     public int seleccionInventarios() {
@@ -1013,13 +1014,13 @@ public class Pizzeria implements java.io.Serializable {
         int opcion = 0;
         do {
             opcion = 0;
-            System.out.println("Inserte el texto que desea buscar");
+            System.out.println("INSERTE EL TEXTO QUE DESEA BUSCAR");
             String cadenaAbuscar = leer.next();
             int error = 0;
             for (int i = 0; i <= cPersonas; i++) {
                 if (personas[i].buscar(cadenaAbuscar) == true && personas[i].quienSoy().equals("Empleado")) {
                     System.out.println("------------------------------");
-                    personas[i].mostrar();
+                    ((Empleado)personas[i]).mostrar();
                     error++;
                 }
             }
