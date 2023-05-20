@@ -4,18 +4,19 @@ public class Inventario implements Serializable{
     private String nombre;
     private int stock;
     private double precio;
-    private boolean existencia=true;
+    private boolean existencia;
     private transient Scanner datos =new Scanner(System.in);
     private String tipo;
 
     public Inventario(){   
+        existencia=true;
     }
 
     public Inventario(String nombre, String tipo, double precio){
     this.nombre = nombre;
     this.tipo=tipo;
     this.precio = precio;
-
+    existencia=true;
     }
 
     public String toString() {
