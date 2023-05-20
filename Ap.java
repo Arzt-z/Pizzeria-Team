@@ -3,7 +3,7 @@ import java.util.Scanner;
 
 public class Ap {
     public static void main(String[] args) {
-
+        Scanner datos = new Scanner(System.in);
         Pizzeria pizzafactory = new Pizzeria("Pizza Factory", "Av. Lic. Enrique Ramírez Miguel, Las Américas",
                 "PizzaFactory@Pizza.com", 7002200, "445697234");
         pizzafactory.mostrar();
@@ -119,8 +119,13 @@ public class Ap {
                                 break;
                             case 0:
                                 salir = true;
-                                pizzafactory.generarArchivoInventario();
-                                pizzafactory.generarArchivoPizzas();
+                                Cuadrado.imprimirCuadrado(50, 4, "--------GUARDAR CAMBIOS?-------");
+                                Cuadrado.imprimirCuadradoDividido(50, 4, "1.-SI", "2.-NO");
+                                int guar = datos.nextInt();
+                                if (guar==1){
+                                    pizzafactory.generarArchivoInventario();
+                                    pizzafactory.generarArchivoPizzas();
+                                }
                                 break;
                         }
                     } catch (InputMismatchException e) {
