@@ -1,5 +1,6 @@
+import java.io.Serializable;
 import java.util.Scanner;
-public class Pizza{
+public class Pizza implements Serializable{
 
     private String nombre;
     private int size;

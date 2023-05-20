@@ -115,6 +115,8 @@ public class Pizzeria implements java.io.Serializable {
     }
 
     protected void inicializarPizzas() {
+        cargarArchivoPizzas();
+        /* 
         pizzas[0] = new Pizza("Hawaiana", 3, 199);
         pizzas[cPizzas].capturarIngrediente(inventarios[6], 0);
         pizzas[cPizzas].capturarIngrediente(inventarios[18], 0);
@@ -133,6 +135,7 @@ public class Pizzeria implements java.io.Serializable {
 
         pizzas[++cPizzas] = new Pizza("loca", 3, 199);
         pizzas[cPizzas].capturarIngrediente(inventarios[9], 0);
+        */
     }
 
     // funciones de inventarios
@@ -240,8 +243,8 @@ public class Pizzeria implements java.io.Serializable {
         int continuar = 1;
         do {
             listarinventarios();
-            inventarios[++cInventarios] = new Inventario();
-            inventarios[cInventarios].capturar();
+            inventarios[cInventarios] = new Inventario();
+            inventarios[cInventarios++].capturar();
             Cuadrado.imprimirCuadrado(50, 3, "desea capturar otro?");
             Cuadrado.imprimirCuadradoDividido(50, 2, "1.-si", "2.-no");
             continuar = datos.nextInt();
@@ -372,9 +375,9 @@ public class Pizzeria implements java.io.Serializable {
         tamanoPizza(cPizzas);
         dividirPizza(cPizzas);
         seleccionarIngredientePizza(cPizzas);
+        Cuadrado.imprimirCuadrado(50, 4 ,"Nombre de la pizza");
+        pizzas[cPizzas].setNombre(datos.nextLine());
         pizzas[cPizzas].capturar();
-        
-     
     }
 
     public void eliminarPizza() {
@@ -899,20 +902,8 @@ public class Pizzeria implements java.io.Serializable {
     }
     // fin funciones de compra
 
-    // generar archivo inventario
-    private void cargarArchivoInventario() {
-        System.out.println("Cargando los datos de las Inventario . . . ");
-        try {
-            FileInputStream archivoEntrada = new FileInputStream("Inventario.dat");
-            ObjectInputStream flujoEntrada = new ObjectInputStream(archivoEntrada);
-            cInventarios = (int) flujoEntrada.readObject();
-            for (int i = 0; i < cInventarios; i++)
-                inventarios[i] = (Inventario) flujoEntrada.readObject();
-            flujoEntrada.close();
-        } catch (Exception e) {
-            System.err.println("Error, no se cargaron los datos " + e);
-        }
-    }
+    // generar archivos 
+
 
     public void generarArchivoInventario() {
         FileOutputStream archivoSalida = null;
@@ -929,6 +920,52 @@ public class Pizzeria implements java.io.Serializable {
             System.out.println(e);
         }
     }
+
+    private void cargarArchivoInventario() {
+        System.out.println("Cargando los datos de las Inventario . . . ");
+        try {
+            FileInputStream archivoEntrada = new FileInputStream("Inventario.dat");
+            ObjectInputStream flujoEntrada = new ObjectInputStream(archivoEntrada);
+            cInventarios = (int) flujoEntrada.readObject();
+            for (int i = 0; i < cInventarios; i++)
+                inventarios[i] = (Inventario) flujoEntrada.readObject();
+            flujoEntrada.close();
+        } catch (Exception e) {
+            System.err.println("Error, no se cargaron los datos " + e);
+        }
+    }
+    //cuidado al copiar pizzas usa <= y inventarios solo esta usando < en el for()
+    public void generarArchivoPizzas() {
+        FileOutputStream archivoSalida = null;
+        try {
+            archivoSalida = new FileOutputStream("Pizzas.dat");
+            ObjectOutputStream flujoSalida = new ObjectOutputStream(archivoSalida);
+            System.out.println("generando Pizzas.dat...");
+            flujoSalida.writeObject(cPizzas);
+            for (int i = 0; i <= cPizzas; i++) {
+                flujoSalida.writeObject(pizzas[i]);
+            }
+            archivoSalida.close();
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+    }
+
+    
+    private void cargarArchivoPizzas() {
+        System.out.println("Cargando los datos de las Pizzas . . . ");
+        try {
+            FileInputStream archivoEntrada = new FileInputStream("Pizzas.dat");
+            ObjectInputStream flujoEntrada = new ObjectInputStream(archivoEntrada);
+            cPizzas = (int) flujoEntrada.readObject();
+            for (int i = 0; i <= cPizzas; i++)
+                pizzas[i] = (Pizza) flujoEntrada.readObject();
+            flujoEntrada.close();
+        } catch (Exception e) {
+            System.err.println("Error, no se cargaron los datos " + e);
+        }
+    }
+
 
     // funciones empleado
     public void listarEmpleados() {

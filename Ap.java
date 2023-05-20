@@ -120,6 +120,7 @@ public class Ap {
                             case 0:
                                 salir = true;
                                 pizzafactory.generarArchivoInventario();
+                                pizzafactory.generarArchivoPizzas();
                                 break;
                         }
                     } catch (InputMismatchException e) {
