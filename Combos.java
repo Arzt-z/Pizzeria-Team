@@ -48,8 +48,10 @@ public class Combos {
     }
 
     public void agrgarPizzas(){
-        //pizzas no tiene metodos de  capturar ni nada le pusioern todo a libreria
+     
     }
+
+    
 
     public void setNombre(String nombre) {
         this.nombre = nombre;

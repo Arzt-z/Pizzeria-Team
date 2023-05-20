@@ -30,7 +30,14 @@ public class Empleado extends Persona {
         return "Empleado";
     }
 
-    // alguien haga el mostrar o nose
+    public void mostrar(){
+        super.mostrar(); Cuadrado.matriz = Cuadrado.cuadrado(50, 6);
+        Cuadrado.centrarEnXY("nombre: " + nombre, 0, 0);
+        Cuadrado.centrarEnXY("usuario: " + usuario, 0, 1);
+        Cuadrado.imprimirCuadrado();
+    }
+       
+
     public String generarUsuario(String nombre) {
         String usuario = "";
         int espacio = 0;
