@@ -26,6 +26,7 @@ public abstract class Transaccion{
 
         System.out.println("Folio: " + fecha);
         System.out.println("Fecha: " + folio);
+       
     }
 
     abstract String queSoy();

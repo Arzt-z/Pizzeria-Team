@@ -580,6 +580,7 @@ public class Pizzeria implements java.io.Serializable {
                 seleccion = datos.nextInt();
                 if (transaccion[seleccion - 1].isVigente()) {
                     ((Orden)transaccion[seleccion-1]).mostrarOrden();
+                    (transaccion[seleccion-1]).getDetalles('v');
                     Cuadrado.imprimirCuadrado(50, 3, "deseas ver otro detalle?");
                     Cuadrado.imprimirCuadradoDividido(50, 2, "1.-si", "2.-no");
                 } else {
