@@ -63,6 +63,7 @@ public class Inventario implements Serializable{
 	}
 	
 	public void modificar(){
+        Scanner datos = new Scanner(System.in);
 		int seguir;
 		do{
             Cuadrado.imprimirCuadradoDividido(50, 2,"1.-nombre","2.-precio");
