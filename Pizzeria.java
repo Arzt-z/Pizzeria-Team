@@ -516,6 +516,7 @@ public class Pizzeria implements java.io.Serializable {
         int continuar = 1;
         do {
             transaccion[cTransaccion] = new Orden();
+            transaccion[cTransaccion].setFolio("FO-"+(cTransaccion+1));
             Cuadrado.imprimirCuadrado(50, 3, "Selecciona Pizza o producto");
             // Cuadrado.imprimirCuadrado(50, 4,"COMBOS");
             Cuadrado.imprimirCuadradoDividido(50, 4, "1.-PRODUCTOS", "2.-PIZZA");
@@ -643,15 +644,15 @@ public class Pizzeria implements java.io.Serializable {
             }
         }
         Cuadrado.matriz = Cuadrado.cuadrado(50, contador + 3);
-        Cuadrado.centrarEnXYPresicion("folio ", 4, 0);
-        Cuadrado.centrarEnXYPresicion("fecha ", 15, 0);
-        Cuadrado.centrarEnXYPresicion("nombre ", 27, 0);
+        Cuadrado.centrarEnXYPresicion("folio ", 3, 0);
+        Cuadrado.centrarEnXYPresicion("fecha ", 12, 0);
+        Cuadrado.centrarEnXYPresicion("nombre ", 30, 0);
         contador=0;
         for (int i = 0; i < cTransaccion; i++) {
             if (transaccion[i].isVigente() && transaccion[i].queSoy().equalsIgnoreCase("orden")) {
                 Cuadrado.centrarEnXYPresicion(i + 1 + ".-" + transaccion[i].getFolio(), 2, contador + 1);
-                Cuadrado.centrarEnXYPresicion(transaccion[i].getFecha() + "", 15, 1 + contador);
-                Cuadrado.centrarEnXYPresicion(((Orden)transaccion[i]).getCliente(), 27, 1 + contador);
+                Cuadrado.centrarEnXYPresicion(transaccion[i].getFecha() + "", 12, 1 + contador);
+                Cuadrado.centrarEnXYPresicion(((Orden)transaccion[i]).getCliente(), 30, 1 + contador);
                 contador++;
             }
         }
@@ -806,6 +807,7 @@ public class Pizzeria implements java.io.Serializable {
 
     public void capturarCompra() {
         transaccion[cTransaccion] = new Compra();
+        transaccion[cTransaccion].setFolio("FO-"+(cTransaccion+1));
         Proveedores[] proveedor = new Proveedores[50];
         int cProveedores = 0;
         for (int i = 0; i <= cPersonas; i++) {

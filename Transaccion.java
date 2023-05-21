@@ -1,4 +1,6 @@
 import java.util.Scanner;
+import java.util.Date;
+import java.text.SimpleDateFormat;
 public abstract class Transaccion{
     
     protected String fecha;
@@ -77,22 +79,18 @@ public abstract class Transaccion{
 	
     public void capturar(Inventario[] inventarios, int cInventarios, char diferencia) {
         Scanner datos = new Scanner(System.in);
+        Date fechaActual = new Date();
+        SimpleDateFormat formatoFecha = new SimpleDateFormat("dd/MM/yy HH:mm");
         int ciclo;
         if (diferencia == 'c') {
-            System.out.println("Folio: ");
-            this.folio = datos.nextLine();
-            System.out.println("Fecha: ");
-            this.fecha = datos.nextLine();
+            this.fecha =  formatoFecha.format(fechaActual);
             do {
                 capturarDetalle(inventarios, cInventarios, diferencia);
                 System.out.println("Desea Continuar?   1.-Si   2.-No");
                 ciclo=datos.nextInt();
             } while (ciclo == 1 && cDetalles <= 500);
         } else {
-            System.out.println("Folio: ");
-            this.folio = datos.nextLine();
-            System.out.println("Fecha: ");
-            this.fecha = datos.nextLine();
+            this.fecha =  formatoFecha.format(fechaActual);
 
             do {
                 capturarDetalle(inventarios, cInventarios, diferencia);
@@ -114,12 +112,11 @@ public abstract class Transaccion{
 
 
     public void capturar(Pizza[] pizzas, int cPizzas) {
+        Date fechaActual = new Date();
+        SimpleDateFormat formatoFecha = new SimpleDateFormat("dd/MM/yy HH:mm");
         Scanner datos = new Scanner(System.in);
         int ciclo;
-            System.out.println("Folio: ");
-            this.folio = datos.nextLine();
-            System.out.println("Fecha: ");
-            this.fecha = datos.nextLine();
+            this.fecha =  formatoFecha.format(fechaActual);
             do {
                 capturarDetalle(pizzas, cPizzas);
                 System.out.println("Desea Continuar?   1.-Si   2.-No");

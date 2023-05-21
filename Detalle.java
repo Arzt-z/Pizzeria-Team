@@ -182,7 +182,7 @@ public class Detalle {
 			Cuadrado.centrarEnXYPresicion("|precioProd",36, 0);
 			for (int i = 0; i < cInventarios; i++) {
 				Cuadrado.centrarEnXYPresicion((i+1)+".-"+inventarios[i].getNombre(),2, 1+i);
-				Cuadrado.centrarEnXYPresicion(inventarios[i].getStock()+"",33, 1+i);
+				Cuadrado.centrarEnXYPresicion(inventarios[i].getStock()+"",30, 1+i);
                 Cuadrado.centrarEnXYPresicion(inventarios[i].getPrecio()+"",37, 1+i);
 			}
 		}else{
@@ -198,7 +198,7 @@ public class Detalle {
 			for (int i = 0; i < cInventarios; i++) {
 				if(inventarios[i].getExistencia()==true && (inventarios[i].getTipo().equals("carne") || inventarios[i].getTipo().equals("no carne") || inventarios[i].getTipo().equalsIgnoreCase("queso"))==false){
 					Cuadrado.centrarEnXYPresicion((i+1)+".-"+inventarios[i].getNombre(),2, 1+contador2);
-					Cuadrado.centrarEnXYPresicion(inventarios[i].getStock()+"",33, 1+contador2);
+					Cuadrado.centrarEnXYPresicion(inventarios[i].getStock()+"",30, 1+contador2);
                     Cuadrado.centrarEnXYPresicion(inventarios[i].getPrecio()+"",37, 1+contador2);
 					contador2++;
 				}
