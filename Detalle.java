@@ -17,6 +17,7 @@ public class Detalle {
         this.inventario = inventario;
         this.precioProd = precioProd;
 		this.dif= 'i';
+		vigente=true;
     }
 
     public Detalle(int cantidad, Pizza pizzas, double precioProd) {
@@ -24,6 +25,7 @@ public class Detalle {
         this.pizzas = pizzas;
         this.precioProd = precioProd;
 		this.dif='p';
+		vigente=true;
     }
 
 
@@ -156,6 +158,7 @@ public class Detalle {
 				Cuadrado.imprimirCuadrado(50, 3 ,"Cantidad");
 				cantidad = dato.nextInt();
 				this.inventario=inventarios[elInventario];
+				this.inventario = inventarios[elInventario];
 				if(cantidad>inventario.getStock()){
 					this.cantidad=0;
 					System.out.println("No tenemos esa cantidad en stock");
