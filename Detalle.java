@@ -47,7 +47,7 @@ public class Detalle {
 
     public void mostrar(char diferenciador) {
 		if(diferenciador=='c'){
-			System.out.println("\t\tIngredientes: " + pizzas);
+			System.out.println("\t\tIngrediente: "+ inventario);
 			System.out.println("\t\tCantidad: " + cantidad);
 			System.out.println("\t\tprecioProd: " + precioProd);
 		}else{
@@ -88,7 +88,7 @@ public class Detalle {
 				}
 			} while (true);
         else{
-
+		
 			do {
 				System.out.println("Que deseas modificar? "
 						+ "1.-Pizza 2.-Cantidad 0.-Cancelar");

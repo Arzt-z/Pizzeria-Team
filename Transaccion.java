@@ -26,8 +26,8 @@ public abstract class Transaccion{
 
     public void mostrar() {
 
-        System.out.println("Folio: " + fecha);
-        System.out.println("Fecha: " + folio);
+        System.out.println("Fecha: " + fecha);
+        System.out.println("Folio: " + folio);
        
     }
 
