@@ -836,7 +836,7 @@ public class Pizzeria implements java.io.Serializable {
             System.out.println("Selecione la compra:");
             selecciona = datos.nextInt();
             if (transaccion[selecciona - 1].isVigente() == true
-                    && transaccion[selecciona - 1].queSoy().equals("Compra")) {
+                    && transaccion[selecciona - 1].queSoy().equals("compra")) {
                 Proveedores[] proveedor = new Proveedores[50];
                 int contador = 0;
                 for (int i = 0; i < cPersonas; i++) {

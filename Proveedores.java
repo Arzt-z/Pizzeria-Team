@@ -69,8 +69,9 @@ public class Proveedores extends Persona {
         }
 
         misDatos = razonSocial;
+		misDatos=misDatos.toLowerCase();
 
-        return misDatos.contains(cadenaAbuscar);
+        return misDatos.contains(cadenaAbuscar.toLowerCase());
 	}
 
 	public void eliminar() {

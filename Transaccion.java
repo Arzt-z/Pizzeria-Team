@@ -144,12 +144,12 @@ public abstract class Transaccion{
                     case 1:
                         System.out.println("Fecha: ");
                         leer.nextLine();
-                        folio = leer.nextLine();
+                        fecha = leer.nextLine();
                         break;
                     case 2:
                         System.out.println("Folio: ");
                         leer.nextLine();
-                        fecha = leer.nextLine();
+                        folio = leer.nextLine();
                         break;
                     case 3:
                         System.out.println("Detalles: ");

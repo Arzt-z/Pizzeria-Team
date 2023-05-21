@@ -91,7 +91,8 @@ public abstract class Persona {
 
     public boolean buscar(String cadenaAbuscar) {
         String misDatos = telefono + direccion + rfc;
-        return misDatos.contains(cadenaAbuscar);
+        misDatos=misDatos.toLowerCase();
+        return misDatos.contains(cadenaAbuscar.toLowerCase());
     }
 
     protected void eliminar() {
