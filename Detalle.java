@@ -129,14 +129,24 @@ public class Detalle {
         int error;
 	    if(diferenciador=='c'){
 			System.out.println("Detalles de Compra");
-			listarProductos(cInventarios,inventarios,'c');
-			System.out.println("Seleccione los ingredientes");
-			int elInventario = dato.nextInt() - 1;
-			this.inventario = inventarios[elInventario];
-			System.out.println("Cantidad: ");
-			cantidad = dato.nextInt();
-			System.out.println("precioProd: ");
-			precioProd = dato.nextFloat();
+			int error2;
+			do{
+				error2=0;
+				listarProductos(cInventarios,inventarios,'c');
+				System.out.println("Seleccione el ingrediente ");
+				int elInventario = dato.nextInt() - 1;
+				if(elInventario>-1 && elInventario<cInventarios){
+				this.inventario = inventarios[elInventario];
+				System.out.println("Cantidad: ");
+				cantidad = dato.nextInt();
+				System.out.println("Precio del producto: ");
+				precioProd = dato.nextFloat();
+				cambiarStock();
+				}else{
+					error2=1;
+					System.out.println("Ese ingrediente no existe");
+				}
+			}while(error2==1);
 		} else{  
 			do{
 				error=0;
@@ -235,6 +245,12 @@ public class Detalle {
 			this.nombre = this.pizzas.getNombre();
     }
     //fin capturar pizzas
+
+	public void cambiarStock() {
+        int stockAnterio = inventario.getStock();
+        int stocknuevo = stockAnterio + cantidad;
+        inventario.setStock(stocknuevo);
+    }
 
     public void modificar(int cInventarios, Inventario[] inventarios, char diferencia){
 		//pendiente
