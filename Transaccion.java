@@ -131,7 +131,7 @@ public abstract class Transaccion{
     }
 
 
-    public void modificar(int cInventarios, Inventario[] inventarios, char diferencia) {
+    public void modificar(int cInventarios, Inventario[] inventarios, char diferencia, int cPizzas,Pizza[] pizzas) {
         Scanner leer = new Scanner(System.in);
         int opcion;
 
@@ -157,7 +157,7 @@ public abstract class Transaccion{
                             System.out.println(i + 1 + ".-" + detalles[i]);
                         }
                         int nDetalle = leer.nextInt();
-                        detalles[nDetalle - 1].modificar(cInventarios, inventarios, diferencia);
+                        detalles[nDetalle - 1].modificar(cPizzas, pizzas, diferencia,cInventarios, inventarios);
                         break;
                     case 0:
                         return;
@@ -186,7 +186,7 @@ public abstract class Transaccion{
                             System.out.println(i + 1 + ".-" + detalles[i]);
                         }
                         int nDetalle = leer.nextInt();
-                        detalles[nDetalle - 1].modificar(cInventarios, inventarios, diferencia);
+                        detalles[nDetalle - 1].modificar(cPizzas, pizzas, diferencia,cInventarios, inventarios);
                         break;
                     case 0:
                         return;

@@ -57,13 +57,13 @@ public class Detalle {
 		}
     }
 
-    public void modificar(int cPizzas, Pizza [] pizzas, char diferenciador) {
+    public void modificar(int cPizzas, Pizza [] pizzas, char diferenciador, int cInventarios, Inventario[] inventarios) {
         Scanner leer = new Scanner(System.in);
         int opcion;
         if(diferenciador=='c')
 			do {
 				System.out.println("Que desea modificar? "
-						+ "1.-Pizza 2.-Cantidad 3.-precioProd 0.-Cancelar");
+						+ "1.-Pizza 2.-Cantidad 3.-precioProd 4.-Productos 0.-Cancelar");
 				opcion = leer.nextInt();
 				switch (opcion) {
 					case 1:
@@ -252,9 +252,9 @@ public class Detalle {
         inventario.setStock(stocknuevo);
     }
 
-    public void modificar(int cInventarios, Inventario[] inventarios, char diferencia){
+   // public void modificar(int cInventarios, Inventario[] inventarios, char diferencia){
 		//pendiente
-	}
+	//}
 
     public String toString() {
         return "Detalle{" + "cantidad:" + cantidad + ", pizza:" + pizzas + ", precioProd:" + precioProd + '}';

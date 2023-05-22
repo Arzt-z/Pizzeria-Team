@@ -807,9 +807,7 @@ public class Pizzeria implements java.io.Serializable {
     }
 
     public void capturarCompra() {
-        transaccion[cTransaccion] = new Compra();
-        transaccion[cTransaccion].setFolio("FO-"+(cTransaccion+1));
-        Proveedores[] proveedor = new Proveedores[50];
+        Proveedores[] proveedor = new Proveedores[500];
         int cProveedores = 0;
         for (int i = 0; i <= cPersonas; i++) {
             if (personas[i].quienSoy().equals("Proveedor")) {
@@ -817,7 +815,9 @@ public class Pizzeria implements java.io.Serializable {
                 cProveedores++;
             }
         }
-        ((Compra) transaccion[cTransaccion]).capturar(proveedor, cProveedores, inventarios, cInventarios);
+        transaccion[cTransaccion] = new Compra(cProveedores, proveedor, this.cInventarios, this.inventarios, this.cPizzas, this.pizzas );
+        transaccion[cTransaccion].setFolio("FO-"+(cTransaccion+1));
+        ((Compra) transaccion[cTransaccion]).capturar();
         cTransaccion++;
     }
 
@@ -846,7 +846,7 @@ public class Pizzeria implements java.io.Serializable {
                     }
                 }
 
-                ((Compra) transaccion[selecciona - 1]).modificar(contador, proveedor, cInventarios, inventarios);
+                ((Compra) transaccion[selecciona - 1]).modificar();
             } else {
                 System.out.println("Esa compra no existe ");
                 error = 1;
