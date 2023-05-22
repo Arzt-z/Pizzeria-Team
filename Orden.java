@@ -113,7 +113,6 @@ public class Orden extends Transaccion {
 
     public void capturar(Pizza[] pizzas, int cPizzas){
         Scanner datos = new Scanner(System.in);
-        capturarCliente();
         capturarPizza(pizzas, cPizzas);
     }
 
