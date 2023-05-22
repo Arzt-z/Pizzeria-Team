@@ -57,13 +57,13 @@ public class Detalle {
 		}
 	}
 
-	public void modificar(int cPizzas, Pizza[] pizzas, char diferenciador, int cInventarios, Inventario[] inventarios) {
+	public void modificar(int cPizzas, Pizza[] pizzas, char diferenciador) {
 		Scanner leer = new Scanner(System.in);
 		int opcion;
 		if (diferenciador == 'c')
 			do {
 				System.out.println("Que desea modificar? "
-						+ "1.-Pizza 2.-Cantidad 3.-precioProd 4.-Productos 0.-Cancelar");
+						+ "1.-Pizza 2.-Cantidad 3.-precioProd 0.-Cancelar");
 				opcion = leer.nextInt();
 				switch (opcion) {
 					case 1:
@@ -82,14 +82,6 @@ public class Detalle {
 					case 3:
 						System.out.println("precioProd: ");
 						precioProd = leer.nextFloat();
-						break;
-					case 4:
-						for (int i = 0; i < cInventarios; i++) {
-							System.out.println(i + 1 + ".-" + inventarios[i]);
-						}
-						System.out.println("seleccione el producto nuevo");
-						int elProducto=leer.nextInt()-1;
-						this.inventario=inventarios[elProducto];
 						break;
 					case 0:
 						return;
@@ -180,12 +172,14 @@ public class Detalle {
 				if (cantidad > inventario.getStock()) {
 					this.cantidad = 0;
 					System.out.println("No tenemos esa cantidad en stock");
-					System.out.println("Desea comprar otra pizza   1.-Si   2.-No");
+					System.out.println("Desea comprar otra cosa   1.-Si   2.-No");
 					error = dato.nextInt();
 				} else {
 					inventario.setStock(inventario.getStock() - cantidad);
 					precioProd = inventarios[elInventario].getPrecio();
 					error = 2;
+					this.nombre = inventario.getNombre();
+					this.dif='i';
 				}
 			} while (error == 1);
 		}

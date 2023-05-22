@@ -137,31 +137,23 @@ public abstract class Transaccion{
 
         if (diferencia == 'c') {
             do {
-                System.out.println("Que deseas modificar? "
-                        + "1.-Fecha 2.-Folio 3.-Modificar detalles 0.-Cancelar");
+                System.out.println("SE VAN A MOFIFICAR LOS DETALLES "+
+                "QUIERE CONTINUAR? 1-SI 2-NO");
                 opcion = leer.nextInt();
-                switch (opcion) {
-                    case 1:
-                        System.out.println("Fecha: ");
-                        leer.nextLine();
-                        fecha = leer.nextLine();
-                        break;
-                    case 2:
-                        System.out.println("Folio: ");
-                        leer.nextLine();
-                        folio = leer.nextLine();
-                        break;
-                    case 3:
+                    if(opcion==1){
                         System.out.println("Detalles: ");
                         for (int i = 0; i < cDetalles; i++) {
                             System.out.println(i + 1 + ".-" + detalles[i]);
                         }
-                        int nDetalle = leer.nextInt();
-                        detalles[nDetalle - 1].modificar(cPizzas, pizzas, diferencia,cInventarios, inventarios);
-                        break;
-                    case 0:
+                        int nDetalle = leer.nextInt()-1;
+                        if(nDetalle<0 || nDetalle>=cDetalles){
+                            System.out.println("esa no es una opcion");
+                        }else{
+                        detalles[nDetalle].modificar(cPizzas, pizzas, diferencia);
+                        }
+                    }else if(opcion!=1){
                         return;
-                }
+                    }
             } while (true);
         } 
 		else {
@@ -186,7 +178,7 @@ public abstract class Transaccion{
                             System.out.println(i + 1 + ".-" + detalles[i]);
                         }
                         int nDetalle = leer.nextInt();
-                        detalles[nDetalle - 1].modificar(cPizzas, pizzas, diferencia,cInventarios, inventarios);
+                        detalles[nDetalle - 1].modificar(cPizzas, pizzas, diferencia);
                         break;
                     case 0:
                         return;
