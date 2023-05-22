@@ -239,6 +239,7 @@ public class Pizzeria implements java.io.Serializable {
     }
 
     public void capturarInventarios() {
+        try{
         Scanner datos = new Scanner(System.in);
         int continuar = 1;
         do {
@@ -249,6 +250,14 @@ public class Pizzeria implements java.io.Serializable {
             Cuadrado.imprimirCuadradoDividido(50, 2, "1.-si", "2.-no");
             continuar = datos.nextInt();
         } while (continuar == 1);
+    }catch (InputMismatchException e) {
+        System.err.println("CARACTER INVALIDO INSERTE UN NUMERO VAlIDO");
+        cInventarios--;
+    } catch (Exception e) {
+        System.err.println("OCURRIO EL ERROR " + e);
+        e.printStackTrace();
+        cInventarios--;
+    }
     }
 
     public void modificarInventarios() {
@@ -370,7 +379,7 @@ public class Pizzeria implements java.io.Serializable {
 
     public void capturarPizza() {
         Scanner datos = new Scanner(System.in);
-     
+     try{
         pizzas[++cPizzas] = new Pizza();
         Cuadrado.imprimirCuadrado(50, 4, "------------PIZZA------------");
         tamanoPizza(cPizzas);
@@ -378,7 +387,14 @@ public class Pizzeria implements java.io.Serializable {
         seleccionarIngredientePizza(cPizzas);
         Cuadrado.imprimirCuadrado(50, 4 ,"Nombre de la pizza");
         pizzas[cPizzas].setNombre(datos.nextLine());
-        pizzas[cPizzas].capturar();
+        pizzas[cPizzas].capturar();}catch (InputMismatchException e) {
+            System.err.println("CARACTER INVALIDO INSERTE UN NUMERO VAlIDO");
+            cPizzas--;
+        } catch (Exception e) {
+            System.err.println("OCURRIO EL ERROR " + e);
+            e.printStackTrace();
+            cPizzas--;
+        }
     }
 
     public void eliminarPizza() {
@@ -513,6 +529,7 @@ public class Pizzeria implements java.io.Serializable {
     // funciones orden
     public void capturarOrden() {
         Scanner datos = new Scanner(System.in);
+        try{
         int continuar = 1;
         transaccion[cTransaccion] = new Orden();
         transaccion[cTransaccion].setFolio("FO-"+(cTransaccion+1));
@@ -532,6 +549,14 @@ public class Pizzeria implements java.io.Serializable {
             continuar = datos.nextInt();
         } while (continuar == 1);
         cTransaccion++;
+    }catch (InputMismatchException e) {
+        System.err.println("CARACTER INVALIDO INSERTE UN NUMERO VAlIDO");
+        cTransaccion--;
+    } catch (Exception e) {
+        System.err.println("OCURRIO EL ERROR " + e);
+        e.printStackTrace();
+        cTransaccion--;
+    }
     }
 
     public void modificarOrden(){
@@ -717,6 +742,7 @@ public class Pizzeria implements java.io.Serializable {
 
     public void capturarProveedores() {
         Scanner sc = new Scanner(System.in);
+        try{
         int opcion = 0;
         do {
 
@@ -725,6 +751,14 @@ public class Pizzeria implements java.io.Serializable {
             System.out.println("Quiere agregar otro proveedor?   1.-Si   2.-No");
             opcion = sc.nextInt();
         } while (opcion == 1);
+    }catch (InputMismatchException e) {
+        System.err.println("CARACTER INVALIDO INSERTE UN NUMERO VAlIDO");
+        cPersonas--;
+    } catch (Exception e) {
+        System.err.println("OCURRIO EL ERROR " + e);
+        e.printStackTrace();
+        cPersonas--;
+    }
     }
 
     public void modificarProveedores() {
@@ -807,6 +841,7 @@ public class Pizzeria implements java.io.Serializable {
     }
 
     public void capturarCompra() {
+       try{
         Proveedores[] proveedor = new Proveedores[500];
         int cProveedores = 0;
         for (int i = 0; i <= cPersonas; i++) {
@@ -819,6 +854,14 @@ public class Pizzeria implements java.io.Serializable {
         transaccion[cTransaccion].setFolio("FO-"+(cTransaccion+1));
         ((Compra) transaccion[cTransaccion]).capturar();
         cTransaccion++;
+        }catch (InputMismatchException e) {
+            System.err.println("CARACTER INVALIDO INSERTE UN NUMERO VAlIDO");
+            cTransaccion--;
+        } catch (Exception e) {
+            System.err.println("OCURRIO EL ERROR " + e);
+            e.printStackTrace();
+            cTransaccion--;
+        }
     }
 
     public void modificarCompra() {
@@ -1013,12 +1056,21 @@ public class Pizzeria implements java.io.Serializable {
     }
 
     public void capturarEmpleado() {
+        try{
         System.out.println("//////////////////////REGISTRO////////////////////////////77");
         Scanner datos = new Scanner(System.in);
         personas[++cPersonas] = new Empleado();
         ((Empleado) personas[cPersonas]).capturar();
         System.out.println("///////////////////USUARIO/////////////////////");
         Cuadrado.imprimirCuadrado(50, 4, "TU USUARIO ES: " + ((Empleado) personas[cPersonas]).getUsuario());
+        }catch (InputMismatchException e) {
+            System.err.println("CARACTER INVALIDO INSERTE UN NUMERO VAlIDO");
+            cPersonas--;
+        } catch (Exception e) {
+            System.err.println("OCURRIO EL ERROR " + e);
+            e.printStackTrace();
+            cPersonas--;
+        }
     }
 
     public void modificarEmpleado(){
