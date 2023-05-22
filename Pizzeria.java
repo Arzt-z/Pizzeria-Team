@@ -514,24 +514,24 @@ public class Pizzeria implements java.io.Serializable {
     public void capturarOrden() {
         Scanner datos = new Scanner(System.in);
         int continuar = 1;
+        transaccion[cTransaccion] = new Orden();
+        transaccion[cTransaccion].setFolio("FO-"+(cTransaccion+1));
+        ((Orden)transaccion[cTransaccion]).capturarCliente();
         do {
-            transaccion[cTransaccion] = new Orden();
-            transaccion[cTransaccion].setFolio("FO-"+(cTransaccion+1));
             Cuadrado.imprimirCuadrado(50, 3, "Selecciona Pizza o producto");
             // Cuadrado.imprimirCuadrado(50, 4,"COMBOS");
             Cuadrado.imprimirCuadradoDividido(50, 4, "1.-PRODUCTOS", "2.-PIZZA");
             int opcion = datos.nextInt();
             if (opcion == 1) {
-                ((Orden)transaccion[cTransaccion]).capturarCliente();
                 transaccion[cTransaccion].capturar(inventarios, cInventarios, 'v');
             } else if (opcion == 2) {
                 transaccion[cTransaccion].capturar(pizzas,cPizzas);
             }
-            Cuadrado.imprimirCuadrado(50, 3, "Agregar otra orden?");
+            Cuadrado.imprimirCuadrado(50, 3, "agregar otra pizza o producto?");
             Cuadrado.imprimirCuadradoDividido(50, 2, "1.-SI", "2.-NO");
             continuar = datos.nextInt();
-            cTransaccion++;
         } while (continuar == 1);
+        cTransaccion++;
     }
 
     public void modificarOrden(){
