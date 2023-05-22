@@ -189,7 +189,8 @@ public class Detalle {
 				}
 			} while (error == 1);
 		}
-		this.nombre = this.inventario.getNombre();
+		this.nombre = inventario.getNombre();
+		this.dif='i';
 	}
 	// fin capturar inventarios
 
@@ -255,6 +256,7 @@ public class Detalle {
 		pizzas[laPizza].sustraerIngredientesAInventarios(cantidad);
 		this.dif = 'p';
 		this.nombre = this.pizzas.getNombre();
+	
 	}
 	// fin capturar pizzas
 
