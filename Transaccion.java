@@ -248,7 +248,7 @@ public abstract class Transaccion{
 
             } else {
                 if(detalles[i].isVigente()==true){
-				detalles[i].mostrar(diferenciador);
+				detalles[i].getNombre();
                 totalf += detalles[i].getPrecioProd() * detalles[i].getCantidad();
                 total += detalles[i].getPrecioProd() * detalles[i].getCantidad();
                 System.out.println("\t\ttotal= " + total);
