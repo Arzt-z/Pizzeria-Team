@@ -961,7 +961,7 @@ public class Pizzeria implements java.io.Serializable {
             ObjectOutputStream flujoSalida = new ObjectOutputStream(archivoSalida);
             System.out.println("generando Inventario.dat...");
             // flujoSalida.writeObject(cInventarios);
-            for (int i = 0; i <= cInventarios; i++) {
+            for (int i = 0; i < cInventarios; i++) {
                 if (inventarios[i].getExistencia() == true) {
                     flujoSalida.writeObject(inventarios[i]);
                 }
@@ -1022,7 +1022,7 @@ public class Pizzeria implements java.io.Serializable {
                 pizzas[++cPizzas] = (Pizza) flujoEntrada.readObject();
             }
             flujoEntrada.close();
-            
+            System.out.println(cPizzas);
         } catch (Exception e) {
             System.err.println("Error, no se cargaron los datos pizza" + e);
             cPizzas--;
