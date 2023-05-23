@@ -21,6 +21,7 @@ public class Cliente extends Persona{
 	}
 	
 	public void capturar(){
+       Scanner leer=new Scanner(System.in);
 		char diferenciador='c';
 		System.out.print("nombre  :"); nombre=leer.nextLine();
 		super.capturar(diferenciador);
