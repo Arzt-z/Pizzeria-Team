@@ -57,6 +57,7 @@ public class Pizzeria implements java.io.Serializable {
 
     protected void inicializaPersonas() {
         cargarArchivoPersonas();
+        cargarArchivoTransaccion();
          /*  personas[0] = new Empleado("Daniel Adrian Roque Cortes", "443 832 7292", "algun lado", "rfc", "1234", "admin");
         personas[++cPersonas] = new Empleado("Alexis Corzas Santiago", "443 363 1574", "algun lado", "rfc", "1234",
                 "admin");
@@ -1064,6 +1065,42 @@ public class Pizzeria implements java.io.Serializable {
         } catch (Exception e) {
             System.err.println("datos cargados");
             cPersonas--;
+        }
+    }
+
+    public void generarArchivoTransaccion() {
+        FileOutputStream archivoSalida = null;
+        try {
+            archivoSalida = new FileOutputStream("Transaccion.dat");
+            ObjectOutputStream flujoSalida = new ObjectOutputStream(archivoSalida);
+            System.out.println("generando Transaccion.dat...");
+        
+            for (int i = 0; i < cTransaccion; i++) {
+                if(personas[i].isVigente()==true){
+                flujoSalida.writeObject(transaccion[i]);
+            }
+            }
+            archivoSalida.close();
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+    }
+
+    private void cargarArchivoTransaccion() {
+        System.out.println("Cargando los datos de la Transaccion . . . ");
+        try {
+            FileInputStream archivoEntrada = new FileInputStream("Transaccion.dat");
+            ObjectInputStream flujoEntrada = new ObjectInputStream(archivoEntrada);
+            //cPizzas = (int) flujoEntrada.readObject();
+            cTransaccion=0;
+            transaccion[cTransaccion] = (Transaccion) flujoEntrada.readObject();
+            while(transaccion[cTransaccion]!=null){
+                transaccion[++cTransaccion] = (Transaccion) flujoEntrada.readObject();
+            }
+            flujoEntrada.close();
+            
+        } catch (Exception e) {
+            System.out.println("datos cargados");
         }
     }
 
