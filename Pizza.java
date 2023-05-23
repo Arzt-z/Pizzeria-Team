@@ -6,8 +6,6 @@ public class Pizza implements Serializable{
     private int size;
     private int precio;
     private boolean precioFijo;
-
-
     private int precioProd=130;
     private int diametro=0;
     private int id;

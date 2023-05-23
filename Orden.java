@@ -55,7 +55,7 @@ public class Orden extends Transaccion {
                     if(detalles[i].getDif()=='p'){
                         Cuadrado.centrarEnXYPresicion("pizza:",2, 1);
                         Cuadrado.centrarEnXYPresicion(detalles[i].getNombre(),8, 1+i);
-                    }else{
+                }else{
                         Cuadrado.centrarEnXYPresicion(detalles[i].getNombre(),2, 1+i);
                     }
                     Cuadrado.centrarEnXYPresicion(detalles[i].getCantidad()+"",33, 1+i);
@@ -105,7 +105,9 @@ public class Orden extends Transaccion {
         Scanner datos = new Scanner(System.in);
         Cuadrado.imprimirCuadrado(50, 4, "------------ORDEN------------");
         Cuadrado.imprimirCuadrado(50, 4, "INGRESAR NOMBRE DEL CLIENTE");
-        cliente = datos.nextLine();
+        String entrada;
+        entrada= datos.nextLine();
+        cliente=entrada;
     }
 
     public void capturarPizza(Pizza[] pizzas, int cPizzas){
@@ -118,16 +120,16 @@ public class Orden extends Transaccion {
 
     public void capturar(Pizza[] pizzas, int cPizzas){
         Scanner datos = new Scanner(System.in);
-        capturarCliente();
         capturarPizza(pizzas, cPizzas);
     }
 
     public boolean buscar(String cadenaAbuscar){
-        if(super.buscar(cadenaAbuscar)==true){
+        if(super.buscar(cadenaAbuscar.toLowerCase())==true){
             return true;
         }
         String datos=" "+ cliente;
-        if(datos.contains(cadenaAbuscar)==true){
+        datos=datos.toLowerCase();
+        if(datos.contains(cadenaAbuscar.toLowerCase())==true){
             return true;
         }else{
             return false;

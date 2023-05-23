@@ -120,37 +120,29 @@ public abstract class Transaccion{
     }
 
 
-    public void modificar(int cInventarios, Inventario[] inventarios, char diferencia) {
+    public void modificar(int cInventarios, Inventario[] inventarios, char diferencia, int cPizzas,Pizza[] pizzas) {
         Scanner leer = new Scanner(System.in);
         int opcion;
 
         if (diferencia == 'c') {
             do {
-                System.out.println("Que deseas modificar? "
-                        + "1.-Fecha 2.-Folio 3.-Modificar detalles 0.-Cancelar");
+                System.out.println("SE VAN A MOFIFICAR LOS DETALLES "+
+                "QUIERE CONTINUAR? 1-SI 2-NO");
                 opcion = leer.nextInt();
-                switch (opcion) {
-                    case 1:
-                        System.out.println("Fecha: ");
-                        leer.nextLine();
-                        fecha = leer.nextLine();
-                        break;
-                    case 2:
-                        System.out.println("Folio: ");
-                        leer.nextLine();
-                        folio = leer.nextLine(); 
-                        break;
-                    case 3:
+                    if(opcion==1){
                         System.out.println("Detalles: ");
                         for (int i = 0; i < cDetalles; i++) {
                             System.out.println(i + 1 + ".-" + detalles[i]);
                         }
-                        int nDetalle = leer.nextInt();
-                        detalles[nDetalle - 1].modificar(cInventarios, inventarios, diferencia);
-                        break;
-                    case 0:
+                        int nDetalle = leer.nextInt()-1;
+                        if(nDetalle<0 || nDetalle>=cDetalles){
+                            System.out.println("esa no es una opcion");
+                        }else{
+                        detalles[nDetalle].modificar(cPizzas, pizzas, diferencia);
+                        }
+                    }else if(opcion!=1){
                         return;
-                }
+                    }
             } while (true);
         } 
 		else {
@@ -175,7 +167,7 @@ public abstract class Transaccion{
                             System.out.println(i + 1 + ".-" + detalles[i]);
                         }
                         int nDetalle = leer.nextInt();
-                        detalles[nDetalle - 1].modificar(cInventarios, inventarios, diferencia);
+                        detalles[nDetalle - 1].modificar(cPizzas, pizzas, diferencia);
                         break;
                     case 0:
                         return;
@@ -187,11 +179,12 @@ public abstract class Transaccion{
 
     public boolean buscar(String cadenaAbuscar) {
         String datos = fecha + folio;
-        if (datos.contains(cadenaAbuscar) == true) {
+        datos= datos.toLowerCase();
+        if (datos.contains(cadenaAbuscar.toLowerCase()) == true) {
             return true;
         }
         for (int i = 0; i < cDetalles; i++) {
-            if (detalles[i].buscar(cadenaAbuscar) == true) {
+            if (detalles[i].buscar(cadenaAbuscar.toLowerCase()) == true) {
                 return true;
             }
         }
@@ -245,7 +238,7 @@ public abstract class Transaccion{
 
             } else {
                 if(detalles[i].isVigente()==true){
-				detalles[i].mostrar(diferenciador);
+				detalles[i].getNombre();
                 totalf += detalles[i].getPrecioProd() * detalles[i].getCantidad();
                 total += detalles[i].getPrecioProd() * detalles[i].getCantidad();
                 System.out.println("\t\ttotal= " + total);
