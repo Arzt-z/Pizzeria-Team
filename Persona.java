@@ -2,7 +2,7 @@ import java.io.Serializable;
 import java.util.Scanner;
 
 
-public abstract class Persona implements Serializable{
+public abstract class Persona implements Interface, Serializable{
   //  protected Scanner leer = new Scanner(System.in);
     protected String telefono;
     protected String direccion;
@@ -26,7 +26,7 @@ public abstract class Persona implements Serializable{
 
     abstract String quienSoy();
 
-    protected void mostrar() {
+    public void mostrar() {
         Cuadrado.matriz = Cuadrado.cuadrado(50, 6);
         Cuadrado.centrarEnXY(direccion, 0, -1);
         Cuadrado.centrarEnXY("rfc: " + rfc, 0, 0);
@@ -99,7 +99,7 @@ public abstract class Persona implements Serializable{
         return misDatos.contains(cadenaAbuscar.toLowerCase());
     }
 
-    protected void eliminar() {
+    public void eliminar() {
         vigente = false;
     }
 
