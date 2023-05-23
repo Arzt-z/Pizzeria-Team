@@ -1023,7 +1023,7 @@ public class Pizzeria implements java.io.Serializable {
                 pizzas[++cPizzas] = (Pizza) flujoEntrada.readObject();
             }
             flujoEntrada.close();
-            
+            System.out.println(cPizzas);
         } catch (Exception e) {
             System.err.println("Error, no se cargaron los datos pizza" + e);
             cPizzas--;
