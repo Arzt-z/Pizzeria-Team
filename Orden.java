@@ -69,14 +69,17 @@ public class Orden extends Transaccion {
 
     public void modificar(int cInventarios, Inventario[] inventarios){
         Scanner leer= new Scanner(System.in);
+        int opcion2;
         int opcion;
         do{
+            opcion2=0;
             System.out.println("Que deseas modificar?   1.-cliente 2.-Otros 0.-Cancelar");
             opcion=leer.nextInt();
             switch(opcion){
                 case 1:
                     System.out.println("nombre cliente:");
-                    String entrada= leer.nextLine();
+                    String entrada;
+                    entrada= leer.next();
                     cliente=entrada;
                     break;
                 case 2: 
@@ -87,7 +90,9 @@ public class Orden extends Transaccion {
                 case 0:
                     return;
             }
-        } while(true);
+            System.out.println("Deseas modificar otra cosa?   1.-Si  2.-No");
+            opcion2=leer.nextInt();
+        }while(opcion2==1);
     }
 
     public void eliminar(){

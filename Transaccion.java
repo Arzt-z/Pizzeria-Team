@@ -115,19 +115,8 @@ public abstract class Transaccion{
     public void capturar(Pizza[] pizzas, int cPizzas) {
         Date fechaActual = new Date();
         SimpleDateFormat formatoFecha = new SimpleDateFormat("dd/MM/yy HH:mm");
-        Scanner datos = new Scanner(System.in);
-        int ciclo;
             this.fecha =  formatoFecha.format(fechaActual);
-            do {
                 capturarDetalle(pizzas, cPizzas);
-                System.out.println("Desea Continuar?   1.-Si   2.-No");
-                String option = datos.next();
-                if (option.toLowerCase() == "si" || option == "1") {
-                    ciclo = 1;
-                } else {
-                    ciclo = 0;
-                }
-            } while (ciclo == 1 && cDetalles < 500);
     }
 
 
@@ -149,7 +138,7 @@ public abstract class Transaccion{
                     case 2:
                         System.out.println("Folio: ");
                         leer.nextLine();
-                        folio = leer.nextLine();
+                        folio = leer.nextLine(); 
                         break;
                     case 3:
                         System.out.println("Detalles: ");

@@ -160,8 +160,8 @@ public class Pizzeria implements java.io.Serializable {
                 if (inventarios[i].getTipo().toLowerCase().equals("carne")
                         || inventarios[i].getTipo().toLowerCase().equals("no carne")
                         || inventarios[i].getTipo().toLowerCase().equals("queso")
-                        || inventarios[i].getTipo().toLowerCase().equals("ingrediente"))
-                    Cuadrado.centrarEnXYPresicion("g", 35, c + 1);
+                        || inventarios[i].getTipo().toLowerCase().equals("ingrediente")){
+                    Cuadrado.centrarEnXYPresicion("g", 35, c + 1);}
                 Cuadrado.centrarEnXYPresicion("| ", 36, c + 1);
                 Cuadrado.centrarEnXYPresicion((float) (inventarios[i].getPrecio()) + "", 37, c + 1);
 
@@ -496,7 +496,7 @@ public class Pizzeria implements java.io.Serializable {
         do {
             System.out.println("TEXTO A BUSCAR");
             String cadenaAbuscar = datos.nextLine();
-            for (int i = 0; i < cPizzas; i++) {
+            for (int i = 0; i <= cPizzas; i++) {
                 if (pizzas[i].buscar(cadenaAbuscar) == true && pizzas[i].getExistencia() == true) {
                     pizzas[i].mostrar();
                 }
