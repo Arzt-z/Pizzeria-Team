@@ -1,6 +1,7 @@
 import java.util.Scanner;
 
-public class Empleado extends Persona {
+
+public class Empleado extends Persona{
 
     private String nombre;
    
@@ -56,6 +57,7 @@ public class Empleado extends Persona {
     }
  
     public void capturar() {
+        Scanner leer = new Scanner(System.in);
         char diferenciador = 'e';
         super.capturar(diferenciador);
         String verificar, contraeña;

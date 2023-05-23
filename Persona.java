@@ -1,7 +1,9 @@
+import java.io.Serializable;
 import java.util.Scanner;
 
-public abstract class Persona {
-    protected Scanner leer = new Scanner(System.in);
+
+public abstract class Persona implements Serializable{
+  //  protected Scanner leer = new Scanner(System.in);
     protected String telefono;
     protected String direccion;
     protected String rfc;
@@ -33,6 +35,7 @@ public abstract class Persona {
     }
 
     protected void capturar(char diferenciador) {
+        Scanner leer = new Scanner(System.in);
         if (diferenciador == 'c') {
             System.out.println("el pedido es a domicilio? 1-si 2-no");
             int pedido = leer.nextInt();
@@ -63,6 +66,7 @@ public abstract class Persona {
     }
 
     protected void modificar() {
+        Scanner leer = new Scanner(System.in);
         System.out.println("Que deseas modificar?");
         System.out.println("1.-Telefono 2.-direccion 3-RFC 0.-Cancelar");
         int atributo = leer.nextInt();

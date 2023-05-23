@@ -2,8 +2,7 @@ import java.util.Scanner;
 
 public class Proveedores extends Persona {
 	private String razonSocial;
-	private Scanner leer = new Scanner(System.in);
-
+	
 	public Proveedores() {
 
 	}
@@ -26,6 +25,7 @@ public class Proveedores extends Persona {
 	}
 
 	public void capturar() {
+		Scanner leer = new Scanner(System.in);
 		char diferenciador = 'p';
 		System.out.println("Informacion del proveedor");
 		System.out.print("razon social  :");

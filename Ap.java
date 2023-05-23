@@ -125,6 +125,7 @@ public class Ap {
                                 if (guar==1){
                                     pizzafactory.generarArchivoInventario();
                                     pizzafactory.generarArchivoPizzas();
+                                    pizzafactory.generarArchivoPersonas();
                                 }
                                 break;
                         }
@@ -184,6 +185,7 @@ public class Ap {
                             if (guar==1){
                                 pizzafactory.generarArchivoInventario();
                                 pizzafactory.generarArchivoPizzas();
+                                pizzafactory.generarArchivoPersonas();
                             }
                                 break;
                         }
