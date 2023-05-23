@@ -553,8 +553,9 @@ public class Pizzeria implements java.io.Serializable {
                         ((Orden)transaccion[seleccion-1]).capturarCliente();
                         break;
                     case 2: 
-                        transaccion[seleccion-1].eliminarDetalles();
-                        ((Orden)transaccion[seleccion-1]).capturarPizza(pizzas, cPizzas);
+                        //transaccion[seleccion-1].eliminarDetalles();
+                        //((Orden)transaccion[seleccion-1]).capturarPizza(pizzas, cPizzas);
+                        transaccion[seleccion-1].modificar(cInventarios, inventarios, 'v' , cPizzas , pizzas);
                         break;
                     case 0:
                         return;

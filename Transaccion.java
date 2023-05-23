@@ -92,22 +92,8 @@ public abstract class Transaccion{
             } while (ciclo == 1 && cDetalles <= 500);
         } else {
             this.fecha =  formatoFecha.format(fechaActual);
-
-            do {
                 capturarDetalle(inventarios, cInventarios, diferencia);
-                if (detalles[cDetalles - 1].getCantidad() == 0) {
-                    ciclo = 0;
 
-                } else {
-                    System.out.println("Quiere seguir agregrando detalles?   1.-Si   2.-No");
-                    String option = datos.next();
-                    if (option.equalsIgnoreCase("si") || option.equals("1")) {
-                        ciclo = 1;
-                    } else {
-                        ciclo = 0;
-                    }
-                }
-            } while (ciclo == 1 && cDetalles < 500);
         }
     }
 
@@ -117,74 +103,50 @@ public abstract class Transaccion{
         SimpleDateFormat formatoFecha = new SimpleDateFormat("dd/MM/yy HH:mm");
         Scanner datos = new Scanner(System.in);
         int ciclo;
-            this.fecha =  formatoFecha.format(fechaActual);
-            do {
+        this.fecha =  formatoFecha.format(fechaActual);
                 capturarDetalle(pizzas, cPizzas);
-                System.out.println("Desea Continuar?   1.-Si   2.-No");
-                String option = datos.next();
-                if (option.toLowerCase() == "si" || option == "1") {
-                    ciclo = 1;
-                } else {
-                    ciclo = 0;
-                }
-            } while (ciclo == 1 && cDetalles < 500);
     }
 
 
     public void modificar(int cInventarios, Inventario[] inventarios, char diferencia, int cPizzas,Pizza[] pizzas) {
         Scanner leer = new Scanner(System.in);
         int opcion;
-
-        if (diferencia == 'c') {
+        int continuar = 1;
             do {
-                System.out.println("SE VAN A MOFIFICAR LOS DETALLES "+
-                "QUIERE CONTINUAR? 1-SI 2-NO");
-                opcion = leer.nextInt();
-                    if(opcion==1){
-                        System.out.println("Detalles: ");
-                        for (int i = 0; i < cDetalles; i++) {
-                            System.out.println(i + 1 + ".-" + detalles[i]);
-                        }
-                        int nDetalle = leer.nextInt()-1;
-                        if(nDetalle<0 || nDetalle>=cDetalles){
-                            System.out.println("esa no es una opcion");
-                        }else{
-                        detalles[nDetalle].modificar(cPizzas, pizzas, diferencia);
-                        }
-                    }else if(opcion!=1){
-                        return;
+                if(diferencia=='c'){
+                    Cuadrado.imprimirCuadrado(50, 3,"Detalles: ");
+                    Cuadrado.matriz = Cuadrado.cuadrado(50, cDetalles + 2);
+                    for (int i = 0; i < cDetalles; i++) {
+                        Cuadrado.centrarEnXYPresicion(i + 1 + ".-" + detalles[i].getNombre(),1, i + 1);
                     }
-            } while (true);
-        } 
-		else {
+                    Cuadrado.imprimirCuadrado();
+                    int nDetalle = leer.nextInt();
+                    detalles[nDetalle - 1].modificar(cInventarios, inventarios, diferencia);
+                }else{
+                    Cuadrado.imprimirCuadrado(50, 3,"Detalles: ");
+                    Cuadrado.matriz = Cuadrado.cuadrado(50, cDetalles + 2);
+                    Cuadrado.centrarEnXYPresicion("Nombre",1, 0);
+                    Cuadrado.centrarEnXYPresicion("cantidad",25,0);
+                    for (int i = 0; i < cDetalles; i++) {
+                        Cuadrado.centrarEnXYPresicion(i + 1 + ".-" + detalles[i].getNombre(),1, i + 1);
+                        Cuadrado.centrarEnXYPresicion("" + detalles[i].getCantidad(),25, i + 1);
+                        Cuadrado.centrarEnXYPresicion("" + detalles[i].getPrecioProd(),30, i + 1);
+                    }
+                    Cuadrado.imprimirCuadrado();
+                    int nDetalle = leer.nextInt();
+                    if(detalles[nDetalle - 1].getDif()=='p'){
+                        detalles[nDetalle - 1].modificar(cPizzas, pizzas, 'p');
+                    }else{
+                        detalles[nDetalle - 1].modificar(cInventarios, inventarios, 'i');
+                    }
 
-            do {
-                System.out.println("Que deseas modificar? "
-                        + "1.-Fecha 2.-Folio 3.-Modificar detalles 0.-Cancelar");
-                opcion = leer.nextInt();
-                switch (opcion) {
-                    case 1:
-                        System.out.println("Fecha: ");
-                        leer.nextLine();
-                        folio = leer.nextLine();
-                        break;
-                    case 2:
-                        System.out.println("Folio: ");
-                        leer.nextLine();
-                        fecha = leer.nextLine();
-                    case 3:
-                        System.out.println("Detalles: ");
-                        for (int i = 0; i < cDetalles; i++) {
-                            System.out.println(i + 1 + ".-" + detalles[i]);
-                        }
-                        int nDetalle = leer.nextInt();
-                        detalles[nDetalle - 1].modificar(cPizzas, pizzas, diferencia);
-                        break;
-                    case 0:
-                        return;
                 }
-            } while (true);
-        }
+                
+                Cuadrado.imprimirCuadrado(50, 3, "modificar otro?");
+                Cuadrado.imprimirCuadradoDividido(50, 2, "1.-si", "2.-no");
+                continuar = leer.nextInt();
+
+            } while (continuar == 1);
 
     }
 
@@ -235,31 +197,36 @@ public abstract class Transaccion{
     }
 
     public void getDetalles(char diferenciador) {
+        Cuadrado.matriz = Cuadrado.cuadrado(50, cDetalles+4);
         double totalf = 0;
         double total = 0;
-
+        Cuadrado.centrarEnXYPresicion("Producto", 2, 0);
+        Cuadrado.centrarEnXYPresicion("cantidad", 28, 0);
+        Cuadrado.centrarEnXYPresicion("|precio", 36, 0);
         for (int i = 0; i < cDetalles; i++) {
             if (detalles[i].getCantidad() == 0) {
-
                 totalf += detalles[i].getPrecioProd() * detalles[i].getCantidad();
                 total += detalles[i].getPrecioProd() * detalles[i].getCantidad();
-
                 total = 0;
-
             } else {
                 if(detalles[i].isVigente()==true){
-				detalles[i].mostrar(diferenciador);
+                    if(detalles[i].getDif()=='p'){
+                        Cuadrado.centrarEnXYPresicion("pizza:"+detalles[i].getNombre(), 2, 1+i);
+                    }else{
+                        Cuadrado.centrarEnXYPresicion(detalles[i].getNombre(), 2, 1+i);
+                    }
+                Cuadrado.centrarEnXYPresicion(""+detalles[i].getCantidad(), 28, 1+i);
+                Cuadrado.centrarEnXYPresicion("|"+(detalles[i].getPrecioProd()*detalles[i].getCantidad()), 36, 1+i);
                 totalf += detalles[i].getPrecioProd() * detalles[i].getCantidad();
                 total += detalles[i].getPrecioProd() * detalles[i].getCantidad();
-                System.out.println("\t\ttotal= " + total);
                 total = 0;
 				}
-
             }
 
         }
-        System.out.println("\t\t----------------------------");
-        System.out.println("\t\ttotal final= " + totalf);
+        Cuadrado.centrarEnXYPresicion("-------------------------------------------", 2, cDetalles+1);
+        Cuadrado.centrarEnXYPresicion("total final= " + totalf, 24, cDetalles+2);
+        Cuadrado.imprimirCuadrado();
     }
 
 
