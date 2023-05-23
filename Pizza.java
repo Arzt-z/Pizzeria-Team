@@ -157,7 +157,7 @@ public class Pizza implements Serializable{
         String misDatos = nombre + cPartes + precio + diametro;
         calcularTodosLosIngredientes();
         for (int i = 0; i < cIngredientes; i++){
-            misDatos=misDatos+ingredientes[i].getNombre();
+            misDatos=misDatos+ingredientes[i].getNombre().toLowerCase();
         }
         misDatos=misDatos.toLowerCase();
         if (misDatos.contains(cadenaAbuscar.toLowerCase()) == true) {

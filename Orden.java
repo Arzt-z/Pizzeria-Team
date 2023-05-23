@@ -55,7 +55,7 @@ public class Orden extends Transaccion {
                     if(detalles[i].getDif()=='p'){
                         Cuadrado.centrarEnXYPresicion("pizza:",2, 1);
                         Cuadrado.centrarEnXYPresicion(detalles[i].getNombre(),8, 1+i);
-                    }else{
+                }else{
                         Cuadrado.centrarEnXYPresicion(detalles[i].getNombre(),2, 1+i);
                     }
                     Cuadrado.centrarEnXYPresicion(detalles[i].getCantidad()+"",33, 1+i);
@@ -77,7 +77,7 @@ public class Orden extends Transaccion {
                 case 1:
                     System.out.println("nombre cliente:");
                     String entrada= leer.nextLine();
-                    cliente=entrada;
+                    this.cliente=entrada;
                     break;
                 case 2: 
 

@@ -16,7 +16,7 @@ public class Pizzeria implements java.io.Serializable {
     private int cPizzas;
     private Orden[] ordenes = new Orden[500];
     private Transaccion[] transaccion = new Transaccion[500];
-    private int cTransaccion=0;
+    private int cTransaccion = 0;
 
     public Pizzeria() {
         cPizzas = 0;
@@ -25,7 +25,7 @@ public class Pizzeria implements java.io.Serializable {
 
     public Pizzeria(String nombre, String domicilio, String correo, int horario, String telefono) {
         cPizzas = 0;
-        cTransaccion=0;
+        cTransaccion = 0;
         this.nombre = nombre;
         this.domicilio = domicilio;
         this.correo = correo;
@@ -70,52 +70,52 @@ public class Pizzeria implements java.io.Serializable {
     }
 
     protected void inicializarinventarios() {
-        cargarArchivoInventario();
-        /* 
+       cargarArchivoInventario();
+/* 
          inventarios[0] = new Inventario("Queso mozzarella", "Queso", 0.3);
-          inventarios[++cInventarios] = new Inventario("Queso parmesano", "queso",
-         0.26);
-          inventarios[++cInventarios] = new Inventario("Peperoni", "carne", 0.6);
-          inventarios[++cInventarios] = new Inventario("Salchicha", "carne", 0.08);
-          inventarios[++cInventarios] = new Inventario("Anchoas", "carne", 1.0);
-          inventarios[++cInventarios] = new Inventario("Salami", "carne", 0.67);
-          inventarios[++cInventarios] = new Inventario("Jamon", "carne", 0.14);
-          inventarios[++cInventarios] = new Inventario("Tocino", "carne", 0.32);
-          inventarios[++cInventarios] = new Inventario("Carne molida", "carne", 0.16);
-          inventarios[++cInventarios] = new Inventario("Chorizo", "carne", 0.12);
-          
-          inventarios[++cInventarios] = new Inventario("Cebolla", "no carne", 0.016);
-          inventarios[++cInventarios] = new Inventario("tomate", "no carne", 0.016);
-          inventarios[++cInventarios] = new Inventario("Pimiento verde", "no carne",
-          0.06);
-          inventarios[++cInventarios] = new Inventario("Pimiento rojo", "no carne",
-          0.06);
-          inventarios[++cInventarios] = new Inventario("Aceitunas", "no carne", 0.06);
-          inventarios[++cInventarios] = new Inventario("Champiñones", "no carne",
-          0.07);
-          inventarios[++cInventarios] = new Inventario("Ajo", "no carne", 0.05);
-          inventarios[++cInventarios] = new Inventario("Jalapeños", "no carne", 0.05);
-          inventarios[++cInventarios] = new Inventario("Piña", "no carne", 0.013);
-          
-          inventarios[++cInventarios] = new Inventario("orden de papas", "producto",
-          20);
-          inventarios[++cInventarios] = new Inventario("orden de bonneless",
-          "producto", 50);
-          inventarios[++cInventarios] = new Inventario("refresco de cola", "bebida",
-          15);
-          inventarios[++cInventarios] = new Inventario("refresco de manzana", "bebida",
-          15);
-          inventarios[++cInventarios] = new Inventario("refresco de naranaja",
-          "bebida", 15);
-          inventarios[++cInventarios] = new Inventario("palitos de queso", "producto",
-          20);
-          inventarios[++cInventarios] = new Inventario("salsa secreta", "extra", 10);
-          inventarios[++cInventarios] = new Inventario("dip de BBQ", "extra", 15);
-        */
+        inventarios[++cInventarios] = new Inventario("Queso parmesano", "queso",
+                0.26);
+        inventarios[++cInventarios] = new Inventario("Peperoni", "carne", 0.6);
+        inventarios[++cInventarios] = new Inventario("Salchicha", "carne", 0.08);
+        inventarios[++cInventarios] = new Inventario("Anchoas", "carne", 1.0);
+        inventarios[++cInventarios] = new Inventario("Salami", "carne", 0.67);
+        inventarios[++cInventarios] = new Inventario("Jamon", "carne", 0.14);
+        inventarios[++cInventarios] = new Inventario("Tocino", "carne", 0.32);
+        inventarios[++cInventarios] = new Inventario("Carne molida", "carne", 0.16);
+        inventarios[++cInventarios] = new Inventario("Chorizo", "carne", 0.12);
+
+        inventarios[++cInventarios] = new Inventario("Cebolla", "no carne", 0.016);
+        inventarios[++cInventarios] = new Inventario("tomate", "no carne", 0.016);
+        inventarios[++cInventarios] = new Inventario("Pimiento verde", "no carne",
+                0.06);
+        inventarios[++cInventarios] = new Inventario("Pimiento rojo", "no carne",
+                0.06);
+        inventarios[++cInventarios] = new Inventario("Aceitunas", "no carne", 0.06);
+        inventarios[++cInventarios] = new Inventario("Champiñones", "no carne",
+                0.07);
+        inventarios[++cInventarios] = new Inventario("Ajo", "no carne", 0.05);
+        inventarios[++cInventarios] = new Inventario("Jalapeños", "no carne", 0.05);
+        inventarios[++cInventarios] = new Inventario("Piña", "no carne", 0.013);
+
+        inventarios[++cInventarios] = new Inventario("orden de papas", "producto",
+                20);
+        inventarios[++cInventarios] = new Inventario("orden de bonneless",
+                "producto", 50);
+        inventarios[++cInventarios] = new Inventario("refresco de cola", "bebida",
+                15);
+        inventarios[++cInventarios] = new Inventario("refresco de manzana", "bebida",
+                15);
+        inventarios[++cInventarios] = new Inventario("refresco de naranaja",
+                "bebida", 15);
+        inventarios[++cInventarios] = new Inventario("palitos de queso", "producto",
+                20);
+        inventarios[++cInventarios] = new Inventario("salsa secreta", "extra", 10);
+        inventarios[++cInventarios] = new Inventario("dip de BBQ", "extra", 15); 
+    */
     }
 
     protected void inicializarPizzas() {
-        cargarArchivoPizzas();
+         cargarArchivoPizzas();
         /* 
         pizzas[0] = new Pizza("Hawaiana", 3, 199);
         pizzas[cPizzas].capturarIngrediente(inventarios[6], 0);
@@ -239,23 +239,32 @@ public class Pizzeria implements java.io.Serializable {
     }
 
     public void capturarInventarios() {
-        Scanner datos = new Scanner(System.in);
-        int continuar = 1;
-        do {
-            listarinventarios();
-            inventarios[cInventarios] = new Inventario();
-            inventarios[cInventarios++].capturar();
-            Cuadrado.imprimirCuadrado(50, 3, "desea capturar otro?");
-            Cuadrado.imprimirCuadradoDividido(50, 2, "1.-si", "2.-no");
-            continuar = datos.nextInt();
-        } while (continuar == 1);
+        try {
+            Scanner datos = new Scanner(System.in);
+            int continuar = 1;
+            do {
+                listarinventarios();
+                inventarios[cInventarios] = new Inventario();
+                inventarios[cInventarios++].capturar();
+                Cuadrado.imprimirCuadrado(50, 3, "desea capturar otro?");
+                Cuadrado.imprimirCuadradoDividido(50, 2, "1.-si", "2.-no");
+                continuar = datos.nextInt();
+            } while (continuar == 1);
+        } catch (InputMismatchException e) {
+            System.err.println("CARACTER INVALIDO INSERTE UN NUMERO VAlIDO");
+            cInventarios--;
+        } catch (Exception e) {
+            System.err.println("OCURRIO EL ERROR " + e);
+            e.printStackTrace();
+            cInventarios--;
+        }
     }
 
     public void modificarInventarios() {
         Scanner datos = new Scanner(System.in);
         int seleccion = 0;
         int continuar = 1;
-        seleccion = seleccionInventarios()-1;
+        seleccion = seleccionInventarios() - 1;
         do {
             inventarios[seleccion].modificar();
             Cuadrado.imprimirCuadrado(50, 3, "desea modificar otro?");
@@ -314,7 +323,7 @@ public class Pizzeria implements java.io.Serializable {
             inventarios[seleccion - 1].eliminar();
 
         } while (continuar == 1);
-        
+
     }
 
     public int seleccionInventarios() {
@@ -370,15 +379,23 @@ public class Pizzeria implements java.io.Serializable {
 
     public void capturarPizza() {
         Scanner datos = new Scanner(System.in);
-     
-        pizzas[++cPizzas] = new Pizza();
-        Cuadrado.imprimirCuadrado(50, 4, "------------PIZZA------------");
-        tamanoPizza(cPizzas);
-        dividirPizza(cPizzas);
-        seleccionarIngredientePizza(cPizzas);
-        Cuadrado.imprimirCuadrado(50, 4 ,"Nombre de la pizza");
-        pizzas[cPizzas].setNombre(datos.nextLine());
-        pizzas[cPizzas].capturar();
+        try {
+            pizzas[++cPizzas] = new Pizza();
+            Cuadrado.imprimirCuadrado(50, 4, "------------PIZZA------------");
+            tamanoPizza(cPizzas);
+            dividirPizza(cPizzas);
+            seleccionarIngredientePizza(cPizzas);
+            Cuadrado.imprimirCuadrado(50, 4, "Nombre de la pizza");
+            pizzas[cPizzas].setNombre(datos.nextLine());
+            pizzas[cPizzas].capturar();
+        } catch (InputMismatchException e) {
+            System.err.println("CARACTER INVALIDO INSERTE UN NUMERO VAlIDO");
+            cPizzas--;
+        } catch (Exception e) {
+            System.err.println("OCURRIO EL ERROR " + e);
+            e.printStackTrace();
+            cPizzas--;
+        }
     }
 
     public void eliminarPizza() {
@@ -496,7 +513,7 @@ public class Pizzeria implements java.io.Serializable {
         do {
             System.out.println("TEXTO A BUSCAR");
             String cadenaAbuscar = datos.nextLine();
-            for (int i = 0; i < cPizzas; i++) {
+            for (int i = 0; i <= cPizzas; i++) {
                 if (pizzas[i].buscar(cadenaAbuscar) == true && pizzas[i].getExistencia() == true) {
                     pizzas[i].mostrar();
                 }
@@ -513,28 +530,37 @@ public class Pizzeria implements java.io.Serializable {
     // funciones orden
     public void capturarOrden() {
         Scanner datos = new Scanner(System.in);
-        int continuar = 1;
-        transaccion[cTransaccion] = new Orden();
-        transaccion[cTransaccion].setFolio("FO-"+(cTransaccion+1));
-        ((Orden)transaccion[cTransaccion]).capturarCliente();
-        do {
-            Cuadrado.imprimirCuadrado(50, 3, "Selecciona Pizza o producto");
-            // Cuadrado.imprimirCuadrado(50, 4,"COMBOS");
-            Cuadrado.imprimirCuadradoDividido(50, 4, "1.-PRODUCTOS", "2.-PIZZA");
-            int opcion = datos.nextInt();
-            if (opcion == 1) {
-                transaccion[cTransaccion].capturar(inventarios, cInventarios, 'v');
-            } else if (opcion == 2) {
-                transaccion[cTransaccion].capturar(pizzas,cPizzas);
-            }
-            Cuadrado.imprimirCuadrado(50, 3, "agregar otra pizza o producto?");
-            Cuadrado.imprimirCuadradoDividido(50, 2, "1.-SI", "2.-NO");
-            continuar = datos.nextInt();
-        } while (continuar == 1);
-        cTransaccion++;
+        try {
+            int continuar = 1;
+            transaccion[cTransaccion] = new Orden();
+            transaccion[cTransaccion].setFolio("FO-" + (cTransaccion + 1));
+            ((Orden) transaccion[cTransaccion]).capturarCliente();
+            do {
+                Cuadrado.imprimirCuadrado(50, 3, "Selecciona Pizza o producto");
+                // Cuadrado.imprimirCuadrado(50, 4,"COMBOS");
+                Cuadrado.imprimirCuadradoDividido(50, 4, "1.-PRODUCTOS", "2.-PIZZA");
+                int opcion = datos.nextInt();
+                if (opcion == 1) {
+                    transaccion[cTransaccion].capturar(inventarios, cInventarios, 'v');
+                } else if (opcion == 2) {
+                    transaccion[cTransaccion].capturar(pizzas, cPizzas);
+                }
+                Cuadrado.imprimirCuadrado(50, 3, "agregar otra pizza o producto?");
+                Cuadrado.imprimirCuadradoDividido(50, 2, "1.-SI", "2.-NO");
+                continuar = datos.nextInt();
+            } while (continuar == 1);
+            cTransaccion++;
+        } catch (InputMismatchException e) {
+            System.err.println("CARACTER INVALIDO INSERTE UN NUMERO VAlIDO");
+            cTransaccion--;
+        } catch (Exception e) {
+            System.err.println("OCURRIO EL ERROR " + e);
+            e.printStackTrace();
+            cTransaccion--;
+        }
     }
 
-    public void modificarOrden(){
+    public void modificarOrden() {
         Scanner datos = new Scanner(System.in);
         int continuar = 1;
         int seleccion = 0;
@@ -548,9 +574,9 @@ public class Pizzeria implements java.io.Serializable {
                 Cuadrado.imprimirCuadrado(50, 3, "Que deseas modificar?");
                 Cuadrado.imprimirCuadradoDividido(50, 2, "1.-Cliente", "2.-Pedido");
                 int eleccion = datos.nextInt();
-                switch(eleccion){
+                switch (eleccion) {
                     case 1:
-                        ((Orden)transaccion[seleccion-1]).capturarCliente();
+                        ((Orden) transaccion[seleccion - 1]).capturarCliente();
                         break;
                     case 2: 
                         //transaccion[seleccion-1].eliminarDetalles();
@@ -571,26 +597,26 @@ public class Pizzeria implements java.io.Serializable {
     }
 
     public void listarOrden() {
-            Scanner datos = new Scanner(System.in);
-            int continuar = 1;
-            int seleccion = 0;
-            do {
-                mostrarOrdenes();
-                if (continuar != 1)
-                    return;
-                Cuadrado.imprimirCuadrado(50, 3, "selecciona una orden");
-                seleccion = datos.nextInt();
-                if (transaccion[seleccion - 1].isVigente()) {
-                    ((Orden)transaccion[seleccion-1]).mostrarOrden();
-                    (transaccion[seleccion-1]).getDetalles('v');
-                    Cuadrado.imprimirCuadrado(50, 3, "deseas ver otro detalle?");
-                    Cuadrado.imprimirCuadradoDividido(50, 2, "1.-si", "2.-no");
-                } else {
-                    Cuadrado.imprimirCuadrado(50, 3, "DETALLE INVALIDO INTENTAR OTRA VEZ?");
-                    Cuadrado.imprimirCuadradoDividido(50, 2, "1.-si", "2.-no");
-                }
-                continuar = datos.nextInt();
-            } while (continuar == 1);
+        Scanner datos = new Scanner(System.in);
+        int continuar = 1;
+        int seleccion = 0;
+        do {
+            mostrarOrdenes();
+            if (continuar != 1)
+                return;
+            Cuadrado.imprimirCuadrado(50, 3, "selecciona una orden");
+            seleccion = datos.nextInt();
+            if (transaccion[seleccion - 1].isVigente()) {
+                ((Orden) transaccion[seleccion - 1]).mostrarOrden();
+                (transaccion[seleccion - 1]).getDetalles('v');
+                Cuadrado.imprimirCuadrado(50, 3, "deseas ver otro detalle?");
+                Cuadrado.imprimirCuadradoDividido(50, 2, "1.-si", "2.-no");
+            } else {
+                Cuadrado.imprimirCuadrado(50, 3, "DETALLE INVALIDO INTENTAR OTRA VEZ?");
+                Cuadrado.imprimirCuadradoDividido(50, 2, "1.-si", "2.-no");
+            }
+            continuar = datos.nextInt();
+        } while (continuar == 1);
     }
 
     public void eliminarOrden() {
@@ -604,7 +630,7 @@ public class Pizzeria implements java.io.Serializable {
             Cuadrado.imprimirCuadrado(50, 3, "selecciona una orden");
             seleccion = datos.nextInt();
             if (transaccion[seleccion - 1].isVigente()) {
-                ((Orden)transaccion[seleccion - 1]).eliminar();
+                ((Orden) transaccion[seleccion - 1]).eliminar();
                 Cuadrado.imprimirCuadrado(50, 3, "deseas eliminar otro detalle?");
                 Cuadrado.imprimirCuadradoDividido(50, 2, "1.-si", "2.-no");
             } else {
@@ -613,7 +639,6 @@ public class Pizzeria implements java.io.Serializable {
             }
             continuar = datos.nextInt();
         } while (continuar == 1);
-
 
     }
 
@@ -625,8 +650,10 @@ public class Pizzeria implements java.io.Serializable {
             System.out.println("TEXTO A BUSCAR");
             cadenaAbuscar = datos.nextLine();
             for (int i = 0; i < cTransaccion; i++) {
-                if ((transaccion[i].buscar(cadenaAbuscar) == true || ((Orden)transaccion[i]).getCliente().contains(cadenaAbuscar))&& transaccion[i].isVigente() == true && transaccion[i].queSoy().equalsIgnoreCase("orden")) {
-                    ((Orden)transaccion[i]).mostrarOrden();
+                if ((transaccion[i].buscar(cadenaAbuscar) == true
+                        || ((Orden) transaccion[i]).getCliente().contains(cadenaAbuscar))
+                        && transaccion[i].isVigente() == true && transaccion[i].queSoy().equalsIgnoreCase("orden")) {
+                    ((Orden) transaccion[i]).mostrarOrden();
                 }
             }
             Cuadrado.imprimirCuadrado(50, 3, "BUSCAR OTRA VEZ?");
@@ -636,9 +663,8 @@ public class Pizzeria implements java.io.Serializable {
         } while (continuar == 1);
     }
 
-
-    public void mostrarOrdenes(){
-        int contador=0;
+    public void mostrarOrdenes() {
+        int contador = 0;
         Cuadrado.imprimirCuadrado(50, 2, "----------Ordenes----------");
         for (int i = 0; i < cTransaccion; i++) {
             if (transaccion[i].isVigente() && transaccion[i].queSoy().equalsIgnoreCase("orden")) {
@@ -649,18 +675,18 @@ public class Pizzeria implements java.io.Serializable {
         Cuadrado.centrarEnXYPresicion("folio ", 3, 0);
         Cuadrado.centrarEnXYPresicion("fecha ", 12, 0);
         Cuadrado.centrarEnXYPresicion("nombre ", 30, 0);
-        contador=0;
+        contador = 0;
         for (int i = 0; i < cTransaccion; i++) {
             if (transaccion[i].isVigente() && transaccion[i].queSoy().equalsIgnoreCase("orden")) {
                 Cuadrado.centrarEnXYPresicion(i + 1 + ".-" + transaccion[i].getFolio(), 2, contador + 1);
                 Cuadrado.centrarEnXYPresicion(transaccion[i].getFecha() + "", 12, 1 + contador);
-                Cuadrado.centrarEnXYPresicion(((Orden)transaccion[i]).getCliente(), 30, 1 + contador);
+                Cuadrado.centrarEnXYPresicion(((Orden) transaccion[i]).getCliente(), 30, 1 + contador);
                 contador++;
             }
         }
         Cuadrado.imprimirCuadrado();
     }
-    //fin funciones orden
+    // fin funciones orden
     // inicio funciones proveedor
 
     public void listarProveedores() {
@@ -718,14 +744,23 @@ public class Pizzeria implements java.io.Serializable {
 
     public void capturarProveedores() {
         Scanner sc = new Scanner(System.in);
-        int opcion = 0;
-        do {
+        try {
+            int opcion = 0;
+            do {
 
-            personas[++cPersonas] = new Proveedores();
-            ((Proveedores) personas[cPersonas]).capturar();
-            System.out.println("Quiere agregar otro proveedor?   1.-Si   2.-No");
-            opcion = sc.nextInt();
-        } while (opcion == 1);
+                personas[++cPersonas] = new Proveedores();
+                ((Proveedores) personas[cPersonas]).capturar();
+                System.out.println("Quiere agregar otro proveedor?   1.-Si   2.-No");
+                opcion = sc.nextInt();
+            } while (opcion == 1);
+        } catch (InputMismatchException e) {
+            System.err.println("CARACTER INVALIDO INSERTE UN NUMERO VAlIDO");
+            cPersonas--;
+        } catch (Exception e) {
+            System.err.println("OCURRIO EL ERROR " + e);
+            e.printStackTrace();
+            cPersonas--;
+        }
     }
 
     public void modificarProveedores() {
@@ -808,18 +843,28 @@ public class Pizzeria implements java.io.Serializable {
     }
 
     public void capturarCompra() {
-        Proveedores[] proveedor = new Proveedores[500];
-        int cProveedores = 0;
-        for (int i = 0; i <= cPersonas; i++) {
-            if (personas[i].quienSoy().equals("Proveedor")) {
-                proveedor[cProveedores] = (Proveedores) personas[i];
-                cProveedores++;
+        try {
+            Proveedores[] proveedor = new Proveedores[500];
+            int cProveedores = 0;
+            for (int i = 0; i <= cPersonas; i++) {
+                if (personas[i].quienSoy().equals("Proveedor")) {
+                    proveedor[cProveedores] = (Proveedores) personas[i];
+                    cProveedores++;
+                }
             }
+            transaccion[cTransaccion] = new Compra(cProveedores, proveedor, this.cInventarios, this.inventarios,
+                    this.cPizzas, this.pizzas);
+            transaccion[cTransaccion].setFolio("FO-" + (cTransaccion + 1));
+            ((Compra) transaccion[cTransaccion]).capturar();
+            cTransaccion++;
+        } catch (InputMismatchException e) {
+            System.err.println("CARACTER INVALIDO INSERTE UN NUMERO VAlIDO");
+            cTransaccion--;
+        } catch (Exception e) {
+            System.err.println("OCURRIO EL ERROR " + e);
+            e.printStackTrace();
+            cTransaccion--;
         }
-        transaccion[cTransaccion] = new Compra(cProveedores, proveedor, this.cInventarios, this.inventarios, this.cPizzas, this.pizzas );
-        transaccion[cTransaccion].setFolio("FO-"+(cTransaccion+1));
-        ((Compra) transaccion[cTransaccion]).capturar();
-        cTransaccion++;
     }
 
     public void modificarCompra() {
@@ -907,8 +952,7 @@ public class Pizzeria implements java.io.Serializable {
     }
     // fin funciones de compra
 
-    // generar archivos 
-
+    // generar archivos
 
     public void generarArchivoInventario() {
         FileOutputStream archivoSalida = null;
@@ -916,13 +960,15 @@ public class Pizzeria implements java.io.Serializable {
             archivoSalida = new FileOutputStream("Inventario.dat");
             ObjectOutputStream flujoSalida = new ObjectOutputStream(archivoSalida);
             System.out.println("generando Inventario.dat...");
-            flujoSalida.writeObject(cInventarios);
-            for (int i = 0; i < cInventarios; i++) {
-                flujoSalida.writeObject(inventarios[i]);
+            // flujoSalida.writeObject(cInventarios);
+            for (int i = 0; i <= cInventarios; i++) {
+                if (inventarios[i].getExistencia() == true) {
+                    flujoSalida.writeObject(inventarios[i]);
+                }
             }
             archivoSalida.close();
         } catch (Exception e) {
-            System.out.println(e);
+            System.err.println(e);
         }
     }
 
@@ -931,24 +977,32 @@ public class Pizzeria implements java.io.Serializable {
         try {
             FileInputStream archivoEntrada = new FileInputStream("Inventario.dat");
             ObjectInputStream flujoEntrada = new ObjectInputStream(archivoEntrada);
-            cInventarios = (int) flujoEntrada.readObject();
-            for (int i = 0; i < cInventarios; i++)
-                inventarios[i] = (Inventario) flujoEntrada.readObject();
+            // cInventarios = (int) flujoEntrada.readObject();
+            // for (int i = 0; i < cInventarios; i++)
+            cInventarios = 0;
+            inventarios[cInventarios] = (Inventario) flujoEntrada.readObject();
+            while (inventarios[cInventarios] != null) {
+                inventarios[++cInventarios] = (Inventario) flujoEntrada.readObject();
+            }
             flujoEntrada.close();
+           
         } catch (Exception e) {
-            System.err.println("Error, no se cargaron los datos " + e);
+            System.err.println("Error, no se cargaron los datos inventario " + e);
         }
     }
-    //cuidado al copiar pizzas usa <= y inventarios solo esta usando < en el for()
+
+    // cuidado al copiar pizzas usa <= y inventarios solo esta usando < en el for()
     public void generarArchivoPizzas() {
         FileOutputStream archivoSalida = null;
         try {
             archivoSalida = new FileOutputStream("Pizzas.dat");
             ObjectOutputStream flujoSalida = new ObjectOutputStream(archivoSalida);
             System.out.println("generando Pizzas.dat...");
-            flujoSalida.writeObject(cPizzas);
+           // flujoSalida.writeObject(cPizzas);
             for (int i = 0; i <= cPizzas; i++) {
+                if(pizzas[i].getExistencia()==true){
                 flujoSalida.writeObject(pizzas[i]);
+            }
             }
             archivoSalida.close();
         } catch (Exception e) {
@@ -956,21 +1010,24 @@ public class Pizzeria implements java.io.Serializable {
         }
     }
 
-    
     private void cargarArchivoPizzas() {
         System.out.println("Cargando los datos de las Pizzas . . . ");
         try {
             FileInputStream archivoEntrada = new FileInputStream("Pizzas.dat");
             ObjectInputStream flujoEntrada = new ObjectInputStream(archivoEntrada);
-            cPizzas = (int) flujoEntrada.readObject();
-            for (int i = 0; i <= cPizzas; i++)
-                pizzas[i] = (Pizza) flujoEntrada.readObject();
+            //cPizzas = (int) flujoEntrada.readObject();
+            cPizzas=0;
+            pizzas[cPizzas] = (Pizza) flujoEntrada.readObject();
+            while(pizzas[cPizzas]!=null){
+                pizzas[++cPizzas] = (Pizza) flujoEntrada.readObject();
+            }
             flujoEntrada.close();
+            
         } catch (Exception e) {
-            System.err.println("Error, no se cargaron los datos " + e);
+            System.err.println("Error, no se cargaron los datos pizza" + e);
+            cPizzas--;
         }
     }
-
 
     // funciones empleado
     public void listarEmpleados() {
@@ -1004,7 +1061,7 @@ public class Pizzeria implements java.io.Serializable {
         } while (opcion == 1);
     }
 
-    public void listarEmpleo(){
+    public void listarEmpleo() {
         for (int i = 0; i <= cPersonas; i++) {
             if (personas[i].quienSoy().equals("Empleado") && personas[i].isVigente() == true) {
                 System.out.println(i + 1 + ".-" + ((Empleado) personas[i]));
@@ -1014,56 +1071,63 @@ public class Pizzeria implements java.io.Serializable {
     }
 
     public void capturarEmpleado() {
-        System.out.println("//////////////////////REGISTRO////////////////////////////77");
-        Scanner datos = new Scanner(System.in);
-        personas[++cPersonas] = new Empleado();
-        ((Empleado) personas[cPersonas]).capturar();
-        System.out.println("///////////////////USUARIO/////////////////////");
-        Cuadrado.imprimirCuadrado(50, 4, "TU USUARIO ES: " + ((Empleado) personas[cPersonas]).getUsuario());
+        try {
+            System.out.println("//////////////////////REGISTRO////////////////////////////77");
+            Scanner datos = new Scanner(System.in);
+            personas[++cPersonas] = new Empleado();
+            ((Empleado) personas[cPersonas]).capturar();
+            System.out.println("///////////////////USUARIO/////////////////////");
+            Cuadrado.imprimirCuadrado(50, 4, "TU USUARIO ES: " + ((Empleado) personas[cPersonas]).getUsuario());
+        } catch (InputMismatchException e) {
+            System.err.println("CARACTER INVALIDO INSERTE UN NUMERO VAlIDO");
+            cPersonas--;
+        } catch (Exception e) {
+            System.err.println("OCURRIO EL ERROR " + e);
+            e.printStackTrace();
+            cPersonas--;
+        }
     }
 
-    public void modificarEmpleado(){
-        Scanner leer =new Scanner(System.in);
+    public void modificarEmpleado() {
+        Scanner leer = new Scanner(System.in);
         int empleado;
         int opcion;
-       do{
-        listarEmpleo();
-        System.out.println("que empleado deseas modificar? (ingrese numero de empleado):  ");
-        empleado=leer.nextInt()-1;
-        if(empleado>cPersonas || empleado<0){
-        System.err.println("es una seleccion incorrecta");
-        }
-        else if(personas[empleado].quienSoy().equals("Empleado") && personas[empleado].isVigente()==true){
-         ((Empleado)personas[empleado]).modificar();
-        }else{
-            System.out.println("esto no es un empleado");
-        }
         do {
-            System.out.println("deseas modificar otro empleado? 1.-si 2.-no");
-            opcion = leer.nextInt();
-            if (opcion != 2 && opcion != 1) {
-                System.out.println("esa no es una opcion");
-                opcion = 3;
+            listarEmpleo();
+            System.out.println("que empleado deseas modificar? (ingrese numero de empleado):  ");
+            empleado = leer.nextInt() - 1;
+            if (empleado > cPersonas || empleado < 0) {
+                System.err.println("es una seleccion incorrecta");
+            } else if (personas[empleado].quienSoy().equals("Empleado") && personas[empleado].isVigente() == true) {
+                ((Empleado) personas[empleado]).modificar();
+            } else {
+                System.out.println("esto no es un empleado");
             }
-        } while (opcion == 3);
-    } while (opcion == 1);
+            do {
+                System.out.println("deseas modificar otro empleado? 1.-si 2.-no");
+                opcion = leer.nextInt();
+                if (opcion != 2 && opcion != 1) {
+                    System.out.println("esa no es una opcion");
+                    opcion = 3;
+                }
+            } while (opcion == 3);
+        } while (opcion == 1);
     }
 
-    public void eliminarEmpleado(){
-        Scanner leer =new Scanner(System.in);
+    public void eliminarEmpleado() {
+        Scanner leer = new Scanner(System.in);
         int empleado;
         int opcion;
-        do{
+        do {
             listarEmpleo();
             System.out.println("que empleado deseas eliminar? (ingrese numero de empleado):  ");
-            empleado=leer.nextInt()-1;
-            if(empleado>cPersonas || empleado<0){
-            System.err.println("es una seleccion incorrecta");
-            }
-            else if(personas[empleado].quienSoy().equals("Empleado") && personas[empleado].isVigente()==true){
-             personas[empleado].eliminar();
-             System.out.println("SE ELIMINO A: "+((Empleado)personas[empleado]));
-            }else{
+            empleado = leer.nextInt() - 1;
+            if (empleado > cPersonas || empleado < 0) {
+                System.err.println("es una seleccion incorrecta");
+            } else if (personas[empleado].quienSoy().equals("Empleado") && personas[empleado].isVigente() == true) {
+                personas[empleado].eliminar();
+                System.out.println("SE ELIMINO A: " + ((Empleado) personas[empleado]));
+            } else {
                 System.out.println("esto no es un empleado");
             }
             do {
@@ -1077,7 +1141,7 @@ public class Pizzeria implements java.io.Serializable {
         } while (opcion == 1);
     }
 
-    public void buscarEmpleado(){
+    public void buscarEmpleado() {
         Scanner leer = new Scanner(System.in);
         int opcion = 0;
         do {
@@ -1088,7 +1152,7 @@ public class Pizzeria implements java.io.Serializable {
             for (int i = 0; i <= cPersonas; i++) {
                 if (personas[i].buscar(cadenaAbuscar) == true && personas[i].quienSoy().equals("Empleado")) {
                     System.out.println("------------------------------");
-                    ((Empleado)personas[i]).mostrar();
+                    ((Empleado) personas[i]).mostrar();
                     error++;
                 }
             }
@@ -1097,7 +1161,7 @@ public class Pizzeria implements java.io.Serializable {
             }
             System.out.println("Desea seguir buscando?   1.-Si   2.-No");
             opcion = leer.nextInt();
-        } while (opcion==1);
+        } while (opcion == 1);
     }
 
     public Empleado[] getEmpleados() {
@@ -1175,7 +1239,6 @@ public class Pizzeria implements java.io.Serializable {
     public String getrfc() {
         return rfc;
     }
-
 
     // fin funciones basicas set get to string.
 }
