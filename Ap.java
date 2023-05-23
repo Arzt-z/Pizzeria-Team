@@ -177,7 +177,14 @@ public class Ap {
                                 pizzafactory.buscarOrden();
                                 break;
                             case 0:
-                                salir = true;
+                            salir = true;
+                            Cuadrado.imprimirCuadrado(50, 4, "--------GUARDAR CAMBIOS?-------");
+                            Cuadrado.imprimirCuadradoDividido(50, 4, "1.-SI", "2.-NO");
+                            int guar = datos.nextInt();
+                            if (guar==1){
+                                pizzafactory.generarArchivoInventario();
+                                pizzafactory.generarArchivoPizzas();
+                            }
                                 break;
                         }
                     } catch (InputMismatchException e) {
