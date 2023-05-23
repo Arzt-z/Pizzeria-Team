@@ -126,6 +126,7 @@ public class Ap {
                                     pizzafactory.generarArchivoInventario();
                                     pizzafactory.generarArchivoPizzas();
                                     pizzafactory.generarArchivoPersonas();
+                                    pizzafactory.generarArchivoTransaccion();
                                 }
                                 break;
                         }
@@ -186,6 +187,7 @@ public class Ap {
                                 pizzafactory.generarArchivoInventario();
                                 pizzafactory.generarArchivoPizzas();
                                 pizzafactory.generarArchivoPersonas();
+                                pizzafactory.generarArchivoTransaccion();
                             }
                                 break;
                         }
