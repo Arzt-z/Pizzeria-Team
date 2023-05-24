@@ -69,15 +69,18 @@ public class Orden extends Transaccion {
 
     public void modificar(int cInventarios, Inventario[] inventarios){
         Scanner leer= new Scanner(System.in);
+        int opcion2;
         int opcion;
         do{
+            opcion2=0;
             System.out.println("Que deseas modificar?   1.-cliente 2.-Otros 0.-Cancelar");
             opcion=leer.nextInt();
             switch(opcion){
                 case 1:
                     System.out.println("nombre cliente:");
-                    String entrada= leer.nextLine();
-                    this.cliente=entrada;
+                    String entrada;
+                    entrada= leer.next();
+                    cliente=entrada;
                     break;
                 case 2: 
 
@@ -87,7 +90,9 @@ public class Orden extends Transaccion {
                 case 0:
                     return;
             }
-        } while(true);
+            System.out.println("Deseas modificar otra cosa?   1.-Si  2.-No");
+            opcion2=leer.nextInt();
+        }while(opcion2==1);
     }
 
     public void eliminar(){
@@ -100,7 +105,9 @@ public class Orden extends Transaccion {
         Scanner datos = new Scanner(System.in);
         Cuadrado.imprimirCuadrado(50, 4, "------------ORDEN------------");
         Cuadrado.imprimirCuadrado(50, 4, "INGRESAR NOMBRE DEL CLIENTE");
-        cliente = datos.nextLine();
+        String entrada;
+        entrada= datos.nextLine();
+        cliente=entrada;
     }
 
     public void capturarPizza(Pizza[] pizzas, int cPizzas){
@@ -117,11 +124,12 @@ public class Orden extends Transaccion {
     }
 
     public boolean buscar(String cadenaAbuscar){
-        if(super.buscar(cadenaAbuscar)==true){
+        if(super.buscar(cadenaAbuscar.toLowerCase())==true){
             return true;
         }
         String datos=" "+ cliente;
-        if(datos.contains(cadenaAbuscar)==true){
+        datos=datos.toLowerCase();
+        if(datos.contains(cadenaAbuscar.toLowerCase())==true){
             return true;
         }else{
             return false;

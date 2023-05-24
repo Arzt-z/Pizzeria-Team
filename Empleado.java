@@ -60,17 +60,17 @@ public class Empleado extends Persona{
         Scanner leer = new Scanner(System.in);
         char diferenciador = 'e';
         super.capturar(diferenciador);
-        String verificar, contraeña;
+        String verificar, contrasenia;
         System.out.print("nombre  :");
         nombre = leer.nextLine();
         boolean aprobado= false;
         do {
-            System.out.print("ingresa contraseña:  ");
-            contraeña = leer.nextLine();
-            System.out.println("vuelva a ingresar la contraseña:");
+            System.out.print("ingresa contrasenia:  ");
+            contrasenia = leer.nextLine();
+            System.out.println("vuelva a ingresar la contrasenia:");
             verificar = leer.nextLine();
-            if (contraeña.equals(verificar)) {
-                this.password = contraeña;
+            if (contrasenia.equals(verificar)) {
+                this.password = contrasenia;
                 aprobado=true;
             }
         } while (aprobado==false);
@@ -102,9 +102,9 @@ public class Empleado extends Persona{
         Scanner leer = new Scanner(System.in);
         System.out.println("Que deseas modificar?");
         int ciclo = 1;
-        String verificar, contraeña;
+        String verificar, contrasenia;
         do {
-            System.out.println("1.-nombre 2.-contraseña 3.-puesto 4.-Otros  0.-cancelar");
+            System.out.println("1.-nombre 2.-contrasenia 3.-puesto 4.-Otros  0.-cancelar");
             int atributo = leer.nextInt();
             switch (atributo) {
                 case 1:
@@ -118,12 +118,12 @@ public class Empleado extends Persona{
                 case 2:
                 boolean aprobado= false;
                 do {
-                    System.out.print("ingresa contraseña:  ");
-                    contraeña = leer.nextLine();
-                    System.out.println("vuelva a ingresar la contraseña:");
+                    System.out.print("ingresa contrasenia:  ");
+                    contrasenia = leer.nextLine();
+                    System.out.println("vuelva a ingresar la contrasenia:");
                     verificar = leer.nextLine();
-                    if (contraeña.equals(verificar)) {
-                        this.password = contraeña;
+                    if (contrasenia.equals(verificar)) {
+                        this.password = contrasenia;
                         aprobado=true;
                     }
                 } while (aprobado==false);

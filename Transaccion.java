@@ -101,9 +101,7 @@ public abstract class Transaccion implements Interface{
     public void capturar(Pizza[] pizzas, int cPizzas) {
         Date fechaActual = new Date();
         SimpleDateFormat formatoFecha = new SimpleDateFormat("dd/MM/yy HH:mm");
-        Scanner datos = new Scanner(System.in);
-        int ciclo;
-        this.fecha =  formatoFecha.format(fechaActual);
+            this.fecha =  formatoFecha.format(fechaActual);
                 capturarDetalle(pizzas, cPizzas);
     }
 
@@ -152,11 +150,12 @@ public abstract class Transaccion implements Interface{
 
     public boolean buscar(String cadenaAbuscar) {
         String datos = fecha + folio;
-        if (datos.contains(cadenaAbuscar) == true) {
+        datos= datos.toLowerCase();
+        if (datos.contains(cadenaAbuscar.toLowerCase()) == true) {
             return true;
         }
         for (int i = 0; i < cDetalles; i++) {
-            if (detalles[i].buscar(cadenaAbuscar) == true) {
+            if (detalles[i].buscar(cadenaAbuscar.toLowerCase()) == true) {
                 return true;
             }
         }
