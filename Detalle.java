@@ -35,7 +35,7 @@ public class Detalle {
 			Cuadrado.centrarEnXYPresicion("pizza:", 2, 1);
 			Cuadrado.centrarEnXYPresicion(pizzas.getNombre(), 8, 1);
 		} else {
-			Cuadrado.centrarEnXYPresicion("inventario:", 2, 1);
+			Cuadrado.centrarEnXYPresicion("inv:", 2, 1);
 			Cuadrado.centrarEnXYPresicion(inventario.getNombre(), 8, 1);
 		}
 		Cuadrado.centrarEnXYPresicion("Cantidad|", 28, 0);
@@ -46,8 +46,8 @@ public class Detalle {
 	}
 
 	public void mostrar(char diferenciador) {
-		if (diferenciador == 'c') {
-			System.out.println("\t\tIngrediente: " + inventario);
+		if (diferenciador == 'i') {
+			System.out.println("\t\tInventario: " + inventario);
 			System.out.println("\t\tCantidad: " + cantidad);
 			System.out.println("\t\tprecioProd: " + precioProd);
 		} else {
@@ -60,35 +60,6 @@ public class Detalle {
 	public void modificar(int cPizzas, Pizza[] pizzas, char diferenciador) {
 		Scanner leer = new Scanner(System.in);
 		int opcion;
-		if (diferenciador == 'c')
-			do {
-				System.out.println("Que desea modificar? "
-						+ "1.-Pizza 2.-Cantidad 3.-precioProd 0.-Cancelar");
-				opcion = leer.nextInt();
-				switch (opcion) {
-					case 1:
-						for (int i = 0; i < cPizzas; i++) {
-							System.out.println(i + 1 + ".-" + pizzas[i]);
-						}
-						System.out.println("Seleccione la pizza nueva");
-						int laPizza = leer.nextInt() - 1;
-						this.pizzas = pizzas[laPizza];
-						break;
-					case 2:
-						System.out.println("cantidad:");
-						cantidad = leer.nextInt();
-						setCantidad(cantidad);
-						break;
-					case 3:
-						System.out.println("precioProd: ");
-						precioProd = leer.nextFloat();
-						break;
-					case 0:
-						return;
-				}
-			} while (true);
-		else {
-
 			do {
 				System.out.println("Que deseas modificar? "
 						+ "1.-Pizza 2.-Cantidad 0.-Cancelar");
@@ -98,13 +69,14 @@ public class Detalle {
 						for (int i = 0; i < cPizzas; i++) {
 							System.out.println(i + 1 + ".-" + pizzas[i]);
 						}
-						System.out.println("Selecione la pizza");
+						Cuadrado.imprimirCuadrado(50, 4, "Selecione la pizza");
 						int laPizza = leer.nextInt() - 1;
 						this.pizzas = pizzas[laPizza];
+						this.nombre=pizzas[laPizza].getNombre();
 						precioProd = pizzas[laPizza].getPrecioProd();
 						break;
 					case 2:
-						System.out.println("Cantidad:");
+						Cuadrado.imprimirCuadrado(50, 4, "Cantidad:");
 						cantidad = leer.nextInt();
 						setCantidad(cantidad);
 						break;
@@ -112,8 +84,51 @@ public class Detalle {
 						return;
 				}
 			} while (true);
-		}
 	}
+
+
+
+	public void modificar(int cInventarios, Inventario[] inventarios, char differenciador) {
+		Scanner leer = new Scanner(System.in);
+		int opcion;
+			do {
+				Cuadrado.imprimirCuadrado(50, 3,"Que desea modificar?");
+				Cuadrado.imprimirCuadradoDividido(50, 2, "1.-producto", "2.-cantidad");
+				Cuadrado.imprimirCuadradoDividido(50, 2, "3.-precioProd", "0.-Cancelar");
+				opcion = leer.nextInt();
+				switch (opcion) {
+					case 1:
+						listarProductos(cInventarios, inventarios, differenciador);
+						Cuadrado.imprimirCuadrado(50, 3, "Seleccione el producto nuevo");
+						int elinventario = leer.nextInt() - 1;
+						if(differenciador=='c'){
+							inventario.setStock(inventario.getStock()-cantidad);
+							this.nombre=inventarios[elinventario].getNombre();
+							inventarios[elinventario].setStock(inventarios[elinventario].getStock()+cantidad);
+						}else{
+							inventario.setStock(inventario.getStock()+cantidad);
+							inventarios[elinventario].setStock(inventarios[elinventario].getStock()-cantidad);
+							this.nombre=inventarios[elinventario].getNombre();
+						}
+						this.inventario = inventarios[elinventario];
+
+						break;
+					case 2:
+						Cuadrado.imprimirCuadrado(50, 4, "cantidad:");
+						cantidad = leer.nextInt();
+						setCantidad(cantidad);
+						break;
+					case 3:
+						Cuadrado.imprimirCuadrado(50, 4, "precioProd: ");
+						precioProd = leer.nextFloat();
+						break;
+					case 0:
+						return;
+				}
+			} while (true);
+
+	}
+
 
 	public boolean buscar(String cadenaAbuscar) {
 		String datos = " " + cantidad + pizzas + precioProd;
@@ -306,7 +321,7 @@ public class Detalle {
 		this.precioProd = precioProd;
 	}
 
-	public int getDif() {
+	public char getDif() {
 		return dif;
 	}
 

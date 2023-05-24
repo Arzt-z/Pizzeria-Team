@@ -572,31 +572,23 @@ public class Pizzeria implements java.io.Serializable {
             Cuadrado.imprimirCuadrado(50, 3, "selecciona una orden");
             seleccion = datos.nextInt();
             if(seleccion>0){
-                if (transaccion[seleccion - 1].isVigente()) {
-                    do{
-                    Cuadrado.imprimirCuadrado(50, 3, "Que deseas modificar?");
-                    Cuadrado.imprimirCuadradoDividido(50, 2, "1.-Cliente", "2.-Pedido");
-                    int eleccion = datos.nextInt();
-                    switch(eleccion){
-                        case 1:
-                            ((Orden)transaccion[seleccion-1]).capturarCliente();
-                            break;
-                        case 2: 
-                            transaccion[seleccion-1].eliminarDetalles();
-                            ((Orden)transaccion[seleccion-1]).capturarPizza(pizzas, cPizzas);
-                            break;
-                        case 0:
-                            return;
-                    }
-                    System.out.println("Desea seguir modificando?   1.-Si  2.-No");
-                    opcion2=datos.nextInt();
-                }while(opcion2==1);
-                System.out.println("Quiere modificar otra orden?   1.-Si  2.-No");
-                continuar = datos.nextInt();
-                if(continuar!=1){
-                    return;
+            if (transaccion[seleccion - 1].isVigente()) {
+                Cuadrado.imprimirCuadrado(50, 3, "Que deseas modificar?");
+                Cuadrado.imprimirCuadradoDividido(50, 2, "1.-Cliente", "2.-Pedido");
+                int eleccion = datos.nextInt();
+                switch (eleccion) {
+                    case 1:
+                        ((Orden) transaccion[seleccion - 1]).capturarCliente();
+                        break;
+                    case 2:
+                        transaccion[seleccion - 1].eliminarDetalles();
+                        ((Orden) transaccion[seleccion - 1]).capturarPizza(pizzas, cPizzas);
+                        break;
+                    case 0:
+                        return;
                 }
-
+                System.out.println("Seguir modificando?   1.-Si  2.-No");
+                continuar=datos.nextInt();
                 } else {
                     Cuadrado.imprimirCuadrado(50, 3, "ORDEN INVALIDA INTENTAR OTRA VEZ?");
                     Cuadrado.imprimirCuadradoDividido(50, 2, "1.-si", "2.-no");
@@ -939,12 +931,16 @@ public class Pizzeria implements java.io.Serializable {
             }
             System.out.println("Selecione la compra:");
             selecciona = datos.nextInt();
+            if(selecciona>0 && selecciona-1<cTransaccion){
             if (transaccion[selecciona - 1].isVigente() == true
                     && transaccion[selecciona - 1].queSoy().equals("compra")) {
                 ((Compra) transaccion[selecciona - 1]).eliminar();
             } else {
                 System.out.println("Esa compra no existe");
             }
+        } else {
+            System.out.println("Esa compra no existe");
+        }
             System.out.println("Quiere seguir eliminando?   1.-Si   2.-No");
             opcion = datos.nextInt();
         } while (opcion == 1);

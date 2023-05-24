@@ -72,7 +72,7 @@ public class Compra extends Transaccion {
                     break;
                 case 2: 
                     super.modificar(cInventarios, inventarios, diferencia, cPizza, pizzas);
-                    break;
+                    return;
                 case 0:
                     return;
             }
