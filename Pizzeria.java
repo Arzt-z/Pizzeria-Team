@@ -56,7 +56,9 @@ public class Pizzeria implements java.io.Serializable {
     }
 
     protected void inicializaPersonas() {
-        personas[0] = new Empleado("Daniel Adrian Roque Cortes", "443 832 7292", "algun lado", "rfc", "1234", "admin");
+        cargarArchivoPersonas();
+        cargarArchivoTransaccion();
+         /*  personas[0] = new Empleado("Daniel Adrian Roque Cortes", "443 832 7292", "algun lado", "rfc", "1234", "admin");
         personas[++cPersonas] = new Empleado("Alexis Corzas Santiago", "443 363 1574", "algun lado", "rfc", "1234",
                 "admin");
         personas[++cPersonas] = new Empleado("maki", "443 619 2989", "algun lado", "rfc", "1234", "empleado");
@@ -66,7 +68,7 @@ public class Pizzeria implements java.io.Serializable {
         personas[++cPersonas] = new Proveedores("Verduras Taguada SA de CV", "554 234 2345", "algun lado", "rfc");
         personas[++cPersonas] = new Proveedores("Grupo Alsea SA de CV", "443 312 0093",
                 "GP 30, Centro histórico de Morelia, 58000 Morelia, Mich.", "ALS211312FPE");
-
+    */
     }
 
     protected void inicializarinventarios() {
@@ -1048,6 +1050,79 @@ public class Pizzeria implements java.io.Serializable {
         } catch (Exception e) {
             System.err.println("Error, no se cargaron los datos pizza" + e);
             cPizzas--;
+        }
+    }
+
+    public void generarArchivoPersonas() {
+        FileOutputStream archivoSalida = null;
+        try {
+            archivoSalida = new FileOutputStream("Personas.dat");
+            ObjectOutputStream flujoSalida = new ObjectOutputStream(archivoSalida);
+            System.out.println("generando Personas.dat...");
+        
+            for (int i = 0; i <= cPersonas; i++) {
+                if(personas[i].isVigente()==true){
+                flujoSalida.writeObject(personas[i]);
+            }
+            }
+            archivoSalida.close();
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+    }
+
+    private void cargarArchivoPersonas() {
+        System.out.println("Cargando los datos de las Personas . . . ");
+        try {
+            FileInputStream archivoEntrada = new FileInputStream("Personas.dat");
+            ObjectInputStream flujoEntrada = new ObjectInputStream(archivoEntrada);
+            //cPizzas = (int) flujoEntrada.readObject();
+            cPersonas=0;
+            personas[cPersonas] = (Persona) flujoEntrada.readObject();
+            while(personas[cPersonas]!=null){
+                personas[++cPersonas] = (Persona) flujoEntrada.readObject();
+            }
+            flujoEntrada.close();
+            
+        } catch (Exception e) {
+            System.err.println("datos cargados");
+            cPersonas--;
+        }
+    }
+
+    public void generarArchivoTransaccion() {
+        FileOutputStream archivoSalida = null;
+        try {
+            archivoSalida = new FileOutputStream("Transaccion.dat");
+            ObjectOutputStream flujoSalida = new ObjectOutputStream(archivoSalida);
+            System.out.println("generando Transaccion.dat...");
+        
+            for (int i = 0; i < cTransaccion; i++) {
+                if(personas[i].isVigente()==true){
+                flujoSalida.writeObject(transaccion[i]);
+            }
+            }
+            archivoSalida.close();
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+    }
+
+    private void cargarArchivoTransaccion() {
+        System.out.println("Cargando los datos de la Transaccion . . . ");
+        try {
+            FileInputStream archivoEntrada = new FileInputStream("Transaccion.dat");
+            ObjectInputStream flujoEntrada = new ObjectInputStream(archivoEntrada);
+            //cPizzas = (int) flujoEntrada.readObject();
+            cTransaccion=0;
+            transaccion[cTransaccion] = (Transaccion) flujoEntrada.readObject();
+            while(transaccion[cTransaccion]!=null){
+                transaccion[++cTransaccion] = (Transaccion) flujoEntrada.readObject();
+            }
+            flujoEntrada.close();
+            
+        } catch (Exception e) {
+            System.out.println("datos cargados");
         }
     }
 

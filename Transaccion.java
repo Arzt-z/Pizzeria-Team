@@ -1,7 +1,7 @@
 import java.util.Scanner;
 import java.util.Date;
 import java.text.SimpleDateFormat;
-public abstract class Transaccion{
+public abstract class Transaccion implements Interface{
     
     protected String fecha;
     protected String folio;

@@ -1,6 +1,6 @@
 import java.io.Serializable;
 import java.util.Scanner;
-public class Inventario implements Serializable{
+public class Inventario implements Interface, Serializable{
     private String nombre;
     private int stock;
     private double precio;
