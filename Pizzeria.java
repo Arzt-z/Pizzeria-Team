@@ -56,9 +56,9 @@ public class Pizzeria implements java.io.Serializable {
     }
 
     protected void inicializaPersonas() {
-        cargarArchivoPersonas();
+       cargarArchivoPersonas();
         cargarArchivoTransaccion();
-         /*  personas[0] = new Empleado("Daniel Adrian Roque Cortes", "443 832 7292", "algun lado", "rfc", "1234", "admin");
+        /*  personas[0] = new Empleado("Daniel Adrian Roque Cortes", "443 832 7292", "algun lado", "rfc", "1234", "admin");
         personas[++cPersonas] = new Empleado("Alexis Corzas Santiago", "443 363 1574", "algun lado", "rfc", "1234",
                 "admin");
         personas[++cPersonas] = new Empleado("maki", "443 619 2989", "algun lado", "rfc", "1234", "empleado");
@@ -990,6 +990,7 @@ public class Pizzeria implements java.io.Serializable {
            
         } catch (Exception e) {
             System.err.println("Error, no se cargaron los datos inventario " + e);
+
         }
     }
 
