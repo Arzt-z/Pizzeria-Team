@@ -1012,6 +1012,7 @@ public class Pizzeria implements java.io.Serializable {
            
         } catch (Exception e) {
             System.err.println("Error, no se cargaron los datos inventario " + e);
+
         }
     }
 
