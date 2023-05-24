@@ -246,6 +246,8 @@ public class Detalle {
 	// capturar de pizzas
 	public void capturar(int cPizzas, Pizza[] pizzas) {
 		Scanner dato = new Scanner(System.in);
+		int error;
+		do{
 		Cuadrado.imprimirCuadrado(50, 2, "---------Pizzas---------");
 		Cuadrado.matriz = Cuadrado.cuadrado(50, cPizzas + 4);
 		Cuadrado.centrarEnXYPresicion("Precio ", 37, 0);
@@ -256,17 +258,23 @@ public class Detalle {
 			}
 		}
 		Cuadrado.imprimirCuadrado();
-
 		int laPizza = dato.nextInt() - 1;
-		this.pizzas = pizzas[laPizza];
-		Cuadrado.imprimirCuadrado(50, 4, "Cantidad: ");
-		cantidad = dato.nextInt();
-		pizzas[laPizza].calcularPrecio();
-		precioProd = pizzas[laPizza].getPrecio();
-		pizzas[laPizza].sustraerIngredientesAInventarios(cantidad);
-		this.dif = 'p';
-		this.nombre = this.pizzas.getNombre();
-	
+			error=0;
+			if(laPizza>=0 && laPizza<=cPizzas){
+				this.pizzas = pizzas[laPizza];
+				Cuadrado.imprimirCuadrado(50, 4, "Cantidad: ");
+				cantidad = dato.nextInt();
+				pizzas[laPizza].calcularPrecio();
+				precioProd = pizzas[laPizza].getPrecio();
+				pizzas[laPizza].sustraerIngredientesAInventarios(cantidad);
+				this.dif = 'p';
+				this.nombre = this.pizzas.getNombre();
+			}else{
+				System.out.println("Esa pizza no existe.");
+				System.out.println("SELECCIONE UN PIZZA VALIDA");
+				error=1;
+			}
+		}while(error==1);
 	}
 	// fin capturar pizzas
 
