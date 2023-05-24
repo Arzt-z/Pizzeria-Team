@@ -985,7 +985,7 @@ public class Pizzeria implements java.io.Serializable {
             ObjectOutputStream flujoSalida = new ObjectOutputStream(archivoSalida);
             System.out.println("generando Inventario.dat...");
             // flujoSalida.writeObject(cInventarios);
-            for (int i = 0; i <= cInventarios; i++) {
+            for (int i = 0; i < cInventarios; i++) {
                 if (inventarios[i].getExistencia() == true) {
                     flujoSalida.writeObject(inventarios[i]);
                 }
@@ -1010,7 +1010,10 @@ public class Pizzeria implements java.io.Serializable {
             }
             flujoEntrada.close();
            
-        } catch (Exception e) {
+        } catch (java.io.EOFException e) {
+            System.err.println("se cargaron los datos");
+
+        }catch (Exception e) {
             System.err.println("Error, no se cargaron los datos inventario " + e);
 
         }
@@ -1048,9 +1051,13 @@ public class Pizzeria implements java.io.Serializable {
             }
             flujoEntrada.close();
             
-        } catch (Exception e) {
-            System.err.println("Error, no se cargaron los datos pizza" + e);
+        } catch (java.io.EOFException e) {
+            System.err.println("se cargaron los datos");
             cPizzas--;
+
+        }catch (Exception e) {
+            System.err.println("Error, no se cargaron los datos inventario " + e);
+
         }
     }
 
@@ -1085,9 +1092,13 @@ public class Pizzeria implements java.io.Serializable {
             }
             flujoEntrada.close();
             
-        } catch (Exception e) {
-            System.err.println("datos cargados");
+        } catch (java.io.EOFException e) {
+            System.err.println("se cargaron los datos");
             cPersonas--;
+
+        }catch (Exception e) {
+            System.err.println("Error, no se cargaron los datos inventario " + e);
+
         }
     }
 
@@ -1122,8 +1133,12 @@ public class Pizzeria implements java.io.Serializable {
             }
             flujoEntrada.close();
             
-        } catch (Exception e) {
-            System.out.println("datos cargados");
+        } catch (java.io.EOFException e) {
+            System.err.println("se cargaron los datos");
+
+        }catch (Exception e) {
+            System.err.println("Error, no se cargaron los datos inventario " + e);
+
         }
     }
 
