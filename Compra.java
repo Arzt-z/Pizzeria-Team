@@ -57,7 +57,7 @@ public class Compra extends Transaccion {
                     System.out.println("Proveedores:");
                     
                     for(int i=0; i<cProveedores; i++){
-                        System.out.println(i+1+".- "+misProveedores);
+                        System.out.println(i+1+".- "+misProveedores[i]);
                     }
                     do{   
                     System.out.println("Selecciona un proveedor");
