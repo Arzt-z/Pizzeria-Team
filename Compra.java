@@ -121,6 +121,16 @@ public class Compra extends Transaccion {
     }
 
     public boolean buscar(String cadenaAbuscar){
+        if(super.buscar(cadenaAbuscar)==true){
+            return true;
+        }
+        String datos=" "+ proveedor;
+        if(datos.contains(cadenaAbuscar)==true){
+            return true;
+        }else{
+            return false;
+        }
+    }
 
     public void agregarDetalles(int cantidad, Inventario inventarios , double precioProd){
         char diferencia='c';

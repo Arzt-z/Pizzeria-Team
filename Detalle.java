@@ -133,6 +133,7 @@ public class Detalle {
 								return;
 						}
 			} while (true);
+
 	}
 
 	public boolean buscar(String cadenaAbuscar) {
@@ -140,6 +141,8 @@ public class Detalle {
 		datos = datos.toLowerCase();
 		if (datos.contains(cadenaAbuscar.toLowerCase()) == true) {
 			return true;
+		}
+		return false;
 	}
 
 	// capturar de inventarios testear pendiente!!
@@ -177,8 +180,14 @@ public class Detalle {
 					System.out.println("Selecione el producto");
 					elInventario = dato.nextInt() - 1;
 					fail = 0;
-					if (elInventario >= 0 && inventarios[elInventario].getExistencia() == true) {
-						fail++;
+
+					if (elInventario >= 0 && elInventario < cInventarios) {
+						if(inventarios[elInventario].getExistencia() == true){
+							fail++;
+						}else{
+							System.out.println("Ese producto no esta disponible");
+							fail = 0;
+						}
 					} else {
 						System.out.println("Ese producto no esta disponible");
 						fail = 0;
@@ -188,7 +197,7 @@ public class Detalle {
 				cantidad = dato.nextInt();
 				this.inventario = inventarios[elInventario];
 				this.inventario = inventarios[elInventario];
-				if (cantidad > inventario.getStock()) {
+				if (cantidad > inventario.getStock() && cantidad>=0) {
 					this.cantidad = 0;
 					System.out.println("No tenemos esa cantidad en stock");
 					System.out.println("Desea comprar otra cosa   1.-Si   2.-No");
@@ -272,12 +281,12 @@ public class Detalle {
 				pizzas[laPizza].sustraerIngredientesAInventarios(cantidad);
 				this.dif = 'p';
 				this.nombre = this.pizzas.getNombre();
-			}else{
+			} else {
 				System.out.println("Esa pizza no existe.");
 				System.out.println("SELECCIONE UN PIZZA VALIDA");
-				error=1;
+				error = 1;
 			}
-		}while(error==1);
+		} while (error == 1);
 	}
 	// fin capturar pizzas
 
