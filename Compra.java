@@ -54,20 +54,24 @@ public class Compra extends Transaccion {
             opcion=leer.nextInt();
             switch(opcion){
                 case 1:
+                do{
                     System.out.println("Proveedores:");
-                    
+
                     for(int i=0; i<cProveedores; i++){
                         System.out.println(i+1+".- "+misProveedores[i]);
                     }
-                    do{   
+                    error=0;
                     System.out.println("Selecciona un proveedor");
-                    int eleccion= leer.nextInt()-1;
-                    if(eleccion<0 || eleccion>cProveedores){
-                        System.out.println("ESA NO ES UNA OPCION");
+                    int eleccion= leer.nextInt();
+                    if(eleccion>0 && eleccion<=cProveedores){
+                        proveedor=misProveedores[eleccion-1];
                         error=1;
+                        System.out.println("///// CAMBIO REALIZADO /////");
                     }else{
-                    proveedor=misProveedores[eleccion];
-                    error=1;}
+                        System.out.println("ESA NO ES UNA OPCION");
+                        System.out.println("Intente de nuevo");
+                        error=0;
+                    }
                     }while(error==0);
                     break;
                 case 2: 
@@ -96,27 +100,27 @@ public class Compra extends Transaccion {
         Scanner datos = new Scanner(System.in);
         int opcion;
         char diferencia= 'c';
-        for(int i=0; i<cProveedores; i++){
-            System.out.println(i+1+".-"+misProveedores[i]);
-        }
-        System.out.println("Selecciona un proveedor");
-        opcion= datos.nextInt();
-        proveedor= misProveedores[opcion-1];
-        System.out.println("Ingresa los datos compra");
-        super.capturar(inventarios, cInventarios, diferencia);
+        int bucle;
+        do{
+            bucle=0;
+            for(int i=0; i<cProveedores; i++){
+                System.out.println(i+1+".-"+misProveedores[i]);
+            }
+            System.out.println("Selecciona un proveedor");
+            opcion= datos.nextInt();
+            if(opcion>0 && opcion<=cProveedores){
+            proveedor= misProveedores[opcion-1];
+            System.out.println("Ingresa los datos compra");
+            super.capturar(inventarios, cInventarios, diferencia);
+            }else{
+                System.out.println("Ese proveedor no existe");
+                System.out.println("Intente de nuevo");
+                bucle=1;
+            }
+        }while(bucle==1);
     }
 
     public boolean buscar(String cadenaAbuscar){
-        if(super.buscar(cadenaAbuscar)==true){
-            return true;
-        }
-        String datos=" "+ proveedor;
-        if(datos.contains(cadenaAbuscar)==true){
-            return true;
-        }else{
-            return false;
-        }
-    }
 
     public void agregarDetalles(int cantidad, Inventario inventarios , double precioProd){
         char diferencia='c';

@@ -892,29 +892,36 @@ public class Pizzeria implements java.io.Serializable {
         System.out.println("Que compra deseas modificar");
         int selecciona;
         int error = 0;
+        do {
         for (int i = 0; i < cTransaccion; i++) {
             if (transaccion[i].isVigente() == true && transaccion[i].queSoy().equals("compra")) {
                 System.out.println(i + 1 + ".-" + transaccion[i]);
             }
         }
-        do {
             error = 0;
             System.out.println("Selecione la compra:");
             selecciona = datos.nextInt();
-            if (transaccion[selecciona - 1].isVigente() == true
-                    && transaccion[selecciona - 1].queSoy().equals("compra")) {
-                Proveedores[] proveedor = new Proveedores[50];
-                int contador = 0;
-                for (int i = 0; i < cPersonas; i++) {
-                    if (personas[i].quienSoy().equals("Proveedor")) {
-                        proveedor[contador] = (Proveedores) personas[i];
-                        contador++;
+            if(selecciona>0 && selecciona<=cTransaccion){
+                if (transaccion[selecciona - 1].isVigente() == true
+                        && transaccion[selecciona - 1].queSoy().equals("compra")) {
+                    Proveedores[] proveedor = new Proveedores[50];
+                    int contador = 0;
+                    for (int i = 0; i < cPersonas; i++) {
+                        if (personas[i].quienSoy().equals("Proveedor")) {
+                            proveedor[contador] = (Proveedores) personas[i];
+                            contador++;
+                        }
                     }
-                }
 
-                ((Compra) transaccion[selecciona - 1]).modificar();
+                    ((Compra) transaccion[selecciona - 1]).modificar();
+                } else {
+                    System.out.println("Esa compra no existe ");
+                    System.out.println("Intente de nuevo");
+                    error = 1;
+                }
             } else {
                 System.out.println("Esa compra no existe ");
+                System.out.println("Intente de nuevo");
                 error = 1;
             }
         } while (error == 1);
@@ -951,10 +958,10 @@ public class Pizzeria implements java.io.Serializable {
     public void buscarCompra() {
         Scanner leer = new Scanner(System.in);
         int error = 0;
-        int opcion = 0;
+        int opcion2 = 0;
         do {
             error = 0;
-            opcion = 0;
+            opcion2 = 0;
             System.out.println("Ponga el texto que desea buscar");
             String cadenaAbuscar = leer.next();
             for (int i = 0; i < cTransaccion; i++) {
@@ -970,9 +977,9 @@ public class Pizzeria implements java.io.Serializable {
             if (error == 0) {
                 System.out.println("No se encontraron resultados");
             }
-            System.out.println("Desea continuar?   1.-Si   2.-No");
-            opcion = leer.nextInt();
-        } while (opcion == 1);
+            System.out.println("Desea continuar buscando?   1.-Si   2.-No");
+            opcion2 = leer.nextInt();
+        } while (opcion2 == 1);
     }
     // fin funciones de compra
 

@@ -109,35 +109,53 @@ public abstract class Transaccion implements Interface{
     public void modificar(int cInventarios, Inventario[] inventarios, char diferencia, int cPizzas,Pizza[] pizzas) {
         Scanner leer = new Scanner(System.in);
         int opcion;
+        int error;
         int continuar = 1;
             do {
                 if(diferencia=='c'){
-                    Cuadrado.imprimirCuadrado(50, 3,"Detalles: ");
-                    Cuadrado.matriz = Cuadrado.cuadrado(50, cDetalles + 2);
-                    for (int i = 0; i < cDetalles; i++) {
-                        Cuadrado.centrarEnXYPresicion(i + 1 + ".-" + detalles[i].getNombre(),1, i + 1);
-                    }
-                    Cuadrado.imprimirCuadrado();
-                    int nDetalle = leer.nextInt();
-                    detalles[nDetalle - 1].modificar(cInventarios, inventarios, diferencia);
+                    do{
+                        error=0;
+                        Cuadrado.imprimirCuadrado(50, 3,"Detalles: ");
+                        Cuadrado.matriz = Cuadrado.cuadrado(50, cDetalles + 2);
+                        for (int i = 0; i < cDetalles; i++) {
+                            Cuadrado.centrarEnXYPresicion(i + 1 + ".-" + detalles[i].getNombre(),1, i + 1);
+                        }
+                        Cuadrado.imprimirCuadrado();
+                        int nDetalle = leer.nextInt();
+                        if(nDetalle>0 && nDetalle<=cDetalles){
+                            detalles[nDetalle - 1].modificar(cInventarios, inventarios, diferencia);
+                        }else{
+                            System.out.println("Opcion no valida");
+                            System.out.println("Intente de nuevo");
+                            error=1;
+                        }
+                    }while(error==1);
                 }else{
-                    Cuadrado.imprimirCuadrado(50, 3,"Detalles: ");
-                    Cuadrado.matriz = Cuadrado.cuadrado(50, cDetalles + 2);
-                    Cuadrado.centrarEnXYPresicion("Nombre",1, 0);
-                    Cuadrado.centrarEnXYPresicion("cantidad",25,0);
-                    for (int i = 0; i < cDetalles; i++) {
-                        Cuadrado.centrarEnXYPresicion(i + 1 + ".-" + detalles[i].getNombre(),1, i + 1);
-                        Cuadrado.centrarEnXYPresicion("" + detalles[i].getCantidad(),25, i + 1);
-                        Cuadrado.centrarEnXYPresicion("" + detalles[i].getPrecioProd(),30, i + 1);
-                    }
-                    Cuadrado.imprimirCuadrado();
-                    int nDetalle = leer.nextInt();
-                    if(detalles[nDetalle - 1].getDif()=='p'){
-                        detalles[nDetalle - 1].modificar(cPizzas, pizzas, 'p');
-                    }else{
-                        detalles[nDetalle - 1].modificar(cInventarios, inventarios, 'i');
-                    }
-
+                    do{
+                        error=0;
+                        Cuadrado.imprimirCuadrado(50, 3,"Detalles: ");
+                        Cuadrado.matriz = Cuadrado.cuadrado(50, cDetalles + 2);
+                        Cuadrado.centrarEnXYPresicion("Nombre",1, 0);
+                        Cuadrado.centrarEnXYPresicion("cantidad",25,0);
+                        for (int i = 0; i < cDetalles; i++) {
+                            Cuadrado.centrarEnXYPresicion(i + 1 + ".-" + detalles[i].getNombre(),1, i + 1);
+                            Cuadrado.centrarEnXYPresicion("" + detalles[i].getCantidad(),25, i + 1);
+                            Cuadrado.centrarEnXYPresicion("" + detalles[i].getPrecioProd(),30, i + 1);
+                        }
+                        Cuadrado.imprimirCuadrado();
+                        int nDetalle = leer.nextInt();
+                        if(nDetalle>0 && nDetalle<=cDetalles){
+                            if(detalles[nDetalle - 1].getDif()=='p'){
+                                detalles[nDetalle - 1].modificar(cPizzas, pizzas, 'p');
+                            }else{
+                                detalles[nDetalle - 1].modificar(cInventarios, inventarios, 'i');
+                            }
+                        }else{
+                            System.out.println("Opcion no valida");
+                            System.out.println("Intente de nuevo");
+                            error=1;
+                        }
+                    }while(error==1);
                 }
                 
                 Cuadrado.imprimirCuadrado(50, 3, "modificar otro?");
