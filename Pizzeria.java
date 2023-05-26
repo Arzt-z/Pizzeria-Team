@@ -56,88 +56,96 @@ public class Pizzeria implements java.io.Serializable {
     }
 
     protected void inicializaPersonas() {
-       cargarArchivoPersonas();
+        cargarArchivoPersonas();
         cargarArchivoTransaccion();
-        /*  personas[0] = new Empleado("Daniel Adrian Roque Cortes", "443 832 7292", "algun lado", "rfc", "1234", "admin");
-        personas[++cPersonas] = new Empleado("Alexis Corzas Santiago", "443 363 1574", "algun lado", "rfc", "1234",
-                "admin");
-        personas[++cPersonas] = new Empleado("maki", "443 619 2989", "algun lado", "rfc", "1234", "empleado");
-        personas[++cPersonas] = new Empleado("cajero", "000 000 0000", "algun lado", "rfc", "1234", "empleado");
-        personas[++cPersonas] = new Empleado("admin", "000 000 0000", "algun lado", "rfc", "1234", "empleado");
-
-        personas[++cPersonas] = new Proveedores("Verduras Taguada SA de CV", "554 234 2345", "algun lado", "rfc");
-        personas[++cPersonas] = new Proveedores("Grupo Alsea SA de CV", "443 312 0093",
-                "GP 30, Centro histórico de Morelia, 58000 Morelia, Mich.", "ALS211312FPE");
-    */
+        /*
+         * personas[0] = new Empleado("Daniel Adrian Roque Cortes", "443 832 7292",
+         * "algun lado", "rfc", "1234", "admin");
+         * personas[++cPersonas] = new Empleado("Alexis Corzas Santiago",
+         * "443 363 1574", "algun lado", "rfc", "1234",
+         * "admin");
+         * personas[++cPersonas] = new Empleado("maki", "443 619 2989", "algun lado",
+         * "rfc", "1234", "empleado");
+         * personas[++cPersonas] = new Empleado("cajero", "000 000 0000", "algun lado",
+         * "rfc", "1234", "empleado");
+         * personas[++cPersonas] = new Empleado("admin", "000 000 0000", "algun lado",
+         * "rfc", "1234", "empleado");
+         * 
+         * personas[++cPersonas] = new Proveedores("Verduras Taguada SA de CV",
+         * "554 234 2345", "algun lado", "rfc");
+         * personas[++cPersonas] = new Proveedores("Grupo Alsea SA de CV",
+         * "443 312 0093",
+         * "GP 30, Centro histórico de Morelia, 58000 Morelia, Mich.", "ALS211312FPE");
+         */
     }
 
     protected void inicializarinventarios() {
-       cargarArchivoInventario();
-/* 
-         inventarios[0] = new Inventario("Queso mozzarella", "Queso", 0.3);
-        inventarios[++cInventarios] = new Inventario("Queso parmesano", "queso",
-                0.26);
-        inventarios[++cInventarios] = new Inventario("Peperoni", "carne", 0.6);
-        inventarios[++cInventarios] = new Inventario("Salchicha", "carne", 0.08);
-        inventarios[++cInventarios] = new Inventario("Anchoas", "carne", 1.0);
-        inventarios[++cInventarios] = new Inventario("Salami", "carne", 0.67);
-        inventarios[++cInventarios] = new Inventario("Jamon", "carne", 0.14);
-        inventarios[++cInventarios] = new Inventario("Tocino", "carne", 0.32);
-        inventarios[++cInventarios] = new Inventario("Carne molida", "carne", 0.16);
-        inventarios[++cInventarios] = new Inventario("Chorizo", "carne", 0.12);
-
-        inventarios[++cInventarios] = new Inventario("Cebolla", "no carne", 0.016);
-        inventarios[++cInventarios] = new Inventario("tomate", "no carne", 0.016);
-        inventarios[++cInventarios] = new Inventario("Pimiento verde", "no carne",
-                0.06);
-        inventarios[++cInventarios] = new Inventario("Pimiento rojo", "no carne",
-                0.06);
-        inventarios[++cInventarios] = new Inventario("Aceitunas", "no carne", 0.06);
-        inventarios[++cInventarios] = new Inventario("Champiñones", "no carne",
-                0.07);
-        inventarios[++cInventarios] = new Inventario("Ajo", "no carne", 0.05);
-        inventarios[++cInventarios] = new Inventario("Jalapeños", "no carne", 0.05);
-        inventarios[++cInventarios] = new Inventario("Piña", "no carne", 0.013);
-
-        inventarios[++cInventarios] = new Inventario("orden de papas", "producto",
-                20);
-        inventarios[++cInventarios] = new Inventario("orden de bonneless",
-                "producto", 50);
-        inventarios[++cInventarios] = new Inventario("refresco de cola", "bebida",
-                15);
-        inventarios[++cInventarios] = new Inventario("refresco de manzana", "bebida",
-                15);
-        inventarios[++cInventarios] = new Inventario("refresco de naranaja",
-                "bebida", 15);
-        inventarios[++cInventarios] = new Inventario("palitos de queso", "producto",
-                20);
-        inventarios[++cInventarios] = new Inventario("salsa secreta", "extra", 10);
-        inventarios[++cInventarios] = new Inventario("dip de BBQ", "extra", 15); 
-    */
+        cargarArchivoInventario();
+        /*
+         * inventarios[0] = new Inventario("Queso mozzarella", "Queso", 0.3);
+         * inventarios[++cInventarios] = new Inventario("Queso parmesano", "queso",
+         * 0.26);
+         * inventarios[++cInventarios] = new Inventario("Peperoni", "carne", 0.6);
+         * inventarios[++cInventarios] = new Inventario("Salchicha", "carne", 0.08);
+         * inventarios[++cInventarios] = new Inventario("Anchoas", "carne", 1.0);
+         * inventarios[++cInventarios] = new Inventario("Salami", "carne", 0.67);
+         * inventarios[++cInventarios] = new Inventario("Jamon", "carne", 0.14);
+         * inventarios[++cInventarios] = new Inventario("Tocino", "carne", 0.32);
+         * inventarios[++cInventarios] = new Inventario("Carne molida", "carne", 0.16);
+         * inventarios[++cInventarios] = new Inventario("Chorizo", "carne", 0.12);
+         * 
+         * inventarios[++cInventarios] = new Inventario("Cebolla", "no carne", 0.016);
+         * inventarios[++cInventarios] = new Inventario("tomate", "no carne", 0.016);
+         * inventarios[++cInventarios] = new Inventario("Pimiento verde", "no carne",
+         * 0.06);
+         * inventarios[++cInventarios] = new Inventario("Pimiento rojo", "no carne",
+         * 0.06);
+         * inventarios[++cInventarios] = new Inventario("Aceitunas", "no carne", 0.06);
+         * inventarios[++cInventarios] = new Inventario("Champiñones", "no carne",
+         * 0.07);
+         * inventarios[++cInventarios] = new Inventario("Ajo", "no carne", 0.05);
+         * inventarios[++cInventarios] = new Inventario("Jalapeños", "no carne", 0.05);
+         * inventarios[++cInventarios] = new Inventario("Piña", "no carne", 0.013);
+         * 
+         * inventarios[++cInventarios] = new Inventario("orden de papas", "producto",
+         * 20);
+         * inventarios[++cInventarios] = new Inventario("orden de bonneless",
+         * "producto", 50);
+         * inventarios[++cInventarios] = new Inventario("refresco de cola", "bebida",
+         * 15);
+         * inventarios[++cInventarios] = new Inventario("refresco de manzana", "bebida",
+         * 15);
+         * inventarios[++cInventarios] = new Inventario("refresco de naranaja",
+         * "bebida", 15);
+         * inventarios[++cInventarios] = new Inventario("palitos de queso", "producto",
+         * 20);
+         * inventarios[++cInventarios] = new Inventario("salsa secreta", "extra", 10);
+         * inventarios[++cInventarios] = new Inventario("dip de BBQ", "extra", 15);
+         */
     }
 
     protected void inicializarPizzas() {
-         cargarArchivoPizzas();
-        /* 
-        pizzas[0] = new Pizza("Hawaiana", 3, 199);
-        pizzas[cPizzas].capturarIngrediente(inventarios[6], 0);
-        pizzas[cPizzas].capturarIngrediente(inventarios[18], 0);
-
-        pizzas[++cPizzas] = new Pizza("peperoni", 3, 199);
-        pizzas[cPizzas].capturarIngrediente(inventarios[2], 0);
-
-        pizzas[++cPizzas] = new Pizza("jamon", 3, 199);
-        pizzas[cPizzas].capturarIngrediente(inventarios[6], 0);
-
-        pizzas[++cPizzas] = new Pizza("mexicana", 3, 199);
-        pizzas[cPizzas].capturarIngrediente(inventarios[10], 0);
-        pizzas[cPizzas].capturarIngrediente(inventarios[9], 0);
-        pizzas[cPizzas].capturarIngrediente(inventarios[8], 0);
-        pizzas[cPizzas].capturarIngrediente(inventarios[17], 0);
-
-        pizzas[++cPizzas] = new Pizza("loca", 3, 199);
-        pizzas[cPizzas].capturarIngrediente(inventarios[9], 0);
-        */
+        cargarArchivoPizzas();
+        /*
+         * pizzas[0] = new Pizza("Hawaiana", 3, 199);
+         * pizzas[cPizzas].capturarIngrediente(inventarios[6], 0);
+         * pizzas[cPizzas].capturarIngrediente(inventarios[18], 0);
+         * 
+         * pizzas[++cPizzas] = new Pizza("peperoni", 3, 199);
+         * pizzas[cPizzas].capturarIngrediente(inventarios[2], 0);
+         * 
+         * pizzas[++cPizzas] = new Pizza("jamon", 3, 199);
+         * pizzas[cPizzas].capturarIngrediente(inventarios[6], 0);
+         * 
+         * pizzas[++cPizzas] = new Pizza("mexicana", 3, 199);
+         * pizzas[cPizzas].capturarIngrediente(inventarios[10], 0);
+         * pizzas[cPizzas].capturarIngrediente(inventarios[9], 0);
+         * pizzas[cPizzas].capturarIngrediente(inventarios[8], 0);
+         * pizzas[cPizzas].capturarIngrediente(inventarios[17], 0);
+         * 
+         * pizzas[++cPizzas] = new Pizza("loca", 3, 199);
+         * pizzas[cPizzas].capturarIngrediente(inventarios[9], 0);
+         */
     }
 
     // funciones de inventarios
@@ -162,8 +170,9 @@ public class Pizzeria implements java.io.Serializable {
                 if (inventarios[i].getTipo().toLowerCase().equals("carne")
                         || inventarios[i].getTipo().toLowerCase().equals("no carne")
                         || inventarios[i].getTipo().toLowerCase().equals("queso")
-                        || inventarios[i].getTipo().toLowerCase().equals("ingrediente")){
-                    Cuadrado.centrarEnXYPresicion("g", 35, c + 1);}
+                        || inventarios[i].getTipo().toLowerCase().equals("ingrediente")) {
+                    Cuadrado.centrarEnXYPresicion("g", 35, c + 1);
+                }
                 Cuadrado.centrarEnXYPresicion("| ", 36, c + 1);
                 Cuadrado.centrarEnXYPresicion((float) (inventarios[i].getPrecio()) + "", 37, c + 1);
 
@@ -254,11 +263,15 @@ public class Pizzeria implements java.io.Serializable {
             } while (continuar == 1);
         } catch (InputMismatchException e) {
             System.err.println("CARACTER INVALIDO INSERTE UN NUMERO VAlIDO");
-            cInventarios--;
+            if (cInventarios != 0) {
+                cInventarios--;
+            }
         } catch (Exception e) {
             System.err.println("OCURRIO EL ERROR " + e);
             e.printStackTrace();
-            cInventarios--;
+            if (cInventarios != 0) {
+                cInventarios--;
+            }
         }
     }
 
@@ -392,11 +405,15 @@ public class Pizzeria implements java.io.Serializable {
             pizzas[cPizzas].capturar();
         } catch (InputMismatchException e) {
             System.err.println("CARACTER INVALIDO INSERTE UN NUMERO VAlIDO");
-            cPizzas--;
+            if (cPizzas != 0) {
+                cPizzas--;
+            }
         } catch (Exception e) {
             System.err.println("OCURRIO EL ERROR " + e);
             e.printStackTrace();
-            cPizzas--;
+            if (cPizzas != 0) {
+                cPizzas--;
+            }
         }
     }
 
@@ -554,11 +571,15 @@ public class Pizzeria implements java.io.Serializable {
             cTransaccion++;
         } catch (InputMismatchException e) {
             System.err.println("CARACTER INVALIDO INSERTE UN NUMERO VAlIDO");
-            cTransaccion--;
+            if (cTransaccion != 0) {
+                cTransaccion--;
+            }
         } catch (Exception e) {
             System.err.println("OCURRIO EL ERROR " + e);
             e.printStackTrace();
-            cTransaccion--;
+            if (cTransaccion != 0) {
+                cTransaccion--;
+            }
         }
     }
 
@@ -566,37 +587,37 @@ public class Pizzeria implements java.io.Serializable {
         Scanner datos = new Scanner(System.in);
         int continuar = 1;
         int seleccion = 0;
-        int opcion2=0;
+        int opcion2 = 0;
         do {
             mostrarOrdenes();
             if (continuar != 1)
                 return;
             Cuadrado.imprimirCuadrado(50, 3, "selecciona una orden");
             seleccion = datos.nextInt();
-            if(seleccion>0){
-            if (transaccion[seleccion - 1].isVigente()) {
-                Cuadrado.imprimirCuadrado(50, 3, "Que deseas modificar?");
-                Cuadrado.imprimirCuadradoDividido(50, 2, "1.-Cliente", "2.-Pedido");
-                int eleccion = datos.nextInt();
-                switch (eleccion) {
-                    case 1:
-                        ((Orden) transaccion[seleccion - 1]).capturarCliente();
-                        break;
-                    case 2:
-                        transaccion[seleccion - 1].eliminarDetalles();
-                        ((Orden) transaccion[seleccion - 1]).capturarPizza(pizzas, cPizzas);
-                        break;
-                    case 0:
-                        return;
-                }
-                System.out.println("Seguir modificando?   1.-Si  2.-No");
-                continuar=datos.nextInt();
+            if (seleccion > 0) {
+                if (transaccion[seleccion - 1].isVigente()) {
+                    Cuadrado.imprimirCuadrado(50, 3, "Que deseas modificar?");
+                    Cuadrado.imprimirCuadradoDividido(50, 2, "1.-Cliente", "2.-Pedido");
+                    int eleccion = datos.nextInt();
+                    switch (eleccion) {
+                        case 1:
+                            ((Orden) transaccion[seleccion - 1]).capturarCliente();
+                            break;
+                        case 2:
+                            transaccion[seleccion - 1].eliminarDetalles();
+                            ((Orden) transaccion[seleccion - 1]).capturarPizza(pizzas, cPizzas);
+                            break;
+                        case 0:
+                            return;
+                    }
+                    System.out.println("Seguir modificando?   1.-Si  2.-No");
+                    continuar = datos.nextInt();
                 } else {
                     Cuadrado.imprimirCuadrado(50, 3, "ORDEN INVALIDA INTENTAR OTRA VEZ?");
                     Cuadrado.imprimirCuadradoDividido(50, 2, "1.-si", "2.-no");
                     continuar = datos.nextInt();
                 }
-            }else{
+            } else {
                 Cuadrado.imprimirCuadrado(50, 3, "ORDEN INVALIDA INTENTAR OTRA VEZ?");
                 Cuadrado.imprimirCuadradoDividido(50, 2, "1.-si", "2.-no");
                 continuar = datos.nextInt();
@@ -606,31 +627,31 @@ public class Pizzeria implements java.io.Serializable {
     }
 
     public void listarOrden() {
-            Scanner datos = new Scanner(System.in);
-            int continuar = 1;
-            int seleccion = 0;
-            do {
-                mostrarOrdenes();
-                if (continuar != 1)
-                    return;
-                Cuadrado.imprimirCuadrado(50, 3, "selecciona una orden");
-                seleccion = datos.nextInt();
-                if(seleccion>0){
-                    if (transaccion[seleccion - 1].isVigente()) {
-                        ((Orden)transaccion[seleccion-1]).mostrarOrden();
-                        (transaccion[seleccion-1]).getDetalles('v');
-                        Cuadrado.imprimirCuadrado(50, 3, "deseas ver otro detalle?");
-                        Cuadrado.imprimirCuadradoDividido(50, 2, "1.-si", "2.-no");
-                    } else {
-                        Cuadrado.imprimirCuadrado(50, 3, "DETALLE INVALIDO INTENTAR OTRA VEZ?");
-                        Cuadrado.imprimirCuadradoDividido(50, 2, "1.-si", "2.-no");
-                    }
-                }else{
+        Scanner datos = new Scanner(System.in);
+        int continuar = 1;
+        int seleccion = 0;
+        do {
+            mostrarOrdenes();
+            if (continuar != 1)
+                return;
+            Cuadrado.imprimirCuadrado(50, 3, "selecciona una orden");
+            seleccion = datos.nextInt();
+            if (seleccion > 0) {
+                if (transaccion[seleccion - 1].isVigente()) {
+                    ((Orden) transaccion[seleccion - 1]).mostrarOrden();
+                    (transaccion[seleccion - 1]).getDetalles('v');
+                    Cuadrado.imprimirCuadrado(50, 3, "deseas ver otro detalle?");
+                    Cuadrado.imprimirCuadradoDividido(50, 2, "1.-si", "2.-no");
+                } else {
                     Cuadrado.imprimirCuadrado(50, 3, "DETALLE INVALIDO INTENTAR OTRA VEZ?");
                     Cuadrado.imprimirCuadradoDividido(50, 2, "1.-si", "2.-no");
                 }
-                continuar = datos.nextInt();
-            } while (continuar == 1);
+            } else {
+                Cuadrado.imprimirCuadrado(50, 3, "DETALLE INVALIDO INTENTAR OTRA VEZ?");
+                Cuadrado.imprimirCuadradoDividido(50, 2, "1.-si", "2.-no");
+            }
+            continuar = datos.nextInt();
+        } while (continuar == 1);
     }
 
     public void eliminarOrden() {
@@ -644,16 +665,16 @@ public class Pizzeria implements java.io.Serializable {
             Cuadrado.imprimirCuadrado(50, 3, "selecciona una orden");
             seleccion = datos.nextInt();
 
-            if(seleccion>0){
+            if (seleccion > 0) {
                 if (transaccion[seleccion - 1].isVigente()) {
-                    ((Orden)transaccion[seleccion - 1]).eliminar();
+                    ((Orden) transaccion[seleccion - 1]).eliminar();
                     Cuadrado.imprimirCuadrado(50, 3, "deseas eliminar otro detalle?");
                     Cuadrado.imprimirCuadradoDividido(50, 2, "1.-si", "2.-no");
                 } else {
                     Cuadrado.imprimirCuadrado(50, 3, "DETALLE INVALIDO INTENTAR OTRA VEZ?");
                     Cuadrado.imprimirCuadradoDividido(50, 2, "1.-si", "2.-no");
                 }
-            }else{
+            } else {
                 Cuadrado.imprimirCuadrado(50, 3, "DETALLE INVALIDO INTENTAR OTRA VEZ?");
                 Cuadrado.imprimirCuadradoDividido(50, 2, "1.-si", "2.-no");
             }
@@ -668,7 +689,7 @@ public class Pizzeria implements java.io.Serializable {
         do {
             System.out.println("TEXTO A BUSCAR");
             cadenaAbuscar = datos.nextLine();
-            cadenaAbuscar=cadenaAbuscar.toLowerCase();
+            cadenaAbuscar = cadenaAbuscar.toLowerCase();
             for (int i = 0; i < cTransaccion; i++) {
                 if ((transaccion[i].buscar(cadenaAbuscar) == true
                         || ((Orden) transaccion[i]).getCliente().contains(cadenaAbuscar))
@@ -775,11 +796,15 @@ public class Pizzeria implements java.io.Serializable {
             } while (opcion == 1);
         } catch (InputMismatchException e) {
             System.err.println("CARACTER INVALIDO INSERTE UN NUMERO VAlIDO");
-            cPersonas--;
+            if (cPersonas != 0) {
+                cPersonas--;
+            }
         } catch (Exception e) {
             System.err.println("OCURRIO EL ERROR " + e);
             e.printStackTrace();
-            cPersonas--;
+            if (cPersonas != 0) {
+                cPersonas--;
+            }
         }
     }
 
@@ -879,11 +904,15 @@ public class Pizzeria implements java.io.Serializable {
             cTransaccion++;
         } catch (InputMismatchException e) {
             System.err.println("CARACTER INVALIDO INSERTE UN NUMERO VAlIDO");
-            cTransaccion--;
+            if (cTransaccion != 0) {
+                cTransaccion--;
+            }
         } catch (Exception e) {
             System.err.println("OCURRIO EL ERROR " + e);
             e.printStackTrace();
-            cTransaccion--;
+            if (cTransaccion != 0) {
+                cTransaccion--;
+            }
         }
     }
 
@@ -893,15 +922,15 @@ public class Pizzeria implements java.io.Serializable {
         int selecciona;
         int error = 0;
         do {
-        for (int i = 0; i < cTransaccion; i++) {
-            if (transaccion[i].isVigente() == true && transaccion[i].queSoy().equals("compra")) {
-                System.out.println(i + 1 + ".-" + transaccion[i]);
+            for (int i = 0; i < cTransaccion; i++) {
+                if (transaccion[i].isVigente() == true && transaccion[i].queSoy().equals("compra")) {
+                    System.out.println(i + 1 + ".-" + transaccion[i]);
+                }
             }
-        }
             error = 0;
             System.out.println("Selecione la compra:");
             selecciona = datos.nextInt();
-            if(selecciona>0 && selecciona<=cTransaccion){
+            if (selecciona > 0 && selecciona <= cTransaccion) {
                 if (transaccion[selecciona - 1].isVigente() == true
                         && transaccion[selecciona - 1].queSoy().equals("compra")) {
                     Proveedores[] proveedor = new Proveedores[50];
@@ -940,16 +969,16 @@ public class Pizzeria implements java.io.Serializable {
             }
             System.out.println("Selecione la compra:");
             selecciona = datos.nextInt();
-            if(selecciona>0 && selecciona-1<cTransaccion){
-            if (transaccion[selecciona - 1].isVigente() == true
-                    && transaccion[selecciona - 1].queSoy().equals("compra")) {
-                ((Compra) transaccion[selecciona - 1]).eliminar();
+            if (selecciona > 0 && selecciona - 1 < cTransaccion) {
+                if (transaccion[selecciona - 1].isVigente() == true
+                        && transaccion[selecciona - 1].queSoy().equals("compra")) {
+                    ((Compra) transaccion[selecciona - 1]).eliminar();
+                } else {
+                    System.out.println("Esa compra no existe");
+                }
             } else {
                 System.out.println("Esa compra no existe");
             }
-        } else {
-            System.out.println("Esa compra no existe");
-        }
             System.out.println("Quiere seguir eliminando?   1.-Si   2.-No");
             opcion = datos.nextInt();
         } while (opcion == 1);
@@ -1016,11 +1045,11 @@ public class Pizzeria implements java.io.Serializable {
                 inventarios[++cInventarios] = (Inventario) flujoEntrada.readObject();
             }
             flujoEntrada.close();
-           
+
         } catch (java.io.EOFException e) {
             System.err.println("se cargaron los datos");
 
-        }catch (Exception e) {
+        } catch (Exception e) {
             System.err.println("Error, no se cargaron los datos inventario " + e);
 
         }
@@ -1033,11 +1062,11 @@ public class Pizzeria implements java.io.Serializable {
             archivoSalida = new FileOutputStream("Pizzas.dat");
             ObjectOutputStream flujoSalida = new ObjectOutputStream(archivoSalida);
             System.out.println("generando Pizzas.dat...");
-           // flujoSalida.writeObject(cPizzas);
+            // flujoSalida.writeObject(cPizzas);
             for (int i = 0; i <= cPizzas; i++) {
-                if(pizzas[i].getExistencia()==true){
-                flujoSalida.writeObject(pizzas[i]);
-            }
+                if (pizzas[i].getExistencia() == true) {
+                    flujoSalida.writeObject(pizzas[i]);
+                }
             }
             archivoSalida.close();
         } catch (Exception e) {
@@ -1050,19 +1079,19 @@ public class Pizzeria implements java.io.Serializable {
         try {
             FileInputStream archivoEntrada = new FileInputStream("Pizzas.dat");
             ObjectInputStream flujoEntrada = new ObjectInputStream(archivoEntrada);
-            //cPizzas = (int) flujoEntrada.readObject();
-            cPizzas=0;
+            // cPizzas = (int) flujoEntrada.readObject();
+            cPizzas = 0;
             pizzas[cPizzas] = (Pizza) flujoEntrada.readObject();
-            while(pizzas[cPizzas]!=null){
+            while (pizzas[cPizzas] != null) {
                 pizzas[++cPizzas] = (Pizza) flujoEntrada.readObject();
             }
             flujoEntrada.close();
-            
+
         } catch (java.io.EOFException e) {
             System.err.println("se cargaron los datos");
             cPizzas--;
 
-        }catch (Exception e) {
+        } catch (Exception e) {
             System.err.println("Error, no se cargaron los datos inventario " + e);
 
         }
@@ -1074,11 +1103,11 @@ public class Pizzeria implements java.io.Serializable {
             archivoSalida = new FileOutputStream("Personas.dat");
             ObjectOutputStream flujoSalida = new ObjectOutputStream(archivoSalida);
             System.out.println("generando Personas.dat...");
-        
+
             for (int i = 0; i <= cPersonas; i++) {
-                if(personas[i].isVigente()==true){
-                flujoSalida.writeObject(personas[i]);
-            }
+                if (personas[i].isVigente() == true) {
+                    flujoSalida.writeObject(personas[i]);
+                }
             }
             archivoSalida.close();
         } catch (Exception e) {
@@ -1091,19 +1120,19 @@ public class Pizzeria implements java.io.Serializable {
         try {
             FileInputStream archivoEntrada = new FileInputStream("Personas.dat");
             ObjectInputStream flujoEntrada = new ObjectInputStream(archivoEntrada);
-            //cPizzas = (int) flujoEntrada.readObject();
-            cPersonas=0;
+            // cPizzas = (int) flujoEntrada.readObject();
+            cPersonas = 0;
             personas[cPersonas] = (Persona) flujoEntrada.readObject();
-            while(personas[cPersonas]!=null){
+            while (personas[cPersonas] != null) {
                 personas[++cPersonas] = (Persona) flujoEntrada.readObject();
             }
             flujoEntrada.close();
-            
+
         } catch (java.io.EOFException e) {
             System.err.println("se cargaron los datos");
             cPersonas--;
 
-        }catch (Exception e) {
+        } catch (Exception e) {
             System.err.println("Error, no se cargaron los datos inventario " + e);
 
         }
@@ -1115,11 +1144,11 @@ public class Pizzeria implements java.io.Serializable {
             archivoSalida = new FileOutputStream("Transaccion.dat");
             ObjectOutputStream flujoSalida = new ObjectOutputStream(archivoSalida);
             System.out.println("generando Transaccion.dat...");
-        
+
             for (int i = 0; i < cTransaccion; i++) {
-                if(personas[i].isVigente()==true){
-                flujoSalida.writeObject(transaccion[i]);
-            }
+                if (personas[i].isVigente() == true) {
+                    flujoSalida.writeObject(transaccion[i]);
+                }
             }
             archivoSalida.close();
         } catch (Exception e) {
@@ -1132,18 +1161,18 @@ public class Pizzeria implements java.io.Serializable {
         try {
             FileInputStream archivoEntrada = new FileInputStream("Transaccion.dat");
             ObjectInputStream flujoEntrada = new ObjectInputStream(archivoEntrada);
-            //cPizzas = (int) flujoEntrada.readObject();
-            cTransaccion=0;
+            // cPizzas = (int) flujoEntrada.readObject();
+            cTransaccion = 0;
             transaccion[cTransaccion] = (Transaccion) flujoEntrada.readObject();
-            while(transaccion[cTransaccion]!=null){
+            while (transaccion[cTransaccion] != null) {
                 transaccion[++cTransaccion] = (Transaccion) flujoEntrada.readObject();
             }
             flujoEntrada.close();
-            
+
         } catch (java.io.EOFException e) {
             System.err.println("se cargaron los datos");
 
-        }catch (Exception e) {
+        } catch (Exception e) {
             System.err.println("Error, no se cargaron los datos inventario " + e);
 
         }
@@ -1200,11 +1229,15 @@ public class Pizzeria implements java.io.Serializable {
             Cuadrado.imprimirCuadrado(50, 4, "TU USUARIO ES: " + ((Empleado) personas[cPersonas]).getUsuario());
         } catch (InputMismatchException e) {
             System.err.println("CARACTER INVALIDO INSERTE UN NUMERO VAlIDO");
-            cPersonas--;
+            if (cPersonas != 0) {
+                cPersonas--;
+            }
         } catch (Exception e) {
             System.err.println("OCURRIO EL ERROR " + e);
             e.printStackTrace();
-            cPersonas--;
+            if (cPersonas != 0) {
+                cPersonas--;
+            }
         }
     }
 
