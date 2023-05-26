@@ -125,7 +125,8 @@ public class Compra extends Transaccion {
             return true;
         }
         String datos=" "+ proveedor;
-        if(datos.contains(cadenaAbuscar)==true){
+        datos=datos.toLowerCase();
+        if(datos.contains(cadenaAbuscar.toLowerCase())==true){
             return true;
         }else{
             return false;

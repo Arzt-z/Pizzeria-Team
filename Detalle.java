@@ -137,12 +137,13 @@ public class Detalle {
 	}
 
 	public boolean buscar(String cadenaAbuscar) {
-		String datos = " " + cantidad + pizzas + precioProd;
+		String datos = " " + cantidad + pizzas + precioProd+inventario;
 		datos = datos.toLowerCase();
 		if (datos.contains(cadenaAbuscar.toLowerCase()) == true) {
 			return true;
+		}else{
+			return false;
 		}
-		return false;
 	}
 
 	// capturar de inventarios testear pendiente!!
