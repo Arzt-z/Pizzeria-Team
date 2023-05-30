@@ -1,8 +1,9 @@
 import java.util.*;
+import java.io.*;
 
-public class Detalle {
+public class Detalle implements Interface, Serializable{
 	private int cantidad = 0;
-	private Pizza pizzas;
+	private Pizza pizzas; 
 	private Inventario inventario;
 	private double precioProd = 0;
 	private boolean vigente;

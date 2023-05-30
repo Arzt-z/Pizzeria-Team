@@ -1,5 +1,5 @@
 import java.util.Scanner;
-
+import java.io.*;
 import javax.sound.sampled.SourceDataLine;
 
 public class Compra extends Transaccion {

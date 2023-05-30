@@ -58,93 +58,93 @@ public class Pizzeria implements java.io.Serializable {
     protected void inicializaPersonas() {
         cargarArchivoPersonas();
         cargarArchivoTransaccion();
-        /*
-         * personas[0] = new Empleado("Daniel Adrian Roque Cortes", "443 832 7292",
-         * "algun lado", "rfc", "1234", "admin");
-         * personas[++cPersonas] = new Empleado("Alexis Corzas Santiago",
-         * "443 363 1574", "algun lado", "rfc", "1234",
-         * "admin");
-         * personas[++cPersonas] = new Empleado("maki", "443 619 2989", "algun lado",
-         * "rfc", "1234", "empleado");
-         * personas[++cPersonas] = new Empleado("cajero", "000 000 0000", "algun lado",
-         * "rfc", "1234", "empleado");
-         * personas[++cPersonas] = new Empleado("admin", "000 000 0000", "algun lado",
-         * "rfc", "1234", "empleado");
-         * 
-         * personas[++cPersonas] = new Proveedores("Verduras Taguada SA de CV",
-         * "554 234 2345", "algun lado", "rfc");
-         * personas[++cPersonas] = new Proveedores("Grupo Alsea SA de CV",
-         * "443 312 0093",
-         * "GP 30, Centro histórico de Morelia, 58000 Morelia, Mich.", "ALS211312FPE");
+        
+        /*   personas[0] = new Empleado("Daniel Adrian Roque Cortes", "443 832 7292",
+          "algun lado", "rfc", "1234", "admin");
+          personas[++cPersonas] = new Empleado("Alexis Corzas Santiago",
+          "443 363 1574", "algun lado", "rfc", "1234",
+          "admin");
+          personas[++cPersonas] = new Empleado("maki", "443 619 2989", "algun lado",
+          "rfc", "1234", "empleado");
+          personas[++cPersonas] = new Empleado("cajero", "000 000 0000", "algun lado",
+          "rfc", "1234", "empleado");
+          personas[++cPersonas] = new Empleado("admin", "000 000 0000", "algun lado",
+          "rfc", "1234", "empleado");
+          
+          personas[++cPersonas] = new Proveedores("Verduras Taguada SA de CV",
+          "554 234 2345", "algun lado", "rfc");
+          personas[++cPersonas] = new Proveedores("Grupo Alsea SA de CV",
+          "443 312 0093",
+          "GP 30, Centro histórico de Morelia, 58000 Morelia, Mich.", "ALS211312FPE");
          */
     }
 
     protected void inicializarinventarios() {
         cargarArchivoInventario();
-        /*
-         * inventarios[0] = new Inventario("Queso mozzarella", "Queso", 0.3);
-         * inventarios[++cInventarios] = new Inventario("Queso parmesano", "queso",
-         * 0.26);
-         * inventarios[++cInventarios] = new Inventario("Peperoni", "carne", 0.6);
-         * inventarios[++cInventarios] = new Inventario("Salchicha", "carne", 0.08);
-         * inventarios[++cInventarios] = new Inventario("Anchoas", "carne", 1.0);
-         * inventarios[++cInventarios] = new Inventario("Salami", "carne", 0.67);
-         * inventarios[++cInventarios] = new Inventario("Jamon", "carne", 0.14);
-         * inventarios[++cInventarios] = new Inventario("Tocino", "carne", 0.32);
-         * inventarios[++cInventarios] = new Inventario("Carne molida", "carne", 0.16);
-         * inventarios[++cInventarios] = new Inventario("Chorizo", "carne", 0.12);
-         * 
-         * inventarios[++cInventarios] = new Inventario("Cebolla", "no carne", 0.016);
-         * inventarios[++cInventarios] = new Inventario("tomate", "no carne", 0.016);
-         * inventarios[++cInventarios] = new Inventario("Pimiento verde", "no carne",
-         * 0.06);
-         * inventarios[++cInventarios] = new Inventario("Pimiento rojo", "no carne",
-         * 0.06);
-         * inventarios[++cInventarios] = new Inventario("Aceitunas", "no carne", 0.06);
-         * inventarios[++cInventarios] = new Inventario("Champiñones", "no carne",
-         * 0.07);
-         * inventarios[++cInventarios] = new Inventario("Ajo", "no carne", 0.05);
-         * inventarios[++cInventarios] = new Inventario("Jalapeños", "no carne", 0.05);
-         * inventarios[++cInventarios] = new Inventario("Piña", "no carne", 0.013);
-         * 
-         * inventarios[++cInventarios] = new Inventario("orden de papas", "producto",
-         * 20);
-         * inventarios[++cInventarios] = new Inventario("orden de bonneless",
-         * "producto", 50);
-         * inventarios[++cInventarios] = new Inventario("refresco de cola", "bebida",
-         * 15);
-         * inventarios[++cInventarios] = new Inventario("refresco de manzana", "bebida",
-         * 15);
-         * inventarios[++cInventarios] = new Inventario("refresco de naranaja",
-         * "bebida", 15);
-         * inventarios[++cInventarios] = new Inventario("palitos de queso", "producto",
-         * 20);
-         * inventarios[++cInventarios] = new Inventario("salsa secreta", "extra", 10);
-         * inventarios[++cInventarios] = new Inventario("dip de BBQ", "extra", 15);
+        /* 
+          inventarios[0] = new Inventario("Queso mozzarella", "Queso", 0.3);
+          inventarios[++cInventarios] = new Inventario("Queso parmesano", "queso",
+          0.26);
+          inventarios[++cInventarios] = new Inventario("Peperoni", "carne", 0.6);
+          inventarios[++cInventarios] = new Inventario("Salchicha", "carne", 0.08);
+          inventarios[++cInventarios] = new Inventario("Anchoas", "carne", 1.0);
+          inventarios[++cInventarios] = new Inventario("Salami", "carne", 0.67);
+          inventarios[++cInventarios] = new Inventario("Jamon", "carne", 0.14);
+          inventarios[++cInventarios] = new Inventario("Tocino", "carne", 0.32);
+          inventarios[++cInventarios] = new Inventario("Carne molida", "carne", 0.16);
+          inventarios[++cInventarios] = new Inventario("Chorizo", "carne", 0.12);
+          
+          inventarios[++cInventarios] = new Inventario("Cebolla", "no carne", 0.016);
+          inventarios[++cInventarios] = new Inventario("tomate", "no carne", 0.016);
+          inventarios[++cInventarios] = new Inventario("Pimiento verde", "no carne",
+          0.06);
+          inventarios[++cInventarios] = new Inventario("Pimiento rojo", "no carne",
+          0.06);
+          inventarios[++cInventarios] = new Inventario("Aceitunas", "no carne", 0.06);
+          inventarios[++cInventarios] = new Inventario("Champiñones", "no carne",
+          0.07);
+         inventarios[++cInventarios] = new Inventario("Ajo", "no carne", 0.05);
+          inventarios[++cInventarios] = new Inventario("Jalapeños", "no carne", 0.05);
+          inventarios[++cInventarios] = new Inventario("Piña", "no carne", 0.013);
+          
+          inventarios[++cInventarios] = new Inventario("orden de papas", "producto",
+          20);
+          inventarios[++cInventarios] = new Inventario("orden de bonneless",
+          "producto", 50);
+          inventarios[++cInventarios] = new Inventario("refresco de cola", "bebida",
+          15);
+         inventarios[++cInventarios] = new Inventario("refresco de manzana", "bebida",
+          15);
+          inventarios[++cInventarios] = new Inventario("refresco de naranaja",
+          "bebida", 15);
+          inventarios[++cInventarios] = new Inventario("palitos de queso", "producto",
+          20);
+          inventarios[++cInventarios] = new Inventario("salsa secreta", "extra", 10);
+          inventarios[++cInventarios] = new Inventario("dip de BBQ", "extra", 15);
          */
     }
 
     protected void inicializarPizzas() {
         cargarArchivoPizzas();
-        /*
-         * pizzas[0] = new Pizza("Hawaiana", 3, 199);
-         * pizzas[cPizzas].capturarIngrediente(inventarios[6], 0);
-         * pizzas[cPizzas].capturarIngrediente(inventarios[18], 0);
-         * 
-         * pizzas[++cPizzas] = new Pizza("peperoni", 3, 199);
-         * pizzas[cPizzas].capturarIngrediente(inventarios[2], 0);
-         * 
-         * pizzas[++cPizzas] = new Pizza("jamon", 3, 199);
-         * pizzas[cPizzas].capturarIngrediente(inventarios[6], 0);
-         * 
-         * pizzas[++cPizzas] = new Pizza("mexicana", 3, 199);
-         * pizzas[cPizzas].capturarIngrediente(inventarios[10], 0);
-         * pizzas[cPizzas].capturarIngrediente(inventarios[9], 0);
-         * pizzas[cPizzas].capturarIngrediente(inventarios[8], 0);
-         * pizzas[cPizzas].capturarIngrediente(inventarios[17], 0);
-         * 
-         * pizzas[++cPizzas] = new Pizza("loca", 3, 199);
-         * pizzas[cPizzas].capturarIngrediente(inventarios[9], 0);
+        /* 
+          pizzas[0] = new Pizza("Hawaiana", 3, 199);
+          pizzas[cPizzas].capturarIngrediente(inventarios[6], 0);
+          pizzas[cPizzas].capturarIngrediente(inventarios[18], 0);
+          
+          pizzas[++cPizzas] = new Pizza("peperoni", 3, 199);
+          pizzas[cPizzas].capturarIngrediente(inventarios[2], 0);
+          
+          pizzas[++cPizzas] = new Pizza("jamon", 3, 199);
+          pizzas[cPizzas].capturarIngrediente(inventarios[6], 0);
+          
+          pizzas[++cPizzas] = new Pizza("mexicana", 3, 199);
+          pizzas[cPizzas].capturarIngrediente(inventarios[10], 0);
+          pizzas[cPizzas].capturarIngrediente(inventarios[9], 0);
+          pizzas[cPizzas].capturarIngrediente(inventarios[8], 0);
+          pizzas[cPizzas].capturarIngrediente(inventarios[17], 0);
+          
+          pizzas[++cPizzas] = new Pizza("loca", 3, 199);
+          pizzas[cPizzas].capturarIngrediente(inventarios[9], 0);
          */
     }
 

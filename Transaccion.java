@@ -1,7 +1,9 @@
 import java.util.Scanner;
 import java.util.Date;
+import java.io.*;
 import java.text.SimpleDateFormat;
-public abstract class Transaccion implements Interface{
+
+public abstract class Transaccion implements Interface, Serializable{
     
     protected String fecha;
     protected String folio;
