@@ -4,9 +4,9 @@ public class Pizza implements Serializable{
 
     private String nombre;
     private int size;
-    private int precio;
+    private float precio;
     private boolean precioFijo;
-    private int precioProd=130;
+    private float precioProd=130;
     private int diametro=0;
     private int id;
     private int popularidad;
@@ -211,11 +211,11 @@ public class Pizza implements Serializable{
         this.diametro = 20+size*5;
     }
 
-    public int getPrecio() {
+    public float getPrecio() {
         return precio;
     }
 
-    public void setPrecio(int precio) {
+    public void setPrecio(float precio) {
         this.precio = precio;
     }
 

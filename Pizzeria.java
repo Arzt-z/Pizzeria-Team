@@ -58,8 +58,8 @@ public class Pizzeria implements java.io.Serializable {
     protected void inicializaPersonas() {
         cargarArchivoPersonas();
         cargarArchivoTransaccion();
-        
-        /*   personas[0] = new Empleado("Daniel Adrian Roque Cortes", "443 832 7292",
+        /* 
+          personas[0] = new Empleado("Daniel Adrian Roque Cortes", "443 832 7292",
           "algun lado", "rfc", "1234", "admin");
           personas[++cPersonas] = new Empleado("Alexis Corzas Santiago",
           "443 363 1574", "algun lado", "rfc", "1234",
@@ -482,7 +482,7 @@ public class Pizzeria implements java.io.Serializable {
     public void precioPizza(int seleccion) {
         Scanner datos = new Scanner(System.in);
         Cuadrado.imprimirCuadrado(50, 3, "INGRESAR PRECIO");
-        int precio = datos.nextInt();
+        float precio = datos.nextInt();
         pizzas[seleccion].setPrecioFijo(true);
         pizzas[seleccion].setPrecio(precio);
     }
