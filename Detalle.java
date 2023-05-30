@@ -258,7 +258,7 @@ public class Detalle implements Interface, Serializable{
 	}
 
 	// capturar de pizzas
-	public void capturar(int cPizzas, Pizza[] pizzas) {
+	public void capturar(int cPizzas, Pizza[] pizzas, Inventario[] inv, int cinv) {
 		Scanner dato = new Scanner(System.in);
 		int error;
 		do {
@@ -280,7 +280,7 @@ public class Detalle implements Interface, Serializable{
 				cantidad = dato.nextInt();
 				pizzas[laPizza].calcularPrecio();
 				precioProd = pizzas[laPizza].getPrecio();
-				pizzas[laPizza].sustraerIngredientesAInventarios(cantidad);
+				pizzas[laPizza].sustraerIngredientesAInventarios(cantidad,inv,cinv);
 				this.dif = 'p';
 				this.nombre = this.pizzas.getNombre();
 			} else {

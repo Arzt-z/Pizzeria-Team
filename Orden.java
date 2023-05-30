@@ -85,7 +85,7 @@ public class Orden extends Transaccion {
                 case 2: 
 
                     mostrarPizzas();
-                    super.capturar(pizzas, cPizzas);
+                    super.capturar(pizzas, cPizzas,inventarios,cInventarios);
                     break;
                 case 0:
                     return;
@@ -115,7 +115,7 @@ public class Orden extends Transaccion {
         int opcion;
         char diferencia= 'o';
         System.out.println("Ingresa los datos de la nueva compra");
-        super.capturar(pizzas, cPizzas);
+        super.capturar(pizzas, cPizzas,inventarios,cInventarios);
     }
 
     public void capturar(Pizza[] pizzas, int cPizzas){

@@ -126,7 +126,7 @@ public class Pizzeria implements java.io.Serializable {
 
     protected void inicializarPizzas() {
         cargarArchivoPizzas();
-        /* 
+        /*
           pizzas[0] = new Pizza("Hawaiana", 3, 199);
           pizzas[cPizzas].capturarIngrediente(inventarios[6], 0);
           pizzas[cPizzas].capturarIngrediente(inventarios[18], 0);
@@ -562,7 +562,7 @@ public class Pizzeria implements java.io.Serializable {
                 if (opcion == 1) {
                     transaccion[cTransaccion].capturar(inventarios, cInventarios, 'v');
                 } else if (opcion == 2) {
-                    transaccion[cTransaccion].capturar(pizzas, cPizzas);
+                    transaccion[cTransaccion].capturar(pizzas, cPizzas,inventarios,cInventarios);
                 }
                 Cuadrado.imprimirCuadrado(50, 3, "agregar otra pizza o producto?");
                 Cuadrado.imprimirCuadradoDividido(50, 2, "1.-SI", "2.-NO");

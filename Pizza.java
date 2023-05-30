@@ -166,17 +166,25 @@ public class Pizza implements Serializable{
         return false;
     }
 
-    public void sustraerIngredientesAInventarios(int multiplicador){
+    public void sustraerIngredientesAInventarios(int multiplicador, Inventario[] inv,int cinv){
         calcularTodosLosIngredientes();
             for (int i = 0; i < cIngredientes; i++) {
-                ingredientes[i].setStock(inventarios[i][0].getStock()-((int)(gramosIngrediente[i]*multiplicador)));
+                for(int j=0; j< cinv ; j++){
+                    if(inv[j].getNombre().equalsIgnoreCase(ingredientes[i].getNombre()) ){
+                        inv[j].setStock(inv[j].getStock()-((int)((gramosIngrediente[i]/cIngredientes)*multiplicador)));
+                    }
+                }
             }
     }
 
-    public void agregarIngredientesAInventarios(int multiplicador){
+    public void agregarIngredientesAInventarios(int multiplicador, Inventario[] inv,int cinv){
         calcularTodosLosIngredientes();
             for (int i = 0; i < cIngredientes; i++) {
-                ingredientes[i].setStock(inventarios[i][0].getStock()+((int)(gramosIngrediente[i]*multiplicador)));
+                for(int j=0; j< cinv ; j++){
+                    if(inv[j].getNombre().equalsIgnoreCase(ingredientes[i].getNombre())){
+                        inv[j].setStock(inv[j].getStock()+((int)(gramosIngrediente[i]*multiplicador)));
+                    }
+                }
             }
     }
 

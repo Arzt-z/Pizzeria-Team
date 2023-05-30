@@ -100,11 +100,11 @@ public abstract class Transaccion implements Interface, Serializable{
     }
 
 
-    public void capturar(Pizza[] pizzas, int cPizzas) {
+    public void capturar(Pizza[] pizzas, int cPizzas,Inventario[] inventarios,int cInventarios) {
         Date fechaActual = new Date();
         SimpleDateFormat formatoFecha = new SimpleDateFormat("dd/MM/yy HH:mm");
             this.fecha =  formatoFecha.format(fechaActual);
-                capturarDetalle(pizzas, cPizzas);
+                capturarDetalle(pizzas, cPizzas,inventarios,cInventarios);
     }
 
 
@@ -210,9 +210,9 @@ public abstract class Transaccion implements Interface, Serializable{
         }
     }
 
-    public void capturarDetalle(Pizza[] pizzas, int cPizzas) {
+    public void capturarDetalle(Pizza[] pizzas, int cPizzas,Inventario[] inventarios, int cInventarios) {
             detalles[cDetalles] = new Detalle();
-            detalles[cDetalles++].capturar(cPizzas, pizzas);
+            detalles[cDetalles++].capturar(cPizzas, pizzas,inventarios,cInventarios);
     }
 
     public void getDetalles(char diferenciador) {
