@@ -482,9 +482,9 @@ public class Pizzeria implements java.io.Serializable {
     public void precioPizza(int seleccion) {
         Scanner datos = new Scanner(System.in);
         Cuadrado.imprimirCuadrado(50, 3, "INGRESAR PRECIO");
-        float precio = datos.nextInt();
+        float precios = datos.nextInt();
         pizzas[seleccion].setPrecioFijo(true);
-        pizzas[seleccion].setPrecio(precio);
+        pizzas[seleccion].setPrecio(precios);
     }
 
     public void tamanoPizza(int seleccion) {
