@@ -126,7 +126,7 @@ public class Pizzeria implements java.io.Serializable {
 
     protected void inicializarPizzas() {
         cargarArchivoPizzas();
-        /*
+        /* 
           pizzas[0] = new Pizza("Hawaiana", 3, 199);
           pizzas[cPizzas].capturarIngrediente(inventarios[6], 0);
           pizzas[cPizzas].capturarIngrediente(inventarios[18], 0);
@@ -145,7 +145,7 @@ public class Pizzeria implements java.io.Serializable {
           
           pizzas[++cPizzas] = new Pizza("loca", 3, 199);
           pizzas[cPizzas].capturarIngrediente(inventarios[9], 0);
-         */
+          */
     }
 
     // funciones de inventarios

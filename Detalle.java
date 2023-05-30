@@ -280,9 +280,8 @@ public class Detalle implements Interface, Serializable{
 				cantidad = dato.nextInt();
 				pizzas[laPizza].calcularPrecio();
 				precioProd = pizzas[laPizza].getPrecio();
-				pizzas[laPizza].sustraerIngredientesAInventarios(cantidad,inv,cinv);
-				this.dif = 'p';
-				this.nombre = this.pizzas.getNombre();
+				//if(!(pizzas[laPizza].checarIngredientesinventarios(cantidad,inv,cinv))){System.out.println("insuficiente stock");error=1;}else{pizzas[laPizza].sustraerIngredientesAInventarios(cantidad,inv,cinv);this.dif = 'p';this.nombre = this.pizzas.getNombre();}
+				pizzas[laPizza].sustraerIngredientesAInventarios(cantidad,inv,cinv);this.dif = 'p';this.nombre = this.pizzas.getNombre();
 			} else {
 				System.out.println("Esa pizza no existe.");
 				System.out.println("SELECCIONE UN PIZZA VALIDA");

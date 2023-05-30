@@ -177,6 +177,20 @@ public class Pizza implements Serializable{
             }
     }
 
+    public boolean checarIngredientesinventarios(int multiplicador, Inventario[] inv,int cinv){
+        calcularTodosLosIngredientes();
+            for (int i = 0; i < cIngredientes; i++) {
+                for(int j=0; j< cinv ; j++){
+                    if(inv[j].getNombre().equalsIgnoreCase(ingredientes[i].getNombre()) ){
+                        if((inv[j].getStock()-((int)((gramosIngrediente[i]/cIngredientes)*multiplicador)))<0){
+                            return false;
+                        }
+                    }
+                }
+            }
+            return true;
+    }
+
     public void agregarIngredientesAInventarios(int multiplicador, Inventario[] inv,int cinv){
         calcularTodosLosIngredientes();
             for (int i = 0; i < cIngredientes; i++) {
